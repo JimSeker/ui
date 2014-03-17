@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="working">Working On it...</string>
+    <string name="hello">Hello World, FormExample!</string>
+    <string name="app_name">Form Example, Android</string>
+<string name="done">Process Done.</string>
+</resources>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  android:orientation="vertical">
+
+      <TextView android:text="TextView item, Hello Form" android:id="@+id/Label01" android:layout_width="fill_parent" android:layout_height="wrap_content">
+      </TextView>
+<LinearLayout android:id="@+id/LinearLayout02" android:layout_width="fill_parent" android:layout_height="wrap_content"
+   android:orientation="horizontal">      
+<TextView android:text="Enter:" android:id="@+id/TVname"  android:paddingTop="15px" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+   
+<EditText android:text="Name" android:id="@+id/ETname" android:layout_toRightOf="@id/TVname" android:layout_alignBaseline="@id/TVname" android:layout_width="fill_parent" android:layout_height="wrap_content">
+		  </EditText>
+</LinearLayout>
+<LinearLayout android:id="@+id/LinearLayout03" android:layout_width="fill_parent" android:layout_height="wrap_content"
+   android:orientation="horizontal">      
+<TextView android:text="Progress bar:" android:id="@+id/TVprogress" 
+   android:layout_width="wrap_content" android:layout_height="wrap_content"
+   ></TextView>
+   
+<SeekBar android:id="@+id/ProgressBar01" 
+   android:layout_width="fill_parent"
+   android:layout_height="20px" 
+   style="?android:attr/progressBarStyleHorizontal"></SeekBar>
+
+</LinearLayout>
+
+
+<RelativeLayout android:id="@+id/RelativeLayout01" android:layout_width="fill_parent" android:layout_height="wrap_content" android:padding="5px">
+<TextView android:text="No Sounds, Radio Button" android:id="@+id/TVsound" 
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:layout_below="@id/TVprogress"
+    ></TextView>
+    
+<RadioGroup android:id="@+id/SndGroup" android:layout_width="wrap_content" 
+   android:layout_height="wrap_content"
+   android:layout_below="@id/TVsound">
+   
+<RadioButton android:text="Information" android:id="@+id/RB01" 
+   android:layout_width="wrap_content" android:layout_height="wrap_content">
+   </RadioButton>
+<RadioButton android:text="Confirmation" android:id="@+id/RB02" 
+   android:layout_width="wrap_content" android:layout_height="wrap_content">
+   </RadioButton>
+<RadioButton android:text="Warning" android:id="@+id/RB03" 
+   android:layout_width="wrap_content" android:layout_height="wrap_content">
+   </RadioButton>
+
+</RadioGroup>
+</RelativeLayout>
+
+<LinearLayout android:id="@+id/LinearLayout04" android:layout_width="fill_parent" android:layout_height="wrap_content"
+   android:orientation="horizontal">      
+<TextView android:text="Button alert:" android:id="@+id/TVbutton" 
+   android:layout_width="wrap_content" android:layout_height="wrap_content"
+   ></TextView>
+   
+<Button android:text="alert" android:id="@+id/Button01" android:layout_width="wrap_content" android:layout_height="wrap_content">
+</Button>
+</LinearLayout>
+
+<LinearLayout android:id="@+id/LinearLayout05" android:layout_width="fill_parent" android:layout_height="wrap_content"
+   android:orientation="horizontal">      
+<TextView android:text="Picture:" android:id="@+id/TVpic" 
+   android:layout_width="wrap_content" android:layout_height="wrap_content"
+   ></TextView>
+   
+<ImageView android:id="@+id/ImageView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/phone"></ImageView>
+</LinearLayout>
+<Spinner android:id="@+id/Spinner01" android:layout_width="fill_parent" android:layout_height="wrap_content" android:drawSelectorOnTop="true" ></Spinner>
+<TextView android:text="Spinner Label" android:id="@+id/TVspinner" 
+   android:layout_width="wrap_content" android:layout_height="wrap_content"
+   ></TextView>
+<LinearLayout android:id="@+id/LinearLayout05" android:layout_width="fill_parent" android:layout_height="wrap_content"
+   android:orientation="horizontal"> 
+<Button android:text="Pick Date" android:id="@+id/Button02" android:layout_width="wrap_content" android:layout_height="wrap_content">
+</Button>
+<TextView android:text="date" android:id="@+id/TVdate" 
+   android:layout_width="wrap_content" android:layout_height="wrap_content"
+   ></TextView>
+
+</LinearLayout>
+
+</LinearLayout>
+
+</ScrollView>
