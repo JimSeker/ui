@@ -57,7 +57,7 @@ public class Input_Fragment extends Fragment implements OnClickListener {
 
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				// do nothing here.
+				// do nothing here. 
 				
 			}
 
