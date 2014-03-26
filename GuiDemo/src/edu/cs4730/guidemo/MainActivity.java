@@ -64,7 +64,8 @@ public class MainActivity extends FragmentActivity {
 			switch (position) {
 			  case 0: return new Text_Fragment();
 			  case 1: return new Input_Fragment();
-			  case 2: return new Text_Fragment();
+			  case 2: return new Image_Fragment();
+			  case 3: return new Button_Fragment();
 			  default: return null;
 			}
 		}
@@ -85,6 +86,8 @@ public class MainActivity extends FragmentActivity {
 				return getString(R.string.title_section2).toUpperCase(l);
 			case 2:
 				return getString(R.string.title_section3).toUpperCase(l);
+			case 3:
+				return getString(R.string.title_section4).toUpperCase(l);
 			}
 			return null;
 		}
