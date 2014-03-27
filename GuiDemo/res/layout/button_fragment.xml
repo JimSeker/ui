@@ -111,5 +111,10 @@
         android:layout_height="wrap_content"
         android:text="2" />
   </LinearLayout>
+        <TextView
+        android:id="@+id/output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="output:"/>
     
 </LinearLayout>
