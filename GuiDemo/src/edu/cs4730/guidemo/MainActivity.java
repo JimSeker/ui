@@ -9,12 +9,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity {
 
@@ -66,14 +60,15 @@ public class MainActivity extends FragmentActivity {
 			  case 1: return new Input_Fragment();
 			  case 2: return new Image_Fragment();
 			  case 3: return new Button_Fragment();
+			 // case 4: return new Relativelayout_Fragment();
 			  default: return null;
 			}
 		}
 
 		@Override
 		public int getCount() {
-			// Show 3 total pages.
-			return 3;
+			// Show X total pages.
+			return 5;
 		}
 
 		@Override
@@ -88,6 +83,8 @@ public class MainActivity extends FragmentActivity {
 				return getString(R.string.title_section3).toUpperCase(l);
 			case 3:
 				return getString(R.string.title_section4).toUpperCase(l);
+			case 4:
+				return getString(R.string.title_section5).toUpperCase(l);
 			}
 			return null;
 		}

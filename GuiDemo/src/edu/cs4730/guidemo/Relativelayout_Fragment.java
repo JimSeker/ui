@@ -10,23 +10,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class Image_Fragment extends Fragment {
-
-    String TAG = "Image_Fragment";
+public class Relativelayout_Fragment extends Fragment {
+	
+	
+    String TAG = "Relativelayout_Fragment";
     Context myContext;
-    
-	public Image_Fragment() {
+
+	public Relativelayout_Fragment() {
 		// Required empty public constructor
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.image_fragment, container, false);
-		return view;
-	}
-	
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
+	}
+	@Override
+	public View onCreateView( LayoutInflater inflater, ViewGroup container,	Bundle savedInstanceState )	{
+		View myView;
+		myView = inflater.inflate( R.layout.relativelayout_fragment, container, false );
+		return myView;
+	}
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -34,5 +38,6 @@ public class Image_Fragment extends Fragment {
 		Log.d(TAG,"onAttach");
 	}
 
+	
 
 }
