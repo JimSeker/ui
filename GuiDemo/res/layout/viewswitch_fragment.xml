@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="edu.cs4730.guidemo.ViewSwitch_Fragment" >
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="An Example of a View Switcher" />
+        
+    <Button
+        android:id="@+id/vs_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="click for Next view" />
+
+    <ViewSwitcher
+        android:id="@+id/viewSwitcher1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+
+            <EditText
+                android:id="@+id/et_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="bottom"
+                android:inputType="textMultiLine"
+                android:maxLines="3" />
+		</LinearLayout>
+		<LinearLayout
+		    android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+            <ImageButton
+                android:id="@+id/IB_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:src="@drawable/phone" />
+        </LinearLayout>
+        
+    </ViewSwitcher>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="An Example of a View flipper" />
+        <Button
+        android:id="@+id/vf_button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="click for Next view" />
+
+        <Button
+            android:id="@+id/vf_button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start animation" />
+
+    <ViewFlipper
+        android:id="@+id/viewFlipper1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+		<LinearLayout
+		    android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+            <ImageButton
+                android:id="@+id/IB_button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:src="@drawable/ic_launcher" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+
+            <EditText
+                android:id="@+id/et_view2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="bottom"
+                android:inputType="textMultiLine"
+                android:maxLines="3" />
+		</LinearLayout>
+
+        
+    </ViewFlipper>
+
+</LinearLayout>
