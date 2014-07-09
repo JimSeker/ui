@@ -60,7 +60,8 @@ public class MainActivity extends FragmentActivity {
 			  case 1: return new Input_Fragment();
 			  case 2: return new Image_Fragment();
 			  case 3: return new Button_Fragment();
-			 // case 4: return new Relativelayout_Fragment();
+			  case 4: return new Relativelayout_Fragment();
+			  case 5: return new RadioCheck_Fragment();
 			  default: return null;
 			}
 		}
@@ -68,7 +69,7 @@ public class MainActivity extends FragmentActivity {
 		@Override
 		public int getCount() {
 			// Show X total pages.
-			return 5;
+			return 6;
 		}
 
 		@Override
@@ -85,6 +86,8 @@ public class MainActivity extends FragmentActivity {
 				return getString(R.string.title_section4).toUpperCase(l);
 			case 4:
 				return getString(R.string.title_section5).toUpperCase(l);
+			case 5:
+				return getString(R.string.title_section6).toUpperCase(l);
 			}
 			return null;
 		}
