@@ -39,6 +39,7 @@ public class MainActivity extends FragmentActivity {
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
+	//	mViewPager.setCurrentItem(6);// set to a specific page in the pager.
 
 	}
 
@@ -62,6 +63,7 @@ public class MainActivity extends FragmentActivity {
 			  case 3: return new Button_Fragment();
 			  case 4: return new Relativelayout_Fragment();
 			  case 5: return new RadioCheck_Fragment();
+			  case 6: return new Spinner_Fragment();
 			  default: return null;
 			}
 		}
@@ -69,7 +71,7 @@ public class MainActivity extends FragmentActivity {
 		@Override
 		public int getCount() {
 			// Show X total pages.
-			return 6;
+			return 7;
 		}
 
 		@Override
@@ -88,6 +90,9 @@ public class MainActivity extends FragmentActivity {
 				return getString(R.string.title_section5).toUpperCase(l);
 			case 5:
 				return getString(R.string.title_section6).toUpperCase(l);
+			case 6:
+				return getString(R.string.title_section7).toUpperCase(l);
+
 			}
 			return null;
 		}
