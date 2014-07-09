@@ -88,9 +88,6 @@ public class Spinner_Fragment extends Fragment implements AdapterView.OnItemSele
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
 			long id) {
-		Log.d(TAG, "SpinnerSB id is " + R.id.spinner1);
-		//Log.d(TAG, "SpinnerSB id is " + R.id.spinner1);
-		Log.d(TAG, "spinner is ?" + view.getId());
 		
 		if (parent.getId() == R.id.spinner1)  { // used to control the seekbar
 			if (position !=-1)  //-1 is nothing selected.  just making sure.
