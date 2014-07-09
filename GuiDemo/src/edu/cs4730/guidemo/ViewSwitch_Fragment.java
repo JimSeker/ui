@@ -19,7 +19,7 @@ import android.widget.ViewSwitcher;
  * 
  */
 public class ViewSwitch_Fragment extends Fragment {
-	String TAG = "Spinner_fragment";
+	String TAG = "ViewSwitch_fragment";
 	Context myContext;
 	
 	//Switcher to change view when input mode changes
