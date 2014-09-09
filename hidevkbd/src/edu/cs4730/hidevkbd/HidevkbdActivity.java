@@ -9,6 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/*
+ * This code will hide or display the virtual keyboard on the device.
+ * It does not work for physical keyboards. you should be able to guess why.
+ */
+
+
 public class HidevkbdActivity extends Activity implements Button.OnClickListener {
 	
 	Button b1, b2, b3;

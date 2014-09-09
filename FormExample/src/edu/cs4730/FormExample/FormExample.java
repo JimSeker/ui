@@ -25,6 +25,11 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+/*
+ * This is an old example code.  It has not been updated to 4.4.X   It has been left at 2.3.3 intentionally.
+ *  This code will not be updated.  Use the GUI example for more current code.
+ */
+
 public class FormExample extends Activity implements RadioGroup.OnCheckedChangeListener, TextWatcher, 
             Button.OnClickListener, SeekBar.OnSeekBarChangeListener, AdapterView.OnItemSelectedListener {
     /** Called when the activity is first created. */

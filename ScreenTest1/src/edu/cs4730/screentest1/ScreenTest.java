@@ -4,6 +4,16 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
+
+/*
+ * This code is purely to see what the android OS picks for dpi.
+ * The difference in the code is the pictures that the OS will decide to use. 
+ * Otherwise, there is not code in the java.
+ * 
+ * 
+ * See the drawable and layout directories.
+ */
+
 public class ScreenTest extends Activity {
 
 	@Override
