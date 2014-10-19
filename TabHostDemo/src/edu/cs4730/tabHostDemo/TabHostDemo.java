@@ -2,6 +2,8 @@ package edu.cs4730.tabHostDemo;
 
 
 /*
+ * This code uses a depreciated TabActivity.  It will not be updated and is being left at android v2.3.3
+ * 
  * This example is based on the the Android example http://developer.android.com/resources/tutorials/views/hello-tabwidget.html
  * With fixes from stackoverflow here: http://stackoverflow.com/questions/2209406/issues-with-android-tabhost-example
  * 
