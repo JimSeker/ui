@@ -29,7 +29,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -46,10 +45,18 @@ import android.widget.Toast;
 
 /**
  * This example illustrates a common usage of the DrawerLayout widget
- * in the Android support library.
+ * in the Android support library.  This is googles example from there website 
+ * http://developer.android.com/training/implementing-navigation/nav-drawer.html with modifications for lollipop ish code.
  * 
  * Updated 10/18/2014 for the new <- in the navigation drawer used in the v7 support library.
- * 
+ *     add the support library v7 and then change to this import android.support.v7.app.ActionBarDrawerToggle;
+ * Update 10/21/2014    
+ *   To remove the icon as well, then you need to change from an Activity to an ActionBarActivity    
+ *    add this:
+ *       import android.support.v7.app.ActionBarActivity;
+ *             change extends Activity to extends ActionBarActivity
+ *	      Now change every getActionBar() reference to a getSupportActionBar()
+ *    remove the import for activity if you want to.
  * 
  * <p/>
  * <p>When a navigation (left) drawer is present, the host activity should detect presses of
