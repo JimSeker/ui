@@ -45,9 +45,12 @@ import android.widget.Toast;
 
 /**
  * This example illustrates a common usage of the DrawerLayout widget
- * in the Android support library.  This is googles example from there website 
+ * in the Android support library.  This is google's example from their web site 
  * http://developer.android.com/training/implementing-navigation/nav-drawer.html with modifications for lollipop ish code.
- * 
+ *
+ * Note, this updates below are true for just API 21 (lollipop), you must use the support libraries.
+ *   This was test with on several different nag drawer examples, these seem to be all the fixes so far.
+ *    
  * Updated 10/18/2014 for the new <- in the navigation drawer used in the v7 support library.
  *     add the support library v7 and then change to this import android.support.v7.app.ActionBarDrawerToggle;
  * Update 10/21/2014    
@@ -57,6 +60,18 @@ import android.widget.Toast;
  *             change extends Activity to extends ActionBarActivity
  *	      Now change every getActionBar() reference to a getSupportActionBar()
  *    remove the import for activity if you want to.
+ *    
+ *    values/styles.xml  Theme.AppCompat.Light
+ *    values-v11/styles.xml Theme.AppCompat.Light
+ *    values-v14/styles.xml Theme.AppCompat.Light.DarkActionBar
+ *    
+ *    Not needed in this code, but in others
+ *    Replace import android.app.ActionBar;
+ *    with    import android.support.v7.app.ActionBar;
+ *
+ *    if you are in a fragment, you may have to write this ugly line of code:
+ *    ((ActionBarActivity) getActivity()).getSupportActionBar();
+ *    
  * 
  * <p/>
  * <p>When a navigation (left) drawer is present, the host activity should detect presses of
