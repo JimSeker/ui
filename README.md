@@ -16,9 +16,9 @@ dialog Demo shows how to use the dialog in the 2.3.3 and 4.X methods (with and w
 FormExample a simple (and bad) example of some widgets.  It is badly out of date and uses 2.2/2.3 design ideas
 
 
-Note, Android studio has many problems.  The first is you can't import all of these projects as one big group (like eclipse did).  You will need to import project seperately.   
+Note for Android studio download a zip (or clone).  The use open in Andriod Studio to open an individial project.  You can also import Non-Android Studio Project for projects in the eclipse directory.
 
-eclipse/  has the projects in the format that eclipse can read.  you should be able to have eclipse import the entire directory.
+eclipse/  has the projects in the format that eclipse can read.  you should be able to have eclipse import the entire directory into your workspace via eclipse.  Note these are no longer updated.
 
 
 
