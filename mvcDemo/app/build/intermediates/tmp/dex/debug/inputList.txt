@@ -1,3 +1,0 @@
-C:\Users\seker\AndroidStudioProjects\mvcDemo\app\build\intermediates\classes\debug
-C:\Users\seker\AndroidStudioProjects\mvcDemo\app\build\intermediates\pre-dexed\debug\classes-93cf590e8e81384683323cdeaa484f5d031259b7.jar
-C:\Users\seker\AndroidStudioProjects\mvcDemo\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-c30e376a8a37b42530721aa3276156097e39d8df.jar
