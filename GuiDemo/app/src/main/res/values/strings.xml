@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GuiDemo</string>
+    <string name="title_section1">Text</string>
+    <string name="title_section2">Text Input</string>
+    <string name="title_section3">Images</string>
+    <string name="title_section4">Buttons</string>
+    <string name="title_section5">Relative Layout</string>
+    <string name="title_section6">Radio and Check boxs</string>
+    <string name="title_section7">Spinners</string>
+    <string name="title_section8">View Switcher</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="spinneritems">
+        <item>item1</item>
+        <item>item2</item>
+        <item>item3</item>
+        <item>Pick me!</item>
+    </string-array>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<style name="AppTheme" parent="AppBaseTheme">
+    
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/accent</item>
+     <item name="colorControlHighlight">@color/colorControlHighlight</item>
+    <!-- 
+    <item name="colorControlNormal">@color/colorControlNormal</item>
+    <item name="colorControlActivated">@color/colorControlActivated</item>
+   
+
+    <item name="colorSwitchThumbNormal">@color/colorSwitchThumbNormal</item>   
+           --> 
+    <item name="android:windowContentTransitions">true</item>
+    <item name="android:windowAllowEnterTransitionOverlap">true</item>
+    <item name="android:windowAllowReturnTransitionOverlap">true</item>
+    <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
+    <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+</style>
+</resources>

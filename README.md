@@ -3,16 +3,22 @@ GUI/UI Examples
 
 Varying examples of UI code for the interface.
 
-These projects are begin converted into Android studio.  For now, look in the eclipse/ directory for the UI examples.
-As the projects are converted, they will show up in the main directory.
+mvcDemo is an example using the Model-view-controller model.
+
+NavDrawer show using the Drawer with the arrow for lollipop.  It also has some Material Design elements implemented
+
+intentDemo show varying intents to say make phones calls, launch the browser, etc.
+
+GuiDemo is an example using ViewPager (and fragments) to show different Widgets and layouts.
+
+dialog Demo shows how to use the dialog in the 2.3.3 and 4.X methods (with and without fragments)
+
+FormExample a simple (and bad) example of some widgets.  It is badly out of date and uses 2.2/2.3 design ideas
 
 
-eclipse/  has the projects in the format that eclipse can read.
+Note, Android studio has many problems.  The first is you can't import all of these projects as one big group (like eclipse did).  You will need to import project seperately.   
 
-GUIDemo is a series of example using a viewpager and fragments to show different widgets.
-
-NavDrawer (and android-support-v5-appcompat library) show the drawer with new arrow for lollipop.
-
+eclipse/  has the projects in the format that eclipse can read.  you should be able to have eclipse import the entire directory.
 
 
 
