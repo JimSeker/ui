@@ -1,25 +1,24 @@
 Android GUI/UI Examples
 ===========
 
-Varying examples of UI code for the interface.
+This repo contains multiple projects, some in sub directories to be better organized with the course lectures.  You can see the course pages here: http://www.cs.uwyo.edu/~seker/courses/4730/
+
+Note for Android studio download a zip (or clone).  Then in Andriod Studio open project directory as individial project.  You can also import Non-Android Studio Project for projects in the eclipse directory.
+
+Basic/ are simple examples.  see the readme in directory
+
+Advanced/ are more advanced examples.   see the readme in directory
+
+Material Design/ are examples using the new material design spec and Navagation Drawer.    see the readme in directory
 
 mvcDemo is an example using the Model-view-controller model.
 
-NavDrawer show using the Drawer with the arrow for lollipop.  It also has some Material Design elements implemented
-
 intentDemo show varying intents to say make phones calls, launch the browser, etc.
 
-GuiDemo is an example using ViewPager (and fragments) to show different Widgets and layouts.
-
-dialog Demo shows how to use the dialog in the 2.3.3 and 4.X methods (with and without fragments)
-
-FormExample a simple (and bad) example of some widgets.  It is badly out of date and uses 2.2/2.3 design ideas
+dialogDemo shows how to use the dialog in the 2.3.3 and 4.X methods (with and without fragments)
 
 
-Note for Android studio download a zip (or clone).  The use open in Andriod Studio to open an individial project.  You can also import Non-Android Studio Project for projects in the eclipse directory.
-
-eclipse/  has the projects in the format that eclipse can read.  you should be able to have eclipse import the entire directory into your workspace via eclipse.  Note these are no longer updated.
-
+eclipse/  has some of projects in the format that eclipse format, if they predate the moved android Studio.  You should be able to have eclipse import the entire directory into your workspace via eclipse.  Note these are no longer updated.
 
 
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course.
