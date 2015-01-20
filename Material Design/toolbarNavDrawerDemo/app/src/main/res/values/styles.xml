@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppTheme.Base">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryColorDark</item>
+        <item name="colorAccent">@color/accentColor</item>
+<!-- these only work in lollipop.  so they are commented out, but left so I remember it too.
+        <item name="textColorPrimary">@color/textColor</item>
+        <item name="textColorSecondary">@color/textColorSecondary</item>
+
+        <item name="navigationBarColor">@color/navigationBarColor</item>
+        <item name="windowBackground">@color/windowBackgroundColor</item>
+        -->
+    </style>
+
+</resources>
