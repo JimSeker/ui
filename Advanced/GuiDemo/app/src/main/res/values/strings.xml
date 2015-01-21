@@ -11,6 +11,7 @@
         <item>Radio and Check boxes</item>
         <item>Spinners</item>
         <item>View Switcher</item>
+        <item>Dialog Pickers</item>
     </string-array>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>

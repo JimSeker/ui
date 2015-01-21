@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -30,6 +32,8 @@ public class Spinner_Fragment extends Fragment implements AdapterView.OnItemSele
 
 	Spinner SpinnerSB, mySpinner;
 	SeekBar mySeekBar;
+    ProgressBar pb_cir, pb_hor;
+    Button btn;
 	
 	//myList used to "fill" the first spinner.
 	String[] myList= {"0","1","2","3","4","5"};
@@ -74,7 +78,18 @@ public class Spinner_Fragment extends Fragment implements AdapterView.OnItemSele
 		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		mySpinner.setAdapter(adapter2);
 		mySpinner.setOnItemSelectedListener(this);
-		
+
+        pb_cir = (ProgressBar)myView.findViewById(R.id.progressBar);
+        pb_hor = (ProgressBar)myView.findViewById(R.id.progressBar2);
+        pb_hor.setMax(100);
+        btn = (Button) myView.findViewById(R.id.prgbtn);
+        btn.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pb_hor.setProgress(0);  //set it to zero before starting.
+                new Thread(new progressUpdater()).start();
+            }
+        });
 		return myView;
 	}
 
@@ -104,5 +119,20 @@ public class Spinner_Fragment extends Fragment implements AdapterView.OnItemSele
 		//Im ignoring this one.
 	}
 
+    /*
+     *  A thread to update the progress bars.
+    */
+    class progressUpdater implements Runnable {
 
+    @Override
+    public void run() {
+        try {
+            while (pb_hor.getProgress() <pb_hor.getMax()) {
+                Thread.sleep(1000);  //1 second
+                pb_hor.incrementProgressBy(10);
+                pb_cir.incrementProgressBy(10);
+            }
+        } catch (InterruptedException Error) {};
+    }
+}
 }

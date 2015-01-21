@@ -71,7 +71,9 @@ public class MainActivity extends ActionBarActivity {
                     case 7:
                         fragmentManager.beginTransaction().replace(R.id.container, new ViewSwitch_Fragment()).commit();
                         break;
-                }
+                    case 8:
+                        fragmentManager.beginTransaction().replace(R.id.container, new Picker_Fragment()).commit();
+                        break;                }
                 // update selected item and title, then close the drawer
                 mDrawerList.setItemChecked(position, true);
                 //now close the drawer!
