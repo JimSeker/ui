@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/actionmenu_settings"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_settings"/>
+
+       <item android:id="@+id/amenuitem1"
+           android:orderInCategory="5"
+           android:title="item1"/>    
+       <item android:id="@+id/amenuitem2"
+           android:orderInCategory="10"
+           android:title="item2"/> 
+              
+        <item android:id="@+id/submenu"
+        android:title="sub menu"  
+         android:showAsAction="always"
+         >
+        <menu>
+           <item android:id="@+id/asubitem1"
+             android:orderInCategory="1"
+             android:title="subitem1"/>    
+       		<item android:id="@+id/asubitem2"
+              android:orderInCategory="2"
+              android:title="subitem2"/>     
+        </menu>
+    </item>
+       
+       
+</menu>

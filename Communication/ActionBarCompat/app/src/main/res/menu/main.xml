@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sa="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_spinner"
+        sa:actionViewClass="android.widget.Spinner"
+        android:visible="false"
+        sa:showAsAction="always"/>
+    <item
+        android:id="@+id/menu_search"
+        sa:showAsAction="always"
+        sa:actionLayout="@layout/search_layout">
+    </item>
+    <item
+        android:id="@+id/menu_toggle"
+        android:icon="@android:drawable/ic_menu_directions"
+        sa:showAsAction="always">
+    </item>
+    <item
+        android:id="@+id/menu_actionmode"
+        android:orderInCategory="100"
+        sa:showAsAction="never"
+        android:title="@string/menu_actionmode"/>
+    <item
+        android:id="@+id/menu_settings"
+        android:orderInCategory="100"
+        sa:showAsAction="never"
+        android:title="@string/menu_settings"/>
+
+</menu>

@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+       <item android:id="@+id/frag1"
+           android:orderInCategory="1"
+           android:title="Show Fragment 1"/>    
+       <item android:id="@+id/frag2"
+           android:orderInCategory="2"
+           android:title="Show Fragment 2"/>    
+    
+</menu>

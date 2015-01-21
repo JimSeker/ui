@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">menuDemov7</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_menu_v4">Menu V4 demo</string>
+    <string name="title_menuv4">Menu V4 demo</string>
+    <string name="title_fragmenu">Frag Menu demo</string>
+    <string name="title_actionmenu">Action Menu demo</string>
+     
+    <string name="action_previous">Previous</string>
+    <string name="action_next">Next</string>
+    <string name="action_finish">Finish</string>
+    
+    <!--  id for the next button -->
+     <item type="id" name="action_next" />
+</resources>

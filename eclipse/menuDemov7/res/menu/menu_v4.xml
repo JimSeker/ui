@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="edu.cs4730.menudemov7.MenuV4" >
+
+   
+    <group android:id="@+id/group1">
+       <item android:id="@+id/item1"
+           android:orderInCategory="5"
+           android:title="item1"/>    
+       <item android:id="@+id/item2"
+           android:orderInCategory="10"
+           android:title="item2"/>    
+       <item android:id="@+id/item3"
+           android:orderInCategory="1"
+           android:title="item3"/>    
+       <item android:id="@+id/item4"
+           android:orderInCategory="3"
+           android:title="item4"/>    
+       <item android:id="@+id/item5"
+           android:orderInCategory="2"
+           android:title="item5"/>    
+    </group>
+    <item android:id="@+id/submenu"
+        android:title="sub menu"  >
+        <menu>
+           <item android:id="@+id/subitem1"
+             android:orderInCategory="1"
+             android:title="subitem1"/>    
+       		<item android:id="@+id/subitem2"
+              android:orderInCategory="2"
+              android:title="subitem2"/>     
+        </menu>
+    </item>
+</menu>

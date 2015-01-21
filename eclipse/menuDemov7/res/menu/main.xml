@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="edu.cs4730.menudemov7.MainActivity" >
+
+    <item
+        android:id="@+id/menuv4demo"
+        android:orderInCategory="100"
+        android:title="Menu V4 Demo"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menuandfragdemo"
+        android:orderInCategory="100"
+        android:title="Menu and Fragments Demo"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/actbaritemsdemo"
+        android:orderInCategory="100"
+        android:title="ActionBar action Items Demo"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/Actionbuttonsdemo"
+        android:orderInCategory="100"
+        android:title="ActionBar Buttons Demo"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/Actionsearchdemo"
+        android:orderInCategory="100"
+        android:title="ActionBar Search Demo"
+        app:showAsAction="never"/>
+    
+
+
+
+</menu>
