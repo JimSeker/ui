@@ -9,11 +9,12 @@ Basic/ are simple examples.  see the readme in directory
 
 Advanced/ are more advanced examples.   see the readme in directory
 
+Communication/ are examples how fragments can communicate with callbacks.
+
 Material Design/ are examples using the new material design spec and Navagation Drawer.    see the readme in directory
 
 mvcDemo is an example using the Model-view-controller model.
 
-intentDemo show varying intents to say make phones calls, launch the browser, etc.
 
 dialogDemo shows how to use the dialog in the 2.3.3 and 4.X methods (with and without fragments)
 
