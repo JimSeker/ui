@@ -3,6 +3,7 @@ package edu.cs4730.guidemo;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,8 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView;
+import android.os.Handler;
+
 
 
 /**
@@ -37,7 +40,17 @@ public class Spinner_Fragment extends Fragment implements AdapterView.OnItemSele
 	
 	//myList used to "fill" the first spinner.
 	String[] myList= {"0","1","2","3","4","5"};
-	
+
+    //this is used when you are in a thread, and need to change a view/widget.
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 0) {  //message zero, which is enable the button again.
+                btn.setEnabled(true);
+            }
+        }
+
+    };
 
 	public Spinner_Fragment() {
 		// Required empty public constructor
@@ -86,6 +99,7 @@ public class Spinner_Fragment extends Fragment implements AdapterView.OnItemSele
         btn.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btn.setEnabled(false);
                 pb_hor.setProgress(0);  //set it to zero before starting.
                 new Thread(new progressUpdater()).start();
             }
@@ -133,6 +147,8 @@ public class Spinner_Fragment extends Fragment implements AdapterView.OnItemSele
                 pb_cir.incrementProgressBy(10);
             }
         } catch (InterruptedException Error) {};
+        // in the thread, (assuming handler is accessible to it) you can then send a message with
+        handler.sendEmptyMessage(0);  //where 0 is a message
     }
 }
 }
