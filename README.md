@@ -11,9 +11,11 @@ Advanced/ are more advanced examples.   see the readme in the directory
 
 Communication/ are examples how fragments can communicate with callbacks. see the readme in the directory
 
-Material Design/ are examples using the new material design spec and Navagation Drawer.    see the readme in the directory
-
 listview/ are examples using varying listview, listfragments, and expandablelistviews.  see the readme in the directory
+
+Navigation/ are examples of menus, actionbar/toolbar, and Navigation Drawers.  See the readme in the directory
+
+Material Design/ are examples using the new material design spec and Navagation Drawer.    see the readme in the directory
 
 mvcDemo is an example using the Model-view-controller model.
 
