@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/LinearLayout01"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:paddingLeft="10sp"
+	android:paddingRight="10sp"
+	android:paddingTop="2sp" >
+
+	<TextView
+		android:id="@+id/tvContact"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Name"
+		android:textSize="16sp"
+		android:textStyle="bold"
+		android:typeface="sans" >
+	</TextView>
+
+	<LinearLayout
+		android:id="@+id/LinearLayout05"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal" >
+
+		<LinearLayout
+			android:id="@+id/LinearLayout02"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+      android:layout_weight="1">
+
+			<TextView
+				android:id="@+id/TextView01"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Mobile  "
+				android:textSize="13sp"
+				android:textStyle="bold" >
+			</TextView>
+
+			<TextView
+				android:id="@+id/tvMobile"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Number"
+				android:textSize="13sp" >
+			</TextView>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/LinearLayout03"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical" >
+
+			<ImageButton
+				android:id="@+id/imageButton1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/ic_launcher" 
+				android:layout_gravity="right|center_vertical"/>
+		</LinearLayout>
+	</LinearLayout>
+
+</LinearLayout>

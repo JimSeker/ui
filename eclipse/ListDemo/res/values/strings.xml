@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, ListDemoActivity!</string>
+    <string name="app_name">ListDemo</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_section1">Simple </string>
+    <string name="title_section2">Simple 2</string>
+    <string name="title_section3">Simple 3</string>
+    <string name="title_section4">InterActive List</string>
+    <string name="title_section5">Phone list</string>
+        
+</resources>
