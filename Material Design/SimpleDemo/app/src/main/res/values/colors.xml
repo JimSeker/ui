@@ -15,6 +15,5 @@
     <color name="textColorSecondary">#727272</color>
 
     <color name="windowBackgroundColor">#607d8b</color>
-    <color name="navigationBarColor">#303f9f</color> <!--#303f9f-->
-
+    <color name="navigationBarColor">#303f9f</color> 
 </resources>
