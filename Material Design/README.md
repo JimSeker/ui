@@ -8,6 +8,8 @@ ToolbarDemo uses the v7.toolbar and style pieces.  see the app_bar.xml and activ
 navDrawerDemo is Navigation bar demo with the colors and toolbarnavDrawerDemo is the same example, but uses the toolbar.  See pictures in the directories for the differences.
 
 CirToolbarNavDrawerDemo uses toolbarnavDrawerDemo and adds the Floating Action button (using a library from https://github.com/shamanland/floating-action-button) 
+A somewhat helpful guide to adding libraries: http://youtu.be/1MyBO9z7ojk 
+
 
 RecyclerViewDemo is a very simple example of how to use a RecyclerView and CardView (via support.v7).   Note a RecyclerView is a more powerful listview, which was introduced into android 5 and the support.v7 library.
 
