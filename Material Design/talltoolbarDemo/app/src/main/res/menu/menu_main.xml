@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/search_button"
+        android:title="title"
+        android:icon="@drawable/ic_action_search"
+        app:showAsAction="always" />
+    <!--android:icon="@android:drawable/ic_search_category_default"-->
+    <item
+        android:id="@+id/grid_button"
+        android:icon="@drawable/ic_action_view_as_grid"
+        android:title="title"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/refresh"
+        android:icon="@drawable/ic_action_refresh"
+        android:title="title"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+</menu>
