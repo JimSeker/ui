@@ -15,6 +15,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/*
+ * simple demo to replicate a google sample picture.
+ * Note, icons can be found here: http://developer.android.com/design/downloads/index.html
+*/
 
 public class MainActivity extends ActionBarActivity {
 
@@ -40,6 +44,8 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         mDrawerlayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+
+        //use subtitle instead of tile, so it always shows.
         getSupportActionBar().setTitle("");
         getSupportActionBar().setSubtitle(R.string.app_name);
 
