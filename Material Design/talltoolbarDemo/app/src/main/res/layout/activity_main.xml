@@ -14,7 +14,8 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="128dp"
+            android:layout_height="112dp"
+            android:minHeight="?android:attr/actionBarSize"
             android:gravity="bottom"
             android:paddingBottom="16dp"
             android:background="@color/primaryColor"

@@ -40,6 +40,8 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         mDrawerlayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setSubtitle(R.string.app_name);
 
         mDrawerToggle = new ActionBarDrawerToggle(this,  // host activity
                 mDrawerlayout,  //drawerlayout object
@@ -59,7 +61,9 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
-                getSupportActionBar().setTitle(R.string.app_name);
+                //getSupportActionBar().setTitle(R.string.app_name);
+                getSupportActionBar().setTitle("");
+                getSupportActionBar().setSubtitle(R.string.app_name);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
