@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.util.List;
 
 /*
- * this adapter is very simple to the adapters used for listview, except a ViewHolder is required
+ * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
  * see http://developer.android.com/training/improving-layouts/smooth-scrolling.html
  * except instead having to implement a ViewHolder, it is implemented within
  * the adapter.
@@ -32,14 +32,17 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
         this.rowLayout = rowLayout;
         this.mContext = context;
     }
+    //a simple method to make sure the recyclerview knows I have changed the data in the list.
     public void newData() {
         notifyDataSetChanged();
     }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
         return new ViewHolder(v);
     }
+
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         String entry = myList.get(i);

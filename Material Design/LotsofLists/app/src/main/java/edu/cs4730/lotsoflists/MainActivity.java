@@ -26,6 +26,12 @@ import android.widget.Toast;
 
 import com.melnykov.fab.FloatingActionButton;
 
+/*
+ * complex example of a navigation drawer with recyclerview.  Plus you can add more items
+ * to the list and add more categories (ie new lists) as well.
+ *
+ * The list data is all handled in the morelists class/data structure.
+ */
 
 public class MainActivity extends ActionBarActivity {
 
@@ -128,7 +134,6 @@ public class MainActivity extends ActionBarActivity {
                 myLists.setlist(position);
                 mAdapter.notifyDataSetChanged();
 
-
                 // update selected item and title, then close the drawer
                 mDrawerList.setItemChecked(position, true);
                 //now close the drawer!
@@ -141,6 +146,8 @@ public class MainActivity extends ActionBarActivity {
 
   /*
    We are going to add data
+
+   * setup a dialog fragment to ask the user for the new item data or category.
    */
 
     public void showInputDialog(String title) {
@@ -155,15 +162,15 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 if (IsCatInput) { //add new catergory
-                    System.out.println("So add catery right?");
                     myLists.addCat(userinput.getText().toString());
                     //update list...
+                    //interesting.  the new category shows, except I forgot to tell the listview there is more data...
+                    //this was not the default behavior in the past.  hence below, I have the adapter call newData().
+                    //I really should need to declare the adapter global, and adapter.notifyDataSetChanged();
                 } else { //add new data item to list.
-                    System.out.println("So add item");
                     myLists.addItem(userinput.getText().toString());
                     mAdapter.newData();
                 }
-                // Do something with value in inputvalue
                 //Toast.makeText(getBaseContext(), userinput.getText().toString(), Toast.LENGTH_LONG).show();
             }
         })

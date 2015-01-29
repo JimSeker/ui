@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.util.List;
 
 /*
- * this adapter is very simple to the adapters used for listview, except a ViewHolder is required
+ * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
  * see http://developer.android.com/training/improving-layouts/smooth-scrolling.html
  * except instead having to implement a ViewHolder, it is implemented within
  * the adapter.

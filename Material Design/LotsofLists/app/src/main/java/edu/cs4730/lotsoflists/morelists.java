@@ -6,6 +6,12 @@ import java.util.List;
 
 /**
  * Created by Seker on 1/28/2015.
+ *
+ * Basically an pretty ugly data structure to hold category names and a list of lists (ie one list for each category).
+ *
+ * there are Cat (category) and item (list of lists) methods to add, size, plus a setlist which will
+ * change which list the data structure returns.
+ *
  */
 public class morelists {
     int length =0;
@@ -43,6 +49,7 @@ public class morelists {
     public void addItem(String item) {
         listsoflist.get(currentlist).add(item);
     }
+
     public void addCat(String item) {
         Categories.add(item);
         //now create the list.
