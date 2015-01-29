@@ -16,4 +16,6 @@ RecyclerViewDemo is a very simple example of how to use a RecyclerView and CardV
 
 RecyclerViewDemo2 is more complex version using RecyclerView and CardView (support.v7). This example uses the phonelist from the listview example as the data set.
 
+LotsofLists is a complex demo using a Navigation bar and RecyclerView to display several different lists, plus you can add more items the lists and add more lists to the navigation as well.
+
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course.  All examples are for Android.
