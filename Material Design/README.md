@@ -7,8 +7,8 @@ ToolbarDemo uses the v7.toolbar and style pieces.  see the app_bar.xml and activ
 
 navDrawerDemo is Navigation bar demo with the colors and toolbarnavDrawerDemo is the same example, but uses the toolbar.  See pictures in the directories for the differences.
 
-CirToolbarNavDrawerDemo uses toolbarnavDrawerDemo and adds the Floating Action button (using a library from https://github.com/shamanland/floating-action-button) 
-A somewhat helpful guide to adding libraries: http://youtu.be/1MyBO9z7ojk 
+CirToolbarNavDrawerDemo uses toolbarnavDrawerDemo and adds the Floating Action button (using a library from https://github.com/makovkastar/FloatingActionButton) 
+A useful guide to added libraries (see Studio 1.0 answer) http://stackoverflow.com/questions/16588064/how-do-i-add-a-library-project-to-the-android-studio A somewhat helpful visual guide to adding libraries: http://youtu.be/1MyBO9z7ojk 
 
 talltoolbarDemo is just replicating googles material Design with an extended toolbar as an example.
 
