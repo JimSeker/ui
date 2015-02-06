@@ -3,7 +3,7 @@
 
     <string name="hello">Hello World, ListDemoActivity!</string>
     <string name="app_name">ListDemo</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">ListView Demo</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_section1">Simple </string>
     <string name="title_section2">Simple 2</string>
