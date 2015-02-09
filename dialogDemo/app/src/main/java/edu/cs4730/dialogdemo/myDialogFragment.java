@@ -1,5 +1,6 @@
 package edu.cs4730.dialogdemo;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -9,7 +10,8 @@ import android.support.v4.app.DialogFragment;
 public class myDialogFragment extends DialogFragment {
 	static final int DIALOG_TYPE_ID = 0;
 	static final int DIALOG_GAMEOVER_ID = 1;
-	
+    private OnDialogFragmentListener mListener;
+
 	/*
 	 * Create an instance of this fragment.  Uses the "ID numbers" above to determine which
 	 * dialog box to display.
@@ -47,7 +49,7 @@ public class myDialogFragment extends DialogFragment {
                 new DialogInterface.OnClickListener() {
                   public void onClick(DialogInterface dialog, int item) {
                       dialog.dismiss();  //the dismiss is needed here or the dialog stays showing.
-                	  ((DialFragActivity)getActivity()).doItem(items[item]);
+                      mListener.doItem(items[item]);
                   }
                 });
             dialog = builder.create();
@@ -59,11 +61,11 @@ public class myDialogFragment extends DialogFragment {
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                   public void onClick(DialogInterface dialog, int id) {
-                	  ((DialFragActivity)getActivity()).doPositiveClick();
+                      mListener.doPositiveClick();
                   }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                   public void onClick(DialogInterface dialog, int id) {
-                	  ((DialFragActivity)getActivity()).doNegativeClick();
+                      mListener.doNegativeClick();
                   }
                 });
             dialog = builder.create();
@@ -71,4 +73,29 @@ public class myDialogFragment extends DialogFragment {
         }
         return dialog;
     }
+
+    //all the callback stuff.
+    public interface OnDialogFragmentListener {
+        public void doPositiveClick();
+        public void doNegativeClick();
+        public void doItem(String item);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (OnDialogFragmentListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+
 }

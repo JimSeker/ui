@@ -1,5 +1,6 @@
 package edu.cs4730.dialogdemo;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -7,6 +8,9 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
 public class AlertDialogFrag1 extends DialogFragment {
+
+    private OnDialogFragmentListener mListener;
+
 
     public static AlertDialogFrag1 newInstance(int title) {
         AlertDialogFrag1 frag = new AlertDialogFrag1();
@@ -26,17 +30,42 @@ public class AlertDialogFrag1 extends DialogFragment {
                 .setPositiveButton(R.string.alert_dialog_ok,
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            ((DialFragActivity)getActivity()).doPositiveClick();
+                            mListener.doPositiveClick();
                         }
                     }
                 )
                 .setNegativeButton(R.string.alert_dialog_cancel,
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            ((DialFragActivity)getActivity()).doNegativeClick();
+                            mListener.doNegativeClick();
                         }
                     }
                 )
                 .create();
     }
+
+    //all the callback stuff.
+    public interface OnDialogFragmentListener {
+        public void doPositiveClick();
+        public void doNegativeClick();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (OnDialogFragmentListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+
+
 }

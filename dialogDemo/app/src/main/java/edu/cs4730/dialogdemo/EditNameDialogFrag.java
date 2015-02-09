@@ -1,5 +1,6 @@
 package edu.cs4730.dialogdemo;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.KeyEvent;
@@ -15,9 +16,7 @@ import android.widget.TextView.OnEditorActionListener;
 
 public class EditNameDialogFrag extends DialogFragment implements OnEditorActionListener, OnClickListener {
 
-    public interface EditNameDialogListener {
-        void onFinishEditDialog(String inputText);
-    }
+    private EditNameDialogListener mListener;
 
     private EditText mEditText;
 
@@ -49,8 +48,7 @@ public class EditNameDialogFrag extends DialogFragment implements OnEditorAction
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if (EditorInfo.IME_ACTION_DONE == actionId) {
             // Return input text to activity
-            EditNameDialogListener activity = (EditNameDialogListener) getActivity();
-            activity.onFinishEditDialog(mEditText.getText().toString());
+            mListener.onFinishEditDialog(mEditText.getText().toString());
             this.dismiss();
             return true;
         }
@@ -60,9 +58,32 @@ public class EditNameDialogFrag extends DialogFragment implements OnEditorAction
   //for the emulators where the keyboard never shows..., added a done button, so same thing as above via the button.
 	@Override
 	public void onClick(View v) {
-         EditNameDialogListener activity = (EditNameDialogListener) getActivity();
-         activity.onFinishEditDialog(mEditText.getText().toString());
+
+        mListener.onFinishEditDialog(mEditText.getText().toString());
          this.dismiss();
 	}
+
+
+    //all the callback stuff.
+    public interface EditNameDialogListener {
+        void onFinishEditDialog(String inputText);
+    }
+
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (EditNameDialogListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
 
 }

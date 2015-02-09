@@ -3,12 +3,13 @@ package edu.cs4730.dialogdemo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-public class DialFragActivity extends FragmentActivity {
+public class DialFragActivity extends FragmentActivity implements
+         myDialogFragment.OnDialogFragmentListener, AlertDialogFrag1.OnDialogFragmentListener{
+
 	static final int DIALOG_TYPE_ID = 0;
 	static final int DIALOG_GAMEOVER_ID = 1;
     @Override
@@ -37,15 +38,10 @@ public class DialFragActivity extends FragmentActivity {
     		}
         });
     }
-	
 
-	
-	
-	
 	void showDialog1() {
 		FragmentManager fm = getSupportFragmentManager();
-		AlertDialogFrag1 newFragment = AlertDialogFrag1.newInstance(
-	            R.string.alert_dialog_two_buttons_title);
+		AlertDialogFrag1 newFragment = AlertDialogFrag1.newInstance(R.string.alert_dialog_two_buttons_title);
 	    newFragment.show(fm, "dialog");
 	}
 	
@@ -54,7 +50,13 @@ public class DialFragActivity extends FragmentActivity {
 		myDialogFragment newFragment = myDialogFragment.newInstance(which);
 	    newFragment.show(fm, "myDialog");
 	}
-	
+
+
+    /*
+    *    These three methods are the callback methods for the dialog fragment callbacks.
+    *    note doPositiveClick and doNegativeClick are for both AlertDialogFrag1, while doItem
+    *    is only for the myDialogFragment listener.
+    */
 	public void doPositiveClick() {
 	    // Do stuff here.
 		Toast.makeText(getApplicationContext(),"Positive/Yes click!" , Toast.LENGTH_SHORT).show();
