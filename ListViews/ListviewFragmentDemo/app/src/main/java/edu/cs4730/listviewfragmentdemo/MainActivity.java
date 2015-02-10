@@ -14,7 +14,7 @@ import android.view.MenuItem;
  * see the two fragments textFrag and titlefrag for the bulk of the code.
  */
 
-public class MainActivity extends ActionBarActivity implements titlefrag.Callbacks {
+public class MainActivity extends ActionBarActivity implements titlefrag.OnFragmentInteractionListener {
     boolean TwoPane = false;
 
 
