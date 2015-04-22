@@ -1,20 +1,19 @@
 <resources>
 
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="ThemeOverlay.AppCompat">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
-    </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryColorDark</item>
+        <item name="colorAccent">@color/accentColor</item>
+        <!-- these only work in lollipop. but do they work in appcompactactivity?  NO.
+        <item name="textColorPrimary">@color/textColor</item>
+        <item name="textColorSecondary">@color/textColorSecondary</item>
 
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="navigationBarColor">@color/navigationBarColor</item>
+        <item name="windowBackground">@color/windowBackgroundColor</item>
+
+         -->
     </style>
 
 </resources>
