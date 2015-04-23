@@ -1,6 +1,6 @@
 package edu.cs4730.simplefragcomdemo;
 
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ import android.view.MenuItem;
  * No attempt at storing the data was made.  see save data repo, for how this might be done.
  */
 
-public class MainActivity extends ActionBarActivity implements MainFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener{
 
      MainFragment main;
      InfoFragment info;

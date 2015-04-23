@@ -1,7 +1,7 @@
 package edu.cs4730.fragcomdemo;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -12,7 +12,7 @@ import android.util.Log;
  * The main fragment is used to use launch either fragment.
  * 
  */
-public class MainActivity extends FragmentActivity implements  MainFragment.OnFragmentInteractionListener,
+public class MainActivity extends AppCompatActivity implements  MainFragment.OnFragmentInteractionListener,
 															  FirstFragment.OnFragmentInteractionListener1, 
                                                              SecondFragment.OnFragmentInteractionListener2{
 

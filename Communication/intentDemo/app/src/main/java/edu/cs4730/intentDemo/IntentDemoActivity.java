@@ -6,10 +6,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-public class IntentDemoActivity extends Activity {
+public class IntentDemoActivity extends AppCompatActivity {
 	private static final int REQUEST_CODE_CAMERA = 10;
 	private static final int REQUEST_CODE_ACT2 = 11;
 	private static final int REQUEST_CODE_PICKCONTACT = 12;
