@@ -1,6 +1,6 @@
 package edu.cs4730.toolbardemo;
 
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,7 +11,7 @@ import android.view.MenuItem;
   There are two lines below to setup the toolbar, instead of the
   actionbar (which is removed in style.xml)
  */
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     @Override

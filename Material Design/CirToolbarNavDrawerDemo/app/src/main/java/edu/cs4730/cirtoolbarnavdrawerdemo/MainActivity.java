@@ -2,7 +2,7 @@ package edu.cs4730.cirtoolbarnavdrawerdemo;
 
 import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -22,7 +22,7 @@ import com.melnykov.fab.FloatingActionButton;
  *  The library is added via the build.gradle app file in dependencies  compile 'com.melnykov:floatingactionbutton:1.1.0'
  */
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private ActionBarDrawerToggle mDrawerToggle;

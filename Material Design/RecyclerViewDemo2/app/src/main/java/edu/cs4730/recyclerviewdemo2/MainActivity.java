@@ -1,6 +1,6 @@
 package edu.cs4730.recyclerviewdemo2;
 
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     phoneAdapter mAdapter;
 

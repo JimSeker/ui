@@ -3,9 +3,9 @@ package edu.cs4730.toolbarnavdrawerdemo;
 import android.content.res.Configuration;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,7 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private ActionBarDrawerToggle mDrawerToggle;

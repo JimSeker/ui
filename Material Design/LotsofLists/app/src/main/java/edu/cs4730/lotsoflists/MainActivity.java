@@ -1,11 +1,10 @@
 package edu.cs4730.lotsoflists;
 
-import android.app.AlertDialog;
-import android.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -21,8 +20,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.melnykov.fab.FloatingActionButton;
 
@@ -33,7 +30,7 @@ import com.melnykov.fab.FloatingActionButton;
  * The list data is all handled in the morelists class/data structure.
  */
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -181,7 +178,7 @@ public class MainActivity extends ActionBarActivity {
                     }
                 });
         AlertDialog dialog = builder.create();
-        builder.show();
+        dialog.show();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
