@@ -1,6 +1,6 @@
 package edu.cs4730.FormExample;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,7 +15,7 @@ import android.widget.Toast;
  * This is a simple example code to demonstrate some simple views.
  */
 
-public class FormExample extends Activity implements RadioGroup.OnCheckedChangeListener, TextWatcher, 
+public class FormExample extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, TextWatcher,
             Button.OnClickListener {
     /** Called when the activity is first created. */
 	RadioGroup myRadioGroup;

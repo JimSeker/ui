@@ -1,8 +1,6 @@
 package edu.cs4730.fragdemosimple;
 
-import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,7 +13,7 @@ import android.widget.Button;
   really simple to start out with.
  */
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     boolean firstfragment = true;
 
