@@ -1,10 +1,10 @@
 package edu.cs4730.dialogdemo;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -18,7 +18,7 @@ import android.widget.Toast;
  *   this is deprecated!
  */
 
-public class dialogs233Activity extends Activity {
+public class dialogs233Activity extends AppCompatActivity {
 	static final int DIALOG_TYPE_ID = 0;
 	static final int DIALOG_GAMEOVER_ID = 1;
 	static final int DIALOG_CUSTOM_ID = 2;

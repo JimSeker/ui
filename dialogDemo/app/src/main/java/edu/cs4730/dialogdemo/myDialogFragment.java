@@ -1,11 +1,12 @@
 package edu.cs4730.dialogdemo;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.support.v7.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AppCompatDialog;  //need to make a lot of changes to use this one.
 
 public class myDialogFragment extends DialogFragment {
 	static final int DIALOG_TYPE_ID = 0;

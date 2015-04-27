@@ -1,13 +1,13 @@
 package edu.cs4730.dialogdemo;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-public class DialFragActivity extends FragmentActivity implements
+public class DialFragActivity extends AppCompatActivity implements
          myDialogFragment.OnDialogFragmentListener, AlertDialogFrag1.OnDialogFragmentListener{
 
 	static final int DIALOG_TYPE_ID = 0;

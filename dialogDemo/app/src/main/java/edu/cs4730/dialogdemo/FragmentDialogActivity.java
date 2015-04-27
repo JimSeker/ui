@@ -2,11 +2,11 @@ package edu.cs4730.dialogdemo;
 
 import edu.cs4730.dialogdemo.EditNameDialogFrag.EditNameDialogListener;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-public class FragmentDialogActivity extends FragmentActivity implements EditNameDialogListener {
+public class FragmentDialogActivity extends AppCompatActivity implements EditNameDialogListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
