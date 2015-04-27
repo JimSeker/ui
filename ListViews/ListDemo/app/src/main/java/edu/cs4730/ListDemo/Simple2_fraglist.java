@@ -5,7 +5,6 @@ package edu.cs4730.ListDemo;
  */
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;

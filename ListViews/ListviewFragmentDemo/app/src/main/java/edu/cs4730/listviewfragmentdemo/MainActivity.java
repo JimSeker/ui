@@ -1,8 +1,8 @@
 package edu.cs4730.listviewfragmentdemo;
 
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,7 +14,7 @@ import android.view.MenuItem;
  * see the two fragments textFrag and titlefrag for the bulk of the code.
  */
 
-public class MainActivity extends ActionBarActivity implements titlefrag.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements titlefrag.OnFragmentInteractionListener {
     boolean TwoPane = false;
 
 

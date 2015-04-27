@@ -3,7 +3,6 @@ package edu.cs4730.esplistviewdemo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
