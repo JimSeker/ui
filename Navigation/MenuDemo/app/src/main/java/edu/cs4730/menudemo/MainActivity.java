@@ -1,8 +1,8 @@
 package edu.cs4730.menudemo;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.widget.PopupMenu;
@@ -12,7 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
     TextView popup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,7 @@ public class MainActivity extends ActionBarActivity {
             startActivity(new Intent(MainActivity.this, ActionMenuActivity.class));
             return true;
         }else if (id == R.id.Actionbuttonsdemo) {
-            startActivity(new Intent(MainActivity.this, ActionbarActivity.class));
+            startActivity(new Intent(MainActivity.this, AppcompatActivity.class));
             return true;
         }else if (id == R.id.Actionsearchdemo) {
             return true;

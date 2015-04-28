@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class ActionbarActivity extends ActionBarActivity {
+public class AppcompatActivity extends AppCompatActivity {
 	PageFragment one =null, two =null, three=null, four =null, five = null;
 	ViewPager viewPager;
 	myFragmentPagerAdapter mPagerAdapter;

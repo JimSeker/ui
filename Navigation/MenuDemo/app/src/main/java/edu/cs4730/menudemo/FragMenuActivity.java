@@ -4,13 +4,13 @@ package edu.cs4730.menudemo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
 
-public class FragMenuActivity extends ActionBarActivity {
+public class FragMenuActivity extends AppCompatActivity {
 	FragMenu1 one;
 	FragMenu2 two;
 	boolean isfrag1 = true;

@@ -3,7 +3,7 @@
 
     <string name="app_name">MenuDemo</string>
     <string name="title_fragmenu">Frag Menu demo</string>
-    <string name="title_actionmenu">Action Menu demo</string>
+    <string name="title_actionmenu">ToolBar Demo</string>
 
     <string name="action_previous">Previous</string>
     <string name="action_next">Next</string>

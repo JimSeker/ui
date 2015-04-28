@@ -26,7 +26,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".ActionbarActivity"
+            android:name=".AppcompatActivity"
             android:label="@string/title_actionmenu"
             android:parentActivityName=".MainActivity"
             android:uiOptions="splitActionBarWhenNarrow">

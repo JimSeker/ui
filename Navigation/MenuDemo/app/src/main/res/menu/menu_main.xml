@@ -9,17 +9,17 @@
     <item
         android:id="@+id/actbaritemsdemo"
         android:orderInCategory="2"
-        android:title="ActionBar action Items Demo"
+        android:title="ToolBar action Items Demo"
         app:showAsAction="never"/>
     <item
         android:id="@+id/Actionsearchdemo"
         android:orderInCategory="4"
-        android:title="ActionBar Search Demo"
+        android:title="ToolBar Search Demo"
         app:showAsAction="never"/>
     <item
         android:id="@+id/Actionbuttonsdemo"
         android:orderInCategory="3"
-        android:title="ActionBar Buttons Demo"
+        android:title="ToolBar Buttons Demo"
         app:showAsAction="never"/>
 
     <item android:id="@+id/submenu"
