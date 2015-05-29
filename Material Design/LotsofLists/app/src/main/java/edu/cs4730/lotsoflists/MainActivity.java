@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -21,7 +22,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.melnykov.fab.FloatingActionButton;
+//import com.melnykov.fab.FloatingActionButton;
+import android.support.design.widget.FloatingActionButton;
 
 /*
  * complex example of a navigation drawer with recyclerview.  Plus you can add more items
@@ -65,12 +67,29 @@ public class MainActivity extends AppCompatActivity {
 
          fab = (FloatingActionButton) findViewById(R.id.fab);
         //fab.attachToListView(mRecyclerView);  except it's a RecyclerView so won't work.
-        fab.attachToRecyclerView(mRecyclerView);  //it will auto hide when scrolling.
+        //fab.attachToRecyclerView(mRecyclerView);  //it will auto hide when scrolling.
+        mRecyclerView.addOnScrollListener(new OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                   // fab.  set visible.
+                } else {
+                    //?
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                //so animate to slide down and then and set invisible variables or something.
+            }
+        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IsCatInput =false;
+                IsCatInput = false;
                 showInputDialog("Input New Data");
 
             }
