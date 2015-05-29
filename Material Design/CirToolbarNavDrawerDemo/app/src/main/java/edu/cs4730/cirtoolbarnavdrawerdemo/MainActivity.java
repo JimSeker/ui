@@ -1,6 +1,7 @@
 package edu.cs4730.cirtoolbarnavdrawerdemo;
 
 import android.content.res.Configuration;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,12 +15,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.melnykov.fab.FloatingActionButton;
 
 /*
- *  This is the same as ToolbarNavDrawer example. Except the https://github.com/FaizMalkani/FloatingActionButton
- *  library has been added, so that the floating action button can be added to bottom right side of the screen.
- *  The library is added via the build.gradle app file in dependencies  compile 'com.melnykov:floatingactionbutton:1.1.0'
+ *  This is the same as ToolbarNavDrawer example.  The support design library has been added.
+ *  so that the floatingActionButton can be used.  it would go to API 7+, this is set to 14 for fonts style
+ *  used in the NavDrawer layout.  Not attempt at animation was made in this example for the FAB.
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -93,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setRippleColor(getResources().getColor(R.color.rippleColor));  //set this changes it color to the ripple color.  mistake in the their code?
+        //without it, the ripple code does work correctly.  odder.
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

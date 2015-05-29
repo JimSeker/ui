@@ -18,7 +18,8 @@
             android:background="@color/primaryColor"
             android:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            android:elevation="4dp" />
+            app:elevation="4dp"
+            />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list"
@@ -26,15 +27,20 @@
             android:layout_height="match_parent"
             tools:context=".MainActivity"
             android:layout_below="@+id/app_bar" />
+
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
+            app:fabSize="mini"
+            app:elevation="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="bottom|end"
             android:src="@drawable/ic_add_white_24dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"/>
 <!--
         <com.melnykov.fab.FloatingActionButton
@@ -89,11 +95,13 @@
             android:id="@+id/addCat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="bottom|end"
             android:src="@drawable/ic_add_white_24dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"/>
 <!--        <com.melnykov.fab.FloatingActionButton
             android:id="@+id/addCat"

@@ -33,21 +33,23 @@
             android:layout_below="@+id/app_bar"
             android:text="@string/hello_world" />
 
-        <com.melnykov.fab.FloatingActionButton
+        <!-- at the current time there is no xml listed that
+        -->
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            app:fab_type="mini"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
+            app:elevation="@dimen/fab_elevation"
+            app:fabSize="mini"
             android:src="@drawable/ic_add"
-            app:fab_colorNormal="@color/accentColor"
-            app:fab_colorPressed="@color/accentColor_pressed"
-            app:fab_colorRipple="@color/rippleColor"
             />
+        <!-- for fab normal size, change fabSize="normal" or just remove the line
+            I think elevation is being ignored.-->
     </RelativeLayout>
 
     <!-- The navigation drawer -->
