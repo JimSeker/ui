@@ -1,4 +1,4 @@
-package edu.cs4730.snackbardemo;
+package edu.cs4730.supportdesigndemo;
 
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;

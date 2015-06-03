@@ -1,4 +1,4 @@
-package edu.cs4730.snackbardemo;
+package edu.cs4730.supportdesigndemo;
 
 import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
@@ -78,16 +78,25 @@ public class MainActivity extends AppCompatActivity {
                     }
                     mDrawerlayout.closeDrawers();
                     return true;
-                } else if (id == R.id.navigation_item_3) {
+                } else if (id == R.id.navigation_item_2) {
                     //load fragment
                     if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
                         menuItem.setChecked(true);
-                        fragmentManager.beginTransaction().replace(R.id.container, new SB_FABFragment()).commit();
+                        fragmentManager.beginTransaction().replace(R.id.container, new FABFragment()).commit();
                     }
 
                     mDrawerlayout.closeDrawers();
                     return true;
+                } else if (id == R.id.navigation_item_3) {
+                //load fragment
+                if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
+                    menuItem.setChecked(true);
+                    fragmentManager.beginTransaction().replace(R.id.container, new SB_FABFragment()).commit();
                 }
+
+                mDrawerlayout.closeDrawers();
+                return true;
+            }
                 return false;
             }
         });
