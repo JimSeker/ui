@@ -11,7 +11,9 @@ import android.widget.Toast;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple demo of the Foating Action button.
+ * This code does very little and looks just like you would use a button actualy.
+ * see the xml doc.
  */
 public class FABFragment extends Fragment {
 

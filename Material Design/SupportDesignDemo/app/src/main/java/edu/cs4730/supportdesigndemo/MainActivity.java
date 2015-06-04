@@ -14,7 +14,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-//http://android-developers.blogspot.com/2015/05/android-design-support-library.html
+/*
+  * This example is to show many of the features avialable in the support design library.
+  * http://android-developers.blogspot.com/2015/05/android-design-support-library.html
+  *
+  * Many of them are in the fragments.
+  *
+  * But one feature is the show here (and xml) is the NavigationView in the Navigation Draw.
+  * It allows the user to create a layout simliar to google's play nav drawer.  With a layout
+  * at the top and a set of items via a menu xml file.
+ */
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        mDrawerlayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        //standard navigation drawer setup.
+        mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         mDrawerToggle = new ActionBarDrawerToggle(this,  // host activity
                 mDrawerlayout,  //drawerlayout object
@@ -65,38 +76,40 @@ public class MainActivity extends AppCompatActivity {
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
         mDrawerlayout.setDrawerListener(mDrawerToggle);
 
+        //this ia the support Navigation view.
         mNavigationView = (NavigationView) findViewById(R.id.navview);
+        //setup a listener, which acts very similiar to how menus are handled.
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
+                //we could just as easily call onOptionsItemSelected(menuItem) and how it deal with it.
                 int id = menuItem.getItemId();
                 if (id == R.id.navigation_item_1) {
                     //load fragment
                     if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
-                        menuItem.setChecked(true);
+                        menuItem.setChecked(true);  //make sure to check/highlight the item.
                         fragmentManager.beginTransaction().replace(R.id.container, new SnackBarFragment()).commit();
                     }
-                    mDrawerlayout.closeDrawers();
+                    mDrawerlayout.closeDrawers();  //close the drawer, since the user has selected it.
                     return true;
                 } else if (id == R.id.navigation_item_2) {
                     //load fragment
                     if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
-                        menuItem.setChecked(true);
+                        menuItem.setChecked(true); //make sure the item is checked/highlighted
                         fragmentManager.beginTransaction().replace(R.id.container, new FABFragment()).commit();
                     }
-
+                    //now close the nav drawer.
                     mDrawerlayout.closeDrawers();
                     return true;
                 } else if (id == R.id.navigation_item_3) {
-                //load fragment
-                if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
-                    menuItem.setChecked(true);
-                    fragmentManager.beginTransaction().replace(R.id.container, new SB_FABFragment()).commit();
+                    //load fragment
+                    if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
+                        menuItem.setChecked(true);
+                        fragmentManager.beginTransaction().replace(R.id.container, new SB_FABFragment()).commit();
+                    }
+                    mDrawerlayout.closeDrawers();
+                    return true;
                 }
-
-                mDrawerlayout.closeDrawers();
-                return true;
-            }
                 return false;
             }
         });

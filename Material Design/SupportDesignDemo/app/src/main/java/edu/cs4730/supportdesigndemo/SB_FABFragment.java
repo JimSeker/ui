@@ -13,7 +13,11 @@ import android.widget.Toast;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * This example uses both a Floating Action button and a snackbar.
+ * The fab is at the bttom right and it will move up and out of the way, so the snackbar will not
+ * cover it up.  There is very little code in here to do it.  It's in the xml layout, android.support.design.widget.CoordinatorLayout
+ * to do the work.  The snackbar is sent the coordinatorlayout, and the layout then "moves" the fab up (out of the way of snackbar)
+ * so that there is no over lap.
  */
 public class SB_FABFragment extends Fragment {
 
