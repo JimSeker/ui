@@ -109,6 +109,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                     mDrawerlayout.closeDrawers();
                     return true;
+                }else if (id == R.id.navigation_item_4) {
+                    //load fragment
+                    if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
+                        menuItem.setChecked(true);
+                        fragmentManager.beginTransaction().replace(R.id.container, new TextInputLayoutFragment()).commit();
+                    }
+                    mDrawerlayout.closeDrawers();
+                    return true;
                 }
                 return false;
             }
