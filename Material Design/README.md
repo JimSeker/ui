@@ -16,6 +16,10 @@ RecyclerViewDemo is a very simple example of how to use a RecyclerView and CardV
 
 RecyclerViewDemo2 is more complex version using RecyclerView and CardView (support.v7). This example uses the phonelist from the listview example as the data set.
 
+SupportDesignDemo is demo of some of the support Design widgets.  Floating action Button, inputtextlayout, snack bar, and using the snackbar and floating action button together (hint the fab moves out of the way).
+
+SupportDesignDemo2 uses the support design tablayout with a viewpager.
+
 LotsofLists is a complex demo using a Navigation bar and RecyclerView to display several different lists, plus you can add more items the lists and add more lists to the navigation as well.
 
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course.  All examples are for Android.
