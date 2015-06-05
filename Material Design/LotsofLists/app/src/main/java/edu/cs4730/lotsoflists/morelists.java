@@ -49,6 +49,9 @@ public class morelists {
     public void addItem(String item) {
         listsoflist.get(currentlist).add(item);
     }
+    public void removeItem(int item) {
+        listsoflist.get(currentlist).remove(item);
+    }
 
     public void addCat(String item) {
         Categories.add(item);
@@ -57,6 +60,7 @@ public class morelists {
         listsoflist.add(new ArrayList<String>());
 
     }
+
 
     public int getcatsize() {
         return Categories.size();

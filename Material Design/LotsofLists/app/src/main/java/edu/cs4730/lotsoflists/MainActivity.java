@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ import android.widget.ListView;
 
 //import com.melnykov.fab.FloatingActionButton;
 import android.support.design.widget.FloatingActionButton;
+import android.widget.Toast;
 
 /*
  * complex example of a navigation drawer with recyclerview.  Plus you can add more items
@@ -67,6 +69,31 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new myAdapter(myLists, R.layout.my_row, this);
         //add the adapter to the recyclerview
         mRecyclerView.setAdapter(mAdapter);
+        //swipe listener for the recycler view
+        //ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT |ItemTouchHelper.LEFT) {
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                //likely allows to for animations?  or moving items in the view I think.
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                //called when it has been animated off the screen.  So item is no longer showing.
+                //use ItemtouchHelper.X to find the correct one.
+                if (direction == ItemTouchHelper.RIGHT) {
+                    //Toast.makeText(getBaseContext(),"Right?", Toast.LENGTH_SHORT).show();
+                    int item =  viewHolder.getAdapterPosition(); //think this is where in the array it is.
+                    //((myAdapter)viewHolder).myName.getText();
+
+                    myLists.removeItem(item);
+                    mAdapter.newData();
+                }
+            }
+        };
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+        itemTouchHelper.attachToRecyclerView(mRecyclerView);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         mRecyclerView.addOnScrollListener(new OnScrollListener() {
