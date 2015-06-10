@@ -15,9 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
 /**
  * A simple example of how to use the refreshlayout with a listview.
+ * the android.support.v4.widget.SwipeRefreshLayout is wrapped around the listview in the layout.
+ * In the code below we then set a listener when the refresh ("swipe down from top") is triggered.
+ *   I see any thing for swiping up from the bottom of the list...
  *
  * some information was taken from this page
  * https://www.bignerdranch.com/blog/implementing-swipe-to-refresh/
@@ -94,7 +96,7 @@ public class MainFragment extends Fragment {
 
         //setup some colors for the refresh circle.
         mSwipeRefreshLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue);
-        //now setup the refresh part
+        //now setup the swiperefrestlayout listener where the main work is done.
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -102,7 +104,8 @@ public class MainFragment extends Fragment {
                 //this is a bad way to do this, I'm just redoing the adapter, normally, the adapter would update
                 //and then use the mAdapter.notifyDataSetChanged();
 
-                /* normally something like this... but I want to slow it down for demo purposes.
+                /* normally something like this... but I want to slow it down for demo purposes, so
+                 *   it's commented out.
                 String[] fakelist = getRandomList();
                 mAdapter = new ArrayAdapter<String>(
                         getActivity(),
@@ -117,23 +120,29 @@ public class MainFragment extends Fragment {
         return myView;
     }
 
-
+    /*
+     * so this is just for demo purposed and will wait a specified time the last numbere there
+     * listed in milliseconds.  so 1.5 seconds is 1500.  make it longer to see more colors in
+     * the refreshing circle.
+     */
     void refreshslower() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                //update the listview with new values.
                 mAdapter = new ArrayAdapter<String>(
                         getActivity(),
                         android.R.layout.simple_list_item_1, getRandomList());
                 mListView.setAdapter(mAdapter);
-                mSwipeRefreshLayout.setRefreshing(false);
+                mSwipeRefreshLayout.setRefreshing(false);  //turn of the refresh.
             }
         }, 1500);
     }
 
+    //a very simple function to get me 20 random items in the list from a much longer list.
     String[] getRandomList() {
-        String[] newNames = new String[10];
-        for (int i = 0; i < 10; i++) {
+        String[] newNames = new String[20];
+        for (int i = 0; i < 20; i++) {
             newNames[i] = values[(mRandom.nextInt(values.length - 1))];
         }
 
