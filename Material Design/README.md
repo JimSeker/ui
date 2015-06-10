@@ -22,7 +22,7 @@ A useful guide to added libraries (see Studio 1.0 answer) http://stackoverflow.c
 
 <b>SupportDesignDemo2</b> uses the support design tablayout with a viewpager.  that said, The stripetab with the viewpager is much easier to use then the tablayout.
 
-<b>SupportDesign3</b> show how to use the larger toolbar and how to collapse the it as well.
+<b>SupportDesign3</b> show how to use the larger toolbar and how to collapse it as well.
 
 <b>LotsofLists</b> is a complex demo using a Navigation bar and RecyclerView to display several different lists, plus you can add more items the lists and add more lists to the navigation as well.
 
