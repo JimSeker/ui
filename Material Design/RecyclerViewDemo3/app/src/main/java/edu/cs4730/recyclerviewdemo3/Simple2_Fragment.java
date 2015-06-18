@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,14 +17,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class Simple2_RecyclerView extends Fragment {
+public class Simple2_Fragment extends Fragment {
     String TAG = "Simple2_rv";
     Context myContext;
 	RecyclerView mRecyclerView;
@@ -35,7 +28,7 @@ public class Simple2_RecyclerView extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		View myView = inflater.inflate(R.layout.simple1_recycleview, container, false);
+		View myView = inflater.inflate(R.layout.simple1_fragment, container, false);
         //  NOTE, there is no xml layout for this activity!
         
 		String[] values = new String[] {

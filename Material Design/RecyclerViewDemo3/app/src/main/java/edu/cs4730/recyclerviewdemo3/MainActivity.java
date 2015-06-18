@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        //mViewPager.setCurrentItem(7);// set to a specific page in the pager.
+        mViewPager.setCurrentItem(4);// set to a specific page in the pager.
 
 
     }
@@ -46,13 +46,15 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new Simple1_RecyclerView();
+                    return new Simple1_Fragment();
                 case 1:
-                    return new Simple2_RecyclerView();
+                    return new Simple2_Fragment();
                 case 2:
-                    return new Active_fraglist();
+                    return new Simple3_Fragment();
                 case 3:
-                    return new Phone_frag();
+                    return new InterActive_Fragment();
+                case 4:
+                    return new Phonebook_Fragment();
                 default:
                     return null;
             }
@@ -60,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show X total pages.
-            return 2;
+            // Show X total pages.  which is 1+ the case in getItem.
+            return 5;
         }
 
         @Override

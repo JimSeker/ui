@@ -4,13 +4,13 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    tools:context="edu.cs4730.recyclerviewdemo3.Simple3_RecyclerView">
+    tools:context="edu.cs4730.recyclerviewdemo3.phonebook_Fragment">
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="edu.cs4730.recyclerviewdemo3.Simple3_RecyclerView" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="edu.cs4730.recyclerviewdemo3.Phonebook_Fragment" />
 
 </RelativeLayout>

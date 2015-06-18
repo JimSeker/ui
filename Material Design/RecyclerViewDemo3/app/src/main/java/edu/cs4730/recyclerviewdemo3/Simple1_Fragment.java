@@ -18,7 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Simple1_RecyclerView extends Fragment {
+public class Simple1_Fragment extends Fragment {
 
     String TAG = "Simple_rv";
     Context myContext;
@@ -30,7 +30,7 @@ public class Simple1_RecyclerView extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myView = inflater.inflate(R.layout.simple1_recycleview, container, false);
+        View myView = inflater.inflate(R.layout.simple1_fragment, container, false);
         String[] values = new String[]{"Android", "iPhone", "WindowsMobile",
                 "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
                 "Linux", "OS/2"};
