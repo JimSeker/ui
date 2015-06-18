@@ -19,33 +19,33 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class Phone_frag extends Fragment {
+public class Phonebook_Fragment extends Fragment {
 	
     String TAG = "Phone_Fragment";
     Context myContext;
 	
-	public Phone_frag() {
+	public Phonebook_Fragment() {
 		// Required empty public constructor
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View myView = inflater.inflate(R.layout.phone_frag, container, false);
+		View myView = inflater.inflate(R.layout.phonebook_fragment, container, false);
 
         ListView list = (ListView) myView.findViewById(R.id.ListView01);
         list.setClickable(true);
 
-        final List<Phonebook> listOfPhonebook = new ArrayList<Phonebook>();
-        listOfPhonebook.add(new Phonebook("Test", "9981728", "test@test.com"));
-        listOfPhonebook.add(new Phonebook("Test1", "1234455", "test1@test.com"));
-        listOfPhonebook.add(new Phonebook("Test2", "00000", "test2@test.com"));
-        listOfPhonebook.add(new Phonebook("Test3", "00000", "test3@test.com"));
-        listOfPhonebook.add(new Phonebook("Test4", "00000", "test4test.com"));
-        listOfPhonebook.add(new Phonebook("Test5", "00000", "test5@test.com"));
-        listOfPhonebook.add(new Phonebook("Test6", "00000", "test6@test.com"));
+        final List<Phonebook_DataModel> listOfPhonebook = new ArrayList<Phonebook_DataModel>();
+        listOfPhonebook.add(new Phonebook_DataModel("Test", "9981728", "test@test.com"));
+        listOfPhonebook.add(new Phonebook_DataModel("Test1", "1234455", "test1@test.com"));
+        listOfPhonebook.add(new Phonebook_DataModel("Test2", "00000", "test2@test.com"));
+        listOfPhonebook.add(new Phonebook_DataModel("Test3", "00000", "test3@test.com"));
+        listOfPhonebook.add(new Phonebook_DataModel("Test4", "00000", "test4test.com"));
+        listOfPhonebook.add(new Phonebook_DataModel("Test5", "00000", "test5@test.com"));
+        listOfPhonebook.add(new Phonebook_DataModel("Test6", "00000", "test6@test.com"));
 
-        PhonebookAdapter adapter = new PhonebookAdapter(myContext, listOfPhonebook);
+        Phonebook_myAdapter adapter = new Phonebook_myAdapter(myContext, listOfPhonebook);
 
         list.setOnItemClickListener(new OnItemClickListener() {
 

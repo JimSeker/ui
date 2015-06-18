@@ -17,12 +17,12 @@ import android.widget.TextView;
  * description found at http://techdroid.kbeanie.com/2009/07/custom-listview-for-android.html
  */
 
-public class PhonebookAdapter extends BaseAdapter implements OnClickListener {
+public class Phonebook_myAdapter extends BaseAdapter implements OnClickListener {
     private Context context;
 
-    private List<Phonebook> listPhonebook;
+    private List<Phonebook_DataModel> listPhonebook;
 
-    public PhonebookAdapter(Context context, List<Phonebook> listPhonebook) {
+    public Phonebook_myAdapter(Context context, List<Phonebook_DataModel> listPhonebook) {
         this.context = context;
         this.listPhonebook = listPhonebook;
     }
@@ -41,11 +41,11 @@ public class PhonebookAdapter extends BaseAdapter implements OnClickListener {
     }
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-        Phonebook entry = listPhonebook.get(position);
+        Phonebook_DataModel entry = listPhonebook.get(position);
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.phone_row, null);
+            convertView = inflater.inflate(R.layout.phonebook_rowlayout, null);
         }
         TextView tvContact = (TextView) convertView.findViewById(R.id.tvContact);
         tvContact.setText(entry.getName());
@@ -76,7 +76,7 @@ public class PhonebookAdapter extends BaseAdapter implements OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Phonebook entry = (Phonebook) view.getTag();
+        Phonebook_DataModel entry = (Phonebook_DataModel) view.getTag();
         //We could call a dialog showDialog(entry), if we wanted to change it instead of deleting it.
         
         listPhonebook.remove(entry);
@@ -84,7 +84,7 @@ public class PhonebookAdapter extends BaseAdapter implements OnClickListener {
 
     }
 
-    private void showDialog(Phonebook entry) {
+    private void showDialog(Phonebook_DataModel entry) {
         // Create and show your dialog
         // Depending on the Dialogs button clicks delete it or do nothing
     }

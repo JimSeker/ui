@@ -46,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
 		@Override
 		public Fragment getItem(int position) {
 			switch (position) {
-			case 0: return new Simple_fraglist();
-			case 1: return new Simple2_fraglist();
-			case 2: return new Simple3_frag();
-			case 3: return new Active_fraglist();
-			case 4: return new Phone_frag();
+			case 0: return new Simple1_ListFragment();
+			case 1: return new Simple2_ListFragment();
+			case 2: return new Simple3_Fragment();
+			case 3: return new InterActive_ListFragment();
+			case 4: return new Phonebook_Fragment();
 			default: return null;
 			}
 		}

@@ -16,7 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class Simple_fraglist extends ListFragment {
+public class Simple1_ListFragment extends ListFragment {
 	
     String TAG = "Simple_frag";
     Context myContext;

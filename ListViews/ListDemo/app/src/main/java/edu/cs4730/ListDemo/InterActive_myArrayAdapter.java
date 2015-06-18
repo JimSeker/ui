@@ -20,13 +20,13 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 
 import android.widget.TextView;
 
-public class InteractiveArrayAdapter extends ArrayAdapter<Model> {
+public class InterActive_myArrayAdapter extends ArrayAdapter<InterActive_DataModel> {
 
-	private final List<Model> list;
+	private final List<InterActive_DataModel> list;
 	private final Activity context;
 
-	public InteractiveArrayAdapter(Activity context, List<Model> list) {
-		super(context, R.layout.rowbuttonlayout, list);
+	public InterActive_myArrayAdapter(Activity context, List<InterActive_DataModel> list) {
+		super(context, R.layout.interactive_rowlayout, list);
 		this.context = context;
 		this.list = list;
 	}
@@ -38,7 +38,7 @@ public class InteractiveArrayAdapter extends ArrayAdapter<Model> {
 		//if (convertView == null) {
 		//having problems with the convertVeiw when not null, so just redoing it each time.  ...
 			LayoutInflater inflator = context.getLayoutInflater();
-			convertView = inflator.inflate(R.layout.rowbuttonlayout, null);
+			convertView = inflator.inflate(R.layout.interactive_rowlayout, null);
 			text = (TextView) convertView.findViewById(R.id.label);
 			checkbox = (CheckBox) convertView.findViewById(R.id.check);
 			
@@ -52,8 +52,8 @@ public class InteractiveArrayAdapter extends ArrayAdapter<Model> {
 					CheckBox cb = (CheckBox)buttonView;
 					Log.w("checkbox", "checkbox has "+cb.getTag());
 					  //first get the model item out of the list, using the position stored in Tag.
-					Model temp = list.get( Integer.parseInt((String)cb.getTag()));
-					//now update our Model with the correct information.
+					InterActive_DataModel temp = list.get( Integer.parseInt((String)cb.getTag()));
+					//now update our InterActive_DataModel with the correct information.
 					temp.setSelected(cb.isChecked());
 					cb.setChecked(temp.isSelected());  //Not necessary since the GUI handles it.
 					

@@ -6,13 +6,13 @@ import android.view.View;
  * from http://www.vogella.de/articles/AndroidListView/article.html
  */
 
-public class Model {
+public class InterActive_DataModel {
 
 	private String name;
 	private boolean selected;
 	public View view;
 
-	public Model(String name) {
+	public InterActive_DataModel(String name) {
 		this.name = name;
 		selected = false;
 	}

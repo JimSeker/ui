@@ -16,21 +16,21 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class Simple3_frag extends Fragment{
+public class Simple3_Fragment extends Fragment{
     String TAG = "Simple3_Fragment";
     Context myContext;
     
 	ListView list;
 	Button up, down;
 	
-	public Simple3_frag() {
+	public Simple3_Fragment() {
 		// Required empty public constructor
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View myView = inflater.inflate(R.layout.simple3_frag, container, false);
+		View myView = inflater.inflate(R.layout.simple3_fragment, container, false);
 
 	        list = (ListView) myView.findViewById(R.id.ListView01);
         list.setClickable(true);

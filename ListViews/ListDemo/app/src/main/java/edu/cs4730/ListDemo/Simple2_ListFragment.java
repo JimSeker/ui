@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Simple2_fraglist extends ListFragment {
+public class Simple2_ListFragment extends ListFragment {
     String TAG = "Simple2_frag";
     Context myContext;
 	
@@ -77,9 +77,9 @@ public class Simple2_fraglist extends ListFragment {
 		list.addFooterView(tv);
 
 		
-		//Note using our layout here, instead of default one, rowlayout.
+		//Note using our layout here, instead of default one, simple2_rowlayout.
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-				R.layout.rowlayout,R.id.label, values);
+				R.layout.simple2_rowlayout,R.id.label, values);
 		setListAdapter(adapter);
 		
 		//To add a longclick listener

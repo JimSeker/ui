@@ -7,13 +7,13 @@ import java.util.List;
 * From http://code.google.com/p/myandroidwidgets/source/browse/trunk/Phonebook/src/com/abeanie/Phonebook.java
 * description found at http://techdroid.kbeanie.com/2009/07/custom-listview-for-android.html
 */
-public class Phonebook {
+public class Phonebook_DataModel {
         private String name;
         private String phone;
         private String mail;
        
-        // Constructor for the Phonebook class
-        public Phonebook(String name, String phone, String mail) {
+        // Constructor for the Phonebook_DataModel class
+        public Phonebook_DataModel(String name, String phone, String mail) {
                 super();
                 this.name = name;
                 this.phone = phone;
