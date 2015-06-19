@@ -16,6 +16,8 @@ A useful guide to added libraries (see Studio 1.0 answer) http://stackoverflow.c
 
 <b>RecyclerViewDemo2</b> is more complex version using RecyclerView and CardView (support.v7). This example uses the phonelist from the listview example as the data set.
 
+<b>RecyclerViewDemo3</b> is a rewrite of the listdemo from the listview using RecyclerView and CardView (support.v7). It has everything in fragments and uses a viewpager to switch between the examples.
+
 <b>RecyclerViewSwipeRefresh</b> based on RecyclerViewDemo, but adds a swipeRefreashLayout so the user can trigger a refresh of data.
 
 <b>SupportDesignDemo</b> is demo of some of the support Design widgets.  Floating action Button, inputtextlayout, snack bar, and using the snackbar and floating action button together (hint the fab moves out of the way).
