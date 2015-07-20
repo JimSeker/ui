@@ -63,7 +63,7 @@ public class AppcompatActivity extends AppCompatActivity {
 		viewPager.setAdapter(mPagerAdapter);
 		//viewPager.setCurrentItem(2);
 		//we need to know when a page has changed, so we can change/fix the next/previous/finish buttons
-		viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+		viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 			@Override
 			public void onPageSelected(int position) {
 				supportInvalidateOptionsMenu();
