@@ -4,15 +4,14 @@ import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 /*
   * This example is to show many of the features avialable in the support design library.
@@ -23,6 +22,13 @@ import android.widget.Toast;
   * But one feature is the show here (and xml) is the NavigationView in the Navigation Draw.
   * It allows the user to create a layout simliar to google's play nav drawer.  With a layout
   * at the top and a set of items via a menu xml file.
+  *
+  * A note, in 'com.android.support:design:23.0.0' the ischecked method has a bug?  It comes back
+  * always true, so sections of this example are commented out to delete with it.    If/when the
+  * bug is fixed in a future version of I'll uncomment it.  Or go back to 22.2.1 and uncomment the
+  * lines as well.
+  *
+  *
  */
 
 
@@ -33,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerlayout;
     private NavigationView mNavigationView;
     FragmentManager fragmentManager;
+    String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,38 +90,41 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 //we could just as easily call onOptionsItemSelected(menuItem) and how it deal with it.
+                //Log.v(TAG, "We got someting?");
                 int id = menuItem.getItemId();
                 if (id == R.id.navigation_item_1) {
                     //load fragment
-                    if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
+                    //if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
                         menuItem.setChecked(true);  //make sure to check/highlight the item.
                         fragmentManager.beginTransaction().replace(R.id.container, new SnackBarFragment()).commit();
-                    }
+                    //}
                     mDrawerlayout.closeDrawers();  //close the drawer, since the user has selected it.
                     return true;
                 } else if (id == R.id.navigation_item_2) {
+                    //Log.v(TAG, "item 2?");
                     //load fragment
-                    if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
+                    //if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
                         menuItem.setChecked(true); //make sure the item is checked/highlighted
+                        Log.v(TAG, "fab fragment?");
                         fragmentManager.beginTransaction().replace(R.id.container, new FABFragment()).commit();
-                    }
+                  //  }
                     //now close the nav drawer.
                     mDrawerlayout.closeDrawers();
                     return true;
                 } else if (id == R.id.navigation_item_3) {
                     //load fragment
-                    if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
+                    //if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
                         menuItem.setChecked(true);
                         fragmentManager.beginTransaction().replace(R.id.container, new SB_FABFragment()).commit();
-                    }
+                    //}
                     mDrawerlayout.closeDrawers();
                     return true;
                 }else if (id == R.id.navigation_item_4) {
                     //load fragment
-                    if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
+                    //if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
                         menuItem.setChecked(true);
                         fragmentManager.beginTransaction().replace(R.id.container, new TextInputLayoutFragment()).commit();
-                    }
+                    //}
                     mDrawerlayout.closeDrawers();
                     return true;
                 }
