@@ -23,7 +23,7 @@ import android.view.View;
   * It allows the user to create a layout simliar to google's play nav drawer.  With a layout
   * at the top and a set of items via a menu xml file.
   *
-  * A note, in 'com.android.support:design:23.0.0' the ischecked method has a bug?  It comes back
+  * A note, in 'com.android.support:design:23.0.0' (and 23.0.1) the ischecked method has a bug?  It comes back
   * always true, so sections of this example are commented out to delete with it.    If/when the
   * bug is fixed in a future version of I'll uncomment it.  Or go back to 22.2.1 and uncomment the
   * lines as well.
@@ -94,20 +94,20 @@ public class MainActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 if (id == R.id.navigation_item_1) {
                     //load fragment
-                    //if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
+                    if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
                         menuItem.setChecked(true);  //make sure to check/highlight the item.
                         fragmentManager.beginTransaction().replace(R.id.container, new SnackBarFragment()).commit();
-                    //}
+                    }
                     mDrawerlayout.closeDrawers();  //close the drawer, since the user has selected it.
                     return true;
                 } else if (id == R.id.navigation_item_2) {
                     //Log.v(TAG, "item 2?");
                     //load fragment
-                    //if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
+                    if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
                         menuItem.setChecked(true); //make sure the item is checked/highlighted
                         Log.v(TAG, "fab fragment?");
                         fragmentManager.beginTransaction().replace(R.id.container, new FABFragment()).commit();
-                  //  }
+                    }
                     //now close the nav drawer.
                     mDrawerlayout.closeDrawers();
                     return true;
