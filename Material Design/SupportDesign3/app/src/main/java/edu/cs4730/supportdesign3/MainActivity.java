@@ -95,7 +95,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
+                //likely don't need this.
                 getSupportActionBar().setTitle(R.string.app_name);
+                //need this or no title shows.
+                mCollapsingToolbarLayout.setTitle(getResources().getString(R.string.app_name));
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };

@@ -29,12 +29,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                android:minHeight="?attr/actionBarSize"
                 app:toolbarId="@+id/app_bar">
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/app_bar"
                     android:layout_width="match_parent"
                     app:layout_scrollFlags="scroll|enterAlways"
+
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin" />
             </android.support.design.widget.CollapsingToolbarLayout>
