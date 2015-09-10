@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         //setup the RecyclerView
         mRecyclerView = (RecyclerView)findViewById(R.id.list);
+        mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.

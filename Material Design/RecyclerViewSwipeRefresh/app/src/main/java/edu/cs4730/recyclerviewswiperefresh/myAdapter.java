@@ -79,4 +79,10 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
             myList.add(values[(mRandom.nextInt(values.length - 1))]);
         }
     }
+
+    //a simple method to remove an item from the list for swipe left.
+    public void removeitem(int i) {
+        myList.remove(i);
+        notifyDataSetChanged();
+    }
 }

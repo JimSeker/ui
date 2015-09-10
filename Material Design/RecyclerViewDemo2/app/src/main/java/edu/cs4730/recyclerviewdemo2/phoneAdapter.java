@@ -29,12 +29,14 @@ public class phoneAdapter extends RecyclerView.Adapter<phoneAdapter.ViewHolder> 
         this.mContext = context;
     }
 
+    // Create new views (invoked by the layout manager)
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
         return new ViewHolder(v);
     }
 
+    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Phonebook entry = myList.get(i);
@@ -58,10 +60,16 @@ public class phoneAdapter extends RecyclerView.Adapter<phoneAdapter.ViewHolder> 
         viewHolder.btnRemove.setTag(entry);
     }
 
+    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return myList == null ? 0 : myList.size();
     }
+
+
+    // Provide a reference to the views for each data item
+    // Complex data items may need more than one view per item, and
+    // you provide access to all the views for a data item in a view holder
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView tvContact;

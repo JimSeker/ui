@@ -7,6 +7,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,8 @@ import android.view.ViewGroup;
  *
  * some information was taken from this page
  * https://www.bignerdranch.com/blog/implementing-swipe-to-refresh/
+ *
+ *
  *
  */
 public class MainFragment extends Fragment {
@@ -105,6 +108,31 @@ public class MainFragment extends Fragment {
                 refreshslower();  //this will be slower, for the demo.
             }
         });
+
+        //setup left/right swipes on the cardviews
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                //likely allows to for animations?  or moving items in the view I think.
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                //called when it has been animated off the screen.  So item is no longer showing.
+                //use ItemtouchHelper.X to find the correct one.
+                if (direction == ItemTouchHelper.RIGHT) {
+                    //Toast.makeText(getBaseContext(),"Right?", Toast.LENGTH_SHORT).show();
+                    int item =  viewHolder.getAdapterPosition(); //think this is where in the array it is.
+                    mAdapter.removeitem(item);
+                }
+            }
+        };
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+        itemTouchHelper.attachToRecyclerView(mRecyclerView);
+
+
+
         return myView;
     }
 

@@ -31,7 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
         //setup the RecyclerView
         mRecyclerView = (RecyclerView)findViewById(R.id.list);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //and default animator
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = new myAdapter(values, R.layout.my_row, this);

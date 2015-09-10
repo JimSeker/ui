@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#673ab7</color>
-    <color name="primary_dark">#512da8</color>
-    <color name="accent">#ffc400</color>
-    <color name="text_primary">#D9FFFFFF</color>
-    <color name="text_secondary">#D9000000</color>
+
+
     <color name="photo_tint">#88101010</color>
+
+    <color name="primaryColor">#3f51b5</color>
+    <!-- 700 color -->
+    <color name="primaryColorDark">#303f9f</color>
+    <!-- A200 other color, so pink...? -->
+    <color name="accentColor">#ff4081</color>
+    <color name="primaryColorLight">#C5CAE9</color>
+
+    <color name="textColorSecondary">#727272</color>
+    <color name="textColorPrimary">#D9FFFFFF</color>
+
+    <color name="windowBackgroundColor">#607d8b</color>
+    <color name="navigationBarColor">#303f9f</color>
 </resources>

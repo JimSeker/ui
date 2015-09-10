@@ -27,16 +27,35 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
     private int rowLayout;
     private Context mContext;
 
+    // Provide a reference to the views for each data item
+    // Complex data items may need more than one view per item, and
+    // you provide access to all the views for a data item in a view holder
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView myName;
+        public ImageView Pic;
+        public ViewHolder(View itemView) {
+            super(itemView);
+            myName = (TextView) itemView.findViewById(R.id.Name);
+            Pic= (ImageView)itemView.findViewById(R.id.picture);
+        }
+    }
+
+    //constructor
     public myAdapter(List<String> myList, int rowLayout, Context context) {
         this.myList = myList;
         this.rowLayout = rowLayout;
         this.mContext = context;
     }
+
+    // Create new views (invoked by the layout manager)
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
         return new ViewHolder(v);
     }
+
+    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         String entry = myList.get(i);
@@ -49,19 +68,11 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
             }
         });
         viewHolder.Pic.setImageResource(R.drawable.phone);
-    }  //mContext.getDrawable(country.getImageResourceId(mContext))
+    }
+
+    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return myList == null ? 0 : myList.size();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView myName;
-        public ImageView Pic;
-        public ViewHolder(View itemView) {
-            super(itemView);
-            myName = (TextView) itemView.findViewById(R.id.Name);
-            Pic= (ImageView)itemView.findViewById(R.id.picture);
-        }
     }
 }
