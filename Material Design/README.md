@@ -19,6 +19,9 @@ A useful guide to added libraries (see Studio 1.0 answer) http://stackoverflow.c
 
 <b>SupportDesignDemo</b> is demo of some of the support Design widgets.  Floating action Button, inputtextlayout, snack bar, and using the snackbar and floating action button together (hint the fab moves out of the way).
 
+<b>snackbarDemo</b>  show the snackbar triggered from a fab.  It also show how the callbacks works, so you can determine how the
+user dealt with the snackbar (ie swiped it away, timed out, etc ).
+
 <b>SupportDesignDemo2</b> uses the support design tablayout with a viewpager.  that said, The stripetab with the viewpager is much easier to use then the tablayout.
 
 <b>SupportDesign3</b> show how to use the larger toolbar and how to collapse it as well.
