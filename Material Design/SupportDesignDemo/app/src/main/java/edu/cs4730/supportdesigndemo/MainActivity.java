@@ -27,6 +27,7 @@ import android.view.View;
   * always true, so sections of this example are commented out to delete with it.    If/when the
   * bug is fixed in a future version of I'll uncomment it.  Or go back to 22.2.1 and uncomment the
   * lines as well.
+  *    NOTE, this bug is fixed in 23.1.0  so it works again.
   *
   *
  */
@@ -113,18 +114,18 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 } else if (id == R.id.navigation_item_3) {
                     //load fragment
-                    //if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
+                    if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
                         menuItem.setChecked(true);
                         fragmentManager.beginTransaction().replace(R.id.container, new SB_FABFragment()).commit();
-                    //}
+                    }
                     mDrawerlayout.closeDrawers();
                     return true;
                 }else if (id == R.id.navigation_item_4) {
                     //load fragment
-                    //if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
+                    if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
                         menuItem.setChecked(true);
                         fragmentManager.beginTransaction().replace(R.id.container, new TextInputLayoutFragment()).commit();
-                    //}
+                    }
                     mDrawerlayout.closeDrawers();
                     return true;
                 }
