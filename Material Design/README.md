@@ -22,7 +22,7 @@ A useful guide to added libraries (see Studio 1.0 answer) http://stackoverflow.c
 <b>snackbarDemo</b>  show the snackbar triggered from a fab.  It also show how the callbacks works, so you can determine how the
 user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
-<b>SupportDesignDemo2</b> uses the support design tablayout with a viewpager.  that said, The stripetab with the viewpager is much easier to use then the tablayout.
+<b>SupportDesignDemo2</b> uses the support design tablayout with a viewpager.  with the new methods is support design the tablayout is just as easy to use as The stripetab with the viewpager, but you need 2 extra lines of code to setup it up.
 
 <b>SupportDesign3</b> show how to use the larger toolbar and how to collapse it as well.
 
