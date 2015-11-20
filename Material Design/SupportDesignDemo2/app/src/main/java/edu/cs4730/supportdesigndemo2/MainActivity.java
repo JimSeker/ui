@@ -11,9 +11,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 /*
- * design tablayout with a viewpager.   Personally I think the pagerstrip is the better choice, but android...
- *  This uses the viewpager example from the advanced directory.  Removes the page strip and uses the
- *  tablayout instead.   We then need to connect the viewpager with the tablayout in the java code below.
+ * design tablayout with a viewpager.   So now that the design support better understands
+ *  viewpagers, this is much easier and just as simple as just a pagestrip.  See this video
+ *  for more useful information:
+ *  https://youtu.be/zQekzaAgIlQ
+ *
+ *  One problem, here is I need to get the backgroup of the tablelayout darker, so you can easily
+ *  read the tab names though.
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -39,28 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
         //new Tablayout from the support design library
         TabLayout mTabLayout = (TabLayout) findViewById(R.id.tablayout1);
-        mTabLayout.setTabsFromPagerAdapter(adapter);
-        //swipeing the viewpager will now change the tabs
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+        mTabLayout.setupWithViewPager(viewPager);
 
-        //we ned to add a listener, otherwise the user selects the tab and the tab changes, but not
-        //viewpager.
-        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
     }
 
     /*
