@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.cs4730.supportdesgindemo4">
+    package="edu.cs4730.supportdesigndemo4">
 
     <application
         android:allowBackup="true"

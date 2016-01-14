@@ -1,4 +1,4 @@
-package edu.cs4730.supportdesgindemo4;
+package edu.cs4730.supportdesigndemo4;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

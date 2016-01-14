@@ -1,4 +1,4 @@
-package edu.cs4730.supportdesgindemo4;
+package edu.cs4730.supportdesigndemo4;
 
 /**
  * Created by Seker on 1/22/2015.
