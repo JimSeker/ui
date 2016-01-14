@@ -24,7 +24,9 @@ user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
 <b>SupportDesignDemo2</b> uses the support design tablayout with a viewpager.  with the new methods is support design the tablayout is just as easy to use as The stripetab with the viewpager, but you need 2 extra lines of code to setup it up.
 
-<b>SupportDesign3</b> show how to use the larger toolbar and how to collapse it as well.
+<b>SupportDesignDemo3</b> show how to use a picture with the toolbar and how to collapse the picture.  Also a little bit with the support design pallete.
+
+<b>SupportDesignDemo4</b> show how to use the larger toolbar and how to collapse it as well.
 
 <b>LotsofLists</b> is a complex demo using a Navigation bar and RecyclerView to display several different lists, plus you can add more items the lists and add more lists to the navigation as well.
 
