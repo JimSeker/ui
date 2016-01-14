@@ -28,6 +28,9 @@ user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
 <b>SupportDesignDemo4</b> show how to use the larger toolbar and how to collapse it as well.
 
+<b>SupportPaletteDemo</b> A simple example using a bitmap to get the palette and change the some textviews with it.  The example uses 4 different images that
+change via a imagebutton.
+
 <b>LotsofLists</b> is a complex demo using a Navigation bar and RecyclerView to display several different lists, plus you can add more items the lists and add more lists to the navigation as well.
 
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course.  All examples are for Android.
