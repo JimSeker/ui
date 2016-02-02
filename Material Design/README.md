@@ -31,6 +31,6 @@ change via a imagebutton.
 
 <b>LotsofLists</b> is a complex demo using a Navigation bar and RecyclerView to display several different lists, plus you can add more items the lists and add more lists to the navigation as well.
 
-<b>CallBacksDemo</b> uses a REcyclerView and shows how to setup a listeners and callbacks to pass data from the recyclerview adapter to the MainActivity.
+<b>CallBacksDemo</b> uses a RecyclerView and shows how to setup a listeners and callbacks to pass data from the recyclerview adapter to the MainActivity (via a fragment).
 
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course and cosc 4735 Advance Mobile Programing course.  All examples are for Android.
