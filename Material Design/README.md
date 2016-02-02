@@ -3,8 +3,6 @@ Android material Design Examples
 
 <b>SimpleDemo</b> is basic example of using Material design.  There is no real java code here, it's all in the values/color and styles.xml files (values and values-v21).  There are also two screenshots device-4.4.png and device-5.0.png to show how style looks.
 
-
-
 <b>CirToolbarNavDrawerDemo</b> uses toolbarnavDrawerDemo and uses the suppor design floating action button.  Previous versions used adds the Floating Action button (using a library from https://github.com/makovkastar/FloatingActionButton) 
 A useful guide to added libraries (see Studio 1.0 answer) http://stackoverflow.com/questions/16588064/how-do-i-add-a-library-project-to-the-android-studio A somewhat helpful visual guide to adding libraries: http://youtu.be/1MyBO9z7ojk 
 
@@ -33,4 +31,6 @@ change via a imagebutton.
 
 <b>LotsofLists</b> is a complex demo using a Navigation bar and RecyclerView to display several different lists, plus you can add more items the lists and add more lists to the navigation as well.
 
-These are example code for University of Wyoming, Cosc 4730 Mobile Programming course.  All examples are for Android.
+<b>CallBacksDemo</b> uses a REcyclerView and shows how to setup a listeners and callbacks to pass data from the recyclerview adapter to the MainActivity.
+
+These are example code for University of Wyoming, Cosc 4730 Mobile Programming course and cosc 4735 Advance Mobile Programing course.  All examples are for Android.
