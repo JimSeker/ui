@@ -6,9 +6,10 @@
     <string name="title_fragdialog">Fragment Dialog Demo</string>
     <string name="title_alertfrag">Alert Dialog Demo</string>
     <string name="hello_world">Hello world!</string>
-    
+
     <string name="alert_dialog_two_buttons_title">Two Button Demo</string>
     <string name="alert_dialog_cancel">Cancel</string>
     <string name="alert_dialog_ok">OK</string>
-    
+    <string name="title_activity_support_dialog">supportDialogActivity</string>
+
 </resources>

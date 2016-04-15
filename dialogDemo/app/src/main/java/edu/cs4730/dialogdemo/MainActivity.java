@@ -9,35 +9,42 @@ import android.view.View.OnClickListener;
 
 public class MainActivity extends AppCompatActivity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-	    findViewById(R.id.btn_old).setOnClickListener(new OnClickListener(){
-				@Override
-				public void onClick(View v) {
-					startActivity(new Intent(getApplicationContext(), dialogs233Activity.class));
-				}
-	        }); 
-       findViewById(R.id.btn_frag).setOnClickListener(new OnClickListener(){
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(getApplicationContext(), FragmentDialogActivity.class));
-			}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        findViewById(R.id.btn_old).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), dialogs233Activity.class));
+            }
         });
-       findViewById(R.id.btn_alert).setOnClickListener(new OnClickListener(){
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(getApplicationContext(), DialFragActivity.class));
-			}
-        }); 
-	}
+        findViewById(R.id.btn_frag).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), FragmentDialogActivity.class));
+            }
+        });
+        findViewById(R.id.btn_alert).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), DialFragActivity.class));
+            }
+        });
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
+        findViewById(R.id.btn_supportalert).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), supportDialogActivity.class));
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
 }

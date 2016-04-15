@@ -6,38 +6,52 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
-            android:name="edu.cs4730.dialogdemo.MainActivity"
-            android:label="@string/app_name" >
+            android:name=".MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FragmentDialogActivity"
+        <activity
+            android:name=".FragmentDialogActivity"
             android:label="@string/title_fragdialog"
             android:parentActivityName=".MainActivity"
             android:uiOptions="splitActionBarWhenNarrow">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
-         </activity>
-         <activity android:name=".DialFragActivity"
+        </activity>
+        <activity
+            android:name=".DialFragActivity"
             android:label="@string/title_alertfrag"
             android:parentActivityName=".MainActivity"
             android:uiOptions="splitActionBarWhenNarrow">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
-         </activity>
-         
-         <activity android:name=".dialogs233Activity"
+        </activity>
+        <activity
+            android:name=".dialogs233Activity"
             android:label="Dialog Demo 233 and below"
             android:parentActivityName=".MainActivity"
             android:uiOptions="splitActionBarWhenNarrow">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
-         </activity>
+        </activity>
+        <activity
+            android:name=".supportDialogActivity"
+            android:label="@string/title_activity_support_dialog"
+            android:parentActivityName=".MainActivity"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>
