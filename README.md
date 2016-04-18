@@ -19,8 +19,10 @@ Note for Android studio download a zip (or clone).  Then in Andriod Studio open 
 
 <b>mvcDemo</b> is an example using the Model-view-controller model.
 
+<b>Dialogs</b> are example of how to dialog box in android
 
-<b>dialogDemo</b> shows how to use the dialog in the 2.3.3 and 4.X methods (with and without fragments)
+
+<b>legacy</b> are old examples that are no longer updated.  
 
 
 <b>eclipse/</b>  has some of projects in the format that eclipse format, if they predate the moved android Studio.  You should be able to have eclipse import the entire directory into your workspace via eclipse.  Note these are no longer updated.
