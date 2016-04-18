@@ -17,13 +17,11 @@ Note for Android studio download a zip (or clone).  Then in Andriod Studio open 
 
 <b>Material Design/</b> are examples using the new material design spec, Navagation Drawer, recyclerview, and support.design library.    see the readme in the directory
 
+<b>Dialogs/</b> are example of how to dialog box in android see the readme in the directory
+
 <b>mvcDemo</b> is an example using the Model-view-controller model.
 
-<b>Dialogs</b> are example of how to dialog box in android
-
-
-<b>legacy</b> are old examples that are no longer updated.  
-
+<b>legacy/</b> are old examples that are no longer updated.  
 
 <b>eclipse/</b>  has some of projects in the format that eclipse format, if they predate the moved android Studio.  You should be able to have eclipse import the entire directory into your workspace via eclipse.  Note these are no longer updated.
 
