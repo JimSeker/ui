@@ -39,7 +39,12 @@ public class SupportDialogFragment extends Fragment {
             }
         });
         logger = (TextView) myView.findViewById(R.id.logger_support);
-
+        myView.findViewById(R.id.btn_support_ListDialog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showlistdialog("Demo List Dialog");
+            }
+        });
         return myView;
     }
 
@@ -80,6 +85,22 @@ public class SupportDialogFragment extends Fragment {
 
             }
         });
+        builder.show();
+    }
+
+    void showlistdialog(String title) {
+        final String[] items = { "Remove Walls", "Add Walls",
+                "Add/Remove Objects", "Add/Remove Score" };
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Choose Type:");
+        builder.setSingleChoiceItems(items, -1,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                        dialog.dismiss();  //the dismiss is needed here or the dialog stays showing.
+                        displaylog(items[item]);
+                    }
+                });
         builder.show();
     }
 }
