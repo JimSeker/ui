@@ -25,14 +25,15 @@ public class Image_Fragment extends Fragment {
 		View view = inflater.inflate(R.layout.image_fragment, container, false);
 		return view;
 	}
-	
+
 
 	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		myContext = activity.getApplicationContext();
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		myContext = context;
 		Log.d(TAG,"onAttach");
 	}
+
 
 
 }

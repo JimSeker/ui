@@ -32,11 +32,12 @@ public class Relativelayout_Fragment extends Fragment {
 		return myView;
 	}
 	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		myContext = activity.getApplicationContext();
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		myContext = context;
 		Log.d(TAG,"onAttach");
 	}
+
 
 	
 

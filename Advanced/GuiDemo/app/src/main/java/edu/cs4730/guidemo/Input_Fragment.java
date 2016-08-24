@@ -76,9 +76,9 @@ public class Input_Fragment extends Fragment implements OnClickListener {
 
 
 	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		myContext = activity.getApplicationContext();
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		myContext = context;
 		Log.d(TAG,"onAttach");
 	}
 

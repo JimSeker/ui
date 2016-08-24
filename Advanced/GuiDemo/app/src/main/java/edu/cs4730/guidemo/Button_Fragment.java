@@ -77,11 +77,11 @@ public class Button_Fragment extends Fragment implements View.OnClickListener {
 			output.setText("Output:\nButton3");
 		}
 	}
-	
+
 	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		myContext = activity.getApplicationContext();  //needed for toast.
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		myContext = context;
 		Log.d(TAG,"onAttach");
 	}
 

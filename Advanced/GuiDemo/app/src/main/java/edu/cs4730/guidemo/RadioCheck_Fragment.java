@@ -62,14 +62,15 @@ public class RadioCheck_Fragment extends Fragment implements RadioGroup.OnChecke
 		
 		return view;
 	}
-	
+
 
 	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		myContext = activity.getApplicationContext();
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		myContext = context;
 		Log.d(TAG,"onAttach");
 	}
+
 
 	@Override
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
