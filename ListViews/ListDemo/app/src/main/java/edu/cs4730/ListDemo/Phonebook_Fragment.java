@@ -63,14 +63,14 @@ public class Phonebook_Fragment extends Fragment {
     private void showToast(String message) {
         Toast.makeText(myContext, message, Toast.LENGTH_LONG).show();
     }
-    
 
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		myContext = activity.getApplicationContext();
-		Log.d(TAG,"onAttach");
-	}
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        myContext = context; //needed for toast.
+        Log.d(TAG,"onAttach");
+    }
 
 	
 }

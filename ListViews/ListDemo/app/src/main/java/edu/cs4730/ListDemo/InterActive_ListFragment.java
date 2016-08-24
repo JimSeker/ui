@@ -5,9 +5,8 @@ import java.util.List;
 import android.support.v4.app.ListFragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
-
-
 
 public class InterActive_ListFragment extends ListFragment {
     String TAG = "InterActive_ListFragment";
@@ -37,4 +36,11 @@ public class InterActive_ListFragment extends ListFragment {
 		return list;
 	}
 	//Note no click listener, because it does not get called even when an list item is clicked.
+	@Override
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		myContext = context; //needed for toast.
+		Log.d(TAG,"onAttach");
+	}
+
 }

@@ -40,11 +40,11 @@ public class Simple1_ListFragment extends ListFragment {
 		String item = (String) getListAdapter().getItem(position);
 		Toast.makeText(myContext, item + " selected", Toast.LENGTH_LONG).show();
 	}
-	
+
 	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		myContext = activity.getApplicationContext();
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		myContext = context; //needed for toast.
 		Log.d(TAG,"onAttach");
 	}
 

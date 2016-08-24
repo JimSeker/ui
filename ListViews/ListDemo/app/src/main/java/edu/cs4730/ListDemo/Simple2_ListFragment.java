@@ -109,11 +109,11 @@ public class Simple2_ListFragment extends ListFragment {
 			Toast.makeText(myContext, "Last entry", Toast.LENGTH_LONG).show();	
 		}
 	}
-	
+
 	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		myContext = activity.getApplicationContext();
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		myContext = context; //needed for toast.
 		Log.d(TAG,"onAttach");
 	}
 
