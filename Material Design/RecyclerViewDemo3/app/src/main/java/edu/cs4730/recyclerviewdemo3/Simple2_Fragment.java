@@ -86,10 +86,10 @@ public class Simple2_Fragment extends Fragment {
 	}
 
 	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		myContext = activity.getApplicationContext();
-		Log.d(TAG,"onAttach");
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		myContext = context;
+		Log.d(TAG, "onAttach");
 	}
 
 

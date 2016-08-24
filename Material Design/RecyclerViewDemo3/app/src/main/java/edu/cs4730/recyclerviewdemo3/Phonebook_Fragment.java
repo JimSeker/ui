@@ -67,12 +67,12 @@ public class Phonebook_Fragment extends Fragment {
         return myView;
     }
 
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		myContext = activity.getApplicationContext();
-		Log.d(TAG, "onAttach");
-	}
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        myContext = context;
+        Log.d(TAG, "onAttach");
+    }
 
 	List<Phonebook_DataModel> setup() {
         List<Phonebook_DataModel> list = new ArrayList<Phonebook_DataModel>();
