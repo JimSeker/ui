@@ -1,6 +1,7 @@
 package edu.cs4730.dialogdemo;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.v7.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -51,13 +52,14 @@ public class myAlertDialogFragment extends DialogFragment {
 
     //all the callback stuff.
     public interface OnDialogFragmentListener {
-        public void doPositiveClick();
-        public void doNegativeClick();
+        void doPositiveClick();
+        void doNegativeClick();
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Activity activity = getActivity();
         try {
             mListener = (OnDialogFragmentListener) activity;
         } catch (ClassCastException e) {
