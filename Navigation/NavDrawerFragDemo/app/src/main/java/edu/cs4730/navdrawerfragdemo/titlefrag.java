@@ -1,6 +1,7 @@
 package edu.cs4730.navdrawerfragdemo;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.v4.app.ListFragment;
 import android.os.Bundle;
 import android.view.View;
@@ -37,8 +38,9 @@ public class titlefrag extends ListFragment {
 	}
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(Context context) {
+        super.onAttach(context);
+		Activity activity = getActivity();
         try {
             mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
@@ -73,7 +75,7 @@ public class titlefrag extends ListFragment {
         /**
          * Callback for when an item has been selected.
          */
-        public void onItemSelected(int id);
+        void onItemSelected(int id);
     }
 
 }

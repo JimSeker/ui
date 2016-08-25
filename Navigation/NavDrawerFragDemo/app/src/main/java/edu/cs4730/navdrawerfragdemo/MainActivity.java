@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements titlefrag.OnFragm
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
     }
 
 

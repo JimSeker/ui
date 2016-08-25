@@ -1,7 +1,6 @@
 package edu.cs4730.toolbarnavdrawerdemo;
 
 import android.content.res.Configuration;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
@@ -65,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         };
         //To disable the icon for the drawer, change this to false
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerlayout.setDrawerListener(mDrawerToggle);
+        mDrawerlayout.addDrawerListener(mDrawerToggle);
 
         //lastly setup the listview with some simple categories via an array.
         String[] values = new String[] { "Item 1", "Item 2", "Item 3", "Item 4" };
