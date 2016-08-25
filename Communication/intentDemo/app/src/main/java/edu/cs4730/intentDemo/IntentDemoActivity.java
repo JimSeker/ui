@@ -38,6 +38,7 @@ public class IntentDemoActivity extends AppCompatActivity {
 		case R.id.Button02:
 			intent = new Intent(Intent.ACTION_CALL,
 					Uri.parse("tel:3075555555"));
+			//needs premission checking!
 			startActivity(intent);
 			break;
 		case R.id.Button03:

@@ -1,6 +1,7 @@
 package edu.cs4730.fragcomdemo;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -56,8 +57,9 @@ public class MainFragment extends Fragment {
 	}
 
 	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		Activity activity = getActivity();
 		try {
 			mListener = (OnFragmentInteractionListener) activity;
 		} catch (ClassCastException e) {
@@ -82,7 +84,6 @@ public class MainFragment extends Fragment {
 	 * >Communicating with Other Fragments</a> for more information.
 	 */
 	public interface OnFragmentInteractionListener {
-		// TODO: Update argument type and name
-		public void onFragmentInteraction(int which);
+		void onFragmentInteraction(int which);
 	}
 }

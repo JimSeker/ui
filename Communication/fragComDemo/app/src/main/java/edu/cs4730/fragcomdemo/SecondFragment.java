@@ -1,6 +1,7 @@
 package edu.cs4730.fragcomdemo;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,19 +12,18 @@ import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass. Activities that contain this fragment
- * must implement the {@link SecondFragment.OnFragmentInteractionListener}
+ * must implement the {@link SecondFragment.OnFragmentInteractionListener2}
  * interface to handle interaction events. Use the
  * {@link SecondFragment#newInstance} factory method to create an instance of
  * this fragment.
  * 
  */
 public class SecondFragment extends Fragment {
-	// TODO: Rename parameter arguments, choose names that match
 	// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
 
-	// TODO: Rename and change types of parameters
+
 	private String mParam1;
 	private String mParam2;
 
@@ -92,8 +92,9 @@ public class SecondFragment extends Fragment {
 
 
 	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		Activity activity = getActivity();
 		try {
 			mListener = (OnFragmentInteractionListener2) activity;
 		} catch (ClassCastException e) {
