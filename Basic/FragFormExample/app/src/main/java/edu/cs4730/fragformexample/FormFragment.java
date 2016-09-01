@@ -4,6 +4,7 @@ package edu.cs4730.fragformexample;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,13 @@ import android.text.TextWatcher;
  */
 public class FormFragment extends Fragment implements RadioGroup.OnCheckedChangeListener, TextWatcher,
         Button.OnClickListener {
+    //variables for the widgets
     RadioGroup myRadioGroup;
     EditText et;
     Button btnalert;
     TextView label ;
+    //variable for the log
+    String TAG = "FormFragment";
 
     public FormFragment() {
         // Required empty public constructor
@@ -59,8 +63,10 @@ public class FormFragment extends Fragment implements RadioGroup.OnCheckedChange
         if (group == myRadioGroup) { //if not myRadioGroup, we are in trouble!
             if (CheckedId == R.id.RB01) {
                 // information radio button clicked
+                Log.d(TAG, "RB01 was pushed.");
             } else if (CheckedId == R.id.RB02) {
                 // Confirmation radio button clicked
+                Log.d(TAG, "RB02 was pushed.");
             } else if (CheckedId == R.id.RB03) {
                 // Warning radio button clicked
                 Toast.makeText(getActivity(), "Warning!", Toast.LENGTH_LONG).show();
@@ -71,6 +77,7 @@ public class FormFragment extends Fragment implements RadioGroup.OnCheckedChange
     public void onTextChanged (CharSequence s, int start, int before, int count) {
         if (et.length() >10) {
             Toast.makeText(getActivity(), "Long Word!", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "Long Word!");
         }
     }
     public void beforeTextChanged( CharSequence s, int start, int count, int after) {
@@ -84,6 +91,7 @@ public class FormFragment extends Fragment implements RadioGroup.OnCheckedChange
     public void onClick(View v) {
         if (v == btnalert) {
             Toast.makeText(getActivity(), "The button was pressed",Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "The button was pressed.");
         }
 
     }

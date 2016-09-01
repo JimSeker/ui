@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,11 +18,15 @@ import android.widget.Toast;
 
 public class FormExample extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, TextWatcher,
             Button.OnClickListener {
-    /** Called when the activity is first created. */
+   //variables for the widgets
 	RadioGroup myRadioGroup;
 	EditText et; 
     Button btnalert;
     TextView label ;
+
+    //variable for the log
+    String TAG = "ForExample";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,8 +56,10 @@ public class FormExample extends AppCompatActivity implements RadioGroup.OnCheck
     	if (group == myRadioGroup) { //if not myRadioGroup, we are in trouble!
     		if (CheckedId == R.id.RB01) {
     			// information radio button clicked
+                Log.d(TAG, "RB01 was pushed.");
     		} else if (CheckedId == R.id.RB02) {
     			// Confirmation radio button clicked
+                Log.d(TAG, "RB02 was pushed.");
     		} else if (CheckedId == R.id.RB03) {
     			// Warning radio button clicked
                 Toast.makeText(this, "Warning!", Toast.LENGTH_LONG).show();
@@ -63,6 +70,7 @@ public class FormExample extends AppCompatActivity implements RadioGroup.OnCheck
     public void onTextChanged (CharSequence s, int start, int before, int count) {
     	if (et.length() >10) {
             Toast.makeText(this, "Long Word!", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "Long Word!");
     	}
     }
     public void beforeTextChanged( CharSequence s, int start, int count, int after) {
@@ -76,6 +84,7 @@ public class FormExample extends AppCompatActivity implements RadioGroup.OnCheck
     public void onClick(View v) {
     	if (v == btnalert) {
             Toast.makeText(this, "The button was pressed",Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "The button was pressed.");
         }
 
     }

@@ -8,10 +8,19 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    FormFragment myFormFragment;
+    //variable for the log
+    String TAG = "FormFragment";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (savedInstanceState == null) {
+            myFormFragment = new FormFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, myFormFragment).commit();
+        }
     }
 
 
