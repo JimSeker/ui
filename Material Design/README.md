@@ -29,6 +29,8 @@ user dealt with the snackbar (ie swiped it away, timed out, etc ).
 <b>SupportPaletteDemo</b> A simple example using a bitmap to get the palette and change the some textviews with it.  The example uses 4 different images that
 change via a imagebutton.
 
+<b>SupportDesignBottomNavDemo</b> shows how to use the ButtomNavigationView (introduced in v25) in the support design library.
+
 <b>LotsofLists</b> is a complex demo using a Navigation bar and RecyclerView to display several different lists, plus you can add more items the lists and add more lists to the navigation as well.
 
 <b>CallBacksDemo</b> uses a RecyclerView and shows how to setup a listeners and callbacks to pass data from the recyclerview adapter to the MainActivity (via a fragment).
