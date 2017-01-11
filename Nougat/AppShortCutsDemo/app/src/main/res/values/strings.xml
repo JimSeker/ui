@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AppShortCutsDemo</string>
+    <string name="common_shortlabel">Common Action</string>
+    <string name="common_longlabel">Common Action for a user to take</string>
+    <string name="custom_shortlabel">Custom Action</string>
+    <string name="custom_longlabel">Custom Action to take</string>
+</resources>

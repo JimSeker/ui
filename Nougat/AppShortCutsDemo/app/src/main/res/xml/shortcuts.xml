@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="common"
+        android:icon="@drawable/ic_touch_app_black_24dp"
+        android:shortcutShortLabel="@string/common_shortlabel"
+        android:shortcutLongLabel="@string/common_longlabel">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="edu.cs4730.appshortcutsdemo"
+            android:targetClass="edu.cs4730.appshortcutsdemo.CommonActivity" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="custom"
+        android:icon="@drawable/custom"
+        android:shortcutShortLabel="@string/custom_shortlabel"
+        android:shortcutLongLabel="@string/custom_longlabel">
+        <intent
+            android:action="edu.cs4730.appshortcutsdemo.CustomAction"
+            android:targetPackage="edu.cs4730.appshortcutsdemo"
+            android:targetClass="edu.cs4730.appshortcutsdemo.MainActivity" />
+    </shortcut>
+    <!-- Specify more shortcuts here. -->
+</shortcuts>
