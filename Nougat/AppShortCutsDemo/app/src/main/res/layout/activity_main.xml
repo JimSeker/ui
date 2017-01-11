@@ -24,6 +24,6 @@
             android:id="@+id/logger"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="T" />
+            android:text="" />
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
