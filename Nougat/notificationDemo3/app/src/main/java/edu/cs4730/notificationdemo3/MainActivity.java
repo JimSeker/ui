@@ -14,6 +14,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+
+/**
+ * while most of the work of creating the notificaitons is in the fragment, we need to create
+ * three receivers that are here for the read, delete, reply intents.
+ *
+ * the reply receiver also updates the notification that we have dealt with he replay message as well.
+ */
+
+
 public class MainActivity extends AppCompatActivity {
 
     MyFragment myFrag;
@@ -76,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                             .setSmallIcon(R.mipmap.notification_icon)
                             .setLargeIcon(BitmapFactory.decodeResource(
                                     context.getResources(), R.mipmap.android_contact))
+                            .setDeleteIntent(myFrag.mDeletePendingIntent)  //se we know if they deleted it.
                             .setContentText("Replied")
                             .build();
                     notificationManager.notify(conversationId, repliedNotification);

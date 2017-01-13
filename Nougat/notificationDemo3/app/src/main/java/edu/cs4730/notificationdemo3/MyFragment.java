@@ -15,11 +15,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * A simple {@link Fragment} subclass.
+ * This is an example of how to create notifications that are compatible with android auto (and wear)
+ * how to see if the notificaiotn has been read or deleted
+ * and how to get replies to the message via the remoteinput
+ *
  */
 public class MyFragment extends Fragment {
     private NotificationManager mNotificationManager;
@@ -27,11 +29,10 @@ public class MyFragment extends Fragment {
 
     String TAG = "myFrag";
 
-    private PendingIntent mDeletePendingIntent;
+    public PendingIntent mDeletePendingIntent;
     private static final int REQUEST_CODE = 2323;
 
     TextView mNumberOfNotifications , logger;
-    Button addbutton;
 
     int NotificationNum = 1;
 
@@ -92,9 +93,6 @@ public class MyFragment extends Fragment {
         mNumberOfNotifications.setText("Number of Active notifications is: " + numberOfNotifications);
         Log.i(TAG, "Number of Active notifications is: " + numberOfNotifications);
     }
-
-
-
 
     // Creates an intent that will be triggered when a message is marked as read.
     private Intent getMessageReadIntent(int id) {
@@ -163,17 +161,23 @@ public class MyFragment extends Fragment {
 
        logger.append("Sending notification " +NotificationNum + "\n");
 
-        mNotificationManager.notify( NotificationNum, builder.build());
+        mNotificationManagerCompat.notify( NotificationNum, builder.build());
         NotificationNum++;
         //update the number of notifications.
         updateNumberOfNotifications();
     }
 
 
+    /*
+     * helper method that the mainactivity can call, to update the logger that a message has been read.
+     */
     public void NotificationRead(int id) {
         logger.append("Notification " +id + "has been read\n");
     }
 
+    /*
+    * helper method that the mainactivity can use to update the logger with the reply to notification.
+     */
     public void NotificationReply(int id, String message) {
         logger.append("Notification " +id + ": reply is "+ message+"\n");
     }
