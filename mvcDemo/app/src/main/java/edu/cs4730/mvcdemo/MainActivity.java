@@ -10,6 +10,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/*
+ * A simple activity to demo the MVC method.
+ *
+ * For info on the constraint-layout see  https://developer.android.com/training/constraint-layout/index.html
+ */
+
 public class MainActivity extends AppCompatActivity implements Button.OnClickListener {
 
 	//model data, myColors holds all the information.
