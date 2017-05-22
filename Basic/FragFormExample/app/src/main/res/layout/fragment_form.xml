@@ -1,114 +1,175 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="edu.cs4730.fragformexample.FormFragment">
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="367dp"
+        tools:layout_editor_absoluteX="367dp"
+        tools:layout_editor_absoluteY="0dp" />
+
     <TextView
         android:id="@+id/Label01"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:text="TextView item, Hello Form"/>
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
+        android:text="TextView item, Hello Form"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintRight_toLeftOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
-    <LinearLayout
-        android:id="@+id/LinearLayout02"
+
+    <TextView
+        android:id="@+id/TVname"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:orientation="horizontal">
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:paddingTop="15dp"
+        android:text="Enter:"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/Label01" />
 
-        <TextView
-            android:id="@+id/TVname"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:paddingTop="15dp"
-            android:text="Enter:"/>
-
-        <EditText
-            android:id="@+id/ETname"
-            android:layout_alignBaseline="@id/TVname"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/TVname"
-            android:layout_width="fill_parent"
-            android:text="Name"></EditText>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/LinearLayout03"
+    <EditText
+        android:id="@+id/ETname"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:orientation="vertical">
+        android:layout_alignBaseline="@id/TVname"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/TVname"
+        android:text="Name"
+        app:layout_constraintBottom_toBottomOf="@+id/TVname"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintLeft_toRightOf="@+id/TVname"
+        app:layout_constraintRight_toLeftOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/TVname"
+        app:layout_constraintVertical_bias="0.526" />
 
-        <TextView
-            android:id="@+id/TVsound"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Radio Button Group"/>
 
-        <RadioGroup
-            android:id="@+id/SndGroup"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
-
-            <RadioButton
-                android:id="@+id/RB01"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Information"/>
-
-            <RadioButton
-                android:id="@+id/RB02"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Confirmation"/>
-
-            <RadioButton
-                android:id="@+id/RB03"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Warning"/>
-
-        </RadioGroup>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout04"
+    <TextView
+        android:id="@+id/TVsound"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:orientation="horizontal">
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Radio Button Group"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/TVname" />
 
-        <TextView
-            android:id="@+id/TVbutton"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Button alert:"/>
-
-        <Button
-            android:id="@+id/Button01"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Toast!"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout05"
+    <RadioGroup
+        android:id="@+id/SndGroup"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:orientation="horizontal">
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintRight_toRightOf="@+id/TVsound"
+        app:layout_constraintTop_toBottomOf="@+id/TVsound">
 
-        <TextView
-            android:id="@+id/TVpic"
-            android:layout_height="wrap_content"
+        <RadioButton
+            android:id="@+id/RB01"
             android:layout_width="wrap_content"
-            android:text="Picture:"/>
-
-        <ImageView
-            android:id="@+id/ImageView01"
             android:layout_height="wrap_content"
+            android:text="Information" />
+
+        <RadioButton
+            android:id="@+id/RB02"
             android:layout_width="wrap_content"
-            android:src="@drawable/phone"/>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:text="Confirmation" />
+
+        <RadioButton
+            android:id="@+id/RB03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Warning" />
+
+    </RadioGroup>
 
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/TVbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="30dp"
+        android:text="Button alert:"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/SndGroup" />
+
+    <Button
+        android:id="@+id/Button01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Toast!"
+        app:layout_constraintBottom_toBottomOf="@+id/TVbutton"
+        app:layout_constraintLeft_toRightOf="@+id/TVbutton"
+        app:layout_constraintTop_toTopOf="@+id/TVbutton"
+        app:layout_constraintVertical_bias="0.512" />
+
+
+    <TextView
+        android:id="@+id/TVpic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="Picture:"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintRight_toRightOf="@+id/TVbutton"
+        app:layout_constraintTop_toBottomOf="@+id/TVbutton" />
+
+    <ImageView
+        android:id="@+id/ImageView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/phone"
+        app:layout_constraintBottom_toBottomOf="@+id/TVpic"
+        app:layout_constraintLeft_toRightOf="@+id/TVpic"
+        app:layout_constraintTop_toBottomOf="@+id/Button01"
+        app:layout_constraintVertical_bias="0.294" />
+
+
+</android.support.constraint.ConstraintLayout>
