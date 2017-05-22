@@ -1,52 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical" >
-	    <LinearLayout
-        android:id="@+id/LinearLayout01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/TextView01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="First value from Activity 1" >
-        </TextView>
-
-        <EditText
-            android:id="@+id/EditText01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@+id/EditText01" >
-        </EditText>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/LinearLayout02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/TextView02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Second Value from Activity one" >
-        </TextView>
-
-        <EditText
-            android:id="@+id/EditText02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@+id/EditText02" >
-        </EditText>
-    </LinearLayout>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/Button01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"
-        android:text="Finished this activity" >
-    </Button>
-</LinearLayout>
+        android:text="Finished this activity"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/TextView02"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/TextView02" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="24dp"
+        android:text="2rd value from Activity 1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/TextView01"
+        app:layout_constraintRight_toRightOf="@+id/TextView01"
+        app:layout_constraintTop_toBottomOf="@+id/TextView01" />
+
+    <EditText
+        android:id="@+id/EditText02"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:selectAllOnFocus="false"
+        android:text="@+id/EditText02"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintTop_toTopOf="@+id/TextView02"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/TextView02"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/EditText01"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.505" />
+
+    <EditText
+        android:id="@+id/EditText01"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@+id/EditText01"
+        app:layout_constraintLeft_toRightOf="@+id/TextView01"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintTop_toTopOf="@+id/TextView01"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/TextView01"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First value from Activity 1"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"/>
+</android.support.constraint.ConstraintLayout>

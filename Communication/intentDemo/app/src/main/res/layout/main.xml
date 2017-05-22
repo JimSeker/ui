@@ -1,64 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:orientation="vertical" >
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
-	<TextView
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text="@string/hello" />
-<Button
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/hello"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp" />
+
+    <Button
         android:id="@+id/Button01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="callIntent"
-        android:text="Call browser" >
-    </Button>
-
-<LinearLayout
-	android:id="@+id/linearLayout1"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content" >
-<Button
-  android:id="@+id/Button02"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:onClick="callIntent"
-  android:text="Call Someone" />
-
-    <Button
-    	android:id="@+id/Button03"
-    	android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:onClick="callIntent"
-    	android:text="Dial" />
-
-</LinearLayout>
-
-<LinearLayout
-	android:id="@+id/linearLayout2"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content" >
-        <Button
-        android:id="@+id/Button04"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="callIntent"
-        android:text="Show Map"
-         >
-    </Button>
-
-    <Button
-        android:id="@+id/Button05"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="callIntent"
-        android:text="Search on Map"
-        >
-    </Button>
-</LinearLayout>
-
+        android:text="Call browser"
+        app:layout_constraintLeft_toLeftOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp" />
 
 
     <Button
@@ -67,21 +42,22 @@
         android:layout_height="wrap_content"
         android:onClick="callIntent"
         android:text="Take picture"
-        >
-    </Button>
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/Button04"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/Button04" />
 
-    <LinearLayout
-    	android:id="@+id/linearLayout3"
-    	android:layout_width="match_parent"
-    	android:layout_height="wrap_content" >
-        <Button
+
+    <Button
         android:id="@+id/Button07"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="callIntent"
         android:text="Show contacts"
-        >
-    </Button>
+        app:layout_constraintLeft_toRightOf="@+id/Button06"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Button06"
+        android:layout_marginBottom="0dp" />
 
     <Button
         android:id="@+id/Button08"
@@ -89,23 +65,79 @@
         android:layout_height="wrap_content"
         android:onClick="callIntent"
         android:text="Edit first contact"
-       >
-    </Button>
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/Button06"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/Button06" />
 
     <Button
-    	android:id="@+id/Button10"
-    	android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:onClick="callIntent"
-    	android:text="Pick a Contact" />
+        android:id="@+id/Button10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="callIntent"
+        android:text="Pick a Contact"
+        app:layout_constraintBottom_toBottomOf="@+id/Button08"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintLeft_toRightOf="@+id/Button08"
+        android:layout_marginLeft="8dp" />
 
-    </LinearLayout>
 
     <Button
-    	android:id="@+id/Button09"
-    	android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:onClick="callIntent"
-    	android:text="Call ActivityTwo" />
+        android:id="@+id/Button09"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="callIntent"
+        android:text="Call ActivityTwo"
+        app:layout_constraintLeft_toLeftOf="@+id/Button08"
 
-</LinearLayout>
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/Button08" />
+
+    <Button
+        android:id="@+id/Button04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="callIntent"
+        android:text="Show Map"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/Button02"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/Button02" />
+
+    <Button
+        android:id="@+id/Button05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="callIntent"
+        android:text="Search on Map"
+        app:layout_constraintLeft_toRightOf="@+id/Button04"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Button04"
+        android:layout_marginBottom="0dp" />
+
+    <Button
+        android:id="@+id/Button02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="callIntent"
+        android:text="Call Someone"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/Button01"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/Button01" />
+
+    <Button
+        android:id="@+id/Button03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="callIntent"
+        android:text="Dial"
+        app:layout_constraintLeft_toRightOf="@+id/Button02"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Button02"
+        android:layout_marginBottom="0dp" />
+
+</android.support.constraint.ConstraintLayout>
