@@ -1,31 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@+id/LinearLayout01"
-        android:layout_width="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
-        android:paddingLeft="10sp" android:paddingRight="10sp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="10sp"
+    android:paddingRight="10sp"
+    android:paddingTop="2sp">
+
+    <TextView
+        android:id="@+id/tvContact"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" android:paddingTop="2sp">
-        <TextView android:layout_height="wrap_content"
-                android:layout_width="fill_parent" android:id="@+id/tvContact"
-                android:text="Name" android:typeface="sans" android:textSize="16sp" android:textStyle="bold"></TextView>
-        <LinearLayout android:id="@+id/LinearLayout02"
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent">
-                <TextView android:id="@+id/TextView01" android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:textStyle="bold"
-                        android:text="Mobile  " android:textSize="13sp"></TextView>
-                <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:text="Number"
-                        android:id="@+id/tvMobile" android:textSize="13sp"></TextView>
-        </LinearLayout>
-        <LinearLayout android:id="@+id/LinearLayout02"
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent">
-                <TextView android:id="@+id/TextView01" android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:textStyle="bold"
-                        android:text="Mail  " android:textSize="13sp"></TextView>
-                <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:text="Mail"
-                        android:id="@+id/tvMail" android:textSize="13sp" android:layout_weight="1"></TextView><Button android:layout_width="wrap_content" android:id="@+id/btnRemove" android:text="Remove" android:layout_height="40dip"></Button>
-        </LinearLayout>
+        android:text="Name"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:typeface="sans"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile  "
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvMobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number"
+            android:textSize="13sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+         android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mail  "
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mail"
+            android:textSize="13sp"/>
+
+        <Button
+            android:id="@+id/btnRemove"
+            android:layout_width="wrap_content"
+            android:layout_height="40dip"
+            android:text="Remove"/>
+    </LinearLayout>
 
 </LinearLayout>

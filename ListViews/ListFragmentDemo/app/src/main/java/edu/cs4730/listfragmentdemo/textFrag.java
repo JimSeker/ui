@@ -16,39 +16,40 @@ import android.widget.TextView;
 
 public class textFrag extends Fragment {
 
-	/**
-	 * The fragment argument representing the item ID that this fragment
-	 * represents.
-	 */
-	public static final String ARG_TEXT_ID = "text_id";
-	
-	
-	int myposition=0;
+    /**
+     * The fragment argument representing the item ID that this fragment
+     * represents.
+     */
+    public static final String ARG_TEXT_ID = "text_id";
 
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-	}
 
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-	}
+    int myposition = 0;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		
-		
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
         // If activity recreated (such as from screen rotate), restore
         // the previous article selection set by onSaveInstanceState().
         // This is primarily necessary when in the two-pane layout.
         if (savedInstanceState != null) {
             myposition = savedInstanceState.getInt("position");
         }
-		View view = inflater.inflate(R.layout.text_fragment, container, false);
-		return view;
-	}
+        View view = inflater.inflate(R.layout.text_fragment, container, false);
+        return view;
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -66,13 +67,15 @@ public class textFrag extends Fragment {
             setText(myposition);
         }
     }
-	/*
-	 * simple method to set the text of the TextView from the layout, called from the TitleFrag.
-	 */
-	public void setText(int item) {
-		TextView tv = (TextView) getView().findViewById(R.id.text);
-		tv.setText(Shakespeare.DIALOGUE[item]);
-	}
+
+    /*
+     * simple method to set the text of the TextView from the layout, called from the TitleFrag.
+     */
+    public void setText(int item) {
+        TextView tv = (TextView) getView().findViewById(R.id.text);
+        tv.setText(Shakespeare.DIALOGUE[item]);
+    }
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

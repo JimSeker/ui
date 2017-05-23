@@ -4,7 +4,7 @@
     android:id="@+id/pager"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.cs4730.EsplistviewDemo.MainActivity" >
+    tools:context="edu.cs4730.esplistviewdemo.MainActivity" >
     
 	<android.support.v4.view.PagerTabStrip
 		android:id="@+id/pager_header" android:layout_width="match_parent"
