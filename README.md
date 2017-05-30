@@ -11,7 +11,9 @@ Note for Android studio download a zip (or clone).  Then in Andriod Studio open 
 
 <b>Communication/</b> are examples how fragments can communicate with callbacks. see the readme in the directory
 
-<b>listview/</b> are examples using varying listview, listfragments, and expandablelistviews.  see the readme in the directory
+<b>ListViews/</b> are examples using varying listview, listfragments, and expandablelistviews.  see the readme in the directory
+
+<b>RecyclerViews/</b> are examples using recyclerview widget to do lists.  see the readme in the directory
 
 <b>Navigation/</b> are examples of menus, actionbar/toolbar, and Navigation Drawers.  See the readme in the directory
 
