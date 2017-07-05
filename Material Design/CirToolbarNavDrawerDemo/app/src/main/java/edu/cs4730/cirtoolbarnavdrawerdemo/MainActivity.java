@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         };
         //To disable the icon for the drawer, change this to false
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerlayout.setDrawerListener(mDrawerToggle);
+        mDrawerlayout.addDrawerListener(mDrawerToggle);
 
         //lastly setup the listview with some simple categories via an array.
         String[] values = new String[] { "Item 1", "Item 2", "Item 3", "Item 4" };

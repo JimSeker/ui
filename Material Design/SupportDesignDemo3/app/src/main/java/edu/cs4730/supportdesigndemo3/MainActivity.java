@@ -19,6 +19,8 @@ import android.view.MenuItem;
  * it also changes the status and toolbar color as well, plus the text size as the toolbar is collapsing.
  *
  *
+ * as note, there is firebase app-indexing.  no code exists here, just in the manifest file.
+ *
  *  Some code from http://www.tutorialsbuzz.com/2015/11/android-collapsingtoolbarlayout-example_7.html
  * and http://antonioleiva.com/collapsing-toolbar-layout/
  */

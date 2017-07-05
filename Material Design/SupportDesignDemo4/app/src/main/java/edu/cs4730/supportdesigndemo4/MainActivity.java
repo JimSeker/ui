@@ -2,6 +2,7 @@ package edu.cs4730.supportdesigndemo4;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -104,13 +105,13 @@ public class MainActivity extends AppCompatActivity {
         };
         //To disable the icon for the drawer, change this to false
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerlayout.setDrawerListener(mDrawerToggle);
+        mDrawerlayout.addDrawerListener(mDrawerToggle);
         //this ia the support Navigation view.
         mNavigationView = (NavigationView) findViewById(R.id.navview);
         //setup a listener, which acts very similiar to how menus are handled.
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 //we are doing nothing, so just close the drawer.
                 menuItem.setChecked(true);
                 mDrawerlayout.closeDrawers();

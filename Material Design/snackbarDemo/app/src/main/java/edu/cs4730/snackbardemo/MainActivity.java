@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", SBonClickListener)
-                        .setCallback(new Snackbar.Callback() {
+                        .addCallback(new Snackbar.Callback() {
                             @Override
                             public void onDismissed(Snackbar snackbar, int event) {
                                 super.onDismissed(snackbar, event);
