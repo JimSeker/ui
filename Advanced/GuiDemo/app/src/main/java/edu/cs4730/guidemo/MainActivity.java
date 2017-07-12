@@ -58,18 +58,21 @@ public class MainActivity extends AppCompatActivity {
                         fragmentManager.beginTransaction().replace(R.id.container, new Button_Fragment()).commit();
                         break;
                     case 4:
-                        fragmentManager.beginTransaction().replace(R.id.container, new Relativelayout_Fragment()).commit();
+                        fragmentManager.beginTransaction().replace(R.id.container, new ButtonCL_Fragment()).commit();
                         break;
                     case 5:
-                        fragmentManager.beginTransaction().replace(R.id.container, new RadioCheck_Fragment()).commit();
+                        fragmentManager.beginTransaction().replace(R.id.container, new Relativelayout_Fragment()).commit();
                         break;
                     case 6:
-                        fragmentManager.beginTransaction().replace(R.id.container, new Spinner_Fragment()).commit();
+                        fragmentManager.beginTransaction().replace(R.id.container, new RadioCheck_Fragment()).commit();
                         break;
                     case 7:
-                        fragmentManager.beginTransaction().replace(R.id.container, new ViewSwitch_Fragment()).commit();
+                        fragmentManager.beginTransaction().replace(R.id.container, new Spinner_Fragment()).commit();
                         break;
                     case 8:
+                        fragmentManager.beginTransaction().replace(R.id.container, new ViewSwitch_Fragment()).commit();
+                        break;
+                    case 9:
                         fragmentManager.beginTransaction().replace(R.id.container, new Picker_Fragment()).commit();
                         break;                }
                 // update selected item and title, then close the drawer
