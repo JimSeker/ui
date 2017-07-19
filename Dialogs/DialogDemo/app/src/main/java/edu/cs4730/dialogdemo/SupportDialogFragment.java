@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 /**
  * Shows how to build and call a support alert dialog and set the listeners for it.
+ * Also shows a list dialog and listeners as well.
  */
 public class SupportDialogFragment extends Fragment {
     Button btn;
@@ -55,8 +56,10 @@ public class SupportDialogFragment extends Fragment {
 
 
     /*
-    * this is how to create the simple alert dialog via the support.v7
-    * The showdialog is not necessary, I just wanted to encapsulate the code.
+    *  The method is not necessary.
+    *
+    *  This builds an alert dialog, with the positive button set to Yes, Negative button set to NO.
+    *  There is a listener if the dialog is canceled (ie the back button is used)
      */
 
     void showdialog(String title) {
@@ -64,6 +67,7 @@ public class SupportDialogFragment extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(title);
         builder.setMessage("Play again?");
+        //Button Button
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -71,6 +75,7 @@ public class SupportDialogFragment extends Fragment {
 
             }
         });
+        //Negative button
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -78,6 +83,7 @@ public class SupportDialogFragment extends Fragment {
 
             }
         });
+        //If the user uses the back button instead.
         builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {
@@ -88,6 +94,11 @@ public class SupportDialogFragment extends Fragment {
         builder.show();
     }
 
+    /*
+     * This shows a list and the use is to select one of them.
+     * Note, this dialog doesn't set a cancel listener, like the one above.  so if the user
+     * cancels, nothing happens.
+     */
     void showlistdialog(String title) {
         final String[] items = { "Remove Walls", "Add Walls",
                 "Add/Remove Objects", "Add/Remove Score" };

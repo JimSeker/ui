@@ -20,10 +20,13 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         myEditNameDialogFrag.EditNameDialogListener,
-        myDialogFragment.OnDialogFragmentListener, myAlertDialogFragment.OnDialogFragmentListener{
+        myDialogFragment.OnDialogFragmentListener,
+        myAlertDialogFragment.OnDialogFragmentListener,
+        MultiInputDialogFragment.OnDialogFragmentInteractionListener {
 
     FragmentManager fragmentManager;
     CustomFragment myCustomFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +68,7 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction().replace(R.id.container, new SupportDialogFragment()).commit();
         } else if (id == R.id.nav_custom) {
             if (myCustomFragment == null)
-                 myCustomFragment = new CustomFragment();
+                myCustomFragment = new CustomFragment();
             fragmentManager.beginTransaction().replace(R.id.container, myCustomFragment).commit();
         }
 
@@ -85,12 +88,14 @@ public class MainActivity extends AppCompatActivity
         myCustomFragment.displaylog("Positive/Yes click!");
 
     }
+
     //for Both myDialogFragment and myAlterDialogFragment
     public void doNegativeClick() {
         // Do stuff here.
         myCustomFragment.displaylog("Negative/No/Cancel click!");
 
     }
+
     //for myDialogFragment
     public void doItem(String item) {
         myCustomFragment.displaylog(item);
@@ -99,5 +104,12 @@ public class MainActivity extends AppCompatActivity
     //for the myEditNameDialogFrag
     public void onFinishEditDialog(String inputText) {
         myCustomFragment.displaylog("Hi, " + inputText);
+    }
+
+    //for the MultiInputDialgoFragment
+    @Override
+    public void onMultiInputInteraction(String[] items) {
+        myCustomFragment.displaylog("Item 0: " + items[0]);
+        myCustomFragment.displaylog("Item 1: " + items[1]);
     }
 }
