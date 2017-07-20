@@ -124,8 +124,10 @@ public class CustomFragment extends Fragment {
 
                     }
                 });
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        //you can create the dialog or just use the now method in the builder.
+        //AlertDialog dialog = builder.create();
+        //dialog.show();
+        builder.show();
     }
 
 

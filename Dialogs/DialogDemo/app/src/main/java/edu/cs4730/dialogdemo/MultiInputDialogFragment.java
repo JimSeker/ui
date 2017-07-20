@@ -1,21 +1,22 @@
 package edu.cs4730.dialogdemo;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 
 
 /**
  * This is a dialogfragment that has two text boxes.
  * The program can start it up with data or just have start with blanks.
- *
+ * <p>
  * It will return a string array via the listener that that needs to be implemented by the activity (or fragment?)
- *
  */
 public class MultiInputDialogFragment extends DialogFragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,32 +60,23 @@ public class MultiInputDialogFragment extends DialogFragment {
         }
     }
 
-
-    // variables used while the fragment is loaded
-    Button btn_cancel, btn_save;
     EditText et_name, et_amount;
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View myView = inflater.inflate(R.layout.fragment_multi_input_dialog, container, false);
+    public Dialog onCreateDialog(Bundle SavedIntanceState) {
+
+        LayoutInflater inflater = LayoutInflater.from(getActivity());
+        View myView = inflater.inflate(R.layout.fragment_multi_input_dialog, null);
         et_name = (EditText) myView.findViewById(R.id.et_name);
         if (name != null) et_name.setText(name);
         et_amount = (EditText) myView.findViewById(R.id.et_amount);
         if (amount != null) et_amount.setText(amount);
-        btn_cancel = (Button) myView.findViewById(R.id.btn_cancel);
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
+        final AlertDialog.Builder builder = new  AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.Theme_AppCompat));
+        builder.setView(myView).setTitle("Multi Input Dialog");
+        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+
             @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-        btn_save = (Button) myView.findViewById(R.id.btn_save);
-        btn_save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            public void onClick(DialogInterface dialog, int id) {
                 String[] returnlist =
                         new String[]{
                                 et_name.getText().toString(),
@@ -94,9 +86,16 @@ public class MultiInputDialogFragment extends DialogFragment {
                 mListener.onMultiInputInteraction(returnlist);
 
                 dismiss();
-            }
-        });
-        return myView;
+
+            }})
+            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                       dialog.cancel();
+                }
+            });
+
+        return builder.create();
+
     }
 
     @Override
