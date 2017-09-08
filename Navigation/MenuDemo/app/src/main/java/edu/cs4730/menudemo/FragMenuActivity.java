@@ -8,8 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
-
 public class FragMenuActivity extends AppCompatActivity {
 	FragMenu1 one;
 	FragMenu2 two;
