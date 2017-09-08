@@ -16,7 +16,8 @@ import android.widget.Toast;
 import android.text.TextWatcher;
 
 /**
- * A simple {@link Fragment} subclass.
+ * The meat of the example is here, instead of the mainActivity.  OnCreateView has the setup
+ * and then all the listeners.
  */
 public class FormFragment extends Fragment implements RadioGroup.OnCheckedChangeListener, TextWatcher,
         Button.OnClickListener {
