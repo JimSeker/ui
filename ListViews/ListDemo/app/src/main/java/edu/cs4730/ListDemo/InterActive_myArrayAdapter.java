@@ -22,57 +22,59 @@ import android.widget.TextView;
 
 public class InterActive_myArrayAdapter extends ArrayAdapter<InterActive_DataModel> {
 
-	private final List<InterActive_DataModel> list;
-	private final Activity context;
+    private final List<InterActive_DataModel> list;
+    private final Activity context;
+    private boolean onBind = false;
 
-	public InterActive_myArrayAdapter(Activity context, List<InterActive_DataModel> list) {
-		super(context, R.layout.interactive_rowlayout, list);
-		this.context = context;
-		this.list = list;
-	}
+    public InterActive_myArrayAdapter(Activity context, List<InterActive_DataModel> list) {
+        super(context, R.layout.interactive_rowlayout, list);
+        this.context = context;
+        this.list = list;
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		CheckBox checkbox;
-		TextView text;
-		//if (convertView == null) {
-		//having problems with the convertVeiw when not null, so just redoing it each time.  ...
-			LayoutInflater inflator = context.getLayoutInflater();
-			convertView = inflator.inflate(R.layout.interactive_rowlayout, null);
-			text = (TextView) convertView.findViewById(R.id.label);
-			checkbox = (CheckBox) convertView.findViewById(R.id.check);
-			
-			//Tag is an like a temp space, in a widget where you can set some information as an Object Class
-			//in this case, the position variable.
-			checkbox.setTag(String.valueOf(position));  //used to find the list position when we change the check mark
-			
-			checkbox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-				@Override
-				public void onCheckedChanged(CompoundButton buttonView,	boolean isChecked) {
-					CheckBox cb = (CheckBox)buttonView;
-					Log.w("checkbox", "checkbox has "+cb.getTag());
-					  //first get the model item out of the list, using the position stored in Tag.
-					InterActive_DataModel temp = list.get( Integer.parseInt((String)cb.getTag()));
-					//now update our InterActive_DataModel with the correct information.
-					temp.setSelected(cb.isChecked());
-					cb.setChecked(temp.isSelected());  //Not necessary since the GUI handles it.
-					
-					//say we only want one "item" checked and all the other unchecked.
-					String t = (String) cb.getTag();
-					int position = Integer.parseInt(t);
-					Log.w("checkbox", "Position is " + t + " value is " + cb.isChecked());
-					for (int i=0; i<list.size();i++) {
-						if (i!= position)
-						 list.get(i).setSelected(false);
-					}
-					notifyDataSetChanged();  //"redraw" any views that were checked.
-				}	
-			});
-			
-		checkbox.setChecked(list.get(position).isSelected());
-		text.setText(list.get(position).getName());
-		return convertView;
-	}
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        CheckBox checkbox;
+        TextView text;
+        if (convertView == null) {
+            //having problems with the convertVeiw when not null, so just redoing it each time.  ...
+            LayoutInflater inflator = context.getLayoutInflater();
+            convertView = inflator.inflate(R.layout.interactive_rowlayout, null);
+        }
+        onBind = true; //we are setting data.
+        text = (TextView) convertView.findViewById(R.id.label);
+        text.setText(list.get(position).getName());
 
+        checkbox = (CheckBox) convertView.findViewById(R.id.check);
+        checkbox.setChecked(list.get(position).isSelected());
+
+        checkbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!onBind) { //if we are nto setting up the data, then do something.  Otherwise, this can cause a loop.
+                    //gatTag exists in base class, so no casting is needed here to checkbox.
+                    String t = (String) buttonView.getTag();
+                    int position = Integer.parseInt(t);
+                    Log.w("checkbox", "checkbox has " + t);
+                    //now update the model item out of the list, using the position stored in Tag.
+                    list.get(position).setSelected(isChecked);
+                    Log.w("checkbox", "Position is " + t + " value is " + isChecked);
+                    //say we only want one "item" checked and all the other unchecked.
+                    if (isChecked) {  //going from unchecked to checked, so update everybody else.
+                        for (int i = 0; i < list.size(); i++) {
+                            if (i != position)
+                                list.get(i).setSelected(false);
+                        }
+                        notifyDataSetChanged();  //"redraw" any views that were checked.
+                    }
+                }
+            }
+        });
+        //Tag is an like a temp space, in a widget where you can set some information as an Object Class
+        //in this case, the position variable.
+        checkbox.setTag(String.valueOf(position));  //used to find the list position when we change the check mark
+        onBind = false; //end of setting data.
+        return convertView;
+    }
 
 }
