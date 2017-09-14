@@ -19,10 +19,10 @@ import android.view.MenuItem;
  * No attempt at storing the data was made.  see save data repo, for how this might be done.
  */
 
-public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener {
 
-     MainFragment main;
-     InfoFragment info;
+    MainFragment main;
+    InfoFragment info;
     Boolean twopane = false;
     FragmentManager fragmentManager;
 
@@ -52,43 +52,20 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
         }
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @Override
     public void onFragmentInteraction(Integer Num) {
 
         if (twopane) {
-           // Log.v("MainActivity", "twopane click");
+            // Log.v("MainActivity", "twopane click");
             info.update(Num);  //info fragment is already showing, just update the value.
         } else {
-           // Log.v("MainActivity", "click");
+            // Log.v("MainActivity", "click");
             //now update the info fragment.
             info.update(Num);
             //so we need to display the fragment info and then update it as well.
-            FragmentTransaction transaction =fragmentManager.beginTransaction();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
             //now setup to replace the current fragment.
-            transaction.replace(R.id.container,info);
+            transaction.replace(R.id.container, info);
             // and add the transaction to the back stack so the user can navigate back
             transaction.addToBackStack(null);
             // Commit the transaction
