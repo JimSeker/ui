@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 /*
- * this ia listfragment.  All we need to do is setlistadapter in onCreateView (there is no layout)
+ * This ia listfragment.  All we need to do is setlistadapter in onCreateView (there is no layout)
   * and override onListItemClick.  Since we also have callbacks, also deal with those.
  */
 
