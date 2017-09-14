@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         mCollapsingToolbarLayout.setTitle(getResources().getString(R.string.app_name));
 
 
-
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 "Linux", "OS/2");
 
         //setup the RecyclerView
-        mRecyclerView = (RecyclerView)findViewById(R.id.list);
+        mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
