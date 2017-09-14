@@ -7,8 +7,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 
 /*
  * design tablayout with a viewpager.   So now that the design support better understands
@@ -24,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     String TAG = "MainActivity";
     ViewPager viewPager;
     FragLeft leftfrag;
-    FragMid  midfrag;
+    FragMid midfrag;
     FragRight rightfrag;
 
     @Override
@@ -53,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 *   using a PageStripe.
  */
     public class ThreeFragmentPagerAdapter extends FragmentPagerAdapter {
-        int PAGE_COUNT =3;
+        int PAGE_COUNT = 3;
 
         //required constructor that simply supers.
         public ThreeFragmentPagerAdapter(FragmentManager fm) {
@@ -65,10 +63,14 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
 
             switch (position) {
-                case 0: return leftfrag;
-                case 1: return midfrag;
-                case 2: return rightfrag;
-                default: return null;
+                case 0:
+                    return leftfrag;
+                case 1:
+                    return midfrag;
+                case 2:
+                    return rightfrag;
+                default:
+                    return null;
             }
         }
 
@@ -84,31 +86,10 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
 
             //return String.valueOf(position);  //returns string of position for title
-            return "Page "+ String.valueOf(position +1);
+            return "Page " + String.valueOf(position + 1);
 
         }
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

@@ -2024,8 +2024,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="312" />
-    <option name="y" value="30" />
+    <option name="x" value="331" />
+    <option name="y" value="16" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -2114,7 +2114,7 @@
     <property name="android.sdk.path" value="C:/Android/android-sdk" />
     <property name="android.project.structure.last.selected" value="lib" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../snackbarDemo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SupportDesignDemo2" />
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -2388,7 +2388,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="312" y="30" width="1400" height="1000" extended-state="0" />
+    <frame x="331" y="16" width="1400" height="1000" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />

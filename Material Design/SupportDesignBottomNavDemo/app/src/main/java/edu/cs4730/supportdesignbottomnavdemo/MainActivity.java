@@ -9,7 +9,7 @@ import android.view.MenuItem;
 /*
  * This is a simple example of how to use a the BottomNavigationView, which was
  * introduced in support design v25.0.0.   The navigation changes the fragment, using the
- * onNavigationItemSelected listener.  Note the list for the naviagion view is a menu xml list, found
+ * onNavigationItemSelected listener.  Note the list for the navigation view is a menu xml list, found
  * in the menu resource.
  */
 public class MainActivity extends AppCompatActivity {
