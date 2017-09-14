@@ -36,16 +36,16 @@ public class MainActivity extends AppCompatActivity {
                                 super.onDismissed(snackbar, event);
                                 switch (event) {
                                     case Snackbar.Callback.DISMISS_EVENT_ACTION:
-                                        Toast.makeText(getBaseContext(), "Dimiss from onclick",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getBaseContext(), "Dimiss from onclick", Toast.LENGTH_SHORT).show();
                                         break;
                                     case Snackbar.Callback.DISMISS_EVENT_SWIPE:
-                                        Toast.makeText(getBaseContext(), "Dimiss from user swipe",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getBaseContext(), "Dimiss from user swipe", Toast.LENGTH_SHORT).show();
                                         break;
                                     case Snackbar.Callback.DISMISS_EVENT_TIMEOUT:
-                                        Toast.makeText(getBaseContext(), "Dimiss from timeout",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getBaseContext(), "Dimiss from timeout", Toast.LENGTH_SHORT).show();
                                         break;
                                     case Snackbar.Callback.DISMISS_EVENT_CONSECUTIVE:
-                                        Toast.makeText(getBaseContext(), "Dimiss from another snackbar showing",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getBaseContext(), "Dimiss from another snackbar showing", Toast.LENGTH_SHORT).show();
                                         break;
                                 }
                             }
@@ -55,31 +55,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    View.OnClickListener SBonClickListener = new View.OnClickListener(){
-        public void  onClick  (View  v){
-            Toast.makeText(getBaseContext(),"You clicked Action", Toast.LENGTH_SHORT).show();
+    View.OnClickListener SBonClickListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            Toast.makeText(getBaseContext(), "You clicked Action", Toast.LENGTH_SHORT).show();
         }
     };
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

@@ -2114,7 +2114,7 @@
     <property name="android.sdk.path" value="C:/Android/android-sdk" />
     <property name="android.project.structure.last.selected" value="lib" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SimpleDemo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../snackbarDemo" />
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
