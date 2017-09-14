@@ -103,7 +103,7 @@ public class MainFragment extends Fragment {
             public void onRefresh() {
                 //where we call the refresher parts.  normally some kind of networking async task or web service.
                 // For demo purpose, the code in the refreshslower method so it will take a couple of seconds
-                //otherise, the task or service would just be called here.
+                //otherwise, the task or service would just be called here.
 
                 refreshslower();  //this will be slower, for the demo.
             }

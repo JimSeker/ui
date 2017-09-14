@@ -6,24 +6,48 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
 
 /**
- * Created by Seker on 1/24/2015.
+ * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
+ * see http://developer.android.com/training/improving-layouts/smooth-scrolling.html
+ * except instead having to implement a ViewHolder, it is implemented within
+ * the adapter.
  */
-public class phoneAdapter extends RecyclerView.Adapter<phoneAdapter.ViewHolder> {
+
+class phoneAdapter extends RecyclerView.Adapter<phoneAdapter.ViewHolder> {
 
 
     private List<Phonebook> myList;
     private int rowLayout;
     private Context mContext;
 
-    public phoneAdapter(List<Phonebook> myList, int rowLayout, Context context) {
+
+    // Provide a reference to the views for each data item
+    // Complex data items may need more than one view per item, and
+    // you provide access to all the views for a data item in a view holder
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView tvContact;
+        TextView tvPhone;
+        TextView tvMail;
+        Button btnRemove;
+
+        //all the declares and findby are here.  onBind is where the data is setup.
+        ViewHolder(View itemView) {
+            super(itemView);
+            tvContact = (TextView) itemView.findViewById(R.id.tvContact);
+            tvPhone = (TextView) itemView.findViewById(R.id.tvMobile);
+            tvMail = (TextView) itemView.findViewById(R.id.tvMail);
+            btnRemove = (Button) itemView.findViewById(R.id.btnRemove);
+        }
+    }
+
+    //constructor
+    phoneAdapter(List<Phonebook> myList, int rowLayout, Context context) {
         this.myList = myList;
         this.rowLayout = rowLayout;
         this.mContext = context;
@@ -67,22 +91,4 @@ public class phoneAdapter extends RecyclerView.Adapter<phoneAdapter.ViewHolder> 
     }
 
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvContact;
-        public TextView tvPhone;
-        public TextView tvMail;
-        public Button btnRemove;
-        //all the declares and findby are here.  onBind is where the data is setup.
-        public ViewHolder(View itemView) {
-            super(itemView);
-            tvContact = (TextView) itemView.findViewById(R.id.tvContact);
-            tvPhone = (TextView) itemView.findViewById(R.id.tvMobile);
-            tvMail = (TextView) itemView.findViewById(R.id.tvMail);
-            btnRemove = (Button) itemView.findViewById(R.id.btnRemove);
-        }
-    }
 }

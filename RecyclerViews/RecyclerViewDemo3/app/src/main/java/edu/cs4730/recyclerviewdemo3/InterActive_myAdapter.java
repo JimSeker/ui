@@ -6,6 +6,7 @@ package edu.cs4730.recyclerviewdemo3;
 import java.util.List;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ public class InterActive_myAdapter extends RecyclerView.Adapter<InterActive_myAd
     private List<InterActive_DataModel> myList;
     private int rowLayout;
     private Context mContext;
+    private boolean onBind;
 
     public InterActive_myAdapter(List<InterActive_DataModel> myList, int rowLayout, Context context) {
         this.myList = myList;
@@ -37,29 +39,37 @@ public class InterActive_myAdapter extends RecyclerView.Adapter<InterActive_myAd
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        //  String entry = myList.get(i);
-        //doing last does what?
-        viewHolder.checkbox.setChecked(myList.get(i).isSelected());
+        onBind = true;  //this will stop the checkbox listener from doing anything while we are setting up the data.
         viewHolder.text.setText(myList.get(i).getName());
+        viewHolder.checkbox.setChecked(myList.get(i).isSelected());
+        viewHolder.checkbox.setOnCheckedChangeListener(
+                new OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (!onBind) {  //if we are nto setting up the data, then do something.  Otherwise, this can cause a loop.
+                            //get the "tag" out of the checkbox [tag exists base class view], so I know where it is in the myList.
+                            String t = (String) buttonView.getTag();
+                            int position = Integer.parseInt(t);
+                            Log.w("checkbox listener", "checkbox has " + t);
+                            //now update the model item out of the list, using the position stored in Tag.
+                            myList.get(position).setSelected(isChecked);
+                            Log.w("checkbox", "Position is " + t + " value is " + isChecked);
+                            if (isChecked) { //going from unchecked to checked, so update everybody else.
+                                for (int i = 0; i < myList.size(); i++) {
+                                    if (i != position)
+                                        myList.get(i).setSelected(false);
+                                }
+                                notifyDataSetChanged();
+                            }
+                        }
+                    }
+                }
 
+        );
         //Tag is an like a temp space, in a widget where you can set some information as an Object Class
         //in this case, the position variable.
         viewHolder.checkbox.setTag(String.valueOf(i));  //used to find the list position when we change the check mark
-
-        viewHolder.checkbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                CheckBox cb = (CheckBox) buttonView;
-                //get the "tag" out of the checkbox, so I know where it is in the myList.
-                String t = (String) cb.getTag();
-                int position = Integer.parseInt(t);
-                Log.w("checkbox listener", "checkbox has " + t);
-                //now update the model item out of the list, using the position stored in Tag.
-                myList.get(position).setSelected(isChecked);
-               cb.setChecked(isChecked);  //likely not needed, but just in case.
-            }
-        });
-
+        onBind = false;
     }
 
     @Override
@@ -78,6 +88,8 @@ public class InterActive_myAdapter extends RecyclerView.Adapter<InterActive_myAd
             super(itemView);
             text = (TextView) itemView.findViewById(R.id.label);
             checkbox = (CheckBox) itemView.findViewById(R.id.check);
+
+
         }
     }
 

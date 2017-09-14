@@ -1,8 +1,5 @@
 package edu.cs4730.recyclerviewdemo;
 
-/**
- * Created by Seker on 1/22/2015.
- */
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,7 +18,7 @@ import java.util.List;
  * the adapter.
  */
 
-public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
+public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
     private List<String> myList;
     private int rowLayout;
@@ -34,10 +31,11 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView myName;
         public ImageView Pic;
+
         public ViewHolder(View itemView) {
             super(itemView);
             myName = (TextView) itemView.findViewById(R.id.Name);
-            Pic= (ImageView)itemView.findViewById(R.id.picture);
+            Pic = (ImageView) itemView.findViewById(R.id.picture);
         }
     }
 
@@ -63,8 +61,8 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
         viewHolder.myName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView tv = (TextView)v;
-                Toast.makeText(mContext,tv.getText(),Toast.LENGTH_SHORT).show();
+                TextView tv = (TextView) v;
+                Toast.makeText(mContext, tv.getText(), Toast.LENGTH_SHORT).show();
             }
         });
         viewHolder.Pic.setImageResource(R.drawable.phone);

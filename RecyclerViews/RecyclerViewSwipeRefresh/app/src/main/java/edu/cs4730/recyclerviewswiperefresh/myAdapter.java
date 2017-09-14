@@ -1,8 +1,5 @@
 package edu.cs4730.recyclerviewswiperefresh;
 
-/**
- * Created by Seker on 1/22/2015.
- */
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

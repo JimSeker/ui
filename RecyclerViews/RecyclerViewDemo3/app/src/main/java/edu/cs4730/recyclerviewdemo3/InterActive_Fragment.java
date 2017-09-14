@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class InterActive_Fragment extends Fragment  {
+public class InterActive_Fragment extends Fragment {
     String TAG = "InterActive RV";
     RecyclerView mRecyclerView;
     InterActive_myAdapter mAdapter;
