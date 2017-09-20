@@ -12,6 +12,7 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity implements titlefrag.OnFragmentInteractionListener {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
+    textFrag  myTextFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements titlefrag.OnFragm
             }
         };
         mDrawerLayout.addDrawerListener(mDrawerToggle);
+
+        //get the textFrag from the support manager;
+        myTextFrag = (textFrag) getSupportFragmentManager().findFragmentById(R.id.frag_text);
     }
 
 
@@ -75,8 +79,8 @@ public class MainActivity extends AppCompatActivity implements titlefrag.OnFragm
 
     @Override
     public void onItemSelected(int id) {
-        ((textFrag) getSupportFragmentManager().findFragmentById(R.id.frag_text)
-        ).setText(id);
+        //use the setter in textFrag to change the text.
+        myTextFrag.setText(id);
         mDrawerLayout.closeDrawers();
     }
 
