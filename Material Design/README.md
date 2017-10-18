@@ -12,6 +12,8 @@ A useful guide to added libraries (see Studio 1.0 answer) http://stackoverflow.c
 <b>snackbarDemo</b>  show the snackbar triggered from a fab.  It also show how the callbacks works, so you can determine how the
 user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
+<b>snackbarExtendedDemo</b> show how to set the snackbar to indefinite, so it will continue to show, until we programmatically dismiss it.
+
 <b>SupportDesignDemo2</b> uses the support design tablayout with a viewpager.  with the new methods is support design the tablayout is just as easy to use as The stripetab with the viewpager, but you need 2 extra lines of code to setup it up.
 
 <b>SupportDesignDemo3</b> show how to use a picture with the toolbar and how to collapse the picture.  Also a little bit with the support design pallete.
