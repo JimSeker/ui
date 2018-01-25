@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
         };
         //To disable the icon for the drawer, change this to false
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerlayout.setDrawerListener(mDrawerToggle);
+        mDrawerlayout.addDrawerListener(mDrawerToggle);
         //setup the addcat "button"
         addBut = (FloatingActionButton) findViewById(R.id.addCat);
         addBut.setOnClickListener(new View.OnClickListener() {
