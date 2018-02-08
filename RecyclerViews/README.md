@@ -13,4 +13,6 @@ Android RecyclerView Examples
 
 <b>CallBacksDemo</b> uses a RecyclerView and shows how to setup a listeners and callbacks to pass data from the recyclerview adapter to the MainActivity (via a fragment).
 
+<b>ModelViewRecyeclerViewDemo</b> uses a recyclerview and instead of all the callbacks like in CallBackDemo, it uses a ModelView with LiveData to trigger observers in the Fragment and Activity to pass data back from the recyclerview adapter.
+
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course and cosc 4735 Advance Mobile Programing course.  All examples are for Android.
