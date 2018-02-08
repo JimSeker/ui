@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ModelViewRecyclerViewDemo</string>
+    <string name="action_settings">settings</string>
+</resources>
