@@ -1,13 +1,11 @@
 package edu.cs4730.viewpagerdemo;
 
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         rightfrag = new FragRight();
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager =  findViewById(R.id.pager);
         if (viewPager != null) {
             //in portrait mode, so setup the viewpager with the fragments, using the adapter
             viewPager.setAdapter(new ThreeFragmentPagerAdapter(fragmentManager));
