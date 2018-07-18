@@ -36,7 +36,7 @@ public class CustomFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_custom, container, false);
-        logger = (TextView) myView.findViewById(R.id.logger_custom);
+        logger = myView.findViewById(R.id.logger_custom);
         myView.findViewById(R.id.btn_alert1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
