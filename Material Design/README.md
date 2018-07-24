@@ -3,7 +3,7 @@ Android material Design Examples
 
 <b>SimpleDemo</b> is basic example of using Material design.  There is no real java code here, it's all in the values/color and styles.xml files (values and values-v21).  There are also two screenshots device-4.4.png and device-5.0.png to show how style looks.
 
-<b>CirToolbarNavDrawerDemo</b> uses toolbarnavDrawerDemo and uses the suppor design floating action button.  Previous versions used adds the Floating Action button (using a library from https://github.com/makovkastar/FloatingActionButton) 
+<b>CirToolbarNavDrawerDemo</b> uses toolbarnavDrawerDemo and uses the support design floating action button.  Previous versions used adds the Floating Action button (using a library from https://github.com/makovkastar/FloatingActionButton) 
 A useful guide to added libraries (see Studio 1.0 answer) http://stackoverflow.com/questions/16588064/how-do-i-add-a-library-project-to-the-android-studio A somewhat helpful visual guide to adding libraries: http://youtu.be/1MyBO9z7ojk 
 
 
@@ -14,7 +14,7 @@ user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
 <b>snackbarExtendedDemo</b> show how to set the snackbar to indefinite, so it will continue to show, until we programmatically dismiss it.
 
-<b>SupportDesignDemo2</b> uses the support design tablayout with a viewpager.  with the new methods is support design the tablayout is just as easy to use as The stripetab with the viewpager, but you need 2 extra lines of code to setup it up.
+<b>SupportDesignDemo2</b> uses the support design tablayout with a viewpager.  The new methods use the support design tablayout.  They are just as easy to use as the stripetab with the viewpager, but you need 2 extra lines of code to setup it up.
 
 <b>SupportDesignDemo3</b> show how to use a picture with the toolbar and how to collapse the picture.  Also a little bit with the support design pallete.
 
