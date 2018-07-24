@@ -1,12 +1,13 @@
 package edu.cs4730.viewpagerdemo;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 public class FragRight extends Fragment {
     TextView tx;
@@ -36,7 +37,7 @@ public class FragRight extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.right, container, false);
-        tx = (TextView) view.findViewById(R.id.tvright);
+        tx = view.findViewById(R.id.tvright);
         setText(savedData);
         return view;
     }
