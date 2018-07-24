@@ -1,27 +1,23 @@
 package edu.cs4730.supportdesigndemo2;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.fragment.app.Fragment;
+
+/*
+ * This is the middle fragment, which uses a edittext to put text on the either the left or right
+ * fragment in the view pager.
+ */
+
 public class FragMid extends Fragment implements Button.OnClickListener {
     Button btn_lt, btn_rt;
     EditText et;
     MainActivity parent;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
