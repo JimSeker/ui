@@ -7,6 +7,20 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+/*
+ * this is an example using 3 fragments and a viewpager.
+ *   In a viewpager, if a fragment is two away from the one displaying, it is sent onDestroyView()
+ *   so viewmodel has been added to start the data in the fragment, so it will survive an ondestroyview call.
+ *     the OnsaveInstanceState was not very reliable, but the viewmodel is.
+ *
+ *  The left and right fragment, log each call, from OnCreate to onDestory, so you can look in the debug to
+ *  see what call the fragments have received.
+ *
+ *  This example should really use callbacks between the fragments, instead of calling them directly.
+ *    maybe I'll fix it in the next iteration.
+ *
+ * Note, it's been updated to use the API 28 androidx support libraries.
+ */
 
 public class MainActivity extends AppCompatActivity {
     String TAG = "MainActivity";
