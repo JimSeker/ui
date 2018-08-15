@@ -4,11 +4,12 @@ package edu.cs4730.mvcdemo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /*
  * A simple activity to demo the MVC method.
@@ -39,18 +40,18 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 		setContentView(R.layout.activity_main);
 		
 		//setup all the listeners and variables for the layout
-		colorName = (TextView) findViewById(R.id.Name);
+		colorName = findViewById(R.id.Name);
 		
 		//setup the picture stuff.
-		myPic = (ImageView) findViewById(R.id.imageView1);
+		myPic = findViewById(R.id.imageView1);
 		//to draw the color with a bitmap and the canvas to draw on
 		theColor = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
 		theColorc = new Canvas(theColor);
 		
 		//buttons and listeners
-		Next = (Button) findViewById(R.id.Next);
+		Next = findViewById(R.id.Next);
 		Next.setOnClickListener(this);
-		Prev = (Button) findViewById(R.id.Prev);
+		Prev = findViewById(R.id.Prev);
 		Prev.setOnClickListener(this);
 		Prev.setEnabled(false);  //can't go back yet.
 		
