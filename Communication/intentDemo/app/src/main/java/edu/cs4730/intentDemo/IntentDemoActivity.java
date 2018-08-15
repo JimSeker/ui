@@ -8,12 +8,13 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 public class IntentDemoActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_CAMERA = 10;
@@ -101,7 +102,7 @@ public class IntentDemoActivity extends AppCompatActivity {
         //Toast.makeText(this, "Request code is " + requestCode, Toast.LENGTH_LONG).show();
         if (requestCode == REQUEST_CODE_CAMERA) {
             if (resultCode == Activity.RESULT_OK) { //get where the picture is stored and display info
-                String result = data.toURI();
+                String result = data.getData().toString();
                 Toast.makeText(this, result, Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(this, "Camera action canceled", Toast.LENGTH_SHORT).show();
@@ -120,11 +121,10 @@ public class IntentDemoActivity extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK) { //ActivityTwo finished correctly.
                 //String result = data.getData().toString();
                 //Get the contact's name:
-                Cursor c = managedQuery(data.getData(), null, null, null, null);
+                Cursor c = getContentResolver().query(data.getData(), null, null, null, null);
                 c.moveToFirst();  //I know the query worked, since we just picked it, otherwise, should be an if statement.
                 String name = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
                 Toast.makeText(this, "You Picked: " + name, Toast.LENGTH_LONG).show();
-
 
                 //startActivity(new Intent(Intent.ACTION_EDIT, data.getData()));
             } else {

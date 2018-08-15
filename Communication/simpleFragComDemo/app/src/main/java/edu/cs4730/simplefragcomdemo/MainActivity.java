@@ -1,11 +1,10 @@
 package edu.cs4730.simplefragcomdemo;
 
-import android.support.v7.app.AppCompatActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 /*
  * simple example of callbacks and two fragments.
@@ -47,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
             main = new MainFragment();
             info = new InfoFragment();
             fragmentManager.beginTransaction()
-                    .add(R.id.container, main)
-                    .commit();
+                .add(R.id.container, main)
+                .commit();
         }
     }
 

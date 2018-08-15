@@ -2,14 +2,13 @@ package edu.cs4730.simplefragcomdemo;
 
 import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,19 +31,18 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_main, container, false);
-        myButton = (Button) myView.findViewById(R.id.button01);
+        myButton = myView.findViewById(R.id.button01);
         myButton.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
-                   if (mListener != null) {
-                       mListener.onFragmentInteraction(1);
-                   }
-               }
+            @Override
+            public void onClick(View v) {
+                if (mListener != null) {
+                    mListener.onFragmentInteraction(1);
+                }
+            }
         });
 
         return myView;
     }
-
 
     @Override
     public void onAttach(Context context) {
@@ -54,7 +52,7 @@ public class MainFragment extends Fragment {
             mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
+                + " must implement OnFragmentInteractionListener");
         }
     }
 
