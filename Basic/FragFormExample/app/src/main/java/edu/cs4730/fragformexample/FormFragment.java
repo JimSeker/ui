@@ -1,8 +1,6 @@
 package edu.cs4730.fragformexample;
 
-
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,17 +13,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.text.TextWatcher;
 
+import androidx.fragment.app.Fragment;
+
 /**
  * The meat of the example is here, instead of the mainActivity.  OnCreateView has the setup
  * and then all the listeners.
  */
 public class FormFragment extends Fragment implements RadioGroup.OnCheckedChangeListener, TextWatcher,
-        Button.OnClickListener {
+    Button.OnClickListener {
     //variables for the widgets
     RadioGroup myRadioGroup;
     EditText et;
     Button btnalert;
-    TextView label ;
+    TextView label;
     //variable for the log
     String TAG = "FormFragment";
 
@@ -41,18 +41,18 @@ public class FormFragment extends Fragment implements RadioGroup.OnCheckedChange
         View myView = inflater.inflate(R.layout.fragment_form, container, false);
 
         //EditText view setup and listner
-        et = (EditText) myView.findViewById(R.id.ETname);
+        et = myView.findViewById(R.id.ETname);
         et.addTextChangedListener(this);
 
         //the top label in the xml doc.
-        label = (TextView) myView.findViewById(R.id.Label01);
+        label = myView.findViewById(R.id.Label01);
 
         //setup the radio group with a listener.
-        myRadioGroup = (RadioGroup) myView.findViewById(R.id.SndGroup);
+        myRadioGroup = myView.findViewById(R.id.SndGroup);
         myRadioGroup.setOnCheckedChangeListener(this);
 
         //setup the button with a listener as well.
-        btnalert = (Button) myView.findViewById(R.id.Button01);
+        btnalert = myView.findViewById(R.id.Button01);
         btnalert.setOnClickListener(this);
 
         return myView;
@@ -74,16 +74,19 @@ public class FormFragment extends Fragment implements RadioGroup.OnCheckedChange
             }
         }
     }
+
     /* EditView listeners */
-    public void onTextChanged (CharSequence s, int start, int before, int count) {
-        if (et.length() >10) {
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if (et.length() > 10) {
             Toast.makeText(getActivity(), "Long Word!", Toast.LENGTH_SHORT).show();
             Log.d(TAG, "Long Word!");
         }
     }
-    public void beforeTextChanged( CharSequence s, int start, int count, int after) {
+
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
         //left blank
     }
+
     public void afterTextChanged(Editable s) {
         //left blank
     }
@@ -91,13 +94,8 @@ public class FormFragment extends Fragment implements RadioGroup.OnCheckedChange
     /* button listener */
     public void onClick(View v) {
         if (v == btnalert) {
-            Toast.makeText(getActivity(), "The button was pressed",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "The button was pressed", Toast.LENGTH_SHORT).show();
             Log.d(TAG, "The button was pressed.");
         }
-
     }
-
-
-
-
 }

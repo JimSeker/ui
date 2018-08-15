@@ -1,7 +1,8 @@
 package edu.cs4730.fragformexample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /*
  * simple example with a fragment.  MainActivity here is basically here to display the fragment
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             myFormFragment = new FormFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, myFormFragment).commit();
+                .add(R.id.container, myFormFragment).commit();
         }
     }
 }

@@ -1,9 +1,10 @@
 package edu.cs4730.fragdemosimple;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /*
   This is a very simple demo of changing between two fragments.
@@ -23,31 +24,30 @@ public class MainActivity extends AppCompatActivity {
         //if this a not new, then place add firstfragment to the framelayout
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new oneFragment())
-                    .commit();
+                .add(R.id.container, new oneFragment())
+                .commit();
         }
 
         //find the button and setup the listener.
-        Button btn1 = (Button) findViewById(R.id.button01);
+        Button btn1 = findViewById(R.id.button01);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (firstfragment) {
                     //first fragment is showing, so replace it with the second one.
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.container, new twoFragment())
-                            .commit();
+                        .replace(R.id.container, new twoFragment())
+                        .commit();
                     firstfragment = false;
                 } else {
                     //second fragment is showing, so replace it with the second one.
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.container, new oneFragment())
-                            .commit();
+                        .replace(R.id.container, new oneFragment())
+                        .commit();
                     firstfragment = true;
 
                 }
             }
         });
     }
-
 }
