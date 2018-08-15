@@ -1,10 +1,8 @@
 package edu.cs4730.guidemo;
 
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,17 +15,18 @@ import android.widget.TimePicker;
 import java.text.DateFormat;
 import java.util.Calendar;
 
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Picker_Fragment extends Fragment implements  Button.OnClickListener{
+public class Picker_Fragment extends Fragment implements Button.OnClickListener {
     TextView tv_date, tv_time;
     Button btn_date, btn_time;
     //used for the pickers to set the current time/date
     Calendar dateAndTime = Calendar.getInstance();
-    DateFormat fmtDate= DateFormat.getDateInstance();
-    DateFormat fmtTime= DateFormat.getTimeInstance();
+    DateFormat fmtDate = DateFormat.getDateInstance();
+    DateFormat fmtTime = DateFormat.getTimeInstance();
     //listeners for the data and time picker.
     DatePickerDialog.OnDateSetListener d;
     TimePickerDialog.OnTimeSetListener t;
@@ -36,17 +35,16 @@ public class Picker_Fragment extends Fragment implements  Button.OnClickListener
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.picker_fragment, container, false);
-        tv_date = (TextView) myView.findViewById(R.id.tv_date);
-        tv_time = (TextView) myView.findViewById(R.id.tv_time);
-        btn_date = (Button) myView.findViewById(R.id.btn_date);
+        tv_date = myView.findViewById(R.id.tv_date);
+        tv_time = myView.findViewById(R.id.tv_time);
+        btn_date = myView.findViewById(R.id.btn_date);
         btn_date.setOnClickListener(this);
-        btn_time = (Button) myView.findViewById(R.id.btn_time);
+        btn_time = myView.findViewById(R.id.btn_time);
         btn_time.setOnClickListener(this);
 
         //create the date picker listener, which is used later when the picker is called.
@@ -76,16 +74,16 @@ public class Picker_Fragment extends Fragment implements  Button.OnClickListener
 
         if (v == btn_date) {//date picker
             new DatePickerDialog(getActivity(), d,
-                    dateAndTime.get(Calendar.YEAR),
-                    dateAndTime.get(Calendar.MONTH),
-                    dateAndTime.get(Calendar.DAY_OF_MONTH)
+                dateAndTime.get(Calendar.YEAR),
+                dateAndTime.get(Calendar.MONTH),
+                dateAndTime.get(Calendar.DAY_OF_MONTH)
             ).show();
         } else { //time picker
             Log.v("Time", "Should show the picker!");
             new TimePickerDialog(getActivity(), t,
-                    dateAndTime.get(Calendar.HOUR),
-                    dateAndTime.get(Calendar.MINUTE),
-                    false
+                dateAndTime.get(Calendar.HOUR),
+                dateAndTime.get(Calendar.MINUTE),
+                false
             ).show();
         }
     }

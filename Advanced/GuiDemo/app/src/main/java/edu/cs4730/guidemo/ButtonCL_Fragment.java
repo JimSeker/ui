@@ -1,9 +1,7 @@
 package edu.cs4730.guidemo;
 
-
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +9,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 /**
- *This is basically code to show the constraintlayout with so many button.
+ * This is basically code to show the constraintlayout with so many button.
  * the layout is very similar to the buttonfragment layout.
  */
 public class ButtonCL_Fragment extends Fragment implements View.OnClickListener {
@@ -24,7 +24,6 @@ public class ButtonCL_Fragment extends Fragment implements View.OnClickListener 
     public ButtonCL_Fragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +43,7 @@ public class ButtonCL_Fragment extends Fragment implements View.OnClickListener 
         (myView.findViewById(R.id.button10)).setOnClickListener(this);
         (myView.findViewById(R.id.button11)).setOnClickListener(this);
         //output to the screen.
-        output = (TextView) myView.findViewById(R.id.output);
+        output = myView.findViewById(R.id.output);
         return myView;
     }
 
