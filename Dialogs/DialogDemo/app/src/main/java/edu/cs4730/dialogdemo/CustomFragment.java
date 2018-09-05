@@ -3,15 +3,16 @@ package edu.cs4730.dialogdemo;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.view.ContextThemeWrapper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.view.ContextThemeWrapper;
+import androidx.fragment.app.Fragment;
 
 /**
  * This shows how to use the dialog that have been extended.  Note the listeners are implemented
@@ -88,7 +89,7 @@ public class CustomFragment extends Fragment {
     }
 
     /*
-      * simple method to display data to the logger textview.
+     * simple method to display data to the logger textview.
      */
     void displaylog(String item) {
         Log.v(TAG, item);
@@ -117,13 +118,13 @@ public class CustomFragment extends Fragment {
                 //Toast.makeText(getBaseContext(), userinput.getText().toString(), Toast.LENGTH_LONG).show();
             }
         })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        displaylog("dialog canceled");
-                        dialog.cancel();
+            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    displaylog("dialog canceled");
+                    dialog.cancel();
 
-                    }
-                });
+                }
+            });
         //you can create the dialog or just use the now method in the builder.
         //AlertDialog dialog = builder.create();
         //dialog.show();
