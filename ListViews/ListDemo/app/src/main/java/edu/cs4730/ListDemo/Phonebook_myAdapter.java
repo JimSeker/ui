@@ -2,7 +2,6 @@ package edu.cs4730.ListDemo;
 
 import java.util.List;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

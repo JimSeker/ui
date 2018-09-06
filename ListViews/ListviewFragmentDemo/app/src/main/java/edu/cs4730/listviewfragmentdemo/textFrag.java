@@ -1,11 +1,12 @@
 package edu.cs4730.listviewfragmentdemo;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 /*
  * This is a simple fragment used to display the data for whichever shakspeare that is clicked on

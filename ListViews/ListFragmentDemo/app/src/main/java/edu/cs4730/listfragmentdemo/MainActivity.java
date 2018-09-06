@@ -1,9 +1,9 @@
 package edu.cs4730.listfragmentdemo;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /*
  * This is an example using the listfragment.  There is very little code here that is not default
@@ -14,7 +14,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity implements titlefrag.OnFragmentInteractionListener {
 
-    textFrag  myTextFrag;
+    textFrag myTextFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

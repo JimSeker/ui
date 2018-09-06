@@ -1,8 +1,9 @@
 package edu.cs4730.listviewfragmentdemo;
 
-import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 /*
  * This is an example using the listview in a fragment.  There is very little code here that is not default

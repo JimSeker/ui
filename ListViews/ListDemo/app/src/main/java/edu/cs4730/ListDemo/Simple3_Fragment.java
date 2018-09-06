@@ -1,9 +1,7 @@
 package edu.cs4730.ListDemo;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +14,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class Simple3_Fragment extends Fragment{
+import androidx.fragment.app.Fragment;
+
+public class Simple3_Fragment extends Fragment {
     String TAG = "Simple3_Fragment";
     Context myContext;
     
@@ -51,7 +51,7 @@ public class Simple3_Fragment extends Fragment{
         });
 		
 		
-		up = (Button) myView.findViewById(R.id.up);
+		up = myView.findViewById(R.id.up);
 		up.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -68,7 +68,7 @@ public class Simple3_Fragment extends Fragment{
 
 		});
 
-		down = (Button) myView.findViewById(R.id.down);
+		down = myView.findViewById(R.id.down);
 		down.setOnClickListener(new OnClickListener() {
 
 			@Override

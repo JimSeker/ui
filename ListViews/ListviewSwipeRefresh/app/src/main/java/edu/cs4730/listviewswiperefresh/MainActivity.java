@@ -1,7 +1,8 @@
 package edu.cs4730.listviewswiperefresh;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /*
  * nothing much to see here.  Go the MainFragment.

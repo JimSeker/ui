@@ -6,10 +6,9 @@ package edu.cs4730.ListDemo;
 
 import java.util.ArrayList;
 import java.util.List;
-import android.app.Activity;
+
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,21 +18,23 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
+import androidx.fragment.app.Fragment;
+
 public class Phonebook_Fragment extends Fragment {
-	
+
     String TAG = "Phone_Fragment";
     Context myContext;
-	
-	public Phonebook_Fragment() {
-		// Required empty public constructor
-	}
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View myView = inflater.inflate(R.layout.phonebook_fragment, container, false);
+    public Phonebook_Fragment() {
+        // Required empty public constructor
+    }
 
-        ListView list = (ListView) myView.findViewById(R.id.ListView01);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View myView = inflater.inflate(R.layout.phonebook_fragment, container, false);
+
+        ListView list = myView.findViewById(R.id.ListView01);
         list.setClickable(true);
 
         final List<Phonebook_DataModel> listOfPhonebook = new ArrayList<Phonebook_DataModel>();
@@ -56,7 +57,7 @@ public class Phonebook_Fragment extends Fragment {
         });
 
         list.setAdapter(adapter);
-        
+
         return myView;
     }
 
@@ -69,9 +70,9 @@ public class Phonebook_Fragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         myContext = context; //needed for toast.
-        Log.d(TAG,"onAttach");
+        Log.d(TAG, "onAttach");
     }
 
-	
+
 }
 

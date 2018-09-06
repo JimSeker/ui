@@ -2,11 +2,12 @@ package edu.cs4730.listfragmentdemo;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.ListFragment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import androidx.fragment.app.ListFragment;
 
 /*
  * This ia listfragment.  All we need to do is setlistadapter in onCreateView (there is no layout)
