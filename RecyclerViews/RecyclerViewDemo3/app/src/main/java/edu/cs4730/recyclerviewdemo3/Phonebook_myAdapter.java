@@ -2,19 +2,18 @@ package edu.cs4730.recyclerviewdemo3;
 
 import java.util.List;
 
-
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
 
 /*
+ *  needs a comment here.
  */
 
 public class Phonebook_myAdapter extends RecyclerView.Adapter<Phonebook_myAdapter.ViewHolder> implements OnClickListener {
@@ -60,7 +59,7 @@ public class Phonebook_myAdapter extends RecyclerView.Adapter<Phonebook_myAdapte
     }
 
     /*
-    * setup the ViewHolder class with the widget variables, to be used in onBindViewholder
+     * setup the ViewHolder class with the widget variables, to be used in onBindViewholder
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvContact;
@@ -84,7 +83,7 @@ public class Phonebook_myAdapter extends RecyclerView.Adapter<Phonebook_myAdapte
     public void onClick(View view) {
         Phonebook_DataModel entry = (Phonebook_DataModel) view.getTag();
         //We could call a dialog showDialog(entry), if we wanted to change it instead of deleting it.
-        
+
         listPhonebook.remove(entry);
         notifyDataSetChanged();
 

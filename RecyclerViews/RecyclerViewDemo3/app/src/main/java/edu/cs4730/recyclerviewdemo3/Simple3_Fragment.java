@@ -1,19 +1,19 @@
 package edu.cs4730.recyclerviewdemo3;
 
-
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import java.util.Arrays;
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 /**
@@ -37,8 +37,8 @@ public class Simple3_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.simple3_fragment, container, false);
         List<String> values = Arrays.asList("Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2" );
+            "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+            "Linux", "OS/2");
 
         //setup the RecyclerView
         mRecyclerView = (RecyclerView) myView.findViewById(R.id.list);
@@ -50,7 +50,7 @@ public class Simple3_Fragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
 
 
-	return myView;
+        return myView;
     }
 
     @Override

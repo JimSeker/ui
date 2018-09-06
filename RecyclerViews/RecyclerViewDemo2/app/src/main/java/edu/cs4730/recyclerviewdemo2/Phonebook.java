@@ -1,8 +1,5 @@
 package edu.cs4730.recyclerviewdemo2;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /*
 * From http://code.google.com/p/myandroidwidgets/source/browse/trunk/Phonebook/src/com/abeanie/Phonebook.java
 * description found at http://techdroid.kbeanie.com/2009/07/custom-listview-for-android.html

@@ -1,7 +1,6 @@
 package edu.cs4730.recyclerviewdemo2;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 
 /**
@@ -39,10 +40,10 @@ class phoneAdapter extends RecyclerView.Adapter<phoneAdapter.ViewHolder> {
         //all the declares and findby are here.  onBind is where the data is setup.
         ViewHolder(View itemView) {
             super(itemView);
-            tvContact = (TextView) itemView.findViewById(R.id.tvContact);
-            tvPhone = (TextView) itemView.findViewById(R.id.tvMobile);
-            tvMail = (TextView) itemView.findViewById(R.id.tvMail);
-            btnRemove = (Button) itemView.findViewById(R.id.btnRemove);
+            tvContact = itemView.findViewById(R.id.tvContact);
+            tvPhone = itemView.findViewById(R.id.tvMobile);
+            tvMail = itemView.findViewById(R.id.tvMail);
+            btnRemove = itemView.findViewById(R.id.btnRemove);
         }
     }
 

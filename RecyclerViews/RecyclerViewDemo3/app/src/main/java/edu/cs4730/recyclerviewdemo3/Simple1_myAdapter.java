@@ -1,13 +1,14 @@
 package edu.cs4730.recyclerviewdemo3;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /*
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
@@ -55,7 +56,7 @@ public class Simple1_myAdapter extends RecyclerView.Adapter<Simple1_myAdapter.Vi
         public ImageView Pic;
         public ViewHolder(View itemView) {
             super(itemView);
-            myName = (TextView) itemView.findViewById(R.id.Name);
+            myName = itemView.findViewById(R.id.Name);
         }
     }
 }

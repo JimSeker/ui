@@ -9,19 +9,21 @@ package edu.cs4730.recyclerviewdemo3;
 
 import java.util.ArrayList;
 import java.util.List;
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.design.widget.Snackbar;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class Phonebook_Fragment extends Fragment {
 	
@@ -30,7 +32,8 @@ public class Phonebook_Fragment extends Fragment {
     List<Phonebook_DataModel> listOfPhonebook;
     RecyclerView mRecyclerView;
     Phonebook_myAdapter mAdapter;
-    CoordinatorLayout mCoordinatorLayout;
+    //getting a cast except if I don't fully declare it.
+    androidx.coordinatorlayout.widget.CoordinatorLayout mCoordinatorLayout;
 
 	public Phonebook_Fragment() {
 		// Required empty public constructor
@@ -45,7 +48,8 @@ public class Phonebook_Fragment extends Fragment {
         listOfPhonebook = setup();
 
         //fab and coordinatorlayout setup.
-        mCoordinatorLayout = (CoordinatorLayout) myView.findViewById(R.id.coordinatorlayout1);
+        FloatingActionButton fab;
+        mCoordinatorLayout = (androidx.coordinatorlayout.widget.CoordinatorLayout) myView.findViewById(R.id.coordinatorlayout1);
         myView.findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +59,7 @@ public class Phonebook_Fragment extends Fragment {
         });
 
         //setup the RecyclerView
-        mRecyclerView = (RecyclerView) myView.findViewById(R.id.list);
+        mRecyclerView = myView.findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(myContext));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.

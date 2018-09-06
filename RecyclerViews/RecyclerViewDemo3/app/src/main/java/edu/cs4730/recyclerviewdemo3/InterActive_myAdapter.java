@@ -6,8 +6,6 @@ package edu.cs4730.recyclerviewdemo3;
 import java.util.List;
 
 import android.content.Context;
-import android.os.Handler;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +14,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 
 public class InterActive_myAdapter extends RecyclerView.Adapter<InterActive_myAdapter.ViewHolder> {
@@ -43,27 +43,27 @@ public class InterActive_myAdapter extends RecyclerView.Adapter<InterActive_myAd
         viewHolder.text.setText(myList.get(i).getName());
         viewHolder.checkbox.setChecked(myList.get(i).isSelected());
         viewHolder.checkbox.setOnCheckedChangeListener(
-                new OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (!onBind) {  //if we are nto setting up the data, then do something.  Otherwise, this can cause a loop.
-                            //get the "tag" out of the checkbox [tag exists base class view], so I know where it is in the myList.
-                            String t = (String) buttonView.getTag();
-                            int position = Integer.parseInt(t);
-                            Log.w("checkbox listener", "checkbox has " + t);
-                            //now update the model item out of the list, using the position stored in Tag.
-                            myList.get(position).setSelected(isChecked);
-                            Log.w("checkbox", "Position is " + t + " value is " + isChecked);
-                            if (isChecked) { //going from unchecked to checked, so update everybody else.
-                                for (int i = 0; i < myList.size(); i++) {
-                                    if (i != position)
-                                        myList.get(i).setSelected(false);
-                                }
-                                notifyDataSetChanged();
+            new OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (!onBind) {  //if we are nto setting up the data, then do something.  Otherwise, this can cause a loop.
+                        //get the "tag" out of the checkbox [tag exists base class view], so I know where it is in the myList.
+                        String t = (String) buttonView.getTag();
+                        int position = Integer.parseInt(t);
+                        Log.w("checkbox listener", "checkbox has " + t);
+                        //now update the model item out of the list, using the position stored in Tag.
+                        myList.get(position).setSelected(isChecked);
+                        Log.w("checkbox", "Position is " + t + " value is " + isChecked);
+                        if (isChecked) { //going from unchecked to checked, so update everybody else.
+                            for (int i = 0; i < myList.size(); i++) {
+                                if (i != position)
+                                    myList.get(i).setSelected(false);
                             }
+                            notifyDataSetChanged();
                         }
                     }
                 }
+            }
 
         );
         //Tag is an like a temp space, in a widget where you can set some information as an Object Class
@@ -78,7 +78,7 @@ public class InterActive_myAdapter extends RecyclerView.Adapter<InterActive_myAd
     }
 
     /*
-    * setup the ViewHolder class with the widget variables, to be used in onBindViewholder
+     * setup the ViewHolder class with the widget variables, to be used in onBindViewholder
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         CheckBox checkbox;

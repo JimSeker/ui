@@ -3,8 +3,8 @@ package edu.cs4730.lotsoflists;
 /**
  * Created by Seker on 1/22/2015.
  */
+
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
+import androidx.recyclerview.widget.RecyclerView;
 
 /*
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
@@ -21,7 +21,7 @@ import java.util.List;
  * the adapter.
  */
 
-public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
+public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
     private morelists myList;
     private int rowLayout;
@@ -32,6 +32,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
         this.rowLayout = rowLayout;
         this.mContext = context;
     }
+
     //a simple method to make sure the recyclerview knows I have changed the data in the list.
     public void newData() {
         notifyDataSetChanged();
@@ -50,12 +51,13 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
         viewHolder.myName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView tv = (TextView)v;
-                Toast.makeText(mContext,tv.getText(),Toast.LENGTH_SHORT).show();
+                TextView tv = (TextView) v;
+                Toast.makeText(mContext, tv.getText(), Toast.LENGTH_SHORT).show();
             }
         });
         viewHolder.Pic.setImageResource(R.drawable.phone);
     }  //mContext.getDrawable(country.getImageResourceId(mContext))
+
     @Override
     public int getItemCount() {
         return myList == null ? 0 : myList.getsize();
@@ -64,10 +66,11 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView myName;
         public ImageView Pic;
+
         public ViewHolder(View itemView) {
             super(itemView);
             myName = (TextView) itemView.findViewById(R.id.Name);
-            Pic= (ImageView)itemView.findViewById(R.id.picture);
+            Pic = (ImageView) itemView.findViewById(R.id.picture);
         }
     }
 }

@@ -3,18 +3,18 @@ package edu.cs4730.callbacksdemo;
 /**
  * Created by Seker on 1/22/2015.
  */
+
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /*
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
@@ -26,20 +26,22 @@ import java.util.List;
  * can be passed all the way back to the mainActivity (via the fragment)
  */
 
-public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
+public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
     private List<String> myList;
     private int rowLayout;
     private Context mContext;  //for things like a toast or other things that need context.
-    private final String TAG= "myAdapter";
+    private final String TAG = "myAdapter";
 
 
     // Define listener member variable
     private OnItemClickListener listener;
+
     // Define the listener interface
     public interface OnItemClickListener {
         void onItemClick(View itemView, String id);
     }
+
     // Define the method that allows the parent activity or fragment to define the listener
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
@@ -52,7 +54,8 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mName;
         public Button mButton;
-        private final String TAG= "ViewHolder";
+        private final String TAG = "ViewHolder";
+
         public ViewHolder(View view, final OnItemClickListener mlistener) {
             super(view);
             mName = (TextView) view.findViewById(R.id.name);

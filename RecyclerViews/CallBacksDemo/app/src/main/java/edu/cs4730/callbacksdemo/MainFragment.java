@@ -2,12 +2,7 @@ package edu.cs4730.callbacksdemo;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +11,11 @@ import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * A simple fragment that displays a recyclerview and has a callback
@@ -60,18 +60,6 @@ public class MainFragment extends Fragment {
         return myView;
     }
 
-
-    //deprecated in support library 23.0.0+  likely not call anymore.
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mCallback = (OntransInteractionCallback) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
 
     //use this one instead of the one above.  Note it's the parameter, context instead of activity.
     @Override

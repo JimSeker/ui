@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -17,7 +18,7 @@
             android:layout_height="100dp"
             android:layout_centerInParent="true"
             android:scaleType="centerCrop"
-            android:tint="@color/photo_tint" />
+            android:tint="@color/photo_tint"/>
 
         <TextView
             android:id="@+id/Name"
@@ -29,7 +30,7 @@
             android:focusable="true"
             android:gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="24sp" />
+            android:textSize="24sp"/>
 
     </RelativeLayout>
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>

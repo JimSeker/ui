@@ -1,15 +1,13 @@
 package edu.cs4730.recyclerviewdemo2;
 
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         listOfPhonebook.add(new Phonebook("Test6", "00000", "test6@test.com"));
 
         //setup the RecyclerView
-        mRecyclerView = (RecyclerView)findViewById(R.id.list);
+        mRecyclerView = findViewById(R.id.list);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
