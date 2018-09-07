@@ -1,15 +1,17 @@
 package edu.cs4730.modelviewrecyclerviewdemo;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 /*
  * This is a simple demo of how to get data from an recyclerview demo all the way back to the
@@ -19,10 +21,11 @@ import android.widget.Toast;
  * to get data from the recyclerview to the mainactivity.  There are no callsbacks in this example.
  */
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
     String TAG = "MainActivity";
 
     DataViewModel mViewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,15 +1,17 @@
 package edu.cs4730.modelviewrecyclerviewdemo;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.support.v4.app.Fragment;
+
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.RecyclerView;
 
 /*
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
@@ -23,12 +25,12 @@ import java.util.List;
  * how to get an instance all the three levels (activity, fragment, and adapter).
  */
 
-public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
+public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
     private List<String> myList;
     private int rowLayout;
     private Fragment mFragment;
-    private final String TAG= "myAdapter";
+    private final String TAG = "myAdapter";
     private DataViewModel mViewModel;
 
     // Provide a reference to the views for each data item
@@ -39,7 +41,8 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
         public TextView mName;
         public Button mButton;
 
-        private final String TAG= "ViewHolder";
+        private final String TAG = "ViewHolder";
+
         public ViewHolder(View view, final DataViewModel mViewModel) {
             super(view);
             mName = view.findViewById(R.id.name);

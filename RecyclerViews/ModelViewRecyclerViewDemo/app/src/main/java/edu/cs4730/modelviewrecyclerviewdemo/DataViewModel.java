@@ -1,18 +1,19 @@
 package edu.cs4730.modelviewrecyclerviewdemo;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
 import android.util.Log;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 /**
  * a simple class to store the data string name is in.
- *
+ * <p>
  * note, lint is stupid and says they class should be private.  it can't be or it dies..
  */
 
 public class DataViewModel extends ViewModel {
-    private MutableLiveData<String> item= new MutableLiveData<String>();
+    private MutableLiveData<String> item = new MutableLiveData<String>();
 
     //note, no constructor seems to be allowed, or it dies.
 
