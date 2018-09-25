@@ -1,9 +1,9 @@
 package edu.cs4730.navdrawerdemo;
 
 import android.content.res.Configuration;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;

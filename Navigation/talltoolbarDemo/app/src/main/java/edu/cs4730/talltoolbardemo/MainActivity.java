@@ -1,12 +1,11 @@
 package edu.cs4730.talltoolbardemo;
 
 import android.content.res.Configuration;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +17,7 @@ import android.widget.TextView;
 /*
  * simple demo to replicate a google sample picture.
  * Note, icons can be found here: http://developer.android.com/design/downloads/index.html
-*/
+ */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,26 +33,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //use the v7.toolbar instead of the default one.
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        mTextView = (TextView) findViewById(R.id.textview01);
+        mTextView = findViewById(R.id.textview01);
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        mDrawerlayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mDrawerlayout = findViewById(R.id.drawer_layout);
 
         //use subtitle instead of tile, so it always shows.
         getSupportActionBar().setTitle("");
         getSupportActionBar().setSubtitle(R.string.app_name);
 
         mDrawerToggle = new ActionBarDrawerToggle(this,  // host activity
-                mDrawerlayout,  //drawerlayout object
-                toolbar,  //toolbar
-                R.string.drawer_open,  //open drawer description  required!
-                R.string.drawer_close) {  //closed drawer description
+            mDrawerlayout,  //drawerlayout object
+            toolbar,  //toolbar
+            R.string.drawer_open,  //open drawer description  required!
+            R.string.drawer_close) {  //closed drawer description
 
             //called once the drawer has closed.
             @Override
@@ -75,13 +74,13 @@ public class MainActivity extends AppCompatActivity {
         };
         //To disable the icon for the drawer, change this to false
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerlayout.setDrawerListener(mDrawerToggle);
+        mDrawerlayout.addDrawerListener(mDrawerToggle);
 
         //lastly setup the listview with some simple categories via an array.
-        String[] values = new String[] { "Item 1", "Item 2", "Item 3", "Item 4" };
+        String[] values = new String[]{"Item 1", "Item 2", "Item 3", "Item 4"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, values);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+            R.layout.drawer_list_item, values);
+        mDrawerList =  findViewById(R.id.left_drawer);
         mDrawerList.setAdapter(adapter);
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
