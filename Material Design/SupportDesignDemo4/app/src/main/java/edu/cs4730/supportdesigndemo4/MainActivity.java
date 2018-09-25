@@ -2,16 +2,20 @@ package edu.cs4730.supportdesigndemo4;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.navigation.NavigationView;
+
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,14 +50,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        //use the v7.toolbar instead of the default one.
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        //use the toolbar instead of the default one.
+        toolbar = findViewById(R.id.app_bar);
         //toolbar.setSubtitle(R.string.app_name);
         setSupportActionBar(toolbar);
         //getSupportActionBar().setTitle(R.string.app_name);
 
         //SO to get any text or title it is set here.  otherwise, there is no text in the toolbar.
-        mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingtoolbarlayout1);
+        mCollapsingToolbarLayout = findViewById(R.id.collapsingtoolbarlayout1);
         mCollapsingToolbarLayout.setTitle(getResources().getString(R.string.app_name));
 
 
@@ -62,11 +66,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         List<String> values = Arrays.asList("Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2");
+            "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+            "Linux", "OS/2");
 
         //setup the RecyclerView
-        mRecyclerView = (RecyclerView) findViewById(R.id.list);
+        mRecyclerView = findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
@@ -75,13 +79,13 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         //standard navigation drawer setup.
-        mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerlayout = findViewById(R.id.drawer_layout);
 
         mDrawerToggle = new ActionBarDrawerToggle(this,  // host activity
-                mDrawerlayout,  //drawerlayout object
-                toolbar,  //toolbar
-                R.string.drawer_open,  //open drawer description  required!
-                R.string.drawer_close) {  //closed drawer description
+            mDrawerlayout,  //drawerlayout object
+            toolbar,  //toolbar
+            R.string.drawer_open,  //open drawer description  required!
+            R.string.drawer_close) {  //closed drawer description
 
             //called once the drawer has closed.
             @Override
@@ -106,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
         mDrawerlayout.addDrawerListener(mDrawerToggle);
         //this ia the support Navigation view.
-        mNavigationView = (NavigationView) findViewById(R.id.navview);
+        mNavigationView = findViewById(R.id.navview);
         //setup a listener, which acts very similiar to how menus are handled.
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

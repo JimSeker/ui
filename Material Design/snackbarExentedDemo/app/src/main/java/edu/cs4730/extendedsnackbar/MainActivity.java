@@ -1,9 +1,9 @@
 package edu.cs4730.extendedsnackbar;
 
 import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
+import com.google.android.material.snackbar.Snackbar;
 import android.view.View;
 import android.widget.Button;
 
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    myButton = (Button) findViewById(R.id.mybutton);
+    myButton = findViewById(R.id.mybutton);
     myButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {

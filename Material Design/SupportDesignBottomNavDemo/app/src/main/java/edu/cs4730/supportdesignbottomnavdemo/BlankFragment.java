@@ -2,7 +2,7 @@ package edu.cs4730.supportdesignbottomnavdemo;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +61,7 @@ public class BlankFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_blank, container, false);
-        TextView label = (TextView) myView.findViewById(R.id.label1);
+        TextView label = myView.findViewById(R.id.label1);
         label.setText(mParam1);
         return myView;
     }

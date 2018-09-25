@@ -3,9 +3,13 @@ package edu.cs4730.supportpalettedemo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.support.v7.graphics.Palette;
+
+import androidx.palette.graphics.Palette;
+
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -28,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ib = (ImageButton) findViewById(R.id.imageView);
+        ib = findViewById(R.id.imageView);
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,13 +42,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        iv_vibrant = (TextView) findViewById(R.id.iv_vibrant);
-        iv_vibrantdark = (TextView) findViewById(R.id.iv_vibrantdark);
-        iv_vibrantlight = (TextView) findViewById(R.id.iv_vibrantlight);
-        iv_muted = (TextView) findViewById(R.id.iv_muted);
-        iv_muteddark = (TextView) findViewById(R.id.iv_muteddark);
-        iv_mutedlight = (TextView) findViewById(R.id.iv_mutedlight);
+        iv_vibrant = findViewById(R.id.iv_vibrant);
+        iv_vibrantdark = findViewById(R.id.iv_vibrantdark);
+        iv_vibrantlight = findViewById(R.id.iv_vibrantlight);
+        iv_muted = findViewById(R.id.iv_muted);
+        iv_muteddark = findViewById(R.id.iv_muteddark);
+        iv_mutedlight = findViewById(R.id.iv_mutedlight);
 
         setup();
 
@@ -70,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         ib.setImageBitmap(myBitmap);
         if (myBitmap != null && !myBitmap.isRecycled()) {
             //synchronous method, which does work on the main thread and is not recommended
-          //  Palette palette = new Palette.Builder(myBitmap).generate();
+            //  Palette palette = new Palette.Builder(myBitmap).generate();
             //Aysnchronous method.  Since I didn't use the variable, just the method in the listener, I didn't delcare a variable for it  This line commented out shows the full declaration if needed.
             //AsyncTask<Bitmap, Void, Palette> palette = new Palette.Builder(myBitmap).generate(new Palette.PaletteAsyncListener() {
             new Palette.Builder(myBitmap).generate(new Palette.PaletteAsyncListener() {

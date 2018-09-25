@@ -1,9 +1,9 @@
 package edu.cs4730.supportdesignbottomnavdemo;
 
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.view.MenuItem;
 
 /*
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         favFrag = BlankFragment.newInstance("Favorites", "");
         nearbyFrag = BlankFragment.newInstance("Nearby", "");
 
-        bnv = (BottomNavigationView) findViewById(R.id.bnv);
+        bnv = findViewById(R.id.bnv);
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
