@@ -33,14 +33,14 @@ public class SupportDialogFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_support_dialog, container, false);
-        btn = (Button) myView.findViewById(R.id.btn_support_AlertDialog);
+        btn = myView.findViewById(R.id.btn_support_AlertDialog);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showdialog("Demo Dialog");
             }
         });
-        logger = (TextView) myView.findViewById(R.id.logger_support);
+        logger = myView.findViewById(R.id.logger_support);
         myView.findViewById(R.id.btn_support_ListDialog).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,10 +57,10 @@ public class SupportDialogFragment extends Fragment {
 
 
     /*
-    *  The method is not necessary.
-    *
-    *  This builds an alert dialog, with the positive button set to Yes, Negative button set to NO.
-    *  There is a listener if the dialog is canceled (ie the back button is used)
+     *  The method is not necessary.
+     *
+     *  This builds an alert dialog, with the positive button set to Yes, Negative button set to NO.
+     *  There is a listener if the dialog is canceled (ie the back button is used)
      */
 
     void showdialog(String title) {
@@ -101,18 +101,18 @@ public class SupportDialogFragment extends Fragment {
      * cancels, nothing happens.
      */
     void showlistdialog(String title) {
-        final String[] items = { "Remove Walls", "Add Walls",
-                "Add/Remove Objects", "Add/Remove Score" };
+        final String[] items = {"Remove Walls", "Add Walls",
+            "Add/Remove Objects", "Add/Remove Score"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Choose Type:");
         builder.setSingleChoiceItems(items, -1,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int item) {
-                        dialog.dismiss();  //the dismiss is needed here or the dialog stays showing.
-                        displaylog(items[item]);
-                    }
-                });
+            new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int item) {
+                    dialog.dismiss();  //the dismiss is needed here or the dialog stays showing.
+                    displaylog(items[item]);
+                }
+            });
         builder.show();
     }
 }
