@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
  * This shows how to use the dialog that have been extended.  Note the listeners are implemented
  * in the mainActivity and call the displaylog method at the bottom of this fragment.
  * This may not be the way you want to implements your listeners.  It was easier for communication of
- * the fragments.  Sometimes you want to the listemers om the dialog itself, if you have access to the
+ * the fragments.  Sometimes you want to the listeners om the dialog itself, if you have access to the
  * necessary functions and data.
  */
 public class CustomFragment extends Fragment {
@@ -107,7 +107,7 @@ public class CustomFragment extends Fragment {
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         final View textenter = inflater.inflate(R.layout.layout_custom_dialog, null);
         final EditText userinput = (EditText) textenter.findViewById(R.id.item_added);
-        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.Theme_AppCompat));
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
         builder.setView(textenter).setTitle(title);
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
 
