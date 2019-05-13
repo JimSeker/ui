@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.Fragment;
 
 
@@ -65,7 +66,7 @@ public class SupportDialogFragment extends Fragment {
 
     void showdialog(String title) {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
         builder.setTitle(title);
         builder.setMessage("Play again?");
         //Button Button
@@ -103,8 +104,7 @@ public class SupportDialogFragment extends Fragment {
     void showlistdialog(String title) {
         final String[] items = {"Remove Walls", "Add Walls",
             "Add/Remove Objects", "Add/Remove Score"};
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
         builder.setTitle("Choose Type:");
         builder.setSingleChoiceItems(items, -1,
             new DialogInterface.OnClickListener() {
