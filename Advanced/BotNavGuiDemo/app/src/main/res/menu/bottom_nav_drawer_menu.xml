@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/m_text"
+        android:title="Text"/>
+    <item
+        android:id="@+id/m_tex_input"
+        android:title="Text Input"/>
+    <item
+        android:id="@+id/m_itemimages"
+        android:title="itemImages"/>
+    <item
+        android:id="@+id/m_buttons"
+        android:title="Buttons"/>
+    <item
+        android:id="@+id/m_itembuttons"
+        android:title="itemButtons Constraintlayout"/>
+    <item
+        android:id="@+id/m_relative"
+        android:title="Relative Layout"/>
+    <item
+        android:id="@+id/m_radio"
+        android:title="Radio and Check boxes"/>
+    <item
+        android:id="@+id/m_spinners"
+        android:title="Spinners"/>
+    <item
+        android:id="@+id/m_itemviewswitcher"
+        android:title="itemView Switcher"/>
+    <item
+        android:id="@+id/m_dialogpickers"
+        android:title="Dialog Pickers"/>
+</menu>
