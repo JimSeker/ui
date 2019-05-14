@@ -6,6 +6,7 @@ Communication Android GUI/UI Examples
 
 <b>FragComDemo</b> shows how to use factory methods and callbacks, with three fragments
 
+<b>FragComNavLiveDemo</b> shows how to use Arch Navigation and a ModelView/LiveData to deal with paraemters.  
 
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course.
 All examples are for Android.

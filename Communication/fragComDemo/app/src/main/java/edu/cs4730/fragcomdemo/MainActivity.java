@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
      */
     @Override
     public void onFragmentInteraction(int which) {
-        //going to change via the transcation manager, instead of just a simple replace.
+        //going to change via the transaction manager, instead of just a simple replace.
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
         //remove the current fragment...
