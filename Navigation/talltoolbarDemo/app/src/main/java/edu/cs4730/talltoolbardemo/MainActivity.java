@@ -1,11 +1,15 @@
 package edu.cs4730.talltoolbardemo;
 
 import android.content.res.Configuration;
+
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -80,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         String[] values = new String[]{"Item 1", "Item 2", "Item 3", "Item 4"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
             R.layout.drawer_list_item, values);
-        mDrawerList =  findViewById(R.id.left_drawer);
+        mDrawerList = findViewById(R.id.left_drawer);
         mDrawerList.setAdapter(adapter);
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

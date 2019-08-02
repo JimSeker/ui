@@ -5,7 +5,7 @@ android {
     
     defaultConfig {
         applicationId "edu.cs4730.navdrawer"
-        minSdkVersion 19
+        minSdkVersion 22
         targetSdkVersion 28
         versionCode="1"
         versionName="1.0"
@@ -21,5 +21,5 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
 }

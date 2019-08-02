@@ -1,11 +1,15 @@
 package edu.cs4730.toolbarnavdrawerdemo;
 
 import android.content.res.Configuration;
+
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,22 +33,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //use the v7.toolbar instead of the default one.
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        mTextView = (TextView) findViewById(R.id.textview01);
+        mTextView = findViewById(R.id.textview01);
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        mDrawerlayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         mDrawerToggle = new ActionBarDrawerToggle(this,  // host activity
-                mDrawerlayout,  //drawerlayout object
-                toolbar,  //toolbar
-                R.string.drawer_open,  //open drawer description  required!
-                R.string.drawer_close) {  //closed drawer description
+            mDrawerlayout,  //drawerlayout object
+            toolbar,  //toolbar
+            R.string.drawer_open,  //open drawer description  required!
+            R.string.drawer_close) {  //closed drawer description
 
             //called once the drawer has closed.
             @Override
@@ -67,10 +71,10 @@ public class MainActivity extends AppCompatActivity {
         mDrawerlayout.addDrawerListener(mDrawerToggle);
 
         //lastly setup the listview with some simple categories via an array.
-        String[] values = new String[] { "Item 1", "Item 2", "Item 3", "Item 4" };
+        String[] values = new String[]{"Item 1", "Item 2", "Item 3", "Item 4"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, values);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+            R.layout.drawer_list_item, values);
+        mDrawerList = findViewById(R.id.left_drawer);
         mDrawerList.setAdapter(adapter);
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

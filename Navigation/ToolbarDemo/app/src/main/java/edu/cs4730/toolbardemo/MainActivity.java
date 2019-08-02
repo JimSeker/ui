@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //use the v7.toolbar instead of the default one.
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        //use the appcompat.toolbar instead of the default one.
+        toolbar =  findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
     }
 

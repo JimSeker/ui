@@ -20,14 +20,17 @@ import java.util.Locale;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,37 +44,36 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-
 /**
  * This example illustrates a common usage of the DrawerLayout widget
- * in the Android support library.  This is google's example from their web site 
+ * in the Android support library.  This is google's example from their web site
  * http://developer.android.com/training/implementing-navigation/nav-drawer.html with modifications for lollipop ish code.
- *
+ * <p>
  * Note, this updates below are true for just API 21 (lollipop), you must use the support libraries.
- *   This was test with on several different nag drawer examples, these seem to be all the fixes so far.
- *    
+ * This was test with on several different nag drawer examples, these seem to be all the fixes so far.
+ * <p>
  * Updated 10/18/2014 for the new <- in the navigation drawer used in the v7 support library.
- *     add the support library v7 and then change to this import android.support.v7.app.ActionBarDrawerToggle;
- * Update 10/21/2014    
- *   To remove the icon as well, then you need to change from an Activity to an ActionBarActivity    
- *    add this:
- *       import android.support.v7.app.ActionBarActivity;
- *             change extends Activity to extends ActionBarActivity
- *	      Now change every getActionBar() reference to a getSupportActionBar()
- *    remove the import for activity if you want to.
- *    
- *    values/styles.xml  Theme.AppCompat.Light
- *    values-v11/styles.xml Theme.AppCompat.Light
- *    values-v14/styles.xml Theme.AppCompat.Light.DarkActionBar
- *    
- *    Not needed in this code, but in others
- *    Replace import android.app.ActionBar;
- *    with    import android.support.v7.app.ActionBar;
- *
- *    if you are in a fragment, you may have to write this ugly line of code:
- *    ((ActionBarActivity) getActivity()).getSupportActionBar();
- *    
- * 
+ * add the support library v7 and then change to this import android.support.v7.app.ActionBarDrawerToggle;
+ * Update 10/21/2014
+ * To remove the icon as well, then you need to change from an Activity to an ActionBarActivity
+ * add this:
+ * import android.support.v7.app.ActionBarActivity;
+ * change extends Activity to extends ActionBarActivity
+ * Now change every getActionBar() reference to a getSupportActionBar()
+ * remove the import for activity if you want to.
+ * <p>
+ * values/styles.xml  Theme.AppCompat.Light
+ * values-v11/styles.xml Theme.AppCompat.Light
+ * values-v14/styles.xml Theme.AppCompat.Light.DarkActionBar
+ * <p>
+ * Not needed in this code, but in others
+ * Replace import android.app.ActionBar;
+ * with    import android.support.v7.app.ActionBar;
+ * <p>
+ * if you are in a fragment, you may have to write this ugly line of code:
+ * ((ActionBarActivity) getActivity()).getSupportActionBar();
+ * <p>
+ * <p>
  * <p/>
  * <p>When a navigation (left) drawer is present, the host activity should detect presses of
  * the action bar's Up affordance as a signal to open and close the navigation drawer. The
@@ -109,17 +111,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       
+
         mTitle = mDrawerTitle = getTitle();
         mPlanetTitles = getResources().getStringArray(R.array.planets_array);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        mDrawerList = findViewById(R.id.left_drawer);
 
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, mPlanetTitles));
+            R.layout.drawer_list_item, mPlanetTitles));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
@@ -129,19 +131,19 @@ public class MainActivity extends AppCompatActivity {
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
         mDrawerToggle = new ActionBarDrawerToggle(
-                this,                  /* host Activity */
-                mDrawerLayout,         /* DrawerLayout object */
-               // R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */  //no in the v7 constructor, so commented out.
-                R.string.drawer_open,  /* "open drawer" description for accessibility */
-                R.string.drawer_close  /* "close drawer" description for accessibility */
-                ) {
+            this,                  /* host Activity */
+            mDrawerLayout,         /* DrawerLayout object */
+            // R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */  //no in the v7 constructor, so commented out.
+            R.string.drawer_open,  /* "open drawer" description for accessibility */
+            R.string.drawer_close  /* "close drawer" description for accessibility */
+        ) {
             public void onDrawerClosed(View view) {
-            	getSupportActionBar().setTitle(mTitle);
+                getSupportActionBar().setTitle(mTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             public void onDrawerOpened(View drawerView) {
-            	getSupportActionBar().setTitle(mDrawerTitle);
+                getSupportActionBar().setTitle(mDrawerTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
@@ -170,26 +172,26 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-         // The action bar home/up action should open or close the drawer.
-         // ActionBarDrawerToggle will take care of this.
+        // The action bar home/up action should open or close the drawer.
+        // ActionBarDrawerToggle will take care of this.
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         // Handle action buttons
-        switch(item.getItemId()) {
-        case R.id.action_websearch:
-            // create intent to perform web search for this planet
-            Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-            intent.putExtra(SearchManager.QUERY, getSupportActionBar().getTitle());
-            // catch event that there's no activity to handle intent
-            if (intent.resolveActivity(getPackageManager()) != null) {
-                startActivity(intent);
-            } else {
-                Toast.makeText(this, R.string.app_not_available, Toast.LENGTH_LONG).show();
-            }
-            return true;
-        default:
-            return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.action_websearch:
+                // create intent to perform web search for this planet
+                Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+                intent.putExtra(SearchManager.QUERY, getSupportActionBar().getTitle());
+                // catch event that there's no activity to handle intent
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(this, R.string.app_not_available, Toast.LENGTH_LONG).show();
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
@@ -254,13 +256,13 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_planet, container, false);
             int i = getArguments().getInt(ARG_PLANET_NUMBER);
             String planet = getResources().getStringArray(R.array.planets_array)[i];
 
             int imageId = getResources().getIdentifier(planet.toLowerCase(Locale.getDefault()),
-                            "drawable", getActivity().getPackageName());
+                "drawable", getActivity().getPackageName());
             ((ImageView) rootView.findViewById(R.id.image)).setImageResource(imageId);
             getActivity().setTitle(planet);
             return rootView;

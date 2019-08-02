@@ -1,9 +1,11 @@
 package edu.cs4730.navdrawerdemo;
 
 import android.content.res.Configuration;
+
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,13 +28,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextView = (TextView) findViewById(R.id.textview01);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mTextView = findViewById(R.id.textview01);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
 
         //first setup the listview with some simple categories via an array.
-        String[] values = new String[] { "Item 1", "Item 2", "Item 3", "Item 4" };
+        String[] values = new String[]{"Item 1", "Item 2", "Item 3", "Item 4"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, values);
+            R.layout.drawer_list_item, values);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerList.setAdapter(adapter);
         mDrawerList.setOnItemClickListener(new OnItemClickListener() {
@@ -57,10 +59,10 @@ public class MainActivity extends AppCompatActivity {
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
         mDrawerToggle = new ActionBarDrawerToggle(
-                this, /* host Activity */
-                mDrawerLayout, /* DrawerLayout object */
-                R.string.drawer_open, /* "open drawer" description for accessibility */
-                R.string.drawer_close /* "close drawer" description for accessibility */
+            this, /* host Activity */
+            mDrawerLayout, /* DrawerLayout object */
+            R.string.drawer_open, /* "open drawer" description for accessibility */
+            R.string.drawer_close /* "close drawer" description for accessibility */
         ) {
             public void onDrawerClosed(View view) {
                 getSupportActionBar().setTitle(R.string.app_name);
@@ -73,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         mDrawerLayout.addDrawerListener(mDrawerToggle);
-
 
 
     }
