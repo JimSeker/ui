@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "edu.cs4730.emojicompatdemo"
-        minSdkVersion 19
-        targetSdkVersion 28
+        minSdkVersion 22
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -20,7 +20,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "androidx.appcompat:appcompat:1.0.0"
+    implementation "androidx.appcompat:appcompat:1.0.2"
     implementation "androidx.emoji:emoji-appcompat:1.0.0"
     implementation "androidx.emoji:emoji-bundled:1.0.0"
     implementation "androidx.emoji:emoji:1.0.0"
