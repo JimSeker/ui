@@ -8,17 +8,19 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
-/*
+/**
  * This is the middle fragment, which uses a edittext to put text on the either the left or right
- * fragment in the view pager.
+ * fragment in the view pager.  It uses a modelview to start the data so the fragments can get via
+ * an observer.
  */
 
 public class FragMid extends Fragment implements Button.OnClickListener {
     Button btn_lt, btn_rt;
     EditText et;
     MainActivity parent;
-
+    DataViewModel mViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,16 +32,16 @@ public class FragMid extends Fragment implements Button.OnClickListener {
         btn_rt.setOnClickListener(this);
         et = view.findViewById(R.id.editText1);
         parent = (MainActivity) getActivity();
-
+        mViewModel = ViewModelProviders.of(getActivity()).get(DataViewModel.class);
         return view;
     }
 
     @Override
     public void onClick(View v) {
         if (v == btn_lt) { //left button
-            parent.leftfrag.setText(et.getText().toString());
+            mViewModel.appendStrLeft(et.getText().toString());
         } else {  //right button
-            parent.rightfrag.setText(et.getText().toString());
+            mViewModel.appendStrRight(et.getText().toString());
         }
         et.setText("");
     }

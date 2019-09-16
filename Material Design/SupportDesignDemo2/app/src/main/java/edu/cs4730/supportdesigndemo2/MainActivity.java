@@ -11,14 +11,14 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 
-/*
+/**
  * design tablayout with a viewpager.   So now that the design support better understands
- *  viewpagers, this is much easier and just as simple as just a pagestrip.  See this video
- *  for more useful information:
- *  https://youtu.be/zQekzaAgIlQ
+ * viewpagers, this is much easier and just as simple as just a pagestrip.  See this video
+ * for more useful information:
+ * https://youtu.be/zQekzaAgIlQ
  *
- *  One problem, here is I need to get the background of the tablelayout darker, so you can easily
- *  read the tab names though.
+ * One problem, here is I need to get the background of the tablelayout darker, so you can easily
+ * read the tab names though.
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         rightfrag = new FragRight();
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        viewPager =  findViewById(R.id.pager);
+        viewPager = findViewById(R.id.pager);
         ThreeFragmentPagerAdapter adapter = new ThreeFragmentPagerAdapter(fragmentManager);
         viewPager.setAdapter(adapter);
 
@@ -48,17 +48,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /*
-* We need to extend a FragmentPagerAdapter to add our three fragments.
-*   We need to override getCount and getItem.  Also getPageTitle since we are
-*   using a PageStripe.
- */
+    /**
+     * We need to extend a FragmentPagerAdapter to add our three fragments.
+     * We need to override getCount and getItem.  Also getPageTitle since we are
+     * using a PageStripe.
+     */
     public class ThreeFragmentPagerAdapter extends FragmentPagerAdapter {
         int PAGE_COUNT = 3;
 
         //required constructor that simply supers.
         public ThreeFragmentPagerAdapter(FragmentManager fm) {
-            super(fm);
+            super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         }
 
         // return the correct fragment based on where in pager we are.
