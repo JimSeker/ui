@@ -18,10 +18,10 @@
     <style name="AppTheme2" parent="Theme.AppCompat.DayNight">
     </style>
 
-    <style name="AppTheme3" parent="Theme.MaterialComponents">
+    <style name="AppTheme3" parent="Theme.MaterialComponents.Light">
     </style>
 
-    <style name="AppTheme4" parent="Theme.MaterialComponents.Light">
+    <style name="AppTheme4" parent="Theme.MaterialComponents">
     </style>
 
     <style name="AppTheme5" parent="Theme.MaterialComponents.DayNight">
