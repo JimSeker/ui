@@ -6,6 +6,7 @@ Android material Design Examples
 <b>CirToolbarNavDrawerDemo</b> uses toolbarnavDrawerDemo and uses the support design floating action button.  Previous versions used adds the Floating Action button (using a library from https://github.com/makovkastar/FloatingActionButton) 
 A useful guide to added libraries (see Studio 1.0 answer) http://stackoverflow.com/questions/16588064/how-do-i-add-a-library-project-to-the-android-studio A somewhat helpful visual guide to adding libraries: http://youtu.be/1MyBO9z7ojk 
 
+<b>DarkThemeDemo</a> is an example of how to dynamically change your themes, using a Light, Dark, or DayNight theme both appcompat and MaterialDesign.
 
 <b>SupportDesignDemo</b> is demo of some of the support Design widgets.  Floating action Button, inputtextlayout, snack bar, and using the snackbar and floating action button together (hint the fab moves out of the way).
 
