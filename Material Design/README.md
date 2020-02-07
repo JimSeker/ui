@@ -8,7 +8,7 @@ A useful guide to added libraries (see Studio 1.0 answer) http://stackoverflow.c
 
 <b>DarkThemeDemo</a> is an example of how to dynamically change your themes, using a Light, Dark, or DayNight theme both appcompat and MaterialDesign.
 
-<b>SupportDesignDemo</b> is demo of some of the support Design widgets.  Floating action Button, inputtextlayout, snack bar, and using the snackbar and floating action button together (hint the fab moves out of the way).
+<b>SupportDesignDemo</b> is demo of some of the support Design widgets.  Floating action Button, inputtextlayout, snack bar, and using the snackbar and floating action button together (hint the fab moves out of the way), Uses the NavigationView and drawerlayout.
 
 <b>snackbarDemo</b>  show the snackbar triggered from a fab.  It also show how the callbacks works, so you can determine how the
 user dealt with the snackbar (ie swiped it away, timed out, etc ).
