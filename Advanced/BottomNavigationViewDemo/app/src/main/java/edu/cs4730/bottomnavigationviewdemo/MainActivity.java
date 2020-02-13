@@ -12,6 +12,11 @@ import android.view.MenuItem;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+* and example use the BottomNavigationView and Navigation.
+* https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView
+* https://material.io/develop/android/components/bottom-navigation-view/
+*/
 public class MainActivity extends AppCompatActivity {
 
     @Override
