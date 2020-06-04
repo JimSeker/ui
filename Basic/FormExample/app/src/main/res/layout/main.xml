@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools"
-                                                   android:id="@+id/LinearLayout01"
-                                                   android:layout_width="fill_parent"
-                                                   android:layout_height="fill_parent"
-                                                   android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -14,7 +14,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="16dp"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="0dp"/>
+        tools:layout_editor_absoluteY="0dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -23,7 +23,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="367dp"
         tools:layout_editor_absoluteX="367dp"
-        tools:layout_editor_absoluteY="0dp"/>
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/Label01"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"/>
+        tools:layout_constraintTop_creator="1" />
 
 
     <TextView
@@ -47,12 +47,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:paddingTop="15dp"
         android:text="Enter:"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/Label01"/>
+        app:layout_constraintTop_toBottomOf="@+id/Label01" />
 
     <EditText
         android:id="@+id/ETname"
@@ -65,25 +64,26 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="0dp"
-        android:layout_toRightOf="@id/TVname"
-        android:text="Name"
+        android:layout_toEndOf="@id/TVname"
+        android:hint="Name"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/TVname"
         app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintLeft_toRightOf="@+id/TVname"
         app:layout_constraintRight_toLeftOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/TVname"
-        app:layout_constraintVertical_bias="0.526"/>
+        app:layout_constraintVertical_bias="0.526"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/TVsound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
         android:text="Radio Button Group"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/TVname"/>
+        app:layout_constraintTop_toBottomOf="@+id/TVname" />
 
     <RadioGroup
         android:id="@+id/SndGroup"
@@ -101,19 +101,19 @@
             android:id="@+id/RB01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Information"/>
+            android:text="Information" />
 
         <RadioButton
             android:id="@+id/RB02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Confirmation"/>
+            android:text="Confirmation" />
 
         <RadioButton
             android:id="@+id/RB03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Warning"/>
+            android:text="Warning" />
 
     </RadioGroup>
 
@@ -122,25 +122,24 @@
         android:id="@+id/TVbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
         android:text="Button alert:"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/SndGroup"/>
+        app:layout_constraintTop_toBottomOf="@+id/SndGroup" />
 
     <Button
         android:id="@+id/Button01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="0dp"
         android:text="Toast!"
         app:layout_constraintBottom_toBottomOf="@+id/TVbutton"
         app:layout_constraintLeft_toRightOf="@+id/TVbutton"
         app:layout_constraintTop_toTopOf="@+id/TVbutton"
-        app:layout_constraintVertical_bias="0.512"/>
+        app:layout_constraintVertical_bias="0.512" />
 
 
     <TextView
@@ -155,20 +154,19 @@
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintRight_toRightOf="@+id/TVbutton"
-        app:layout_constraintTop_toBottomOf="@+id/TVbutton"/>
+        app:layout_constraintTop_toBottomOf="@+id/TVbutton" />
 
     <ImageView
         android:id="@+id/ImageView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="0dp"
         android:src="@drawable/phone"
         app:layout_constraintBottom_toBottomOf="@+id/TVpic"
         app:layout_constraintLeft_toRightOf="@+id/TVpic"
         app:layout_constraintTop_toBottomOf="@+id/Button01"
-        app:layout_constraintVertical_bias="0.294"/>
+        app:layout_constraintVertical_bias="0.294"
+        android:contentDescription="Android icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

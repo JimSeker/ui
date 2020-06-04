@@ -13,7 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/*
+/**
  * This is a simple example code to demonstrate some simple views.
  */
 
@@ -87,7 +87,10 @@ public class FormExample extends AppCompatActivity implements RadioGroup.OnCheck
     /* button listener */
     public void onClick(View v) {
         if (v == btnalert) {
-            Toast.makeText(this, "The button was pressed", Toast.LENGTH_SHORT).show();
+            if (et.getText().toString().compareTo("")!=0)
+                Toast.makeText(this, "The edittext has " + et.getText().toString(), Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(this, "The button was pressed", Toast.LENGTH_SHORT).show();
             Log.d(TAG, "The button was pressed.");
         }
 
