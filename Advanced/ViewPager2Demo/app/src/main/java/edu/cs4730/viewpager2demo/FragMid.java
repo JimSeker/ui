@@ -1,4 +1,4 @@
-package edu.cs4730.viewpagerdemo;
+package edu.cs4730.viewpager2demo;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,9 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

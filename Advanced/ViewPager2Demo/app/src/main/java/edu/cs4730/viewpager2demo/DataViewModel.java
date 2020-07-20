@@ -1,4 +1,4 @@
-package edu.cs4730.viewpagerdemo;
+package edu.cs4730.viewpager2demo;
 
 import android.app.Application;
 
@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 /**
  * this is class to hold data so even when the destroy view is called for the fragment

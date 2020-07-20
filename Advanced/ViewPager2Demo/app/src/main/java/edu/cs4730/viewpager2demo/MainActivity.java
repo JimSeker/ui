@@ -1,4 +1,4 @@
-package edu.cs4730.viewpagerdemo;
+package edu.cs4730.viewpager2demo;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package edu.cs4730.viewpagerdemo;
+package edu.cs4730.viewpager2demo;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -12,16 +12,15 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-/**
- * This is a simple fragment to display data and it the "left" most fragment in the viewpager.
- *   The code here is identical to the code in the right fragment.
-*/
+/*
+ * This is a simple fragment to display data and it the "right" most fragment in the viewpager.
+ *   The code here is identical to the code in the left fragment.
+ */
 
-
-public class FragLeft extends Fragment {
+public class FragRight extends Fragment {
     TextView tx;
     DataViewModel mViewModel;
-    String TAG = "Left";
+    String TAG = "Right";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,7 +30,6 @@ public class FragLeft extends Fragment {
             Log.d(TAG, "OnCreate savedInstanceState");
         }
         mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
-
     }
 
     @Override
@@ -46,8 +44,7 @@ public class FragLeft extends Fragment {
         View view = inflater.inflate(R.layout.left, container, false);
         tx = view.findViewById(R.id.tvleft);
 
-
-        mViewModel.getDataLeft().observe(this, new Observer<String>() {
+        mViewModel.getDataRight().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String data) {
                 tx.setText(data);
@@ -60,21 +57,18 @@ public class FragLeft extends Fragment {
     public void onPause() {
         super.onPause();
         Log.d(TAG, "onPause()");
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume()");
-
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         Log.d(TAG, "onDestroyView()");
-
     }
 
     @Override
