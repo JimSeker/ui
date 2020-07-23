@@ -2,14 +2,15 @@ package edu.cs4730.toolbardemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-/*
-  Again most of the code is in the styles.xml and colors.
-  There are two lines below to setup the toolbar, instead of the
-  actionbar (which is removed in style.xml)
+/**
+ * Again most of the code is in the styles.xml and colors.
+ * There are two lines below to setup the toolbar, instead of the
+ * actionbar (which is removed in style.xml)
  */
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //use the appcompat.toolbar instead of the default one.
-        toolbar =  findViewById(R.id.app_bar);
+        toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
     }
 

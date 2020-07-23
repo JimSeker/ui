@@ -14,7 +14,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.Fragment;
 
-
 /**
  * Shows how to build and call a support alert dialog and set the listeners for it.
  * Also shows a list dialog and listeners as well.

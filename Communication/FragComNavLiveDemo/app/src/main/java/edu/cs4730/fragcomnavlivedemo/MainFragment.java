@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 /**
@@ -31,7 +31,7 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_main, container, false);
-        mViewModel = ViewModelProviders.of(getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
         tv1 = myView.findViewById(R.id.textView3);
         tv2 = myView.findViewById(R.id.textView4);
         //button to call firstfragment

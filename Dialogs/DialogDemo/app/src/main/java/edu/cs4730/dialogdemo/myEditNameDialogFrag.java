@@ -13,10 +13,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.DialogFragment;
 
-/*
- *  This is a "custom" dialog, which has an edittext box and returns
- *  the value back via a listener.
-  * this also pops up the keyboard for the editext box as well.
+/**
+ * This is a "custom" dialog, which has an edittext box and returns
+ * the value back via a listener.
+ * this also pops up the keyboard for the editext box as well.
  */
 
 public class myEditNameDialogFrag extends DialogFragment {
@@ -69,7 +69,7 @@ public class myEditNameDialogFrag extends DialogFragment {
             mListener = (EditNameDialogListener) getActivity();
         } catch (ClassCastException e) {
             throw new ClassCastException(getActivity().toString()
-                    + " must implement OnFragmentInteractionListener");
+                + " must implement OnFragmentInteractionListener");
         }
     }
 

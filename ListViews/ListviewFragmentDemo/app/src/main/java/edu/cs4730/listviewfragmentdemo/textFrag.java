@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-/*
+/**
  * This is a simple fragment used to display the data for whichever shakspeare that is clicked on
  * in the titlefrag fragment.  This is mostly google's code.  It also shows how to quickly save a small
  * piece of information (position) and how to use tuse the getargs as needed.  Except no args are

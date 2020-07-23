@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-/*
+/**
  * simple example of callbacks and two fragments.
  *
  * When the device is in portrait, it displays the main fragment with a button.  When clicked it

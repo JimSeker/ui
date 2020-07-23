@@ -9,21 +9,18 @@ import android.widget.ListView;
 
 import androidx.fragment.app.ListFragment;
 
-/*
+/**
  * This ia listfragment.  All we need to do is setlistadapter in onCreateView (there is no layout)
-  * and override onListItemClick.  Since we also have callbacks, also deal with those.
+ * and override onListItemClick.  Since we also have callbacks, also deal with those.
  */
 
-
 public class titlefrag extends ListFragment {
-
 
     /**
      * The fragment's current callback object, which is notified of list item
      * clicks.
      */
     private OnFragmentInteractionListener mListener;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +42,7 @@ public class titlefrag extends ListFragment {
             mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
+                + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -54,7 +51,6 @@ public class titlefrag extends ListFragment {
         super.onDetach();
         mListener = null;
     }
-
 
     @Override
     public void onListItemClick(ListView listView, View view, int position,

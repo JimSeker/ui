@@ -1,11 +1,11 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <!-- the main content view -->
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
@@ -30,13 +30,13 @@
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="bottom|end"
-            android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:src="@drawable/ic_add_white_24dp"
             app:elevation="8dp"
             app:fabSize="mini" />
@@ -64,13 +64,13 @@
             android:id="@+id/addCat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="bottom|end"
-            android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:src="@drawable/ic_add_white_24dp" />
     </RelativeLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

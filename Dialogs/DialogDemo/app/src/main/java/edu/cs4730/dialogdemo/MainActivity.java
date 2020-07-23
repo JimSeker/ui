@@ -79,10 +79,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    /*
-     *    These three methods are the callback methods for the dialog fragment callbacks.
-     *    note doPositiveClick and doNegativeClick are for both AlertDialogFrag1, while doItem
-     *    is only for the myDialogFragment listener.
+    /**
+     * These three methods are the callback methods for the dialog fragment callbacks.
+     * note doPositiveClick and doNegativeClick are for both AlertDialogFrag1, while doItem
+     * is only for the myDialogFragment listener.
      */
     //for Both myDialogFragment and myAlterDialogFragment
     public void doPositiveClick() {

@@ -14,7 +14,7 @@ import java.util.Random;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-/*
+/**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
  * see http://developer.android.com/training/improving-layouts/smooth-scrolling.html
  * except instead having to implement a ViewHolder, it is implemented within

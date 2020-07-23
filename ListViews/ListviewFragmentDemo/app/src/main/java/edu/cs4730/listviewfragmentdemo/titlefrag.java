@@ -9,11 +9,10 @@ import android.widget.ListView;
 
 import androidx.fragment.app.ListFragment;
 
-/*
+/**
  * this ia listfragment.  All we need to do is setlistadapter in onCreateView (there is no layout)
  * and override onListItemClick.  Since we also have callbacks, also deal with those.
  */
-
 
 public class titlefrag extends ListFragment {
 

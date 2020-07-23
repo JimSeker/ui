@@ -1,6 +1,5 @@
 package edu.cs4730.callbacksdemo;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,8 +30,8 @@ public class MainFragment extends Fragment {
 
     public MainFragment() {
         mList = Arrays.asList("Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2");
+            "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+            "Linux", "OS/2");
 
     }
 
@@ -69,7 +68,7 @@ public class MainFragment extends Fragment {
             mCallback = (OntransInteractionCallback) getActivity();
         } catch (ClassCastException e) {
             throw new ClassCastException(getActivity().toString()
-                    + " must implement OnFragmentInteractionListener");
+                + " must implement OnFragmentInteractionListener");
         }
     }
 

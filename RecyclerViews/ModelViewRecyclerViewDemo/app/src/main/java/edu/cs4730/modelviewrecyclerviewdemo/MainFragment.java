@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -53,7 +54,7 @@ public class MainFragment extends Fragment {
 
         //needed the activity, Doc's Creates a ViewModelProvider, which retains ViewModels while a scope of given Activity is alive.
         //otherwise, activity is not the same instance and so not triggered either.
-        mViewModel = ViewModelProviders.of(getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
         mViewModel.getItemLD().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

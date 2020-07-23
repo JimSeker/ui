@@ -1,9 +1,5 @@
 package edu.cs4730.lotsoflists;
 
-/**
- * Created by Seker on 1/22/2015.
- */
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-/*
+/**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
  * see http://developer.android.com/training/improving-layouts/smooth-scrolling.html
  * except instead having to implement a ViewHolder, it is implemented within

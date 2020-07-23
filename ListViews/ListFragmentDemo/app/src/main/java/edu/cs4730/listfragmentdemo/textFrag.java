@@ -8,10 +8,9 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-/*
+/**
  * This is a simple fragment used to display the data for whichever shakespeare that is clicked on
  * in the titlefrag fragment.  It also shows how to quickly save a small piece of information (position)
- *
  */
 
 public class textFrag extends Fragment {

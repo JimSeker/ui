@@ -11,9 +11,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
-/*
+/**
  * This is a simple demo of how to get data from an recyclerview demo all the way back to the
  * mainactivity.
  *
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mViewModel = ViewModelProviders.of(this).get( DataViewModel.class);
+        mViewModel = new ViewModelProvider(this).get( DataViewModel.class);
 
         FloatingActionButton fab =  findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

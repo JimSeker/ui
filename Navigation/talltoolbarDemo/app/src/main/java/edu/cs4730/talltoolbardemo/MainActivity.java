@@ -18,7 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-/*
+/**
  * simple demo to replicate a google sample picture.
  * Note, icons can be found here: http://developer.android.com/design/downloads/index.html
  */

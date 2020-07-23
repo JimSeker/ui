@@ -100,6 +100,7 @@ public class IntentDemoActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         //Toast.makeText(this, "Request code is " + requestCode, Toast.LENGTH_LONG).show();
+
         if (requestCode == REQUEST_CODE_CAMERA) {
             if (resultCode == Activity.RESULT_OK) { //get where the picture is stored and display info
                 String result = data.getData().toString();
@@ -111,7 +112,7 @@ public class IntentDemoActivity extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK) { //ActivityTwo finished correctly.
                 if (data.hasExtra("returnKey1")) {
                     Toast.makeText(this, data.getExtras().getString("returnKey1"),
-                            Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Toast.makeText(this, "ActivityTwo action canceled", Toast.LENGTH_SHORT).show();
@@ -131,7 +132,7 @@ public class IntentDemoActivity extends AppCompatActivity {
                 Toast.makeText(this, "ActivityTwo action canceled", Toast.LENGTH_SHORT).show();
             }
         }
-
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public void makeCall() {

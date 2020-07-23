@@ -1,9 +1,5 @@
 package edu.cs4730.callbacksdemo;
 
-/**
- * Created by Seker on 1/22/2015.
- */
-
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,12 +12,12 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-/*
+/**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
  * see http://developer.android.com/training/improving-layouts/smooth-scrolling.html
  * except instead having to implement a ViewHolder, it is implemented within
  * the adapter.
- *
+ * <p>
  * This code has a listeners defined in the class and ViewHolder class, so that a piece of data
  * can be passed all the way back to the mainActivity (via the fragment)
  */

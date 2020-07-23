@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-/*
+/**
  * This is an example using the listview in a fragment.  There is very little code here that is not default
  * except the callbacks for the fragment named titlefrag.  There is a layout and layout-land for this
  * so the code also decides if it needs to display a fragment or if it is already showing.

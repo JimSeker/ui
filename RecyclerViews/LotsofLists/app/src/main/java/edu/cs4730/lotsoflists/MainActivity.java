@@ -28,10 +28,10 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-/*
+/**
  * complex example of a navigation drawer with recyclerview.  Plus you can add more items
  * to the list and add more categories (ie new lists) as well.
- *
+ * <p>
  * The list data is all handled in the morelists class/data structure.
  */
 
@@ -53,14 +53,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //use the v7.toolbar instead of the default one.
+        //use the androidx toolbar instead of the default one.
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
         myLists = new morelists();  //setup initial variable.
 
         //setup the RecyclerView
-        mRecyclerView = (RecyclerView)findViewById(R.id.list);
+        mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
         //swipe listener for the recycler view
         //ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT |ItemTouchHelper.LEFT) {
-        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 //likely allows to for animations?  or moving items in the view I think.
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 //use ItemtouchHelper.X to find the correct one.
                 if (direction == ItemTouchHelper.RIGHT) {
                     //Toast.makeText(getBaseContext(),"Right?", Toast.LENGTH_SHORT).show();
-                    int item =  viewHolder.getAdapterPosition(); //think this is where in the array it is.
+                    int item = viewHolder.getAdapterPosition(); //think this is where in the array it is.
                     //((myAdapter)viewHolder).myName.getText();
 
                     myLists.removeItem(item);
@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             private boolean isVisible = true;
             private float HIDE_THRESHOLD = 100;
             private float SHOW_THRESHOLD = 50;
+
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
@@ -112,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                         fab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
                         //scrollDist = 0;
                         isVisible = true;
-                        Log.v("c",  "state changed, show be showing....");
+                        Log.v("c", "state changed, show be showing....");
                     }
 
                 }
@@ -160,13 +161,13 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        mDrawerlayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         mDrawerToggle = new ActionBarDrawerToggle(this,  // host activity
-                mDrawerlayout,  //drawerlayout object
-                toolbar,  //toolbar
-                R.string.drawer_open,  //open drawer description  required!
-                R.string.drawer_close) {  //closed drawer description
+            mDrawerlayout,  //drawerlayout object
+            toolbar,  //toolbar
+            R.string.drawer_open,  //open drawer description  required!
+            R.string.drawer_close) {  //closed drawer description
 
             //called once the drawer has closed.
             @Override
@@ -198,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
         });
         //lastly setup the listview with some simple categories via an array.
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, myLists.getAllCat());
+            R.layout.drawer_list_item, myLists.getAllCat());
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerList.setAdapter(adapter);
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -221,11 +222,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-  /*
-   We are going to add data
-
-   * setup a dialog fragment to ask the user for the new item data or category.
-   */
+    /**
+     * We are going to add data
+     * setup a dialog fragment to ask the user for the new item data or category.
+     */
 
     public void showInputDialog(String title) {
 
@@ -251,15 +251,16 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(getBaseContext(), userinput.getText().toString(), Toast.LENGTH_LONG).show();
             }
         })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
+            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
 
-                    }
-                });
+                }
+            });
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

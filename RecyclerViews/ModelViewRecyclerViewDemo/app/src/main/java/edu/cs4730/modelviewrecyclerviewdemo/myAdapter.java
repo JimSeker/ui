@@ -10,10 +10,10 @@ import android.widget.TextView;
 import java.util.List;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
-/*
+/**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
  * see http://developer.android.com/training/improving-layouts/smooth-scrolling.html
  * except instead having to implement a ViewHolder, it is implemented within
@@ -69,7 +69,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
         //interesting.  while fragment will work, you need the activity, otherwise this viewmodel is not connected to the activity.
         // key doesn't help in the get method.
         //needed the activity, Doc's Creates a ViewModelProvider, which retains ViewModels while a scope of given Activity is alive.
-        mViewModel = ViewModelProviders.of(mFragment.getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(mFragment.getActivity()).get(DataViewModel.class);
         //likely this should be passed the adapter instead.  but it does work.
     }
 

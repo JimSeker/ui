@@ -52,6 +52,7 @@ import android.widget.Toast;
  * Note, this updates below are true for just API 21 (lollipop), you must use the support libraries.
  * This was test with on several different nag drawer examples, these seem to be all the fixes so far.
  * <p>
+ * updated 2019  moved to android x, so most of the comment below is  now obsolete.
  * Updated 10/18/2014 for the new <- in the navigation drawer used in the v7 support library.
  * add the support library v7 and then change to this import android.support.v7.app.ActionBarDrawerToggle;
  * Update 10/21/2014

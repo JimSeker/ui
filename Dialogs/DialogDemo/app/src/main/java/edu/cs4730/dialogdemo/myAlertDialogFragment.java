@@ -9,10 +9,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-/*
+/**
  * this extends a Dialog fragment to create an alterdialog fragment
  */
-
 
 public class myAlertDialogFragment extends DialogFragment {
 
@@ -26,34 +25,35 @@ public class myAlertDialogFragment extends DialogFragment {
         frag.setArguments(args);
         return frag;
     }
-    
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         int title = getArguments().getInt("title");
 
         return new AlertDialog.Builder(getActivity())
-                //.setIcon(R.drawable.alert_dialog_icon)
-                .setTitle(title)
-                .setPositiveButton(R.string.alert_dialog_ok,
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            mListener.doPositiveClick();
-                        }
+            //.setIcon(R.drawable.alert_dialog_icon)
+            .setTitle(title)
+            .setPositiveButton(R.string.alert_dialog_ok,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        mListener.doPositiveClick();
                     }
-                )
-                .setNegativeButton(R.string.alert_dialog_cancel,
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            mListener.doNegativeClick();
-                        }
+                }
+            )
+            .setNegativeButton(R.string.alert_dialog_cancel,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        mListener.doNegativeClick();
                     }
-                )
-                .create();
+                }
+            )
+            .create();
     }
 
     //all the callback stuff.
     public interface OnDialogFragmentListener {
         void doPositiveClick();
+
         void doNegativeClick();
     }
 
@@ -65,15 +65,15 @@ public class myAlertDialogFragment extends DialogFragment {
             mListener = (OnDialogFragmentListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
+                + " must implement OnFragmentInteractionListener");
         }
     }
+
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-
 
 
 }

@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-/*
+/**
  * This is an example using the listfragment.  There is very little code here that is not default
  * except the callbacks for the listfragment named titlefrag.
  *

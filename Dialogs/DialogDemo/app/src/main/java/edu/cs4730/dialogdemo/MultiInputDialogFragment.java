@@ -72,26 +72,27 @@ public class MultiInputDialogFragment extends DialogFragment {
         if (name != null) et_name.setText(name);
         et_amount = (EditText) myView.findViewById(R.id.et_amount);
         if (amount != null) et_amount.setText(amount);
-        final AlertDialog.Builder builder = new  AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
         builder.setView(myView).setTitle("Multi Input Dialog");
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 String[] returnlist =
-                        new String[]{
-                                et_name.getText().toString(),
-                                et_amount.getText().toString()
-                        };
+                    new String[]{
+                        et_name.getText().toString(),
+                        et_amount.getText().toString()
+                    };
                 //send the list back to the MainActivity to process.
                 mListener.onMultiInputInteraction(returnlist);
 
                 dismiss();
 
-            }})
+            }
+        })
             .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                       dialog.cancel();
+                    dialog.cancel();
                 }
             });
 
@@ -106,7 +107,7 @@ public class MultiInputDialogFragment extends DialogFragment {
             mListener = (OnDialogFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                + " must implement OnFragmentInteractionListener");
         }
     }
 
