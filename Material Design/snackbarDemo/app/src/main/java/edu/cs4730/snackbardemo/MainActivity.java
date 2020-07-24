@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-/*
+/**
  * A demo of the snackbar callbacks.  So you can tell if the user swiped it away, or other actions.
  * And yes, the irony of using a toast to show snackbar is not lost on me either.
  *

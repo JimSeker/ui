@@ -14,11 +14,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-/*
-  https://github.com/codepath/android_guides/wiki/Dynamic-Color-using-Palettes
-  http://willowtreeapps.com/blog/palette-the-new-api-for-android/
-  https://www.bignerdranch.com/blog/extracting-colors-to-a-palette-with-android-lollipop/
-
+/**
+ * https://github.com/codepath/android_guides/wiki/Dynamic-Color-using-Palettes
+ * http://willowtreeapps.com/blog/palette-the-new-api-for-android/
+ * https://www.bignerdranch.com/blog/extracting-colors-to-a-palette-with-android-lollipop/
  */
 public class MainActivity extends AppCompatActivity {
     TextView iv_vibrant, iv_vibrantdark, iv_vibrantlight, iv_muted, iv_muteddark, iv_mutedlight;

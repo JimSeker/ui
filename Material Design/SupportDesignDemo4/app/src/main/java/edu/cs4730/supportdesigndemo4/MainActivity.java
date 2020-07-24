@@ -23,14 +23,14 @@ import android.view.View;
 import java.util.Arrays;
 import java.util.List;
 
-/*
+/**
  * an attempt at a collapsing toolbar (will, I thought it would scroll off as well).  show title text
  * is an issue.
- *
+ * <p>
  * based on http://android-developers.blogspot.com/2015/05/android-design-support-library.html  so
  * based on android docs in the past... it's an error in their code... or as it turns out a note, that
  * well isn't clear at all.
- *
+ * <p>
  * basing come from the talltoolbar example to get icons and stuff.
  */
 

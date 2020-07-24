@@ -5,23 +5,24 @@ import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/*
+/**
  * this is a simple demo to show how static shorts (see xml/shortcuts.xml)
- *
+ * <p>
  * this code will add/refresh two dynamic short cuts as well.
  * 1 to a website
  * 2 to the commonActivity.
- *
+ * <p>
  * once this example makes since, then you will be able to understand google's very complex example
  * of appshortcuts https://github.com/googlesamples/android-AppShortcuts/
- *
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        if (getIntent().getAction().compareTo("edu.cs4730.appshortcutsdemo.CustomAction") ==0) {
+        if (getIntent().getAction().compareTo("edu.cs4730.appshortcutsdemo.CustomAction") == 0) {
             //this is our custom intent fromt he xml file
             logthis("Custom Action intent from the Static shortcut.");
         }
@@ -79,26 +80,26 @@ public class MainActivity extends AppCompatActivity {
         ShortcutInfo item;
         //now add them.
         //first one, a web link to cosc 4735 pages
-        item = new ShortcutInfo.Builder(this,"id1")
-                .setShortLabel("Web Site")
-                .setLongLabel("Cosc 4735 Web site")
-                .setIcon(Icon.createWithResource(this, R.drawable.bookmark))
-                .setIntent(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("http://www.cs.uwyo.edu/~seker/courses/4735/")))
-                .build();
+        item = new ShortcutInfo.Builder(this, "id1")
+            .setShortLabel("Web Site")
+            .setLongLabel("Cosc 4735 Web site")
+            .setIcon(Icon.createWithResource(this, R.drawable.bookmark))
+            .setIntent(new Intent(Intent.ACTION_VIEW,
+                Uri.parse("http://www.cs.uwyo.edu/~seker/courses/4735/")))
+            .build();
         myList.add(item);
         //second one, a custom intent to commonActivity.
-        item = new ShortcutInfo.Builder(this,"id2")
-                .setShortLabel("Common Act message")
-                .setLongLabel("Start a message on Commmon Activity")
-                .setIcon(Icon.createWithResource(this, R.drawable.ic_touch_app_black_24dp))
-                .setIntent(
-                        new Intent("edu.cs4730.appshortcutsdemo.AddMessage")
-                        .setClassName("edu.cs4730.appshortcutsdemo","edu.cs4730.appshortcutsdemo.CommonActivity")
-                        //this is like any intent, you can add data to it as well, so key pairs of data.
-                        .putExtra("Name", "fred")
-                )
-                .build();
+        item = new ShortcutInfo.Builder(this, "id2")
+            .setShortLabel("Common Act message")
+            .setLongLabel("Start a message on Commmon Activity")
+            .setIcon(Icon.createWithResource(this, R.drawable.ic_touch_app_black_24dp))
+            .setIntent(
+                new Intent("edu.cs4730.appshortcutsdemo.AddMessage")
+                    .setClassName("edu.cs4730.appshortcutsdemo", "edu.cs4730.appshortcutsdemo.CommonActivity")
+                    //this is like any intent, you can add data to it as well, so key pairs of data.
+                    .putExtra("Name", "fred")
+            )
+            .build();
         myList.add(item);
 
         //add the list to the shortcutmanager.

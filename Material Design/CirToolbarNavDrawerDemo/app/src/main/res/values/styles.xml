@@ -1,20 +1,18 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="AppTheme.Base">
-        <!-- Customize your theme here. -->
-    </style>
-    <style name="AppTheme.Base" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryColorDark</item>
         <item name="colorAccent">@color/accentColor</item>
-<!-- these only work in lollipop.  so they are commented out, but left so I remember it too.
-        <item name="textColorPrimary">@color/textColor</item>
-        <item name="textColorSecondary">@color/textColorSecondary</item>
 
-        <item name="navigationBarColor">@color/navigationBarColor</item>
-        <item name="windowBackground">@color/windowBackgroundColor</item>
-        -->
+        <!--  see https://developer.android.com/training/material/theme.html  -->
+
+        <item name="android:textColorPrimary">@color/textColor</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+
+        <item name="android:navigationBarColor">@color/navigationBarColor</item>
+        <item name="android:windowBackground">@color/windowBackgroundColor</item>
     </style>
 
 </resources>

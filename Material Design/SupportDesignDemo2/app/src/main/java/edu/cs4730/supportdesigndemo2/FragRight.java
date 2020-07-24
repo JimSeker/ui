@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 /*
@@ -29,7 +30,7 @@ public class FragRight extends Fragment {
         if (savedInstanceState != null) {
             Log.d(TAG, "OnCreate savedInstanceState");
         }
-        mViewModel = ViewModelProviders.of(getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
 
     }
 

@@ -1,14 +1,16 @@
 package edu.cs4730.multiwindowsdemo;
 
 import android.os.PersistableBundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    String TAG= "MainActivity";
+    String TAG = "MainActivity";
     TextView logger;
 
 
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        logthis("onPostCreate 1" );
+        logthis("onPostCreate 1");
     }
 
     @Override
