@@ -6,6 +6,8 @@ Advanced Android GUI/UI Examples
 
 <b>ViewPagerDemo</b>  is an simple example of a viewpager with three fragments.  In landscape, it does not use the viewpager.
 
+<b>ViewPager2Demo</b> is an simple example of a viewpager2 androidx library with three fragments.  In landscape, it does not use the viewpager.
+
 <b>EmojiCompatDemo</b> is an example using the emoji compat library.
 
 <b>BottomNavigationViewDemo</b> use the material desgin BottomNavigationView with the Arch Navigation to switch between three fragments really simply.
