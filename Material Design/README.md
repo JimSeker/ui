@@ -15,7 +15,7 @@ user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
 <b>snackbarExtendedDemo</b> show how to set the snackbar to indefinite, so it will continue to show, until we programmatically dismiss it.
 
-<b>SupportDesignDemo2</b> uses the support design tablayout with a viewpager.  The new methods use the support design tablayout.  They are just as easy to use as the stripetab with the viewpager, but you need 2 extra lines of code to setup it up.
+<b>SupportDesignDemo2</b> uses the support design tablayout with a viewpager2, based on the advanced/viewpager and advanced/viewpager2.
 
 <b>SupportDesignDemo3</b> show how to use a picture with the toolbar and how to collapse the picture.  Also a little bit with the support design pallete.
 
