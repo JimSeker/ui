@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -49,10 +50,16 @@ public class FirstFragment extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.action_first_to_second);
             }
         });
+        mViewModel.getData().observe(getViewLifecycleOwner(), new Observer<String>() {
+                @Override
+                public void onChanged(@Nullable String data) {
+                    tv2.setText("Parameter2: " +data);
+                }
+            });
 
         tv1.setText("Parameter1: " +mViewModel.num_one);
 
-        tv2.setText("Parameter2: " +mViewModel.getItem());
+
 
         return myView;
     }

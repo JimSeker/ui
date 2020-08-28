@@ -45,7 +45,14 @@ public class SecondFragment extends Fragment {
             }
         });
         tv1.setText("Parameter1: " + mViewModel.num_two);
-        tv2.setText("Parameter2: " + mViewModel.getItem());
+
+        mViewModel.getData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String data) {
+                tv2.setText("Parameter2: " +data);
+            }
+        });
+
         return myView;
     }
 
