@@ -11,6 +11,7 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
-        android:textColor="@android:color/white"
+
         android:textSize="24sp" />
+    <!--android:textColor="@android:color/white"-->
 </RelativeLayout>
