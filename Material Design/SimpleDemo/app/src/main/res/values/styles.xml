@@ -1,21 +1,19 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="AppTheme.Base">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         <!-- Customize your theme here. -->
-    </style>
-    <style name="AppTheme.Base" parent="Base.Theme.AppCompat">
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryDark">@color/primaryColorDark</item>
-        <item name="colorAccent">@color/accentColor</item>
-<!-- these only work in lollipop.  so they are commented out, but left so I remember it too.
-     https://developer.android.com/training/material/theme.html
-        <item name="textColorPrimary">@color/textColor</item>
-        <item name="textColorSecondary">@color/textColorSecondary</item>
+        <!--  see https://developer.android.com/training/material/theme.html  -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- the following only work on 21+. -->
+        <item name="android:textColorPrimary">@color/textColor</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
 
-        <item name="navigationBarColor">@color/navigationBarColor</item>
-        <item name="windowBackground">@color/windowBackgroundColor</item>
-        -->
+        <item name="android:navigationBarColor">@color/navigationBarColor</item>
+        <item name="android:windowBackground">@color/windowBackgroundColor</item>
+
     </style>
+
 
 </resources>
