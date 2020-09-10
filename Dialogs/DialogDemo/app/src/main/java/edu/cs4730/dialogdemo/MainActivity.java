@@ -14,7 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
 
-/*
+/**
  * very little to see here.  The listeners for the custom dialogs are implemented here
  * but otherwise the main work is in SupportDialogFragment and CustomFragment.
  */

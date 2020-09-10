@@ -12,11 +12,6 @@
         android:title="ToolBar action Items Demo"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/Actionsearchdemo"
-        android:orderInCategory="4"
-        android:title="ToolBar Search Demo"
-        app:showAsAction="never"/>
-    <item
         android:id="@+id/Actionbuttonsdemo"
         android:orderInCategory="3"
         android:title="ToolBar Buttons Demo"

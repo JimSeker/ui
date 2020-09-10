@@ -20,12 +20,13 @@
             tools:layout="@layout/text_fragment"/>
     </RelativeLayout>
     <!-- drawer view -->
+
     <fragment
         android:id="@+id/frag_titles"
         class="edu.cs4730.navdrawerfragdemo.titlefrag"
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@android:color/black"/>
+        android:background="@color/windowBackgroundColor"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
