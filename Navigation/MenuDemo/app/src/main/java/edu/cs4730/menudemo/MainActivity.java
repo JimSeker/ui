@@ -69,8 +69,6 @@ public class MainActivity extends AppCompatActivity {
         }else if (id == R.id.Actionbuttonsdemo) {
             startActivity(new Intent(MainActivity.this, AppcompatActivity.class));
             return true;
-        }else if (id == R.id.Actionsearchdemo) {
-            return true;
         }
 
         return super.onOptionsItemSelected(item);
