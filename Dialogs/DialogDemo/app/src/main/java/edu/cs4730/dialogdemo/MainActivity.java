@@ -3,6 +3,7 @@ package edu.cs4730.dialogdemo;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -20,64 +21,51 @@ import androidx.fragment.app.FragmentManager;
  */
 
 public class MainActivity extends AppCompatActivity
-    implements NavigationView.OnNavigationItemSelectedListener,
-    myEditNameDialogFrag.EditNameDialogListener,
+    implements myEditNameDialogFrag.EditNameDialogListener,
     myDialogFragment.OnDialogFragmentListener,
     myAlertDialogFragment.OnDialogFragmentListener,
     MultiInputDialogFragment.OnDialogFragmentInteractionListener {
 
     FragmentManager fragmentManager;
     CustomFragment myCustomFragment;
+    BottomNavigationView bnv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
 
         fragmentManager = getSupportFragmentManager();
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        bnv = findViewById(R.id.bnv);
+        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                //At this point, we are doing the same thing that is done for menu selections.
+                //if we had a onOptionsItemSelect method for a menu, we could just use it.
+                int id = item.getItemId();
+                if (id == R.id.nav_support) {
+                    fragmentManager.beginTransaction().replace(R.id.container, new SupportDialogFragment()).commit();
+                    return true;
+                } else if (id == R.id.nav_custom) {
+                    if (myCustomFragment == null)
+                        myCustomFragment = new CustomFragment();
+                    fragmentManager.beginTransaction().replace(R.id.container, myCustomFragment).commit();
+                }
+                return false;
+            }
+        });
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        //add the first one as the default fragment.
-        fragmentManager.beginTransaction().replace(R.id.container, new SupportDialogFragment()).commit();
-    }
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_support) {
+        if (savedInstanceState == null) {
+            //add the first one as the default fragment.
             fragmentManager.beginTransaction().replace(R.id.container, new SupportDialogFragment()).commit();
-        } else if (id == R.id.nav_custom) {
-            if (myCustomFragment == null)
-                myCustomFragment = new CustomFragment();
-            fragmentManager.beginTransaction().replace(R.id.container, myCustomFragment).commit();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+
     }
+
 
     /**
      * These three methods are the callback methods for the dialog fragment callbacks.

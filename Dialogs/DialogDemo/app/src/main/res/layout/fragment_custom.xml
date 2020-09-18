@@ -12,6 +12,7 @@
         android:id="@+id/btn_alert1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="Custom Alert 1"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -20,12 +21,14 @@
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="192dp"
         tools:layout_conversion_absoluteX="0dp"
-        tools:layout_conversion_absoluteY="0dp"/>
+        tools:layout_conversion_absoluteY="0dp" />
 
     <Button
         android:id="@+id/btn_alert2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:text="Custom Alert 2"
         app:layout_constraintBottom_toBottomOf="@+id/btn_alert1"
         app:layout_constraintLeft_toRightOf="@+id/btn_alert1"
@@ -35,13 +38,14 @@
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="192dp"
         tools:layout_conversion_absoluteX="192dp"
-        tools:layout_conversion_absoluteY="0dp"/>
+        tools:layout_conversion_absoluteY="0dp" />
 
 
     <Button
         android:id="@+id/btn_alert3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:text="Custom Alert 3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btn_edit"
@@ -49,12 +53,14 @@
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="208dp"
         tools:layout_conversion_absoluteX="0dp"
-        tools:layout_conversion_absoluteY="48dp"/>
+        tools:layout_conversion_absoluteY="48dp" />
 
     <Button
         android:id="@+id/btn_edit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:text="Edit Dialog"
         app:layout_constraintBottom_toBottomOf="@+id/btn_alert3"
         app:layout_constraintLeft_toRightOf="@+id/btn_alert3"
@@ -64,27 +70,30 @@
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="176dp"
         tools:layout_conversion_absoluteX="208dp"
-        tools:layout_conversion_absoluteY="48dp"/>
+        tools:layout_conversion_absoluteY="48dp" />
 
     <Button
         android:id="@+id/inline_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Inline Dialog"
+        android:layout_marginLeft="8dp"
 
+        android:text="Inline Dialog"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/mutli_input_btn"
         app:layout_constraintTop_toBottomOf="@+id/btn_edit"
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="208dp"
         tools:layout_conversion_absoluteX="0dp"
-        tools:layout_conversion_absoluteY="48dp"/>
+        tools:layout_conversion_absoluteY="48dp" />
 
     <Button
         android:id="@+id/mutli_input_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:text="multi input"
         app:layout_constraintBottom_toBottomOf="@+id/inline_button"
         app:layout_constraintLeft_toRightOf="@+id/inline_button"
@@ -94,7 +103,7 @@
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="176dp"
         tools:layout_conversion_absoluteX="208dp"
-        tools:layout_conversion_absoluteY="48dp"/>
+        tools:layout_conversion_absoluteY="48dp" />
 
     <TextView
         android:id="@+id/logger_custom"
