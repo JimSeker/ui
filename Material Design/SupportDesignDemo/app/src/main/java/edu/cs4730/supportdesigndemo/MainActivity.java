@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerlayout.addDrawerListener(mDrawerToggle);
 
         //this ia the support Navigation view.
-        mNavigationView = (NavigationView) findViewById(R.id.navview);
+        mNavigationView = findViewById(R.id.navview);
         //setup a listener, which acts very similiar to how menus are handled.
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
