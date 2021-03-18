@@ -23,7 +23,7 @@ Note for Android studio download a zip (or clone).  Then in Andriod Studio open 
 
 <b>mvcDemo</b> is an example using the Model-view-controller model.
 
-<b>flutter</b> is an attempt at cross platform using flutter/dart.  Very early stages.
+<b>flutter</b> all flutter examples have been moved to their own repo, https://github.com/JimSeker/flutter
 
 <b>legacy/</b> are old examples that are no longer updated.  
 
