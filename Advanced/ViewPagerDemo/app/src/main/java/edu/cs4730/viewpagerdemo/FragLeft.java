@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 /**
  * This is a simple fragment to display data and it the "left" most fragment in the viewpager.
@@ -30,7 +30,7 @@ public class FragLeft extends Fragment {
         if (savedInstanceState != null) {
             Log.d(TAG, "OnCreate savedInstanceState");
         }
-        mViewModel = ViewModelProviders.of(getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
 
     }
 

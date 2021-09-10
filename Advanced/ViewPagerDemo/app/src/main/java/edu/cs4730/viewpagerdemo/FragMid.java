@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 /**
  * This is the middle fragment, which uses a edittext to put text on the either the left or right
@@ -32,7 +32,7 @@ public class FragMid extends Fragment implements Button.OnClickListener {
         btn_rt.setOnClickListener(this);
         et = view.findViewById(R.id.editText1);
         parent = (MainActivity) getActivity();
-        mViewModel = ViewModelProviders.of(getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
         return view;
     }
 
