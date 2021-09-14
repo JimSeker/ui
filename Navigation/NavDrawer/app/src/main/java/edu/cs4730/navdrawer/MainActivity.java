@@ -52,24 +52,14 @@ import android.widget.Toast;
  * Note, this updates below are true for just API 21 (lollipop), you must use the support libraries.
  * This was test with on several different nag drawer examples, these seem to be all the fixes so far.
  * <p>
+ * updatred 2021, fixed the comments, or at least removed the obsolete parts.
  * updated 2019  moved to android x, so most of the comment below is  now obsolete.
  * Updated 10/18/2014 for the new <- in the navigation drawer used in the v7 support library.
  * add the support library v7 and then change to this import android.support.v7.app.ActionBarDrawerToggle;
  * Update 10/21/2014
  * To remove the icon as well, then you need to change from an Activity to an ActionBarActivity
  * add this:
- * import android.support.v7.app.ActionBarActivity;
- * change extends Activity to extends ActionBarActivity
- * Now change every getActionBar() reference to a getSupportActionBar()
- * remove the import for activity if you want to.
- * <p>
- * values/styles.xml  Theme.AppCompat.Light
- * values-v11/styles.xml Theme.AppCompat.Light
- * values-v14/styles.xml Theme.AppCompat.Light.DarkActionBar
- * <p>
- * Not needed in this code, but in others
- * Replace import android.app.ActionBar;
- * with    import android.support.v7.app.ActionBar;
+
  * <p>
  * if you are in a fragment, you may have to write this ugly line of code:
  * ((ActionBarActivity) getActivity()).getSupportActionBar();
