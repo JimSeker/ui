@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity
         fragmentManager = getSupportFragmentManager();
 
         bnv = findViewById(R.id.bnv);
-        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 //At this point, we are doing the same thing that is done for menu selections.
@@ -48,11 +49,13 @@ public class MainActivity extends AppCompatActivity
                 int id = item.getItemId();
                 if (id == R.id.nav_support) {
                     fragmentManager.beginTransaction().replace(R.id.container, new SupportDialogFragment()).commit();
+                    item.setChecked(true);
                     return true;
                 } else if (id == R.id.nav_custom) {
                     if (myCustomFragment == null)
                         myCustomFragment = new CustomFragment();
                     fragmentManager.beginTransaction().replace(R.id.container, myCustomFragment).commit();
+                    item.setChecked(true);
                 }
                 return false;
             }
