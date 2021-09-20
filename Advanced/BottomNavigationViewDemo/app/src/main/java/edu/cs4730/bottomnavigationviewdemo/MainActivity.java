@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        //In order to have badges, you need to use the Theme.MaterialComponents.DayNight  (doesn't have to daynight, but materialcompents).
+        //In order to have badges, you need to use the Theme.MaterialComponents.DayNight  (doesn't have to be daynight, but MaterialComponents).
         BadgeDrawable badge = navView.getOrCreateBadge(R.id.action_second);
         badge.setNumber(12);  //should show a 12 in the "badge" for the second one.
         badge.setVisible(true);
