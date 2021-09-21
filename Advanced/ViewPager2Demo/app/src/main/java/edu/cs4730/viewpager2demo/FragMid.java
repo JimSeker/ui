@@ -45,7 +45,7 @@ public class FragMid extends Fragment implements Button.OnClickListener {
         btn_rt.setOnClickListener(this);
         et = view.findViewById(R.id.editText1);
         parent = (MainActivity) getActivity();
-        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
         return view;
     }
 

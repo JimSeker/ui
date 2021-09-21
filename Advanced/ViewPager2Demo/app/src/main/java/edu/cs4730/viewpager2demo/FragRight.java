@@ -29,7 +29,7 @@ public class FragRight extends Fragment {
         if (savedInstanceState != null) {
             Log.d(TAG, "OnCreate savedInstanceState");
         }
-        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class FragRight extends Fragment {
         View view = inflater.inflate(R.layout.left, container, false);
         tx = view.findViewById(R.id.tvleft);
 
-        mViewModel.getDataRight().observe(this, new Observer<String>() {
+        mViewModel.getDataRight().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String data) {
                 tx.setText(data);

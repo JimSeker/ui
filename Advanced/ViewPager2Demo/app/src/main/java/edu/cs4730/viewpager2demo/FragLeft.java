@@ -30,7 +30,7 @@ public class FragLeft extends Fragment {
         if (savedInstanceState != null) {
             Log.d(TAG, "OnCreate savedInstanceState");
         }
-        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
 
     }
 
@@ -41,7 +41,7 @@ public class FragLeft extends Fragment {
         tx = view.findViewById(R.id.tvleft);
 
 
-        mViewModel.getDataLeft().observe(this, new Observer<String>() {
+        mViewModel.getDataLeft().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String data) {
                 tx.setText(data);

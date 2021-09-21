@@ -13,9 +13,13 @@ Advanced Android GUI/UI Examples
 
 <b>GuiDemo_kt</b> (kotlin) has many different UI examples in fragments.  The example uses a navigation bar to switch between examples.
 
-<b>ViewPagerDemo</b>  is an simple example of a viewpager with three fragments.  In landscape, it does not use the viewpager.
+<b>ViewPagerDemo</b> (Java) is an simple example of a viewpager with three fragments.  In landscape, it does not use the viewpager.
 
-<b>ViewPager2Demo</b> is an simple example of a viewpager2 androidx library with three fragments.  In landscape, it does not use the viewpager.
+<b>ViewPagerDemo_kt</b> (kotlin) is an simple example of a viewpager with three fragments.  In landscape, it does not use the viewpager.
+
+<b>ViewPager2Demo</b> (java) is an simple example of a viewpager2 androidx library with three fragments.  In landscape, it does not use the viewpager.
+
+<b>ViewPager2Demo_kt</b> (kotlin) is an simple example of a viewpager2 androidx library with three fragments.  In landscape, it does not use the viewpager.
 
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course and Cosc 4735 Advanced Mobile Programming course.
 All examples are for Android.
