@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">GuiDemo_kt</string>
+    <string-array name="sections">
+        <item>Text</item>
+        <item>Text Input</item>
+        <item>Images</item>
+        <item>Buttons</item>
+        <item>Buttons Constraintlayout</item>
+        <item>Relative Layout</item>
+        <item>Radio and Check boxes</item>
+        <item>Spinners</item>
+        <item>View Switcher</item>
+        <item>Dialog Pickers</item>
+    </string-array>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <string-array name="spinneritems">
+        <item>item1</item>
+        <item>item2</item>
+        <item>item3</item>
+        <item>Pick me!</item>
+    </string-array>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_settings">settings</string>
+</resources>
