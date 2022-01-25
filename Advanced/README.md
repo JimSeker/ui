@@ -7,7 +7,9 @@ Advanced Android GUI/UI Examples
 
 <b>BottomNavigationViewDemo_kt</b> (kotlin) use the material design BottomNavigationView with the Arch Navigation to switch between three fragments really simply. Also shows how to set badges in the BottomNavigationView object as well.
 
-<b>EmojiCompatDemo</b> is an example using the emoji compat library.
+<b>EmojiCompatDemo</b> (java) is an example using the emoji compat library.  Note: appcompat v1.4.0+ has emoji2 library built in directory now.  so this is not really needed anymore.
+
+<b>EmojiCompatDemo_kt</b> (kotlin) is an example using the emoji compat library.  Note: appcompat v1.4.0+ has emoji2 library built in directory now.  so this is not really needed anymore.
 
 <b>GuiDemo</b> (java)has many different UI examples in fragments.  The example uses a navigation bar to switch between examples.
 

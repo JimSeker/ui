@@ -16,9 +16,17 @@ import androidx.emoji.bundled.BundledEmojiCompatConfig;
 import androidx.emoji.text.EmojiCompat;
 import androidx.emoji.text.FontRequestEmojiCompatConfig;
 
+/**
+ * show how to make sure the app is using the most current emojiis.
+ * <p>
+ * note, with the AppCompat version 1.4.0+  it uses the newer emoji2 library by default, so it just works.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
-    /** Change this to {@code false} when you want to use the downloadable Emoji font. */
+    /**
+     * Change this to {@code false} when you want to use the downloadable Emoji font.
+     */
     private static final boolean USE_BUNDLED_EMOJI = false;
     private static final String TAG = "MainActivity";
 
@@ -34,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         //you MUST do this before the setcontentview otherwise, it will forceclose.
         //use the bundled fonts or download them.
