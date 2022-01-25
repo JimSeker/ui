@@ -1,7 +1,9 @@
 Advanced Android GUI/UI Examples
 ===========
 
-<b>BotNavGuiDemo</b> is the Gui demo, but uses the BottomNavigation and bottomSheetDialog instead of DrawerLayout.
+<b>BotNavGuiDemo</b> (java) is the Gui demo, but uses the BottomNavigation and bottomSheetDialog instead of DrawerLayout.
+
+<b>BotNavGuiDemo_kt</b> (kotlin) is the Gui demo, but uses the BottomNavigation and bottomSheetDialog instead of DrawerLayout.
 
 <b>BottomNavigationViewDemo</b> (java) use the material design BottomNavigationView with the Arch Navigation to switch between three fragments really simply.  Also shows how to set badges in the BottomNavigationView object as well.
 

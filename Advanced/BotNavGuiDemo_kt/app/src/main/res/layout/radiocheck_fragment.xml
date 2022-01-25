@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="edu.cs4730.guidemo_kt.RadioCheck_Fragment">
+    tools:context="edu.cs4730.botnavguidemo_kt.RadioCheck_Fragment">
 
 
     <CheckBox

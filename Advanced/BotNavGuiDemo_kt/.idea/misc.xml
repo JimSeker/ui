@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/layout/activity_main.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/layout/button_fragment.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/layout/constraintlayout_fragment.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/layout/drawer_list_item.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/layout/fragment_bottomsheet.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/layout/fragment_button.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/layout/image_fragment.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/layout/input_fragment.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/layout/picker_fragment.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/layout/radiocheck_fragment.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/layout/relativelayout_fragment.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/layout/spinner_fragment.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/layout/text_fragment.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/layout/viewswitch_fragment.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/menu/bottom_nav_drawer_menu.xml" value="0.3296875" />
+        <entry key="..\:/Users/seker/git/ui/Advanced/BotNavGuiDemo_kt/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3296875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

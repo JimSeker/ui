@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">BotNavGuiDemo_kt</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string-array name="sections">
+        <item>Text</item>
+        <item>Text Input</item>
+        <item>Images</item>
+        <item>Buttons</item>
+        <item>Buttons Constraintlayout</item>
+        <item>Relative Layout</item>
+        <item>Radio and Check boxes</item>
+        <item>Spinners</item>
+        <item>View Switcher</item>
+        <item>Dialog Pickers</item>
+    </string-array>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="hello_blank_fragment">stuff</string>
+
+    <string-array name="spinneritems">
+        <item>item1</item>
+        <item>item2</item>
+        <item>item3</item>
+        <item>Pick me!</item>
+    </string-array>
+</resources>
