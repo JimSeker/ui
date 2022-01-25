@@ -45,7 +45,7 @@ public class myDialogFragment extends DialogFragment {
             case DIALOG_TYPE_ID:
                 final String[] items = {"Remove Walls", "Add Walls",
                     "Add/Remove Objects", "Add/Remove Score"};
-                builder = new AlertDialog.Builder(getActivity());
+                builder = new AlertDialog.Builder(requireActivity());
                 builder.setTitle("Choose Type:");
                 builder.setSingleChoiceItems(items, -1,
                     new DialogInterface.OnClickListener() {
@@ -58,7 +58,7 @@ public class myDialogFragment extends DialogFragment {
 
                 break;
             case DIALOG_GAMEOVER_ID:
-                builder = new AlertDialog.Builder(getActivity());
+                builder = new AlertDialog.Builder(requireActivity());
                 builder.setMessage("Are you sure you want to exit?")
                     .setCancelable(false)
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {

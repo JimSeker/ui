@@ -42,7 +42,7 @@ public class CustomFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 myDialogFragment newDialog = myDialogFragment.newInstance(myDialogFragment.DIALOG_TYPE_ID);
-                newDialog.show(getFragmentManager(), "myDialog");
+                newDialog.show(requireActivity().getSupportFragmentManager(), "myDialog");
             }
 
         });
@@ -50,7 +50,7 @@ public class CustomFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 myDialogFragment newDialog = myDialogFragment.newInstance(myDialogFragment.DIALOG_GAMEOVER_ID);
-                newDialog.show(getFragmentManager(), "myDialog");
+                newDialog.show(requireActivity().getSupportFragmentManager(), "myDialog");
             }
         });
         myView.findViewById(R.id.btn_alert3).setOnClickListener(new View.OnClickListener() {
@@ -58,7 +58,7 @@ public class CustomFragment extends Fragment {
             public void onClick(View v) {
 
                 myAlertDialogFragment newDialog = myAlertDialogFragment.newInstance(R.string.alert_dialog_two_buttons_title);
-                newDialog.show(getFragmentManager(), "myAlertDialog");
+                newDialog.show(requireActivity().getSupportFragmentManager(), "myAlertDialog");
             }
         });
         myView.findViewById(R.id.btn_edit).setOnClickListener(new View.OnClickListener() {
@@ -66,7 +66,7 @@ public class CustomFragment extends Fragment {
             public void onClick(View v) {
 
                 myEditNameDialogFrag newDialog = new myEditNameDialogFrag();
-                newDialog.show(getFragmentManager(), "myEditDialog");
+                newDialog.show(requireActivity().getSupportFragmentManager(), "myEditDialog");
             }
         });
         myView.findViewById(R.id.inline_button).setOnClickListener(new View.OnClickListener() {
@@ -81,7 +81,7 @@ public class CustomFragment extends Fragment {
 
                 //MultiInputDialogFragment newDialog = new MultiInputDialogFragment();
                 MultiInputDialogFragment newDialog = MultiInputDialogFragment.newInstance("Jim", null);
-                newDialog.show(getFragmentManager(), "myMultiInputDialog");
+                newDialog.show(requireActivity().getSupportFragmentManager(), "myMultiInputDialog");
             }
         });
 
@@ -126,8 +126,8 @@ public class CustomFragment extends Fragment {
                 }
             });
         //you can create the dialog or just use the now method in the builder.
-        //AlertDialog dialog = builder.create();
-        //dialog.show();
+        AlertDialog dialog = builder.create();
+        dialog.show();
         builder.show();
     }
 

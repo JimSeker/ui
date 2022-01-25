@@ -33,11 +33,11 @@ public class myEditNameDialogFrag extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        LayoutInflater inflater = LayoutInflater.from(getActivity());
+        LayoutInflater inflater = LayoutInflater.from(requireActivity());
         View myView = inflater.inflate(R.layout.fragment_edit_name, null);
         mEditText = (EditText) myView.findViewById(R.id.txt_your_name);
         mEditText.requestFocus();
-        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
         builder.setView(myView).setTitle("Hello");
 
         builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
@@ -66,9 +66,9 @@ public class myEditNameDialogFrag extends DialogFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
-            mListener = (EditNameDialogListener) getActivity();
+            mListener = (EditNameDialogListener) requireActivity();
         } catch (ClassCastException e) {
-            throw new ClassCastException(getActivity().toString()
+            throw new ClassCastException(requireActivity().toString()
                 + " must implement OnFragmentInteractionListener");
         }
     }

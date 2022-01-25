@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/seker/git/ui/Dialogs/DialogDemo/app/src/main/res/layout/activity_main.xml" value="0.18072916666666666" />
+        <entry key="..\:/Users/seker/git/ui/Dialogs/DialogDemo/app/src/main/res/layout/fragment_custom.xml" value="0.17239583333333333" />
+        <entry key="..\:/Users/seker/git/ui/Dialogs/DialogDemo/app/src/main/res/layout/fragment_multi_input_dialog.xml" value="0.17239583333333333" />
+        <entry key="..\:/Users/seker/git/ui/Dialogs/DialogDemo/app/src/main/res/layout/fragment_support_dialog.xml" value="0.17239583333333333" />
       </map>
     </option>
   </component>

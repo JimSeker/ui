@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.DialogFragment;
@@ -56,8 +57,8 @@ public class MultiInputDialogFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            name = getArguments().getString(ARG_PARAM1, null);
-            amount = getArguments().getString(ARG_PARAM2, null);
+            name = requireArguments().getString(ARG_PARAM1, null);
+            amount = requireArguments().getString(ARG_PARAM2, null);
         }
     }
 
@@ -66,13 +67,13 @@ public class MultiInputDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle SavedIntanceState) {
 
-        LayoutInflater inflater = LayoutInflater.from(getActivity());
+        LayoutInflater inflater = LayoutInflater.from(requireActivity());
         View myView = inflater.inflate(R.layout.fragment_multi_input_dialog, null);
         et_name = (EditText) myView.findViewById(R.id.et_name);
         if (name != null) et_name.setText(name);
         et_amount = (EditText) myView.findViewById(R.id.et_amount);
         if (amount != null) et_amount.setText(amount);
-        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
         builder.setView(myView).setTitle("Multi Input Dialog");
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
 
@@ -101,7 +102,7 @@ public class MultiInputDialogFragment extends DialogFragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof OnDialogFragmentInteractionListener) {
             mListener = (OnDialogFragmentInteractionListener) context;
