@@ -34,7 +34,7 @@ public class FormExample extends AppCompatActivity implements RadioGroup.OnCheck
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        //EditText view setup and listner
+        //EditText view setup and listener
         et = findViewById(R.id.ETname);
         et.addTextChangedListener(this);
 
