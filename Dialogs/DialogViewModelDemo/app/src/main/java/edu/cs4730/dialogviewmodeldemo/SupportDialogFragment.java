@@ -1,4 +1,4 @@
-package edu.cs4730.dialogmodelviewdemo;
+package edu.cs4730.dialogviewmodeldemo;
 
 
 import android.content.DialogInterface;

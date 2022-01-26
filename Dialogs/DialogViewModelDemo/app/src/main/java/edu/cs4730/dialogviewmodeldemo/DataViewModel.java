@@ -1,10 +1,7 @@
-package edu.cs4730.dialogmodelviewdemo;
+package edu.cs4730.dialogviewmodeldemo;
 
-import android.app.Application;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -15,13 +12,11 @@ public class DataViewModel extends ViewModel {
     private MutableLiveData<Boolean> yesno;
 
     public DataViewModel() {
-        item1 = new MutableLiveData<String>();
-        item2 = new MutableLiveData<String>();
-        yesno = new MutableLiveData<Boolean>();
-        item1.setValue("Nothing");
-        item2.setValue("Nothing");
-        yesno.setValue(false);
+        item1 = new MutableLiveData<String>("Nothing");
+        item2 = new MutableLiveData<String>("Nothing");
+        yesno = new MutableLiveData<Boolean>(false);
     }
+
     //first item
     LiveData<String> getItem1LD() {
         item1.setValue("Nothing");

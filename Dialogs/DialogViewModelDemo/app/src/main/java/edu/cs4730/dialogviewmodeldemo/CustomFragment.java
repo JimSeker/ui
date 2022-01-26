@@ -1,4 +1,4 @@
-package edu.cs4730.dialogmodelviewdemo;
+package edu.cs4730.dialogviewmodeldemo;
 
 
 import android.content.DialogInterface;
@@ -99,7 +99,7 @@ public class CustomFragment extends Fragment {
      */
     void displaylog(String item) {
         Log.v(TAG, item);
-        if (logger != null)  //from oncreate spot, for the modelview.
+        if (logger != null)  //this is called from the oncreate before logger exists, one time, so got to check..
             logger.append(item + "\n");
     }
 
