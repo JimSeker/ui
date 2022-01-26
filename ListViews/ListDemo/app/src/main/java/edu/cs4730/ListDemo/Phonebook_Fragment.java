@@ -23,7 +23,6 @@ import androidx.fragment.app.Fragment;
 public class Phonebook_Fragment extends Fragment {
 
     String TAG = "Phone_Fragment";
-    Context myContext;
 
     public Phonebook_Fragment() {
         // Required empty public constructor
@@ -46,13 +45,14 @@ public class Phonebook_Fragment extends Fragment {
         listOfPhonebook.add(new Phonebook_DataModel("Test5", "00000", "test5@test.com"));
         listOfPhonebook.add(new Phonebook_DataModel("Test6", "00000", "test6@test.com"));
 
-        Phonebook_myAdapter adapter = new Phonebook_myAdapter(myContext, listOfPhonebook);
+        Phonebook_myAdapter adapter = new Phonebook_myAdapter(requireContext(), listOfPhonebook);
 
         list.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int position, long index) {
-                showToast(listOfPhonebook.get(position).getName());
+                //showToast(listOfPhonebook.get(position).getName());
+                Toast.makeText(requireContext(), listOfPhonebook.get(position).getName(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -62,15 +62,7 @@ public class Phonebook_Fragment extends Fragment {
     }
 
     private void showToast(String message) {
-        Toast.makeText(myContext, message, Toast.LENGTH_LONG).show();
-    }
-
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        myContext = context; //needed for toast.
-        Log.d(TAG, "onAttach");
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show();
     }
 
 

@@ -7,7 +7,9 @@ package edu.cs4730.ListDemo;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
@@ -21,13 +23,7 @@ public class Simple2_ListFragment extends ListFragment {
     String TAG = "Simple2_frag";
     Context myContext;
 
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        //  NOTE, there is no xml layout for this activity!
-
-        String[] values = new String[]{
+    String[] values = new String[]{
             "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
             "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina",
             "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan",
@@ -69,53 +65,25 @@ public class Simple2_ListFragment extends ListFragment {
             "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan",
             "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Wallis and Futuna", "Western Sahara",
             "Yemen", "Yugoslavia", "Zambia", "Zimbabwe"
-        };
-        ListView list = getListView();
-        //add a footer item, must be added before the ArrayAdapter to show correctly.
-        TextView tv = new TextView(getActivity());
-        tv.setText("At the End");
-        list.addFooterView(tv);
+    };
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        //Note using our layout here, instead of default one, simple2_rowlayout.
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-            R.layout.simple2_rowlayout, R.id.label, values);
+        View view = inflater.inflate(R.layout.listfragment_layout, container, false);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(inflater.getContext(),  R.layout.simple2_rowlayout, R.id.label, values);
         setListAdapter(adapter);
-
-        //To add a longclick listener
-
-        list.setOnItemLongClickListener(new OnItemLongClickListener() {
-
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view,
-                                           int position, long id) {
-                Toast.makeText(myContext,
-                    "Long: Item in position " + position + " clicked",
-                    Toast.LENGTH_LONG).show();
-                // Return true to consume the click event. In this case the
-                // onListItemClick listener is not called anymore.
-                return true;
-            }
-        });
+        return view;
 
     }
+
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        if (position < getListAdapter().getCount()) {  //Remember, there was a footer added, which is outside the array!
-            String item = (String) getListAdapter().getItem(position);
-            Toast.makeText(myContext, item + " selected", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(myContext, "Last entry", Toast.LENGTH_LONG).show();
-        }
+        String item = (String)  values[position];   //getListAdapter().getItem(position);
+        Toast.makeText(requireContext(), item + " selected", Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        myContext = context; //needed for toast.
-        Log.d(TAG, "onAttach");
-    }
 
 
 }

@@ -5,23 +5,25 @@ import java.util.List;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import androidx.fragment.app.ListFragment;
 
 public class InterActive_ListFragment extends ListFragment {
     String TAG = "InterActive_ListFragment";
-    Context myContext;
-	
-    
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-      super.onActivityCreated(savedInstanceState);
-    	
-		// Create an array of Strings, that will be put to our ListActivity
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+		View view = inflater.inflate(R.layout.listfragment_layout, container, false);
 		ArrayAdapter<InterActive_DataModel> adapter = new InterActive_myArrayAdapter(getActivity(),	getModel());
 		setListAdapter(adapter);
+		return view;
 	}
+
 	private List<InterActive_DataModel> getModel() {
 		List<InterActive_DataModel> list = new ArrayList<InterActive_DataModel>();
 		list.add(new InterActive_DataModel("Linux"));
@@ -35,13 +37,6 @@ public class InterActive_ListFragment extends ListFragment {
 		// Initially select one of the items
 		list.get(1).setSelected(true);
 		return list;
-	}
-	//Note no click listener, because it does not get called even when an list item is clicked.
-	@Override
-	public void onAttach(Context context) {
-		super.onAttach(context);
-		myContext = context; //needed for toast.
-		Log.d(TAG,"onAttach");
 	}
 
 }
