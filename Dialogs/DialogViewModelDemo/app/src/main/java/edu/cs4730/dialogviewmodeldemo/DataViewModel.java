@@ -19,7 +19,6 @@ public class DataViewModel extends ViewModel {
 
     //first item
     LiveData<String> getItem1LD() {
-        item1.setValue("Nothing");
         return item1;
     }
 
@@ -34,7 +33,6 @@ public class DataViewModel extends ViewModel {
 
     //second item
     LiveData<String> getItem2LD() {
-        item2.setValue("Nothing");
         return item2;
     }
 

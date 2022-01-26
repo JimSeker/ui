@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     FragmentManager fragmentManager;
     CustomFragment myCustomFragment;
-    SupportDialogFragment mySupportDialogFragment;
     BottomNavigationView bnv;
 
     @Override
@@ -34,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentManager = getSupportFragmentManager();
         myCustomFragment = new CustomFragment();
-       // DataViewModel mViewModel = new ViewModelProvider(this).get(DataViewModel.class);
-        //mViewModel = new ViewModelProvider(this).get(DataViewModel.class);
 
         bnv = findViewById(R.id.bnv);
         bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
