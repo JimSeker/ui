@@ -53,8 +53,8 @@ public class MainFragment extends Fragment {
 
         //needed the activity, Doc's Creates a ViewModelProvider, which retains ViewModels while a scope of given Activity is alive.
         //otherwise, activity is not the same instance and so not triggered either.
-        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
-        mViewModel.getItemLD().observe(this, new Observer<String>() {
+        mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
+        mViewModel.getItemLD().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 Log.d(TAG, "triggered " + s);

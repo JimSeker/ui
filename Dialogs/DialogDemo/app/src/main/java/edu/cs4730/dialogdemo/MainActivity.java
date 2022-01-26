@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
 
 
         fragmentManager = getSupportFragmentManager();
-
+        myCustomFragment = new CustomFragment();
         bnv = findViewById(R.id.bnv);
         bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -52,8 +52,6 @@ public class MainActivity extends AppCompatActivity
                     item.setChecked(true);
                     return true;
                 } else if (id == R.id.nav_custom) {
-                    if (myCustomFragment == null)
-                        myCustomFragment = new CustomFragment();
                     fragmentManager.beginTransaction().replace(R.id.container, myCustomFragment).commit();
                     item.setChecked(true);
                 }
