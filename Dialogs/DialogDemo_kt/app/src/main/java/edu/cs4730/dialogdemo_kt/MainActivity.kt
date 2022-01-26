@@ -15,13 +15,14 @@ class MainActivity : AppCompatActivity(), myEditNameDialogFrag.EditNameDialogLis
     MultiInputDialogFragment.OnDialogFragmentInteractionListener {
 
     lateinit var fragmentManager: FragmentManager
-    var myCustomFragment: CustomFragment? = null
+    lateinit var myCustomFragment: CustomFragment
     lateinit var bnv: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         fragmentManager = supportFragmentManager
+        myCustomFragment = CustomFragment()
         bnv = findViewById(R.id.bnv)
         bnv.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener { item -> //At this point, we are doing the same thing that is done for menu selections.
             //if we had a onOptionsItemSelect method for a menu, we could just use it.
@@ -32,8 +33,8 @@ class MainActivity : AppCompatActivity(), myEditNameDialogFrag.EditNameDialogLis
                 item.isChecked = true
                 return@OnItemSelectedListener true
             } else if (id == R.id.nav_custom) {
-                if (myCustomFragment == null) myCustomFragment = CustomFragment()
-                fragmentManager.beginTransaction().replace(R.id.container, myCustomFragment!!)
+
+                fragmentManager.beginTransaction().replace(R.id.container, myCustomFragment)
                     .commit()
                 item.isChecked = true
             }
@@ -54,28 +55,28 @@ class MainActivity : AppCompatActivity(), myEditNameDialogFrag.EditNameDialogLis
     //for Both myDialogFragment and myAlterDialogFragment
     override fun doPositiveClick() {
         // Do stuff here.
-        myCustomFragment!!.displaylog("Positive/Yes click!")
+        myCustomFragment.displaylog("Positive/Yes click!")
     }
 
     //for Both myDialogFragment and myAlterDialogFragment
     override fun doNegativeClick() {
         // Do stuff here.
-        myCustomFragment!!.displaylog("Negative/No/Cancel click!")
+        myCustomFragment.displaylog("Negative/No/Cancel click!")
     }
 
     //for myDialogFragment
     override fun doItem(item: String) {
-        myCustomFragment!!.displaylog(item)
+        myCustomFragment.displaylog(item)
     }
 
 
     //for the MultiInputDialgoFragment
     override fun onMultiInputInteraction(items: Array<String>) {
-        myCustomFragment!!.displaylog("Item 0: " + items[0])
-        myCustomFragment!!.displaylog("Item 1: " + items[1])
+        myCustomFragment.displaylog("Item 0: " + items[0])
+        myCustomFragment.displaylog("Item 1: " + items[1])
     }
 
     override fun onFinishEditDialog(inputText: String) {
-        myCustomFragment!!.displaylog("Hi, " + inputText )
+        myCustomFragment.displaylog("Hi, $inputText")
     }
 }

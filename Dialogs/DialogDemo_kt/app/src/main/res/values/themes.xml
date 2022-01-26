@@ -12,4 +12,7 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Dark" />
+
+    <style name="AppTheme.Dialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert" />
+
 </resources>

@@ -84,7 +84,7 @@ class SupportDialogFragment : Fragment() {
         val builder = AlertDialog.Builder(
             ContextThemeWrapper(
                 requireActivity(),
-                R.style.ThemeOverlay_AppCompat_Dialog
+                R.style.AppTheme_Dialog
             )
         )
         builder.setTitle("Choose Type:")

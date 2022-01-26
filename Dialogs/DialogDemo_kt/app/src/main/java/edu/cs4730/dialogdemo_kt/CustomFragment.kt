@@ -67,12 +67,7 @@ class CustomFragment : Fragment() {
      */
     fun displaylog(item: String) {
         Log.v(TAG, item)
-        logger!!.append(
-            """
-                $item
-                
-                """.trimIndent()
-        )
+        logger!!.append(item + "\n")
     }
 
     /*
@@ -85,7 +80,7 @@ class CustomFragment : Fragment() {
         val userinput = textenter.findViewById<View>(R.id.item_added) as EditText
         val builder = AlertDialog.Builder(
             ContextThemeWrapper(
-                activity, R.style.ThemeOverlay_AppCompat_Dialog
+                activity, R.style.AppTheme_Dialog
             )
         )
         builder.setView(textenter).setTitle(title)

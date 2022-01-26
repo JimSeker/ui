@@ -32,7 +32,7 @@ class myEditNameDialogFrag : DialogFragment() {
         val builder = AlertDialog.Builder(
             ContextThemeWrapper(
                 requireActivity(),
-                R.style.ThemeOverlay_AppCompat_Dialog
+                R.style.AppTheme_Dialog
             )
         )
         builder.setView(myView).setTitle("Hello")
