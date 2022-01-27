@@ -19,7 +19,7 @@ public class InterActive_ListFragment extends ListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.listfragment_layout, container, false);
-		ArrayAdapter<InterActive_DataModel> adapter = new InterActive_myArrayAdapter(getActivity(),	getModel());
+		ArrayAdapter<InterActive_DataModel> adapter = new InterActive_myArrayAdapter(requireActivity(),	getModel());
 		setListAdapter(adapter);
 		return view;
 	}
