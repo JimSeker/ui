@@ -8,11 +8,17 @@ Some code and information came from http://www.vogella.com/tutorials/AndroidList
 
 <b>EplistivewDemo</b> is some examples of using the expandablelistview.
 
-<b>ListviewFragmentDemo</b> and <b>ListFragmentDemo</b> are the same code.  ListFragment is implemented using a 
-listfragment and listviewFragment uses a fragment and a layout with a listview in it.
+<b>ListFragmentDemo</b> (java) is implemented using a listfragment, and the layout holds both fragments.  Looks terrible  on a phone.
 
-<b>ListViewSwipeRefresh</b> shows how the use the refreshlayout from the v4 support library.
+<b>ListFragmentDemo_kt</b> (kotlin) is implemented using a listfragment, and the layout holds both fragments.  Looks terrible  on a phone.
 
+<b>ListViewFragmentDemo</b> (java) uses two layouts, one for portrait and another for landscape.  in landscape both fragments are displayed, while portrait only one at time is shown.  
+
+<b>ListViewFragmentDemo_kt</b> (kotlin) uses two layouts, one for portrait and another for landscape.  in landscape both fragments are displayed, while portrait only one at time is shown. 
+
+<b>ListViewSwipeRefresh</b> (java) shows how the use the refreshlayout from androidx.
+
+<b>ListViewSwipeRefresh_tk</b> (kotlin) shows how the use the refreshlayout from androidx.
 
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course.
 All examples are for Android. 
