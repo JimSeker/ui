@@ -1,8 +1,10 @@
 Listview Examples
 ===========
 
-<b>ListDemo</b> is a series of examples of ListView using fragments and listfragments (with the support.v4)
+<b>ListDemo</b> (java) is a series of examples of ListView using fragments and listfragments
 Some code and information came from http://www.vogella.com/tutorials/AndroidListView/article.html
+
+<b>ListDemo_kt</b> (kotlin) is a series of examples of ListView using fragments and listfragments
 
 <b>EplistivewDemo</b> is some examples of using the expandablelistview.
 
