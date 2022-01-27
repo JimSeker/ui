@@ -1,9 +1,14 @@
 Android RecyclerView Examples
 ==============
 
-<b>RecyclerViewDemo</b> is a very simple example of how to use a RecyclerView and CardView (via support.v7).   Note a RecyclerView is a more powerful listview, which was introduced into android 5 and the support.v7 library.
+<b>RecyclerViewDemo</b> (java) is a very simple example of how to use a RecyclerView and CardView. 
 
-<b>RecyclerViewDemo2</b> is more complex version using RecyclerView and CardView (support.v7). This example uses the phonelist from the listview example as the data set.
+<b>RecyclerViewDemo_kt</b> (kotlin) is a very simple example of how to use a RecyclerView and CardView.   
+
+<b>RecyclerViewDemo2</b> (java) is more complex version using RecyclerView and CardView. This example uses the phonelist from the listview example as the data set.
+
+<b>RecyclerViewDemo2_kt</b> (kotlin) is more complex version using RecyclerView and CardView. This example uses the phonelist from the listview example as the data set.
+
 
 <b>RecyclerViewDemo3</b> is a rewrite of the listdemo from the listview using RecyclerView and CardView (support.v7). It has everything in fragments and uses a viewpager to switch between the examples.
 

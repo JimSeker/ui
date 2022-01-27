@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * the adapter.
  */
 
-class phoneAdapter extends RecyclerView.Adapter<phoneAdapter.ViewHolder> {
+public class phoneAdapter extends RecyclerView.Adapter<phoneAdapter.ViewHolder> {
 
 
     private List<Phonebook> myList;

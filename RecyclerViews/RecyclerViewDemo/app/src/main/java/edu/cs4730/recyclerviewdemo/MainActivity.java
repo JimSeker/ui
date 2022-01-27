@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-/*
+/**
  * A very simple example of how to setup a RecyclerView with cards views.
  * A  RecyclerView.Adapter needs to be implemented inorder for it to work.
  * There is not a "simple" adapter, it must be extended.  see myAdapter.
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             "Linux", "OS/2");
 
         //setup the RecyclerView
-        mRecyclerView = (RecyclerView) findViewById(R.id.list);
+        mRecyclerView =  findViewById(R.id.list);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
