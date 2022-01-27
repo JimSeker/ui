@@ -12,7 +12,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 /**
  * A simple example of how to use the refreshlayout with a listview.
- * the android.support.v4.widget.SwipeRefreshLayout is wrapped around the listview in the layout.
+ * the androidx....widget.SwipeRefreshLayout is wrapped around the listview in the layout.
  * In the code below we then set a listener when the refresh ("swipe down from top") is triggered.
  * I see any thing for swiping up from the bottom of the list...
  * <p>
@@ -96,11 +96,11 @@ public class MainActivity extends AppCompatActivity {
                 //this is a bad way to do this, I'm just redoing the adapter, normally, the adapter would update
                 //and then use the mAdapter.notifyDataSetChanged();
 
-                /* normally something like this... but I want to slow it down for demo purposes, so
-                 *   it's commented out.
-                String[] fakelist = getRandomList();
+                //  normally something like this... but I want to slow it down for demo purposes, so it's commented out.
+               /*
+               String[] fakelist = getRandomList();
                 mAdapter = new ArrayAdapter<String>(
-                        getActivity(),
+                        MainActivity.this,
                         android.R.layout.simple_list_item_1, fakelist);
                 mListView.setAdapter(mAdapter);
                 //new turn off the refresh.
