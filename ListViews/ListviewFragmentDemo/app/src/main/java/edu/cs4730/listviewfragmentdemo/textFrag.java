@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -34,11 +35,11 @@ public class textFrag extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            myPosition = getArguments().getInt(ARG_PARAM1);
+            myPosition = requireArguments().getInt(ARG_PARAM1);
         }
     }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
         // If activity recreated (such as from screen rotate), restore
@@ -62,7 +63,7 @@ public class textFrag extends Fragment {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
         // Save the current article selection in case we need to recreate the fragment

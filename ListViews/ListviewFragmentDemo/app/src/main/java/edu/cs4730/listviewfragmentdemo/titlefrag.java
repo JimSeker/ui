@@ -3,10 +3,13 @@ package edu.cs4730.listviewfragmentdemo;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.ListFragment;
 
 /**
@@ -16,28 +19,24 @@ import androidx.fragment.app.ListFragment;
 
 public class titlefrag extends ListFragment {
 
-
     /**
-     * The fragment's current callback object, which is notified of list item
-     * clicks.
+     * The fragment's current callback object, which is notified of list item clicks.
      */
     private OnFragmentInteractionListener mListener;
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, Shakespeare.TITLES);
+        View view = inflater.inflate(R.layout.listfragment_layout, container, false);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(requireActivity(), android.R.layout.simple_list_item_1, Shakespeare.TITLES);
         setListAdapter(adapter);
+        return view;
     }
 
+
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         Activity activity = getActivity();
         try {
@@ -54,10 +53,8 @@ public class titlefrag extends ListFragment {
         mListener = null;
     }
 
-
     @Override
-    public void onListItemClick(ListView listView, View view, int position,
-                                long id) {
+    public void onListItemClick(@NonNull ListView listView, @NonNull View view, int position,  long id) {
         super.onListItemClick(listView, view, position, id);
 
         // Notify the active callbacks interface (the activity, if the
