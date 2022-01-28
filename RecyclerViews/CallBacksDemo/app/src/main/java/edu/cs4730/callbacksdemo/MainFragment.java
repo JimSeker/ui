@@ -11,6 +11,7 @@ import android.widget.Toast;
 import java.util.Arrays;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,7 +33,6 @@ public class MainFragment extends Fragment {
         mList = Arrays.asList("Android", "iPhone", "WindowsMobile",
             "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
             "Linux", "OS/2");
-
     }
 
     @Override
@@ -40,16 +40,16 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         View myView = inflater.inflate(R.layout.fragment_main, container, false);
         mRecyclerView = (RecyclerView) myView.findViewById(R.id.listtrans);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        mAdapter = new myAdapter(mList, R.layout.row_layout, getActivity());
+        mAdapter = new myAdapter(mList, R.layout.row_layout, requireActivity());
         mAdapter.setOnItemClickListener(new myAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, String id) {
                 // String name = users.get(position).name;
                 Log.v(TAG, "Listener at " + TAG);
-                Toast.makeText(getContext(), "MainFragment: " + id + " was clicked!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "MainFragment: " + id + " was clicked!", Toast.LENGTH_SHORT).show();
                 mCallback.ontransInteraction(id);
             }
         });
@@ -59,15 +59,14 @@ public class MainFragment extends Fragment {
         return myView;
     }
 
-
     //use this one instead of the one above.  Note it's the parameter, context instead of activity.
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
             mCallback = (OntransInteractionCallback) getActivity();
         } catch (ClassCastException e) {
-            throw new ClassCastException(getActivity().toString()
+            throw new ClassCastException(requireActivity().toString()
                 + " must implement OnFragmentInteractionListener");
         }
     }
