@@ -17,7 +17,9 @@ Android RecyclerView Examples
 
 <b>LotsofLists</b> is a complex demo using a Navigation bar and RecyclerView to display several different lists, plus you can add more items the lists and add more lists to the navigation as well.
 
-<b>CallBacksDemo</b> uses a RecyclerView and shows how to setup a listeners and callbacks to pass data from the recyclerview adapter to the MainActivity (via a fragment).
+<b>CallBacksDemo</b> (java) uses a RecyclerView and shows how to setup a listeners and callbacks to pass data from the recyclerview adapter to the MainActivity (via a fragment).
+
+<b>CallBacksDemo</b> (kotlin) uses a RecyclerView and shows how to setup a listeners and callbacks to pass data from the recyclerview adapter to the MainActivity (via a fragment). Kotlin actually seems to make the callbacks even more of a mess.  I recommend a modelview, instead of callbacks.
 
 <b>CallBacksItemViewDemo</b> uses a RecyclerView and sets each itemview to have a listener, so a user can click on the item in the recyclerview.  This uses a set of callbacks to get the data back to main activity (via a fragment) via the adapter.
 
