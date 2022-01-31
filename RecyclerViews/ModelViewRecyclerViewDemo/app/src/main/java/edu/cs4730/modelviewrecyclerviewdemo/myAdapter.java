@@ -69,7 +69,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
         //interesting.  while fragment will work, you need the activity, otherwise this viewmodel is not connected to the activity.
         // key doesn't help in the get method.
         //needed the activity, Doc's Creates a ViewModelProvider, which retains ViewModels while a scope of given Activity is alive.
-        mViewModel = new ViewModelProvider(mFragment.getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(mFragment.requireActivity()).get(DataViewModel.class);
         //likely this should be passed the adapter instead.  but it does work.
     }
 
