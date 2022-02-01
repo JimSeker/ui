@@ -107,7 +107,7 @@ public class CustomFragment extends Fragment {
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         final View textenter = inflater.inflate(R.layout.layout_custom_dialog, null);
         final EditText userinput = (EditText) textenter.findViewById(R.id.item_added);
-        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
         builder.setView(textenter).setTitle(title);
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
 
