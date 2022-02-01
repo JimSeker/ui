@@ -41,10 +41,10 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         View myView = inflater.inflate(R.layout.fragment_main, container, false);
         mRecyclerView = myView.findViewById(R.id.listtrans);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        mAdapter = new myAdapter(mList, R.layout.row_layout, getActivity());
+        mAdapter = new myAdapter(mList, R.layout.row_layout, requireActivity());
         mAdapter.setOnItemClickListener(new myAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, String id) {
@@ -52,7 +52,7 @@ public class MainFragment extends Fragment {
                 Log.v(TAG, "Listener at " + TAG);
                 Toast.makeText(getContext(), "MainFragment: " + id + " was clicked!", Toast.LENGTH_SHORT).show();
                 //we could just send the id or in this case get the name as something more useful here.
-                String name = mAdapter.myList.get(Integer.valueOf(id));
+                String name = mAdapter.myList.get(Integer.parseInt(id));
                 mCallback.ontransInteraction(name);
             }
         });
@@ -65,12 +65,12 @@ public class MainFragment extends Fragment {
 
     //use this one instead of the one above.  Note it's the parameter, context instead of activity.
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
-            mCallback = (OntransInteractionCallback) getActivity();
+            mCallback = (OntransInteractionCallback) requireActivity();
         } catch (ClassCastException e) {
-            throw new ClassCastException(getActivity().toString()
+            throw new ClassCastException(requireActivity().toString()
                     + " must implement OnFragmentInteractionListener");
         }
     }
