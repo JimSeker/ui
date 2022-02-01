@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
@@ -19,18 +21,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
-    private morelists myList;
+    private List<String> myList;
     private int rowLayout;
     private Context mContext;
 
-    public myAdapter(morelists myList, int rowLayout, Context context) {
+    public myAdapter(List<String> myList, int rowLayout, Context context) {
         this.myList = myList;
         this.rowLayout = rowLayout;
         this.mContext = context;
     }
 
     //a simple method to make sure the recyclerview knows I have changed the data in the list.
-    public void newData() {
+    public void newData(List<String> myList) {
+        this.myList = myList;
         notifyDataSetChanged();
     }
 
@@ -56,7 +59,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return myList == null ? 0 : myList.getsize();
+        return myList == null ? 0 : myList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

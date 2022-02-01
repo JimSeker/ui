@@ -9,13 +9,13 @@ Android RecyclerView Examples
 
 <b>RecyclerViewDemo2_kt</b> (kotlin) is more complex version using RecyclerView and CardView. This example uses the phonelist from the listview example as the data set.
 
-<b>RecyclerViewDemo3</b> is a rewrite of the listdemo from the listview using RecyclerView and CardView (support.v7). It has everything in fragments and uses a viewpager to switch between the examples.
+<b>RecyclerViewDemo3</b> is a rewrite of the listdemo from the listview using RecyclerView and CardView. It has everything in fragments and uses a viewpager to switch between the examples.
 
 <b>RecyclerViewSwipeRefresh</b> (java) based on RecyclerViewDemo, but adds a swipeRefreashLayout so the user can trigger a refresh of data.
 
 <b>RecyclerViewSwipeRefresh_kt</b> (kotlin) based on RecyclerViewDemo, but adds a swipeRefreashLayout so the user can trigger a refresh of data.
 
-<b>LotsofLists</b> is a complex demo using a Navigation bar and RecyclerView to display several different lists, plus you can add more items the lists and add more lists to the navigation as well.
+<b>LotsofLists</b> is a complex demo using a Navigation bar and RecyclerView to display several different lists, plus you can add more items the lists and add more lists to the navigation as well.  The data is all stored in a ViewModel and observers are used the update the lists.
 
 <b>CallBacksDemo</b> (java) uses a RecyclerView and shows how to setup a listeners and callbacks to pass data from the recyclerview adapter to the MainActivity (via a fragment).
 

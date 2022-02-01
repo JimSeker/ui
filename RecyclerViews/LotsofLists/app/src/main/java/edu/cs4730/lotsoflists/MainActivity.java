@@ -18,11 +18,17 @@ import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,7 +38,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * complex example of a navigation drawer with recyclerview.  Plus you can add more items
  * to the list and add more categories (ie new lists) as well.
  * <p>
- * The list data is all handled in the morelists class/data structure.
+ * The list data is all handled in the ViewModel, ListsViewModel.
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -43,10 +49,11 @@ public class MainActivity extends AppCompatActivity {
     private ListView mDrawerList;
     RecyclerView mRecyclerView;
     myAdapter mAdapter;
-    morelists myLists;
     FloatingActionButton fab, addBut;
-
     Boolean IsCatInput = false;
+
+    ListsViewModel mViewModel;
+    ArrayAdapter<String> catAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,36 +64,44 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        myLists = new morelists();  //setup initial variable.
+        mViewModel = new ViewModelProvider(this).get( ListsViewModel.class);
 
         //setup the RecyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = new myAdapter(myLists, R.layout.my_row, this);
+        mAdapter = new myAdapter(null, R.layout.my_row, this);  //observer will fix the null
         //add the adapter to the recyclerview
         mRecyclerView.setAdapter(mAdapter);
+
+        mViewModel.getListLD().observe(this, new Observer<List<String>>() {
+            @Override
+            public void onChanged(List<String> myList) {
+                mAdapter.newData(myList);
+            }
+        });
+
+
         //swipe listener for the recycler view
         //ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT |ItemTouchHelper.LEFT) {
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
             @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 //likely allows to for animations?  or moving items in the view I think.
                 return false;
             }
 
             @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 //called when it has been animated off the screen.  So item is no longer showing.
                 //use ItemtouchHelper.X to find the correct one.
                 if (direction == ItemTouchHelper.RIGHT) {
                     //Toast.makeText(getBaseContext(),"Right?", Toast.LENGTH_SHORT).show();
-                    int item = viewHolder.getAdapterPosition(); //think this is where in the array it is.
+                    int item = viewHolder.getAbsoluteAdapterPosition();  //think this is where in the array it is.
                     //((myAdapter)viewHolder).myName.getText();
 
-                    myLists.removeItem(item);
-                    mAdapter.newData();
+                    mViewModel.removeItem(item);
                 }
             }
         };
@@ -101,11 +116,11 @@ public class MainActivity extends AppCompatActivity {
 
             int scrollDist = 0;
             private boolean isVisible = true;
-            private float HIDE_THRESHOLD = 100;
-            private float SHOW_THRESHOLD = 50;
+            private final float HIDE_THRESHOLD = 100;
+            private final float SHOW_THRESHOLD = 50;
 
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     //but I want the fab back after the scrolling is done.  Not scroll down a little... that is just stupid.
@@ -120,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 //so animate to slide down and then and set invisible variables or something.
                 //  Check scrolled distance against the minimum
@@ -198,10 +213,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //lastly setup the listview with some simple categories via an array.
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-            R.layout.drawer_list_item, myLists.getAllCat());
+        catAdapter = new ArrayAdapter<String>(this,
+            R.layout.drawer_list_item,
+            new ArrayList<>());
+            //mViewModel.getAllCat() );
+        mViewModel.getCatLD().observe(this, new Observer<List<String>>() {
+            @Override
+            public void onChanged(List<String> strings) {
+                catAdapter.clear();
+                catAdapter.addAll(strings);
+            }
+        });
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        mDrawerList.setAdapter(adapter);
+        mDrawerList.setAdapter(catAdapter);
+        mDrawerList.setItemChecked(mViewModel.getlist(), true);  //set the highlight correctly.
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int position, long index) {
@@ -209,8 +234,7 @@ public class MainActivity extends AppCompatActivity {
                 String item = mDrawerList.getAdapter().getItem(position).toString();
 
                 //change the list view to correct one.
-                myLists.setlist(position);
-                mAdapter.notifyDataSetChanged();
+                mViewModel.setlist(position);
 
                 // update selected item and title, then close the drawer
                 mDrawerList.setItemChecked(position, true);
@@ -238,15 +262,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                if (IsCatInput) { //add new catergory
-                    myLists.addCat(userinput.getText().toString());
-                    //update list...
-                    //interesting.  the new category shows, except I forgot to tell the listview there is more data...
-                    //this was not the default behavior in the past.  hence below, I have the adapter call newData().
-                    //I really should need to declare the adapter global, and adapter.notifyDataSetChanged();
+                //add the list and allow the observer to fixes the lists.
+                if (IsCatInput) { //add new category
+                    mViewModel.addCat(userinput.getText().toString());
                 } else { //add new data item to list.
-                    myLists.addItem(userinput.getText().toString());
-                    mAdapter.newData();
+                    mViewModel.addItem(userinput.getText().toString());
                 }
                 //Toast.makeText(getBaseContext(), userinput.getText().toString(), Toast.LENGTH_LONG).show();
             }
@@ -296,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
