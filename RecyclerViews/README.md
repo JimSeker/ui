@@ -21,8 +21,12 @@ Android RecyclerView Examples
 
 <b>CallBacksDemo</b> (kotlin) uses a RecyclerView and shows how to setup a listeners and callbacks to pass data from the recyclerview adapter to the MainActivity (via a fragment). Kotlin actually seems to make the callbacks even more of a mess.  I recommend a modelview, instead of callbacks.
 
-<b>CallBacksItemViewDemo</b> uses a RecyclerView and sets each itemview to have a listener, so a user can click on the item in the recyclerview.  This uses a set of callbacks to get the data back to main activity (via a fragment) via the adapter.
+<b>CallBacksItemViewDemo</b> (java) uses a RecyclerView and sets each itemview to have a listener, so a user can click on the item in the recyclerview.  This uses a set of callbacks to get the data back to main activity (via a fragment) via the adapter.  
 
-<b>ModelViewRecyeclerViewDemo</b> uses a recyclerview and instead of all the callbacks like in CallBackDemo, it uses a ModelView with LiveData to trigger observers in the Fragment and Activity to pass data back from the recyclerview adapter.
+<b>CallBacksItemViewDemo_kt</b> (kotlin) uses a RecyclerView and sets each itemview to have a listener, so a user can click on the item in the recyclerview.  This uses a set of callbacks to get the data back to main activity (via a fragment) via the adapter.  again, modelview is easier.
+
+<b>ModelViewRecyeclerViewDemo</b> (java) uses a recyclerview and instead of all the callbacks like in CallBackDemo, it uses a ModelView with LiveData to trigger observers in the Fragment and Activity to pass data back from the recyclerview adapter.
+
+<b>ModelViewRecyeclerViewDemo_kt</b> (kotlin) uses a recyclerview and instead of all the callbacks like in CallBackDemo, it uses a ModelView with LiveData to trigger observers in the Fragment and Activity to pass data back from the recyclerview adapter.
 
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course and cosc 4735 Advance Mobile Programing course.  All examples are for Android.
