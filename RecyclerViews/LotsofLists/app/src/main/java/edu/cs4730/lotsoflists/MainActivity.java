@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     //but I want the fab back after the scrolling is done.  Not scroll down a little... that is just stupid.
                     if (!isVisible) {
-                        fab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
+                        fab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2F)).start();
                         //scrollDist = 0;
                         isVisible = true;
                         Log.v("c", "state changed, show be showing....");
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 //  Check scrolled distance against the minimum
                 if (isVisible && scrollDist > HIDE_THRESHOLD) {
                     //  Hide fab & reset scrollDist
-                    fab.animate().translationY(fab.getHeight() + getResources().getDimensionPixelSize(R.dimen.fab_margin)).setInterpolator(new AccelerateInterpolator(2)).start();
+                    fab.animate().translationY(fab.getHeight() + getResources().getDimensionPixelSize(R.dimen.fab_margin)).setInterpolator(new AccelerateInterpolator(2F)).start();
                     scrollDist = 0;
                     isVisible = false;
                     Log.v("onScrolled", "maded fab invisible");
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
                 //  -MINIMUM because scrolling up gives - dy values
                 else if (!isVisible && scrollDist < -SHOW_THRESHOLD) {
                     //  Show fab & reset scrollDist
-                    fab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
+                    fab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2F)).start();
 
                     scrollDist = 0;
                     isVisible = true;
@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
         //lastly setup the listview with some simple categories via an array.
         catAdapter = new ArrayAdapter<String>(this,
             R.layout.drawer_list_item,
-            new ArrayList<>());
+            new ArrayList<String>());
             //mViewModel.getAllCat() );
         mViewModel.getCatLD().observe(this, new Observer<List<String>>() {
             @Override
@@ -256,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         final View textenter = inflater.inflate(R.layout.layout_dialog, null);
         final EditText userinput = (EditText) textenter.findViewById(R.id.item_added);
-        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.Theme_AppCompat));
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AppTheme_Dialog));
         builder.setView(textenter).setTitle(title);
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
 
