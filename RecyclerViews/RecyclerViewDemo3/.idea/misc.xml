@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/seker/git/ui/RecyclerViews/RecyclerViewDemo3/app/src/main/res/layout/activity_main.xml" value="0.25317028985507245" />
+        <entry key="..\:/Users/seker/git/ui/RecyclerViews/RecyclerViewDemo3/app/src/main/res/layout/interactive_fragment.xml" value="0.25317028985507245" />
         <entry key="..\:/Users/seker/git/ui/RecyclerViews/RecyclerViewDemo3/app/src/main/res/layout/phonebook_rowlayout.xml" value="0.25815217391304346" />
+        <entry key="..\:/Users/seker/git/ui/RecyclerViews/RecyclerViewDemo3/app/src/main/res/layout/simple1_fragment.xml" value="0.25317028985507245" />
       </map>
     </option>
   </component>

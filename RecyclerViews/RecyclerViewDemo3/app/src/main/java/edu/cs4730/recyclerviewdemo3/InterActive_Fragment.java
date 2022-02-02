@@ -20,7 +20,6 @@ public class InterActive_Fragment extends Fragment {
     String TAG = "InterActive RV";
     RecyclerView mRecyclerView;
     InterActive_myAdapter mAdapter;
-    Context myContext;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,27 +27,18 @@ public class InterActive_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.interactive_fragment, container, false);
 
-
         //setup the RecyclerView
         mRecyclerView = (RecyclerView) myView.findViewById(R.id.list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(myContext));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = new InterActive_myAdapter(getModel(), R.layout.interactive_rowlayout, myContext);
+        mAdapter = new InterActive_myAdapter(getModel(), R.layout.interactive_rowlayout, requireContext());
         //add the adapter to the recyclerview
         mRecyclerView.setAdapter(mAdapter);
 
 
         return myView;
     }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        myContext = context;
-        Log.d(TAG, "onAttach");
-    }
-
 
     private List<InterActive_DataModel> getModel() {
         List<InterActive_DataModel> list = new ArrayList<InterActive_DataModel>();

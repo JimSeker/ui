@@ -10,9 +10,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-/*
+/**
  *  needs a comment here.
  */
 
@@ -27,6 +28,7 @@ public class Phonebook_myAdapter extends RecyclerView.Adapter<Phonebook_myAdapte
         this.rowLayout = rowLayout;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);

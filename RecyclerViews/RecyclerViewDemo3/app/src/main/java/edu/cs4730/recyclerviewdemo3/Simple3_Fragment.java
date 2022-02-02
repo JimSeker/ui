@@ -21,10 +21,12 @@ import androidx.recyclerview.widget.RecyclerView;
  * this uses a cardview as the layout, so it looks "better" and you see where each view is separated.
  */
 public class Simple3_Fragment extends Fragment {
-    String TAG = "Simple3 RV";
     RecyclerView mRecyclerView;
     Simple3_myAdapter mAdapter;
-    Context myContext;
+    List<String> values = Arrays.asList("Android", "iPhone", "WindowsMobile",
+        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+        "Linux", "OS/2");
+
 
     public Simple3_Fragment() {
         // Required empty public constructor
@@ -36,28 +38,16 @@ public class Simple3_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.simple3_fragment, container, false);
-        List<String> values = Arrays.asList("Android", "iPhone", "WindowsMobile",
-            "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-            "Linux", "OS/2");
-
         //setup the RecyclerView
         mRecyclerView = (RecyclerView) myView.findViewById(R.id.list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(myContext));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = new Simple3_myAdapter(values, R.layout.simple3_rowlayout, myContext);
+        mAdapter = new Simple3_myAdapter(values, R.layout.simple3_rowlayout, requireContext());
         //add the adapter to the recyclerview
         mRecyclerView.setAdapter(mAdapter);
 
-
         return myView;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        myContext = context;
-        Log.d(TAG, "onAttach");
     }
 
 }

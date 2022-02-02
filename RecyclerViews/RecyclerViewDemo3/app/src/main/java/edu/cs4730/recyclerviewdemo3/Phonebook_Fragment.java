@@ -1,6 +1,6 @@
 package edu.cs4730.recyclerviewdemo3;
 
-/*
+/**
  * heavily modified phonebook example, based on the listview named phone_frag example in the listview examples.
  *  design note
  *  yes the remove button is covered by the fab.  this is not a great design example
@@ -9,6 +9,7 @@ package edu.cs4730.recyclerviewdemo3;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,23 +27,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class Phonebook_Fragment extends Fragment {
-	
+
     String TAG = "Phone_Fragment";
-    Context myContext;
     List<Phonebook_DataModel> listOfPhonebook;
     RecyclerView mRecyclerView;
     Phonebook_myAdapter mAdapter;
     //getting a cast except if I don't fully declare it.
     androidx.coordinatorlayout.widget.CoordinatorLayout mCoordinatorLayout;
 
-	public Phonebook_Fragment() {
-		// Required empty public constructor
-	}
+    public Phonebook_Fragment() {
+        // Required empty public constructor
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View myView = inflater.inflate(R.layout.phonebook_fragment, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View myView = inflater.inflate(R.layout.phonebook_fragment, container, false);
 
         //setup a simple list of data to start with.
         listOfPhonebook = setup();
@@ -54,31 +54,24 @@ public class Phonebook_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Snackbar.make(mCoordinatorLayout, "add is not implemented.", Snackbar.LENGTH_LONG)
-                        .show();
+                    .show();
             }
         });
 
         //setup the RecyclerView
         mRecyclerView = myView.findViewById(R.id.list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(myContext));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = new Phonebook_myAdapter(listOfPhonebook, R.layout.phonebook_rowlayout, myContext);
+        mAdapter = new Phonebook_myAdapter(listOfPhonebook, R.layout.phonebook_rowlayout, requireContext());
         //add the adapter to the recyclerview
         mRecyclerView.setAdapter(mAdapter);
-
 
         return myView;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        myContext = context;
-        Log.d(TAG, "onAttach");
-    }
 
-	List<Phonebook_DataModel> setup() {
+    List<Phonebook_DataModel> setup() {
         List<Phonebook_DataModel> list = new ArrayList<Phonebook_DataModel>();
         list.add(new Phonebook_DataModel("Test", "9981728", "test@test.com"));
         list.add(new Phonebook_DataModel("Test1", "1234455", "test1@test.com"));
