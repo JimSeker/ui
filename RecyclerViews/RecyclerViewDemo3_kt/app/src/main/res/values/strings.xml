@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RecyclerViewDemo3_kt</string>
+	    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_section1">Simple </string>
+    <string name="title_section2">Simple 2</string>
+    <string name="title_section3">Simple 3</string>
+    <string name="title_section4">InterActive List</string>
+    <string name="title_section5">Phone list</string>
+
+</resources>
