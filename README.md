@@ -30,5 +30,5 @@ Note for Android studio download a zip (or clone).  Then in Andriod Studio open 
 <b>eclipse/</b>  has some of projects in the format that eclipse format, if they predate the moved android Studio.  You should be able to have eclipse import the entire directory into your workspace via eclipse.  Note these are no longer updated.
 
 
-These are example code for University of Wyoming, Cosc 4730 Mobile Programming course.
+These are example code for University of Wyoming, Cosc 4730 Mobile Programming course and cosc 4735 Advance Mobile Programing course. 
 All examples are for Android.
