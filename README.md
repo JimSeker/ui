@@ -1,34 +1,39 @@
 Android GUI/UI Examples
 ===========
 
-This repo contains multiple projects, some in sub directories to be better organized with the course lectures.  You can see the course pages here: http://www.cs.uwyo.edu/~seker/courses/4730/
+This repo contains multiple projects, Most in sub directories to be better organized with the course lectures, see the READMEs in each directory for a descrption of the examples.   You can see the course pages here: http://www.cs.uwyo.edu/~seker/courses/4730/
 
-Note for Android studio download a zip (or clone).  Then in Andriod Studio open project directory as individial project.  You can also import Non-Android Studio Project for projects in the eclipse directory.
+Note for Android studio download a zip (or clone).  Then in Android Studio open one project directory as individual project. 
 
-<b>Basic/</b> are simple examples.  see the readme in the directory
+`legacy/` are old examples that are no longer updated.  
 
-<b>Advanced/</b> are more advanced examples.   see the readme in the directory
+`eclipse/`  has some of projects in the format that eclipse format, if they predate the moved android Studio.  You should be able to have eclipse import the entire directory into your workspace via eclipse.  Note these are no longer updated.
 
-<b>Communication/</b> are examples how fragments can communicate with callbacks. see the readme in the directory
+All flutter examples have been moved to the [Flutter repo](https://github.com/JimSeker/flutter)
 
-<b>ListViews/</b> are examples using varying listview, listfragments, and expandablelistviews.  see the readme in the directory
+---
 
-<b>RecyclerViews/</b> are examples using recyclerview widget to do lists.  see the readme in the directory
+`Basic/` are simple examples. 
 
-<b>Navigation/</b> are examples of menus, actionbar/toolbar, and Navigation Drawers.  See the readme in the directory
+`Advanced/` are more advanced examples. 
 
-<b>Material Design/</b> are examples using the new material design spec, Navagation Drawer, recyclerview, and support.design library.    see the readme in the directory
+`Communication/` are examples how fragments can communicate with callbacks and viewmodels. 
 
-<b>Dialogs/</b> are example of how to dialog box in android see the readme in the directory
+`ListViews/` are examples using varying listview, listfragments, and expandablelistviews. 
 
-<b>mvcDemo</b> is an example using the Model-view-controller model.
+`RecyclerViews/` are examples using recyclerview widget to do lists.  
 
-<b>flutter</b> all flutter examples have been moved to their own repo, https://github.com/JimSeker/flutter
+`Navigation/` are examples of menus, actionbar/toolbar, and Navigation Drawers. 
 
-<b>legacy/</b> are old examples that are no longer updated.  
+`Material Design/` are examples using the new material design spec, Navagation Drawer, recyclerview, and support.design library.    
 
-<b>eclipse/</b>  has some of projects in the format that eclipse format, if they predate the moved android Studio.  You should be able to have eclipse import the entire directory into your workspace via eclipse.  Note these are no longer updated.
+`Dialogs/` are example of how to dialog box in android
 
+`mvcDemo` (java) is an example using the Model-view-controller model.
+
+`mvcDemo_kt` (kotlin) is an example using the Model-view-controller model.
+
+--- 
 
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course and cosc 4735 Advance Mobile Programing course. 
 All examples are for Android.
