@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class ActionMenuActivity extends AppCompatActivity {
-	TextView label1, popup;
+	TextView label1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,6 @@ public class ActionMenuActivity extends AppCompatActivity {
 
 		//turn on up button
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 	}
 
 	@Override
@@ -30,15 +29,13 @@ public class ActionMenuActivity extends AppCompatActivity {
 	}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
+		if (item.getItemId() == android.R.id.home) {
 			// Navigate "up" the demo structure to the launchpad activity.
 			// See http://developer.android.com/design/patterns/navigation.html for more.
 			NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
 			return true;
-		default:
-			return super.onOptionsItemSelected(item);
 		}
+		return super.onOptionsItemSelected(item);
 	}
 
 }
