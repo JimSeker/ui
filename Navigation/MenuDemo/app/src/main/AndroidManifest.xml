@@ -27,8 +27,8 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".AppcompatActivity"
-            android:label="@string/title_actionmenu"
+            android:name=".ViewPagerButtonMenuActivity"
+            android:label="@string/title_vpbutton"
             android:parentActivityName=".MainActivity"
             android:uiOptions="splitActionBarWhenNarrow">
             <meta-data

@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
         }else if (id == R.id.actbaritemsdemo) {
             startActivity(new Intent(MainActivity.this, ActionMenuActivity.class));
             return true;
-        }else if (id == R.id.Actionbuttonsdemo) {
-            startActivity(new Intent(MainActivity.this, AppcompatActivity.class));
+        }else if (id == R.id.viewpagerbuttondemo) {
+            startActivity(new Intent(MainActivity.this, ViewPagerButtonMenuActivity.class));
             return true;
         }
 

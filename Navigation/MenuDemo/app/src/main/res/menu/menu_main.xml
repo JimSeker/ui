@@ -12,9 +12,9 @@
         android:title="ToolBar action Items Demo"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/Actionbuttonsdemo"
+        android:id="@+id/viewpagerbuttondemo"
         android:orderInCategory="3"
-        android:title="ToolBar Buttons Demo"
+        android:title="ViewPager with Buttons"
         app:showAsAction="never"/>
 
     <item android:id="@+id/submenu"

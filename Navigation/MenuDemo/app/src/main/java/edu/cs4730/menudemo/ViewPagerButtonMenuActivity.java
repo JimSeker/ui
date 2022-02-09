@@ -4,14 +4,16 @@ package edu.cs4730.menudemo;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.core.app.NavUtils;
 import androidx.core.view.MenuItemCompat;
-import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,15 +22,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class AppcompatActivity extends AppCompatActivity {
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+
+public class ViewPagerButtonMenuActivity extends AppCompatActivity {
     PageFragment one = null, two = null, three = null, four = null, five = null;
-    ViewPager viewPager;
+    ViewPager2 viewPager;
+    TabLayout tabLayout;
     myFragmentPagerAdapter mPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_actionbar);
+        setContentView(R.layout.activity_viewpagerbuttonmenu);
 
         //turn on up button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -60,17 +66,28 @@ public class AppcompatActivity extends AppCompatActivity {
             five = PageFragment.create(5);
         }
 
-        viewPager = (ViewPager) findViewById(R.id.pager);
-        mPagerAdapter = new myFragmentPagerAdapter(5);
+        viewPager = findViewById(R.id.pager);
+        mPagerAdapter = new myFragmentPagerAdapter(this);
         viewPager.setAdapter(mPagerAdapter);
         //viewPager.setCurrentItem(2);
         //we need to know when a page has changed, so we can change/fix the next/previous/finish buttons
-        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
+                super.onPageSelected(position);
                 supportInvalidateOptionsMenu();
             }
         });
+        tabLayout= findViewById(R.id.tab_layout);
+        new TabLayoutMediator(tabLayout,
+            viewPager,
+            new TabLayoutMediator.TabConfigurationStrategy() {
+                @Override
+                public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                    tab.setText("Page " + (position + 1) );
+                }
+            }
+        ).attach();
     }
 
     @Override
@@ -85,7 +102,7 @@ public class AppcompatActivity extends AppCompatActivity {
         //MenuItemCompat.setShowAsAction(menu.findItem(R.id.action_previous),MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
         MenuItem item = menu.add(Menu.NONE, R.id.action_next, Menu.NONE,
-            (viewPager.getCurrentItem() == mPagerAdapter.getCount() - 1)
+            (viewPager.getCurrentItem() == mPagerAdapter.getItemCount() - 1)
                 ? R.string.action_finish
                 : R.string.action_next);
         //item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
@@ -117,19 +134,16 @@ public class AppcompatActivity extends AppCompatActivity {
     }
 
 
-    public class myFragmentPagerAdapter extends FragmentPagerAdapter {
-        int PAGE_COUNT;
+    public class myFragmentPagerAdapter extends FragmentStateAdapter {
+        int PAGE_COUNT =5;
 
-        public myFragmentPagerAdapter(int count) {
-            super(getSupportFragmentManager());
-            PAGE_COUNT = count;
+        public myFragmentPagerAdapter(FragmentActivity fa) {
+            super(fa);
         }
 
+        @NonNull
         @Override
-        public Fragment getItem(int position) {
-            if (PAGE_COUNT == 3) {
-                position = position + 2;
-            }
+        public Fragment createFragment(int position) {
             switch (position) {
                 case 0:
                     return one;
@@ -147,18 +161,11 @@ public class AppcompatActivity extends AppCompatActivity {
         }
 
         @Override
-        public int getCount() {
+        public int getItemCount() {
 
             return PAGE_COUNT;
         }
 
-        //getPageTitle required for the PageStripe to work and have a value.
-        @Override
-        public CharSequence getPageTitle(int position) {
-            //return String.valueOf(position);  //returns string of position for title
-            return "Page " + String.valueOf(position + 1);
-
-        }
     }
 
     @Override

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/seker/git/ui/Navigation/MenuDemo/app/src/main/res/layout/activity_viewpagerbuttonmenu.xml" value="0.24320652173913043" />
+        <entry key="..\:/Users/seker/git/ui/Navigation/MenuDemo/app/src/main/res/menu/menu_main.xml" value="0.2638888888888889" />
+      </map>
+    </option>
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
     <option name="myDefaultNotNull" value="androidx.annotation.NonNull" />
