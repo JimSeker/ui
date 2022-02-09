@@ -21,6 +21,8 @@ import java.util.Locale;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import androidx.annotation.NonNull;
+
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -59,7 +61,7 @@ import android.widget.Toast;
  * Update 10/21/2014
  * To remove the icon as well, then you need to change from an Activity to an ActionBarActivity
  * add this:
-
+ *
  * <p>
  * if you are in a fragment, you may have to write this ugly line of code:
  * ((ActionBarActivity) getActivity()).getSupportActionBar();
@@ -162,28 +164,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // The action bar home/up action should open or close the drawer.
         // ActionBarDrawerToggle will take care of this.
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         // Handle action buttons
-        switch (item.getItemId()) {
-            case R.id.action_websearch:
-                // create intent to perform web search for this planet
-                Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-                intent.putExtra(SearchManager.QUERY, getSupportActionBar().getTitle());
-                // catch event that there's no activity to handle intent
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(this, R.string.app_not_available, Toast.LENGTH_LONG).show();
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.action_websearch) {// create intent to perform web search for this planet
+            Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+            intent.putExtra(SearchManager.QUERY, getSupportActionBar().getTitle());
+            startActivity(intent);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     /* The click listener for ListView in the navigation drawer */
@@ -229,9 +223,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        // Pass any configuration change to the drawer toggls
+        // Pass any configuration change to the drawer toggles
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
@@ -249,13 +243,13 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_planet, container, false);
-            int i = getArguments().getInt(ARG_PLANET_NUMBER);
+            int i = requireArguments().getInt(ARG_PLANET_NUMBER);
             String planet = getResources().getStringArray(R.array.planets_array)[i];
 
             int imageId = getResources().getIdentifier(planet.toLowerCase(Locale.getDefault()),
-                "drawable", getActivity().getPackageName());
+                "drawable", requireActivity().getPackageName());
             ((ImageView) rootView.findViewById(R.id.image)).setImageResource(imageId);
-            getActivity().setTitle(planet);
+            requireActivity().setTitle(planet);
             return rootView;
         }
     }
