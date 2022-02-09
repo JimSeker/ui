@@ -8,6 +8,11 @@ import android.view.MenuItem;
 import androidx.core.app.NavUtils;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * So this activity shows hwo the menu can change based on the fragments
+ * which is FragMenu1 and FragMenu2 will show extra menu items.
+ */
+
 public class FragMenuActivity extends AppCompatActivity {
     FragMenu1 one;
     FragMenu2 two;

@@ -37,7 +37,7 @@
         </activity>
         <activity
             android:name=".FragMenuActivity"
-            android:label="@string/title_actionmenu"
+            android:label="@string/title_fragmenu"
             android:parentActivityName=".MainActivity"
             android:uiOptions="splitActionBarWhenNarrow">
             <meta-data

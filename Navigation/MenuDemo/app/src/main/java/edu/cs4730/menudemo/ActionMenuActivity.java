@@ -8,6 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+/**
+ * This activity show how to setup both buttons, and menus (and sub menus).
+ * but all the work is in the menu/action.xml file.
+ */
+
 public class ActionMenuActivity extends AppCompatActivity {
 	TextView label1;
 
@@ -35,6 +40,7 @@ public class ActionMenuActivity extends AppCompatActivity {
 			NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
 			return true;
 		}
+		//Normally you would deal with all the menu items here, which I'm ignoring for the purpose of the example.
 		return super.onOptionsItemSelected(item);
 	}
 

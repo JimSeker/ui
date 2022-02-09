@@ -25,6 +25,11 @@ import android.widget.TextView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+/**
+ * This example shows how to use a viewpager2 with button menu items to change the pager.
+ *
+ */
+
 public class ViewPagerButtonMenuActivity extends AppCompatActivity {
     PageFragment one = null, two = null, three = null, four = null, five = null;
     ViewPager2 viewPager;
