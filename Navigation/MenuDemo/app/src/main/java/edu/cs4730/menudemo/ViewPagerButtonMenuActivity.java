@@ -84,12 +84,13 @@ public class ViewPagerButtonMenuActivity extends AppCompatActivity {
             }
         });
         tabLayout= findViewById(R.id.tab_layout);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);  //dont show all the tabs, which is MODE_FIXED.
         new TabLayoutMediator(tabLayout,
             viewPager,
             new TabLayoutMediator.TabConfigurationStrategy() {
                 @Override
                 public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                    tab.setText("Page " + (position + 1) );
+                    tab.setText("This Page is " + (position + 1) );
                 }
             }
         ).attach();
