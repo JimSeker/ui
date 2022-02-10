@@ -11,7 +11,7 @@ Navigation Examples
 
 `NavDrawerFragDemo` is listview example using the listviewFragmentDemo from the listview directory.  Minor changes for color fixes for the drawer fragment.
 
-`toolbarnavDrawerDemo`  uses a toolar, instead of a actionbar.  The rest of the code is the same as the NavDrawerDemo. 
+`toolbarnavDrawerDemo`  uses a toolbar, instead of a actionbar.  The rest of the code is the same as the NavDrawerDemo. 
 
 `ToolbarDemo` use a toolbar and not a actionbar.  The sytle is DayNight.NoActionBar. So the toolbar is added in the layout, seethe app_bar.xml and activity_mail.xml, plus main_activity.java for the bulk of the code.  Again device-4.4.png and device-5.0.png shows the design.  Otherwise the example really doesn't do anything.
 
