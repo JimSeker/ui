@@ -7,7 +7,9 @@ Navigation Examples
 
 `NavDrawer` is Google's drawer example, fixed with the new drawer toggle.  mainactivity has all the changes logged.
 
-`NavDrawerDemo`  is a cleaned up version of the NavDrawer example . This example and the toolbarnavDrawerDemo are the same example, but uses the toolbar.  See pictures in the directories for the differences.
+`NavDrawerDemo` (java) This shows how a layout drawer is used and setup.  It's very simple, with just a textview in the "main content".  This uses the actionbar, while the ToolbarnavDrawerDemo uses a toolbar. 
+
+`NavDrawerDemo_kt` (kotlin) This shows how a layout drawer is used and setup.  It's very simple, with just a textview in the "main content".  This uses the actionbar, while the ToolbarnavDrawerDemo uses a toolbar. 
 
 `NavDrawerFragDemo` is listview example using the listviewFragmentDemo from the listview directory.  
 
