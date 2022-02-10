@@ -32,17 +32,37 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //use the v7.toolbar instead of the default one.
+        //use the androidx... .toolbar instead of the actionbar, which is disabled in the style.
         toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
+        //now the rest of the code matches NavDrawerDemo.
         mTextView = findViewById(R.id.textview01);
+        mDrawerlayout = findViewById(R.id.drawer_layout);
+
+        //lastly setup the listview with some simple categories via an array.
+        String[] values = new String[]{"Item 1", "Item 2", "Item 3", "Item 4"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+            R.layout.drawer_list_item, values);
+        mDrawerList = findViewById(R.id.left_drawer);
+        mDrawerList.setAdapter(adapter);
+        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View view, int position, long index) {
+                //yes, this should do something for more interesting.  but this is an example.
+                String item = mDrawerList.getAdapter().getItem(position).toString();
+                mTextView.setText(item);
+                // update selected item and title, then close the drawer
+                mDrawerList.setItemChecked(position, true);
+                //now close the drawer!
+                mDrawerlayout.closeDrawers();
+
+            }
+        });
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
-        mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         mDrawerToggle = new ActionBarDrawerToggle(this,  // host activity
             mDrawerlayout,  //drawerlayout object
@@ -70,25 +90,7 @@ public class MainActivity extends AppCompatActivity {
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
         mDrawerlayout.addDrawerListener(mDrawerToggle);
 
-        //lastly setup the listview with some simple categories via an array.
-        String[] values = new String[]{"Item 1", "Item 2", "Item 3", "Item 4"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-            R.layout.drawer_list_item, values);
-        mDrawerList = findViewById(R.id.left_drawer);
-        mDrawerList.setAdapter(adapter);
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View view, int position, long index) {
-                //yes, this should do something for more interesting.  but this is an example.
-                String item = mDrawerList.getAdapter().getItem(position).toString();
-                mTextView.setText(item);
-                // update selected item and title, then close the drawer
-                mDrawerList.setItemChecked(position, true);
-                //now close the drawer!
-                mDrawerlayout.closeDrawers();
 
-            }
-        });
 
     }
 
