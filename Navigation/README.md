@@ -11,7 +11,9 @@ Navigation Examples
 
 `NavDrawerDemo_kt` (kotlin) This shows how a layout drawer is used and setup.  It's very simple, with just a textview in the "main content".  This uses the actionbar, while the ToolbarnavDrawerDemo uses a toolbar. 
 
-`NavDrawerFragDemo` is listview example using the listviewFragmentDemo from the listview directory.  
+`NavDrawerFragDemo` (java) is listview example using the listviewFragmentDemo from the listview directory. 
+
+`NavDrawerFragDemo_kt` (kotlin) is listview example using the listviewFragmentDemo from the listview directory.   
 
 `NavDrawerFragViewModelDemo` is NavDrawerFragDemo reworked to use a viewmodel, instead of all the callbacks.  The code is greatly simplified without callbacks/listeners.
 
