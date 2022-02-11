@@ -15,7 +15,9 @@ Navigation Examples
 
 `NavDrawerFragDemo_kt` (kotlin) is listview example using the listviewFragmentDemo from the listview directory.   
 
-`NavDrawerFragViewModelDemo` is NavDrawerFragDemo reworked to use a viewmodel, instead of all the callbacks.  The code is greatly simplified without callbacks/listeners.
+`NavDrawerFragViewModelDemo` (java) is NavDrawerFragDemo reworked to use a viewmodel, instead of all the callbacks.  The code is greatly simplified without callbacks/listeners.
+
+`NavDrawerFragViewModelDemo_kt` (kotlin) is NavDrawerFragDemo reworked to use a viewmodel, instead of all the callbacks.  The code is greatly simplified without callbacks/listeners.
 
 `toolbarnavDrawerDemo`  uses a toolbar, instead of a actionbar.  The rest of the code is the same as the NavDrawerDemo. 
 

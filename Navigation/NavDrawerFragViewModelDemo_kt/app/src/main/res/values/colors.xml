@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- a good place to try different colors is http://www.materialpalette.com/ -->
+    <!-- 500 color -->
+    <color name="primaryColor">#3f51b5</color>
+    <!-- 700 color -->
+    <color name="primaryColorDark">#303f9f</color>
+    <!-- A200 other color, so pink...? -->
+    <color name="accentColor">#ff4081</color>
+    <color name="primaryColorLight">#C5CAE9</color>
+
+    <color name="textColor">#FFFFFF</color>
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#727272</color>
+
+    <color name="windowBackgroundColor">#607d8b</color>
+    <color name="navigationBarColor">#303f9f</color> <!--#303f9f-->
+
+</resources>
