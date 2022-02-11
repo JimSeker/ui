@@ -5,7 +5,7 @@ Navigation Examples
 
 `MenuDemo` is examples are menus, pop-up menus, action buttons, and sub menus.
 
-`NavDrawer` is Google's drawer example, fixed with the new drawer toggle.  mainactivity has all the changes logged.
+`NavDrawer` is Google's drawer example, fixed with the new drawer toggle.
 
 `NavDrawerDemo` (java) This shows how a layout drawer is used and setup.  It's very simple, with just a textview in the "main content".  This uses the actionbar, while the ToolbarnavDrawerDemo uses a toolbar. 
 
@@ -19,9 +19,11 @@ Navigation Examples
 
 `NavDrawerFragViewModelDemo_kt` (kotlin) is NavDrawerFragDemo reworked to use a viewmodel, instead of all the callbacks.  The code is greatly simplified without callbacks/listeners.
 
-`toolbarnavDrawerDemo`  uses a toolbar, instead of a actionbar.  The rest of the code is the same as the NavDrawerDemo. 
+`toolbarnavDrawerDemo`  (java) uses a toolbar, instead of a actionbar.  The rest of the code is the same as the NavDrawerDemo. 
 
-`ToolbarDemo` use a toolbar and not a actionbar.  The style is DayNight.NoActionBar. So the toolbar is added in the layout, see the app_bar.xml and activity_mail.xml, plus main_activity.java for the bulk of the code.  Again device-4.4.png and device-5.0.png shows the design.  Otherwise the example really doesn't do anything.
+`toolbarnavDrawerDemo_kt` (kotlin) uses a toolbar, instead of a actionbar.  The rest of the code is the same as the NavDrawerDemo.
+
+`ToolbarDemo` use a toolbar and not a actionbar.  The style is DayNight.NoActionBar. So the toolbar is added in the layout, see the app_bar.xml and activity_mail.xml, plus main_activity.java for the bulk of the code.  Again device-4.4.png and device-5.0.png shows the design.  Otherwise the example really doesn't do anything.  Since there is no real code, I'm not going to make a "kotlin" version.
 
 ---
 
