@@ -9,7 +9,7 @@ Navigation Examples
 
 `NavDrawer` (java) was Google's drawer example show content in the main area, it's been heavily updated and corrected.  Also a search bar entry.
 
-`NavDrawer_kt` was Google's drawer example show content in the main area, converted to kotlin.  Also a search bar entry.
+`NavDrawer_kt` (kotlin) was Google's drawer example show content in the main area, converted to kotlin.  Also a search bar entry.
 
 `NavDrawerDemo` (java) This shows how a layout drawer is used and setup.  It's very simple, with just a textview in the "main content".  This uses the actionbar, while the ToolbarnavDrawerDemo uses a toolbar. 
 
