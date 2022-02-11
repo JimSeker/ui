@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MenuDemo_kt</string>
+    <string name="title_fragmenu">Frag Menu demo</string>
+    <string name="title_actionmenu">ToolBar Demo</string>
+    <string name="title_vpbutton">VP button Demo</string>
+
+    <string name="action_previous">Previous</string>
+    <string name="action_next">Next</string>
+    <string name="action_finish">Finish</string>
+    <string name="action_settings">settings</string>
+
+    <!--  id for the next button -->
+    <item type="id" name="action_next" />
+</resources>

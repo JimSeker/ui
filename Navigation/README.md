@@ -3,7 +3,9 @@ Navigation Examples
 
 `legacy/` are old examples that are no longer updated.  
 
-`MenuDemo` is examples are menus, pop-up menus, action buttons, and sub menus.
+`MenuDemo` (java) is examples are menus, pop-up menus, action buttons, sub menus, and extra menus in fragments.
+
+`MenuDemo_kt` (kotlin) is examples are menus, pop-up menus, action buttons, sub menus, and extra menus in fragments.
 
 `NavDrawer` is Google's drawer example, fixed with the new drawer toggle.
 

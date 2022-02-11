@@ -1,0 +1,32 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item
+        android:id="@+id/menuandfragdemo"
+        android:orderInCategory="1"
+        android:title="Menu and Fragments Demo"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/actbaritemsdemo"
+        android:orderInCategory="2"
+        android:title="ToolBar action Items Demo"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/viewpagerbuttondemo"
+        android:orderInCategory="3"
+        android:title="ViewPager with Buttons"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/submenu"
+        android:title="sub menu"
+        android:orderInCategory="5">
+        <menu>
+            <item android:id="@+id/subitem1"
+                android:orderInCategory="1"
+                android:title="subitem1"/>
+            <item android:id="@+id/subitem2"
+                android:orderInCategory="2"
+                android:title="subitem2"/>
+        </menu>
+    </item>
+</menu>
