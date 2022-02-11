@@ -27,7 +27,6 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 /**
  * This example shows how to use a viewpager2 with button menu items to change the pager.
- *
  */
 
 public class ViewPagerButtonMenuActivity extends AppCompatActivity {
@@ -83,14 +82,14 @@ public class ViewPagerButtonMenuActivity extends AppCompatActivity {
                 supportInvalidateOptionsMenu();
             }
         });
-        tabLayout= findViewById(R.id.tab_layout);
+        tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);  //dont show all the tabs, which is MODE_FIXED.
         new TabLayoutMediator(tabLayout,
             viewPager,
             new TabLayoutMediator.TabConfigurationStrategy() {
                 @Override
                 public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                    tab.setText("This Page is " + (position + 1) );
+                    tab.setText("This Page is " + (position + 1));
                 }
             }
         ).attach();
@@ -111,8 +110,7 @@ public class ViewPagerButtonMenuActivity extends AppCompatActivity {
             (viewPager.getCurrentItem() == mPagerAdapter.getItemCount() - 1)
                 ? R.string.action_finish
                 : R.string.action_next);
-        //item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-        MenuItemCompat.setShowAsAction(item, MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         return true;
     }
 
@@ -141,7 +139,7 @@ public class ViewPagerButtonMenuActivity extends AppCompatActivity {
 
 
     public class myFragmentPagerAdapter extends FragmentStateAdapter {
-        int PAGE_COUNT =5;
+        int PAGE_COUNT = 5;
 
         public myFragmentPagerAdapter(FragmentActivity fa) {
             super(fa);
