@@ -3,7 +3,7 @@ Android material Design Examples
 
 `SimpleDemo` is basic example of using Material design.  There is no real java code here, it's all in the values/color and styles.xml files (values and values-v21).  There are also two screenshots device-4.4.png and device-5.0.png to show how style looks.
 
-`CirToolbarNavDrawerDemo` uses toolbarnavDrawerDemo and uses the support design floating action button. 
+`CirToolbarNavDrawerDemo` uses toolbarnavDrawerDemo from the navigation directory and add a floating action button. 
 
 `DarkThemeDemo` is an example of how to dynamically change your themes, using a Light, Dark, or DayNight theme both appcompat and MaterialDesign.
 
