@@ -59,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        //set the default value and position to checked.
+        mDrawerList.setItemChecked(0, true);
+        mTextView.setText(values[0]);
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -89,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
         //To disable the icon for the drawer, change this to false
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
         mDrawerlayout.addDrawerListener(mDrawerToggle);
-
-
 
     }
 
