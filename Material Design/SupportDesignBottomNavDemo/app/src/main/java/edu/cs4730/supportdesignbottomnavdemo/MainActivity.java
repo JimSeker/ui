@@ -6,10 +6,10 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.view.MenuItem;
 
-/*
+/**
  * This is a simple example of how to use a the BottomNavigationView, which was
  * introduced in support design v25.0.0.   The navigation changes the fragment, using the
- * onNavigationItemSelected listener.  Note the list for the navigation view is a menu xml list, found
+ * onItemSelected listener.  Note the list for the navigation view is a menu xml list, found
  * in the menu resource.
  */
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         nearbyFrag = BlankFragment.newInstance("Nearby", "");
 
         bnv = findViewById(R.id.bnv);
-        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bnv.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 //At this point, we are doing the same thing that is done for menu selections.
