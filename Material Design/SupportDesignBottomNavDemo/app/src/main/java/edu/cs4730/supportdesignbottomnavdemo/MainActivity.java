@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //setup the three fragments, that will be used by the nav.
+        //setup the three fragments, which is just the same blankfragment with a different text, that will be used by the nav.
         recentFrag = BlankFragment.newInstance("Recent", "");
         favFrag = BlankFragment.newInstance("Favorites", "");
         nearbyFrag = BlankFragment.newInstance("Nearby", "");

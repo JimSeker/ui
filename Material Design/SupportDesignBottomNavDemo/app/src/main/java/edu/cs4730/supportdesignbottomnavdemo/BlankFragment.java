@@ -2,7 +2,9 @@ package edu.cs4730.supportdesignbottomnavdemo;
 
 
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +12,8 @@ import android.widget.TextView;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link BlankFragment#newInstance} factory method to
- * create an instance of this fragment.
+ *  This is a blank and generic fragment.  It doesn't actually do anything.  It's the generic
+ *  one that studio provided.  I just needed it to display a different message in the text view.
  */
 public class BlankFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
