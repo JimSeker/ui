@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-
-/*
+/**
  * This is a simple fragment to display data and it the "right" most fragment in the viewpager.
  *   The code here is identical to the code in the left fragment.
  */
@@ -30,14 +30,8 @@ public class FragRight extends Fragment {
         if (savedInstanceState != null) {
             Log.d(TAG, "OnCreate savedInstanceState");
         }
-        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
 
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.d(TAG, "OnActivityCreate");
     }
 
     @Override
@@ -74,7 +68,7 @@ public class FragRight extends Fragment {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         Log.d(TAG, "OnSaveInstanceState");
         super.onSaveInstanceState(outState);
     }

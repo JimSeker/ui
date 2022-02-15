@@ -21,7 +21,8 @@ import androidx.viewpager2.widget.ViewPager2;
  * https://youtu.be/zQekzaAgIlQ
  * <p>
  * One problem, here is I need to get the background of the tablelayout darker, so you can easily
- * read the tab names though.
+ * removed   <item name="android:textColorSecondary">@color/textColorSecondary</item> from colors.xml
+ * so now it defaults to a more readable color.
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -52,13 +53,13 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout = findViewById(R.id.tab_layout);
         //mTabLayout.setupWithViewPager(viewPager);
         new TabLayoutMediator(mTabLayout,
-                viewPager,
-                new TabLayoutMediator.TabConfigurationStrategy() {
-                    @Override
-                    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                        tab.setText("Page " + String.valueOf(position + 1));
-                    }
+            viewPager,
+            new TabLayoutMediator.TabConfigurationStrategy() {
+                @Override
+                public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                    tab.setText("Page " + String.valueOf(position + 1));
                 }
+            }
         ).attach();
     }
 
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // return the correct fragment based on where in pager we are.
+        @NonNull
         @Override
         public Fragment createFragment(int position) {
 
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 case 2:
                     return rightfrag;
                 default:
-                    return null;
+                    return leftfrag; //can't be null, so return first one.
             }
         }
 

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
@@ -30,14 +31,8 @@ public class FragLeft extends Fragment {
         if (savedInstanceState != null) {
             Log.d(TAG, "OnCreate savedInstanceState");
         }
-        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
 
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.d(TAG, "OnActivityCreate");
     }
 
     @Override
@@ -47,7 +42,7 @@ public class FragLeft extends Fragment {
         tx = view.findViewById(R.id.tvleft);
 
 
-        mViewModel.getDataLeft().observe(this, new Observer<String>() {
+        mViewModel.getDataLeft().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String data) {
                 tx.setText(data);
@@ -78,7 +73,7 @@ public class FragLeft extends Fragment {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         Log.d(TAG, "OnSaveInstanceState");
         super.onSaveInstanceState(outState);
     }
