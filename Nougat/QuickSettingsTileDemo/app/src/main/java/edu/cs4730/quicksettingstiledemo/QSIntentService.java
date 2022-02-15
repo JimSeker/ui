@@ -45,12 +45,12 @@ public class QSIntentService
 
             Intent intent = new Intent(getApplicationContext(),
                     ResultActivity.class);
-
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra(ResultActivity.RESULT_ACTIVITY_NAME_KEY,
                     tileLabel);
             intent.putExtra(ResultActivity.RESULT_ACTIVITY_INFO_KEY,
                     tileState);
-
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivityAndCollapse(intent);
         }
     }

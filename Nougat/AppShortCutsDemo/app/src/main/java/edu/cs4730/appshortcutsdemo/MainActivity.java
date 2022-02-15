@@ -20,6 +20,8 @@ import java.util.ArrayList;
  * this code will add/refresh two dynamic short cuts as well.
  * 1 to a website
  * 2 to the commonActivity.
+ *
+ * When you run this, go find the icon and long press to find the short cuts.  
  * <p>
  * once this example makes since, then you will be able to understand google's very complex example
  * of appshortcuts https://github.com/googlesamples/android-AppShortcuts/
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (getIntent().getAction().compareTo("edu.cs4730.appshortcutsdemo.CustomAction") == 0) {
-            //this is our custom intent fromt he xml file
+            //this is our custom intent from the xml file
             logthis("Custom Action intent from the Static shortcut.");
         }
 

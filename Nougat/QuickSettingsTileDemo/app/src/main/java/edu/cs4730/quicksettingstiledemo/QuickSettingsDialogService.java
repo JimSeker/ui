@@ -6,7 +6,9 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.util.Log;
 
-public class QuickSettingsDislaogService extends TileService {
+import androidx.appcompat.view.ContextThemeWrapper;
+
+public class QuickSettingsDialogService extends TileService {
     private boolean isTileActive;
 
     @Override
@@ -17,7 +19,7 @@ public class QuickSettingsDislaogService extends TileService {
         isTileActive = (tile.getState() == Tile.STATE_ACTIVE);
 
         QSDialog.Builder dialogBuilder =
-                new QSDialog.Builder(getApplicationContext());
+                new QSDialog.Builder(new ContextThemeWrapper(getBaseContext(), R.style.ThemeOverlay_AppCompat_Dialog));
 
         QSDialog dialog = dialogBuilder
                 .setClickListener(new QSDialog.QSDialogListener() {

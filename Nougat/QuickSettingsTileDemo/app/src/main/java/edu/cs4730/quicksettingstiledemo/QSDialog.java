@@ -22,8 +22,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 
-public class QSDialog
-    extends DialogFragment {
+public class QSDialog extends DialogFragment {
 
     public static final String TILE_STATE_KEY = "tileState";
 
@@ -38,12 +37,12 @@ public class QSDialog
         private Context _context;
         private QSDialogListener _listener;
 
-        public Builder(Context context){
+        public Builder(Context context) {
             this._context = context;
         }
 
         public Builder setClickListener(QSDialogListener listener) {
-            if (listener instanceof QSDialogListener) {
+            if (listener != null) {
                 this._listener = listener;
             }
             return this;
@@ -63,11 +62,12 @@ public class QSDialog
      */
     public interface QSDialogListener {
         public void onDialogPositiveClick(DialogFragment dialog);
+
         public void onDialogNegativeClick(DialogFragment dialog);
     }
 
     @Override
-    public Dialog onCreateDialog(Bundle savedState){
+    public Dialog onCreateDialog(Bundle savedState) {
 
         // Read the saved state data passed in.
         boolean isTileActive = false;
@@ -76,35 +76,35 @@ public class QSDialog
         }
 
         int actionButtonText = isTileActive ?
-                R.string.qs_dialog_active : R.string.qs_dialog_inactive;
+            R.string.qs_dialog_active : R.string.qs_dialog_inactive;
 
         AlertDialog.Builder alertBuilder =
-                new AlertDialog.Builder(this._context);
+            new AlertDialog.Builder(this._context);
 
         alertBuilder
-                .setView(R.layout.dialog_quicksettings)
+            .setView(R.layout.dialog_quicksettings)
 
-                // OnAttach doesn't get called on the dialog;
-                // we have to apply our click event handlers here.
-                .setNegativeButton(R.string.qs_dialog_cancel,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Log.d("QS", "Dialog cancel");
-                                _listener.onDialogNegativeClick(QSDialog.this);
-                            }
-                        })
-                .setPositiveButton(actionButtonText,
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            Log.d("QS", "Dialog action taken");
-                            dialog.dismiss();
+            // OnAttach doesn't get called on the dialog;
+            // we have to apply our click event handlers here.
+            .setNegativeButton(R.string.qs_dialog_cancel,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Log.d("QS", "Dialog cancel");
+                        _listener.onDialogNegativeClick(QSDialog.this);
+                    }
+                })
+            .setPositiveButton(actionButtonText,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Log.d("QS", "Dialog action taken");
+                        dialog.dismiss();
 
-                            _listener.onDialogPositiveClick(QSDialog.this);
-                        }
-                    });
+                        _listener.onDialogPositiveClick(QSDialog.this);
+                    }
+                });
 
-        return  alertBuilder.create();
+        return alertBuilder.create();
     }
 
     private QSDialog setClickListener(QSDialogListener listener) {
@@ -112,7 +112,7 @@ public class QSDialog
         return this;
     }
 
-    private QSDialog setContext(Context context){
+    private QSDialog setContext(Context context) {
         this._context = context;
         return this;
     }

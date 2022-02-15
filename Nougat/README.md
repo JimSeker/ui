@@ -1,11 +1,11 @@
 Nougat Examples
 ===========
 
-This is for Nougat only (API 24 and 25) examples.
+These are examples that were created in API 24 or API 25.  The default min is now higher then Nougat.
 
-`AppShortCutsDemo` is a simple example of the new ShortCuts for API 25
+`AppShortCutsDemo` is a simple example of the new ShortCuts starting in API 25
 
-`MultiWindowsDemo` is a very simple example to show what happens to an app when it's in multiwindow mode (or PIP).
+`MultiWindowsDemo` is a very simple example to show what happens to an app when it's in multiwindow mode (or PIP).  You will need another app and change to multiwindow mode (split screen) to see this working.
 
 `QuickSettingsTileDemo` is an example of how to create your own tile(s) for Quick Settings screen.  
 

@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public void checkmode() {
         if (isInMultiWindowMode()) {
             logthis("MultiWindowmode is true");
@@ -37,13 +36,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onPause() {
         super.onPause();
         logthis("onPause");
     }
-
 
     @Override
     protected void onResume() {
@@ -51,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         logthis("onResume");
         checkmode();
     }
-
 
     @Override
     public void onMultiWindowModeChanged(boolean isInMultiWindowMode) {
@@ -90,11 +86,9 @@ public class MainActivity extends AppCompatActivity {
         logthis("onStop");
     }
 
-
     void logthis(String item) {
         Log.d(TAG, item);
         logger.append(item);
         logger.append("\n");
     }
-
 }
