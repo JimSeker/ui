@@ -14,12 +14,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-/*
+/**
  * example mostly shows a collapsing toolbar, which is in the xml
  * it also changes the status and toolbar color as well, plus the text size as the toolbar is collapsing.
- *
- *
- * as note, there is firebase app-indexing.  no code exists here, just in the manifest file.
  *
  *  Some code from http://www.tutorialsbuzz.com/2015/11/android-collapsingtoolbarlayout-example_7.html
  * and http://antonioleiva.com/collapsing-toolbar-layout/
@@ -51,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         dynamicToolbarColor();
 
-        toolbarTextAppernce();
+        toolbarTextAppearance();
     }
 
 
@@ -79,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void toolbarTextAppernce() {
+    private void toolbarTextAppearance() {
         collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar);
     }
