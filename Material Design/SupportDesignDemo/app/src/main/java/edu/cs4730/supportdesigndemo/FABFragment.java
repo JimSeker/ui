@@ -30,13 +30,13 @@ public class FABFragment extends Fragment {
         myView.findViewById(R.id.fab1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getBaseContext(), "You clicked add!", Toast.LENGTH_LONG).show();
+                Toast.makeText(requireContext(), "You clicked add!", Toast.LENGTH_LONG).show();
             }
         });
         myView.findViewById(R.id.fab2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getBaseContext(), "You clicked check!", Toast.LENGTH_LONG).show();
+                Toast.makeText(requireContext(), "You clicked check!", Toast.LENGTH_LONG).show();
             }
         });
 

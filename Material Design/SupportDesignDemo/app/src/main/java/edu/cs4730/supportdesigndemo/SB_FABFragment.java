@@ -1,10 +1,11 @@
 package edu.cs4730.supportdesigndemo;
 
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import android.os.Bundle;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,34 +25,31 @@ public class SB_FABFragment extends Fragment {
     Button btn;
     CoordinatorLayout mCoordinatorLayout;
 
-    public SB_FABFragment() {
-        // Required empty public constructor
-    }
-    View.OnClickListener SBonClickListener = new View.OnClickListener(){
-        public void  onClick  (View  v){
-            Toast.makeText(getActivity(), "Yea!", Toast.LENGTH_SHORT).show();
+    View.OnClickListener SBonClickListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            Toast.makeText(requireContext(), "Yea!", Toast.LENGTH_SHORT).show();
         }
     };
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_sbfab, container, false);
-        mCoordinatorLayout = (CoordinatorLayout) myView.findViewById(R.id.coordinatorlayout1);
-        btn = (Button) myView.findViewById(R.id.button02);
+        mCoordinatorLayout = myView.findViewById(R.id.coordinatorlayout1);
+        btn = myView.findViewById(R.id.button02);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Snackbar.make(mCoordinatorLayout, "Did the FAB move?", Snackbar.LENGTH_LONG)
-                        .setAction("Yes?", SBonClickListener)  //this line is optional!
-                        .show();
+                    .setAction("Yes?", SBonClickListener)  //this line is optional!
+                    .show();
             }
         });
         myView.findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Snackbar.make(mCoordinatorLayout, "I knew you had to click the FAB.", Snackbar.LENGTH_LONG)
-                        .show();
+                    .show();
             }
         });
 
