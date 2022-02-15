@@ -16,13 +16,13 @@ user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
 `SupportDesignDemo2` uses the support design tablayout with a viewpager2, based on the advanced/viewpager and advanced/viewpager2.
 
-`SupportDesignDemo3` show how to use a picture with the toolbar and how to collapse the picture.  Also a little bit with the support design pallete.
+`SupportDesignDemo3` show how to use a picture with the toolbar and how to collapse the picture.  Also a little bit with the support design palette.
 
 `SupportDesignDemo4` show how to use the larger toolbar and how to collapse it as well.
 
 `SupportPaletteDemo` A simple example using a bitmap to get the palette and change the some textviews with it.  The example uses 4 different images that change via a imagebutton.
 
-`SupportDesignBottomNavDemo` shows how to use the ButtomNavigationView (introduced in v25) in the support design library.
+`SupportDesignBottomNavDemo` shows how to use the ButtomNavigationView  in the material design library.
 
 ---
 
