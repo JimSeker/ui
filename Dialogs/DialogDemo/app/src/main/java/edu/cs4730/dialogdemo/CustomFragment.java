@@ -104,7 +104,7 @@ public class CustomFragment extends Fragment {
 
     public void showInputDialog(String title) {
 
-        LayoutInflater inflater = LayoutInflater.from(getActivity());
+        LayoutInflater inflater = LayoutInflater.from(requireActivity());
         final View textenter = inflater.inflate(R.layout.layout_custom_dialog, null);
         final EditText userinput = (EditText) textenter.findViewById(R.id.item_added);
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
