@@ -13,7 +13,7 @@ Advanced Android GUI/UI Examples
 
 `EmojiCompatDemo_kt` (kotlin) is an example using the emoji compat library.  Note: appcompat v1.4.0+ has emoji2 library built in directory now.  so this is not really needed anymore.
 
-`GuiDemo` (java)has many different UI examples in fragments.  The example uses a navigation bar to switch between examples.
+`GuiDemo` (java)has many different UI examples in fragments, widgets: buttons, imageview, varying layouts, radio buttons, spinners, edit and textview, and viewswitchers.  The example uses a navigation bar to switch between examples.
 
 `GuiDemo_kt` (kotlin) has many different UI examples in fragments.  The example uses a navigation bar to switch between examples.
 
