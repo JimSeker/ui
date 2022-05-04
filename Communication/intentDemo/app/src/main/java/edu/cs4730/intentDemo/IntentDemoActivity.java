@@ -1,6 +1,7 @@
 package edu.cs4730.intentDemo;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,19 +13,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 public class IntentDemoActivity extends AppCompatActivity {
-    private static final int REQUEST_CODE_CAMERA = 10;
-    private static final int REQUEST_CODE_ACT2 = 11;
-    private static final int REQUEST_CODE_PICKCONTACT = 12;
+
+    // for checking permissions.
+    ActivityResultLauncher<String> cameraRpl, phoneRpl;
 
     String TAG = "IntentDemoActivity";
-    // for checking permissions.
-    public static final int REQUEST_ACCESS_camera = 0;
-    public static final int REQUEST_ACCESS_phone = 1;
 
     /**
      * Called when the activity is first created.
@@ -37,35 +38,60 @@ public class IntentDemoActivity extends AppCompatActivity {
         //Note, the "listeners" are setup in the main.xml file, in android:onClick="callIntent"
         //callIntent must take a parameter View v, like a standard OnClickListner.
 
+        //For the camera permissions
+        cameraRpl = registerForActivityResult(
+            new ActivityResultContracts.RequestPermission(),
+            new ActivityResultCallback<Boolean>() {
+                @Override
+                public void onActivityResult(Boolean isGranted) {
+                    if (isGranted) {
+                        makeCall();  //we have permissions now.
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Unable to complete phone action, because I need permissions", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+
+        //for the phone permissions
+        phoneRpl = registerForActivityResult(
+            new ActivityResultContracts.RequestPermission(),
+            new ActivityResultCallback<Boolean>() {
+                @Override
+                public void onActivityResult(Boolean isGranted) {
+                    if (isGranted) {
+                        takePic();  //we have permissions now.
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Unable to complete camera action, because I need permissions", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+
         //Also note, the map may not always work in the simulator and
         //sometimes the camera crashes, and I can't get the contact editor to work at all in the simulator. 
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     public void callIntent(View view) {
         Intent intent = null;
         switch (view.getId()) {
             case R.id.Button01:
-                intent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("http://www.cs.uwyo.edu"));
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.cs.uwyo.edu"));
                 startActivity(intent);
                 break;
             case R.id.Button02:
                 makeCall();  //needs permissions, so moved to a method.
                 break;
             case R.id.Button03:
-                intent = new Intent(Intent.ACTION_DIAL,
-                        Uri.parse("tel:(307)555555"));
+                intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:(307)555555"));
                 startActivity(intent);
                 break;
             case R.id.Button04:
-                intent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("geo:41.312927,105.587251?z=19"));
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:41.312927,105.587251?z=19"));
                 startActivity(intent);
                 break;
             case R.id.Button05:
-                intent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("geo:0,0?q=query"));
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=query"));
                 startActivity(intent);
                 break;
             case R.id.Button06:
@@ -86,54 +112,73 @@ public class IntentDemoActivity extends AppCompatActivity {
                 intent.putExtra("key2", "More Data");
                 // Set the request code to any code you like, you can identify the
                 // callback via this code
-                startActivityForResult(intent, REQUEST_CODE_ACT2);
+                act2ActivityResultLauncher.launch(intent);
                 break;
             case R.id.Button10:
                 intent = new Intent(Intent.ACTION_PICK, Uri.parse("content://contacts/people/"));
-                startActivityForResult(intent, REQUEST_CODE_PICKCONTACT);
+                contactActivityResultLauncher.launch(intent);
                 break;
             default:
                 break;
         }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //Toast.makeText(this, "Request code is " + requestCode, Toast.LENGTH_LONG).show();
+    ActivityResultLauncher<Intent> cameraActivityResultLauncher = registerForActivityResult(
+        new ActivityResultContracts.StartActivityForResult(),
+        new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    // There are no request codes
+                    Intent data = result.getData();
+                    Uri info = data.getData();
+                    if (info != null) {
+                        Toast.makeText(getApplicationContext(), info.toString(), Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "error in returned data.", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Camera action canceled", Toast.LENGTH_SHORT).show();
 
-        if (requestCode == REQUEST_CODE_CAMERA) {
-            if (resultCode == Activity.RESULT_OK) { //get where the picture is stored and display info
-                String result = data.getData().toString();
-                Toast.makeText(this, result, Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(this, "Camera action canceled", Toast.LENGTH_SHORT).show();
-            }
-        } else if (requestCode == REQUEST_CODE_ACT2) {
-            if (resultCode == Activity.RESULT_OK) { //ActivityTwo finished correctly.
-                if (data.hasExtra("returnKey1")) {
-                    Toast.makeText(this, data.getExtras().getString("returnKey1"),
-                        Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                Toast.makeText(this, "ActivityTwo action canceled", Toast.LENGTH_SHORT).show();
             }
-        } else if (requestCode == REQUEST_CODE_PICKCONTACT) {
-            Toast.makeText(this, "Contact list at least", Toast.LENGTH_SHORT);
-            if (resultCode == Activity.RESULT_OK) { //ActivityTwo finished correctly.
-                //String result = data.getData().toString();
-                //Get the contact's name:
-                Cursor c = getContentResolver().query(data.getData(), null, null, null, null);
-                c.moveToFirst();  //I know the query worked, since we just picked it, otherwise, should be an if statement.
-                String name = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
-                Toast.makeText(this, "You Picked: " + name, Toast.LENGTH_LONG).show();
+        });
+    ActivityResultLauncher<Intent> contactActivityResultLauncher = registerForActivityResult(
+        new ActivityResultContracts.StartActivityForResult(),
+        new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    // There are no request codes
+                    Intent data = result.getData();
+                    Cursor c = getContentResolver().query(data.getData(), null, null, null, null);
+                    c.moveToFirst();  //I know the query worked, since we just picked it, otherwise, should be an if statement.
+                    String name = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
+                    Toast.makeText(getApplicationContext(), "You Picked: " + name, Toast.LENGTH_LONG).show();
+                    c.close();
+                } else {
+                    Toast.makeText(getApplicationContext(), "pick contact action canceled", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    ActivityResultLauncher<Intent> act2ActivityResultLauncher = registerForActivityResult(
+        new ActivityResultContracts.StartActivityForResult(),
+        new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    // There are no request codes
+                    Intent data = result.getData();
+                    if (data.hasExtra("returnKey1")) {
+                        Toast.makeText(getApplicationContext(), data.getExtras().getString("returnKey1"),
+                            Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "ActivityTwo action canceled", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
-                //startActivity(new Intent(Intent.ACTION_EDIT, data.getData()));
-            } else {
-                Toast.makeText(this, "ActivityTwo action canceled", Toast.LENGTH_SHORT).show();
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 
     public void makeCall() {
 
@@ -141,8 +186,7 @@ public class IntentDemoActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             //I'm on not explaining why, just asking for permission.
             Log.v(TAG, "asking for permissions");
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE},
-                    REQUEST_ACCESS_phone);
+            phoneRpl.launch(Manifest.permission.CALL_PHONE);
             return;
         }
         Intent intent;
@@ -156,33 +200,12 @@ public class IntentDemoActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             //I'm on not explaining why, just asking for permission.
             Log.v(TAG, "asking for permissions");
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},
-                    REQUEST_ACCESS_camera);
+            cameraRpl.launch(Manifest.permission.CAMERA);
             return;
         }
         Intent intent;
         intent = new Intent("android.media.action.IMAGE_CAPTURE");
-        startActivityForResult(intent, REQUEST_CODE_CAMERA);
+        cameraActivityResultLauncher.launch(intent);
     }
 
-    /**
-     * Callback received when a permissions request has been completed.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        Log.v(TAG, "onRequest result called.");
-        if (requestCode == REQUEST_ACCESS_phone) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                makeCall();  //we have permissions now.
-            } else {
-                Toast.makeText(this, "Unable to complete phone action, because I need premissions", Toast.LENGTH_LONG).show();
-            }
-        } else if (requestCode == REQUEST_ACCESS_camera) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                takePic();  //we have permissions now.
-            } else {
-                Toast.makeText(this, "Unable to complete camera action, because I need premissions", Toast.LENGTH_LONG).show();
-            }
-        }
-    }
 }
