@@ -28,14 +28,14 @@ public class SecondFragment extends Fragment {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_second, container, false);
 
-        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
-        mViewModel.gettwoLD().observe(this, new Observer<Integer>() {
+        mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
+        mViewModel.gettwoLD().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             public void onChanged(@Nullable Integer v) {
                 tv1.setText("Parameter1: " +v);
             }
         });
-        mViewModel.getItemLD().observe(this, new Observer<String>() {
+        mViewModel.getItemLD().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 tv2.setText("Parameter1: " +s);
@@ -50,7 +50,7 @@ public class SecondFragment extends Fragment {
             public void onClick(View v) {
                 //this is calling the interface, which call into the activity, so it
                 mViewModel.incr_One();
-                mViewModel.setItem("Called by SecondFramgnet");
+                mViewModel.setItem("Called by SecondFragment");
                 Navigation.findNavController(v).navigate(R.id.action_second_to_first);
             }
         });

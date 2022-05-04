@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -89,9 +90,9 @@ public class FirstFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        Activity activity = getActivity();
+        Activity activity = requireActivity();
         try {
             mListener = (OnFragmentInteractionListener1) activity;
         } catch (ClassCastException e) {

@@ -29,7 +29,7 @@ public class SecondFragment extends Fragment {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_second, container, false);
 
-        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
 
         tv1 = myView.findViewById(R.id.sf_tv1);
         tv2 = myView.findViewById(R.id.sf_tv2);

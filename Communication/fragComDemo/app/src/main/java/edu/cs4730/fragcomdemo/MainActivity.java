@@ -7,10 +7,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
-/*
+/**
  * This activity is acting as the go between for the First and Second fragment.
  * The main fragment is used to use launch either fragment.
- *
  */
 public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener,
     FirstFragment.OnFragmentInteractionListener1,
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
         //setup the mainFragment to show.
         fragmentManager.beginTransaction().add(R.id.container, new MainFragment()).commit();
     }
-
 
     /*
      * This is the callback for MainFragment.  It takes as which number, which well is the fragment
@@ -63,8 +61,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
         transaction.commit();
     }
 
-
-    /*
+    /**
      * This the callback interface for FirstFragment.  We are getting string of data
      * which we will then send the SecondFragment.
      */
@@ -84,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
         num_two++;
     }
 
-    /*
+    /**
      * This the callback interface for SecondFragment.  We are getting string of data
      * which we will then send the FirstFragment.
      */
@@ -105,12 +102,8 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
         num_one++;
     }
 
-
-    /*
-     *
+    /**
      * If we wanted to deal with the back button, this is the method for it.
-     * (non-Javadoc)
-     * @see android.support.v4.app.FragmentActivity#onBackPressed()
      */
     @Override
     public void onBackPressed() {

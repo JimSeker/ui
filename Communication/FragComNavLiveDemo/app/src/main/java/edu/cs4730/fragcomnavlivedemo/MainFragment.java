@@ -31,7 +31,7 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_main, container, false);
-        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
         tv1 = myView.findViewById(R.id.textView3);
         tv2 = myView.findViewById(R.id.textView4);
         //button to call firstfragment
@@ -58,13 +58,13 @@ public class MainFragment extends Fragment {
             }
         });
 
-        mViewModel.getoneLD().observe(this, new Observer<Integer>() {
+        mViewModel.getoneLD().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             public void onChanged(@Nullable Integer v) {
                 tv1.setText("Parameter1: " +v);
             }
         });
-        mViewModel.gettwoLD().observe(this, new Observer<Integer>() {
+        mViewModel.gettwoLD().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             public void onChanged(@Nullable Integer v) {
                 tv2.setText("Parameter1: " +v);

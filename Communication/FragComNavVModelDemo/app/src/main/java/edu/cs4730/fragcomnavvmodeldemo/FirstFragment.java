@@ -34,7 +34,7 @@ public class FirstFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_first, container, false);
-        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
 
         tv1 = myView.findViewById(R.id.ff_tv1);
 

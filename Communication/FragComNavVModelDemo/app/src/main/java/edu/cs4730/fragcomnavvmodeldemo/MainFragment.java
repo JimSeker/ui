@@ -31,7 +31,7 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_main, container, false);
-        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
         tv1 = myView.findViewById(R.id.textView3);
         tv2 = myView.findViewById(R.id.textView4);
         //button to call firstfragment

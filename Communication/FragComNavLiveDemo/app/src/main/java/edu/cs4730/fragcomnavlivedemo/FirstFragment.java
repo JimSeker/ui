@@ -36,14 +36,14 @@ public class FirstFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_first, container, false);
-        mViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
-        mViewModel.getoneLD().observe(this, new Observer<Integer>() {
+        mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
+        mViewModel.getoneLD().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             public void onChanged(@Nullable Integer v) {
                tv1.setText("Parameter1: " +v);
             }
         });
-        mViewModel.getItemLD().observe(this, new Observer<String>() {
+        mViewModel.getItemLD().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 tv2.setText("Parameter1: " +s);
