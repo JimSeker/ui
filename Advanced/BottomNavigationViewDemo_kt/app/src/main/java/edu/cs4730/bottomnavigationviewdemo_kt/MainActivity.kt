@@ -1,14 +1,11 @@
 package edu.cs4730.bottomnavigationviewdemo_kt
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +42,11 @@ class MainActivity : AppCompatActivity() {
             R.id.action_first, R.id.action_second, R.id.action_third
         )
             .build()
-        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        //val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
+        val navController = navHostFragment!!.navController
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
         NavigationUI.setupWithNavController(navView, navController)
 

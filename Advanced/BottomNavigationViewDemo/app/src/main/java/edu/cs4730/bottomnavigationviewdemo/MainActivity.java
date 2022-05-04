@@ -3,6 +3,7 @@ package edu.cs4730.bottomnavigationviewdemo;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -56,9 +57,14 @@ public class MainActivity extends AppCompatActivity {
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
             R.id.action_first, R.id.action_second, R.id.action_third)
             .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavHostFragment navHostFragment =
+            (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        NavController navController = navHostFragment.getNavController();
+
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
 
         //In order to have badges, you need to use the Theme.MaterialComponents.DayNight  (doesn't have to be daynight, but MaterialComponents).
         BadgeDrawable badge = navView.getOrCreateBadge(R.id.action_second);
