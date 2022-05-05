@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/fragmentMain">
+    <fragment
+        android:id="@+id/fragmentMain"
+        android:name="edu.cs4730.archnavigationdemo.FragmentMain"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_fragmentMain_to_fragment_two"
+            app:destination="@id/fragment_two"
+            app:enterAnim="@anim/slide_out_top"
+            app:exitAnim="@anim/slide_in_top"
+            app:popEnterAnim="@anim/slide_out_top"
+            app:popExitAnim="@anim/slide_in_top"/>
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_two"
+        android:name="edu.cs4730.archnavigationdemo.Fragment_two"
+        android:label="fragment_two"
+        tools:layout="@layout/fragment_two">
+        <action
+            android:id="@+id/action_fragment_two_to_fragment_Three"
+            app:destination="@id/fragment_Three"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="Message"
+                android:defaultValue="Default value here"
+                app:argType="string"/>
+            <argument
+                android:name="Number"
+                android:defaultValue="1"
+                app:argType="integer"/>
+        </action>
+        <action
+            android:id="@+id/action_two_to_bundle"
+            app:destination="@id/fragment_bundle"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_Three"
+        android:name="edu.cs4730.archnavigationdemo.Fragment_Three"
+        android:label="fragment__three"
+        tools:layout="@layout/fragment__three">
+        <argument
+            android:name="Message"
+            android:defaultValue="Default value"
+            app:argType="string" />
+        <argument
+            android:name="Number"
+            android:defaultValue="2"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_bundle"
+        android:name="edu.cs4730.archnavigationdemo.Fragment_bundle"
+        android:label="fragment_bundle"
+        tools:layout="@layout/fragment_bundle"/>
+</navigation>

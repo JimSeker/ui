@@ -1,6 +1,8 @@
 Advanced Android GUI/UI Examples
 ===========
 
+`ArchNavigationDemo` is an example of using the Arch Navigation for fragments.  how to change fragments and pass data via arch.
+
 `BotNavGuiDemo` (java) is the Gui demo, but uses the BottomNavigation and bottomSheetDialog instead of DrawerLayout.
 
 `BotNavGuiDemo_kt` (kotlin) is the Gui demo, but uses the BottomNavigation and bottomSheetDialog instead of DrawerLayout.
