@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/action_first"
+            android:title="First"
+            android:icon="@drawable/ic_action_one" />
+        <item android:id="@+id/action_second"
+            android:title="Second"
+            android:icon="@drawable/ic_action_second" />
+        <item android:id="@+id/action_third"
+            android:title="Third"
+            android:icon="@drawable/ic_action_third" />
+    </group>
+</menu>
