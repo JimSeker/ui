@@ -32,8 +32,8 @@ public class Fragment_bundle extends Fragment {
         TextView tv_passed2 = myView.findViewById(R.id.btv_passed2);
 
         //via a bundle, instead of safe args
-        tv_passed.setText(getArguments().getString("message", "no data"));
-        String stuff = "Data 2 is " + getArguments().getInt("number", 1);
+        tv_passed.setText(requireArguments().getString("message", "no data"));
+        String stuff = "Data 2 is " + requireArguments().getInt("number", 1);
         tv_passed2.setText(stuff);
         return myView;
     }

@@ -29,9 +29,9 @@ public class Fragment_Three extends Fragment {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment__three, container, false);
         TextView tv_passed = myView.findViewById(R.id.tv_passed);
-        tv_passed.setText(Fragment_ThreeArgs.fromBundle(getArguments()).getMessage());
+        tv_passed.setText(Fragment_ThreeArgs.fromBundle(requireArguments()).getMessage());
         TextView tv_passed2 = myView.findViewById(R.id.tv_passed2);
-        String stuff = "Data 2 is " + Fragment_ThreeArgs.fromBundle(getArguments()).getNumber();
+        String stuff = "Data 2 is " + Fragment_ThreeArgs.fromBundle(requireArguments()).getNumber();
         tv_passed2.setText(stuff);
         return myView;
     }

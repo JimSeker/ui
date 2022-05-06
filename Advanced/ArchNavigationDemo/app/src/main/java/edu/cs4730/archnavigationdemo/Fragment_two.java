@@ -3,6 +3,7 @@ package edu.cs4730.archnavigationdemo;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -50,7 +51,7 @@ public class Fragment_two extends Fragment {
                 Fragment_twoDirections.ActionFragmentTwoToFragmentThree action = Fragment_twoDirections.actionFragmentTwoToFragmentThree();
                 action.setMessage(et.getText().toString());
                 action.setNumber(3012);
-                Navigation.findNavController(view).navigate(action);
+                Navigation.findNavController(view).navigate((NavDirections) action);
 
             }
         });
