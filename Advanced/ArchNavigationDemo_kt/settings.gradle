@@ -3,8 +3,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        mavenCentral() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "BotNavGuiDemo_kt"
+rootProject.name = "ArchNavigationDemo_kt"
 include ':app'
