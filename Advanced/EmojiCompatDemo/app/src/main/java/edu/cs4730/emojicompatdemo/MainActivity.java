@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //you MUST do this before the setcontentview otherwise, it will forceclose.
+        //you MUST do this before the setcontentview otherwise, it will force close.
         //use the bundled fonts or download them.
         EmojiCompat.Config config;
         if (USE_BUNDLED_EMOJI) {
