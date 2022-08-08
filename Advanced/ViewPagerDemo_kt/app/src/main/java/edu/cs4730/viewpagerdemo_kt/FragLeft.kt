@@ -27,11 +27,6 @@ class FragLeft : Fragment() {
         mViewModel = ViewModelProvider(requireActivity()).get(DataViewModel::class.java)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        Log.d(TAG, "OnActivityCreate")
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

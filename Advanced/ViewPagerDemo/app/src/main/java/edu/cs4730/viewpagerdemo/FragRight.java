@@ -33,12 +33,6 @@ public class FragRight extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.d(TAG, "OnActivityCreate");
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d("Left", "OnCreateView");
         View view = inflater.inflate(R.layout.left, container, false);
