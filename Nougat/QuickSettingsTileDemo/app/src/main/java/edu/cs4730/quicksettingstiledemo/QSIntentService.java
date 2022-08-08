@@ -14,18 +14,14 @@
 
 package edu.cs4730.quicksettingstiledemo;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.os.Build;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
-@SuppressLint("Override")
-@TargetApi(Build.VERSION_CODES.N)
+
 public class QSIntentService
-    extends TileService{
+    extends TileService {
 
     @Override
     public void onClick() {
@@ -40,16 +36,16 @@ public class QSIntentService
             Tile tile = getQsTile();
             String tileLabel = tile.getLabel().toString();
             String tileState = (tile.getState() == Tile.STATE_ACTIVE) ?
-                    resources.getString(R.string.service_active) :
-                    resources.getString(R.string.service_inactive);
+                resources.getString(R.string.service_active) :
+                resources.getString(R.string.service_inactive);
 
             Intent intent = new Intent(getApplicationContext(),
-                    ResultActivity.class);
+                ResultActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra(ResultActivity.RESULT_ACTIVITY_NAME_KEY,
-                    tileLabel);
+                tileLabel);
             intent.putExtra(ResultActivity.RESULT_ACTIVITY_INFO_KEY,
-                    tileState);
+                tileState);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivityAndCollapse(intent);
         }

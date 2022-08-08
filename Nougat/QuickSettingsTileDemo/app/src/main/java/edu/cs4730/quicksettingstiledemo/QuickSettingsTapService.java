@@ -51,7 +51,7 @@ public class QuickSettingsTapService extends TileService {
     }
 
     /*
-    * tile is no longer visiable, stop updating it.
+    * tile is no longer visible, stop updating it.
      */
    @Override
    public void onStopListening () {
