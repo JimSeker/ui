@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 fragmentManager.beginTransaction().replace(R.id.container, myCustomFragment)
                     .commit()
                 item.isChecked = true
+                return@OnItemSelectedListener true;
             }
             false
         })

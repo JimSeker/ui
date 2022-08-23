@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (id == R.id.nav_custom) {
                     fragmentManager.beginTransaction().replace(R.id.container, myCustomFragment).commit();
                     item.setChecked(true);
+                    return true;
                 }
                 return false;
             }

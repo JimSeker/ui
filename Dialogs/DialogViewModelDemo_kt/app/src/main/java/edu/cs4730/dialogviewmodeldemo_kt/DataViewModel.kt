@@ -6,9 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class DataViewModel : ViewModel() {
-    private val item1: MutableLiveData<String>
-    private val item2: MutableLiveData<String>
-    private val yesno: MutableLiveData<Boolean>
+    private val item1: MutableLiveData<String> = MutableLiveData("Nothing")
+    private val item2: MutableLiveData<String> = MutableLiveData("Nothing")
+    private val yesno: MutableLiveData<Boolean> = MutableLiveData(false)
 
     //first item
     val getItem1LD: LiveData<String>
@@ -57,9 +57,4 @@ class DataViewModel : ViewModel() {
         yesno.value = n
     }
 
-    init {
-        item1 = MutableLiveData("Nothing")
-        item2 = MutableLiveData("Nothing")
-        yesno = MutableLiveData(false)
-    }
 }
