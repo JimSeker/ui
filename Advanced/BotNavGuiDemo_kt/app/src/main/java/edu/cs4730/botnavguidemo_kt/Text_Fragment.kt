@@ -17,10 +17,6 @@ class Text_Fragment : Fragment() {
         Log.d(TAG, "OnCreate")
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        Log.d(TAG, "OnActivityCreate")
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
