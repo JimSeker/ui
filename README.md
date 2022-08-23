@@ -1,11 +1,9 @@
 Android GUI/UI Examples
 ===========
 
-This repo contains multiple projects, Most in sub directories to be better organized with the course lectures, see the READMEs in each directory for a descrption of the examples.   You can see the course pages here: http://www.cs.uwyo.edu/~seker/courses/4730/
+This repo contains multiple projects, Most in sub directories to be better organized with the course lectures, see the READMEs in each directory for a description of the examples.   You can see the course pages here: http://www.cs.uwyo.edu/~seker/courses/4730/
 
 Note for Android studio download a zip (or clone).  Then in Android Studio open one project directory as individual project. 
-
-`legacy/` are old examples that are no longer updated.  
 
 `eclipse/`  has some of projects in the format that eclipse format, if they predate the moved android Studio.  You should be able to have eclipse import the entire directory into your workspace via eclipse.  Note these are no longer updated.
 
