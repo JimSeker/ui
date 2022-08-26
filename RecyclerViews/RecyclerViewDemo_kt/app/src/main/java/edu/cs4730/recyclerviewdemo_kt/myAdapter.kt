@@ -3,7 +3,6 @@ package edu.cs4730.recyclerviewdemo_kt
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.TextView
-import edu.cs4730.recyclerviewdemo_kt.R
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
