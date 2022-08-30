@@ -116,8 +116,8 @@ class ViewPagerButtonMenuActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    inner class myFragmentPagerAdapter(fa: FragmentActivity?) : FragmentStateAdapter(
-        fa!!
+    inner class myFragmentPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(
+        fa
     ) {
         var PAGE_COUNT = 5
         override fun createFragment(position: Int): Fragment {
