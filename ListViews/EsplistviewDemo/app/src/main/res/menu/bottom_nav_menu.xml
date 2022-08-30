@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_first"
+        android:title="elvDemo1"
+        android:icon="@drawable/ic_action_one" />
+    <item android:id="@+id/action_second"
+        android:title="elvDemo2"
+        android:icon="@drawable/ic_action_second" />
+
+</menu>

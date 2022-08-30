@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/seker/git/ui/ListViews/EsplistviewDemo/app/src/main/res/drawable-mdpi/ic_action_one.xml" value="0.1" />
+        <entry key="..\:/Users/seker/git/ui/ListViews/EsplistviewDemo/app/src/main/res/layout/activity_main.xml" value="0.20969202898550723" />
+        <entry key="..\:/Users/seker/git/ui/ListViews/EsplistviewDemo/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3203125" />
+      </map>
+    </option>
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
-    <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
+    <option name="myDefaultNotNull" value="androidx.annotation.NonNull" />
     <option name="myNullables">
       <value>
         <list size="15">
