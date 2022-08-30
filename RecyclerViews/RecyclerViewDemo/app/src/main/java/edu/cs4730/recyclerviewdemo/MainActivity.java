@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             "Linux", "OS/2");
 
         //setup the RecyclerView
-        mRecyclerView =  findViewById(R.id.list);
+        mRecyclerView = findViewById(R.id.list);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
