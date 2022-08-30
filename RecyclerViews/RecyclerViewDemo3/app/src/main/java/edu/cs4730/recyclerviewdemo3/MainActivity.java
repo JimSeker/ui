@@ -2,19 +2,24 @@ package edu.cs4730.recyclerviewdemo3;
 
 import android.os.Bundle;
 
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+
 import java.util.Locale;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 
 public class MainActivity extends AppCompatActivity {
 
     SectionsPagerAdapter mSectionsPagerAdapter;
-    ViewPager mViewPager;
+    ViewPager2 mViewPager;
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,28 +28,56 @@ public class MainActivity extends AppCompatActivity {
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        mSectionsPagerAdapter = new SectionsPagerAdapter(this);
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager = findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        //mViewPager.setCurrentItem(4);// set to a specific page in the pager.
+        //now setup the headers for it.
+        tabLayout = findViewById(R.id.tab_layout);
+        new TabLayoutMediator(tabLayout,
+            mViewPager,
+            new TabLayoutMediator.TabConfigurationStrategy() {
+                @Override
+                public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                    Locale l = Locale.getDefault();
+                    switch (position) {
+                        case 0:
+                            tab.setText(getString(R.string.title_section1).toUpperCase(l));
+                            break;
+                        case 1:
+                            tab.setText(getString(R.string.title_section2).toUpperCase(l));
+                            break;
+                        case 2:
+                            tab.setText(getString(R.string.title_section3).toUpperCase(l));
+                            break;
+                        case 3:
+                            tab.setText(getString(R.string.title_section4).toUpperCase(l));
+                            break;
+                        case 4:
+                            tab.setText(getString(R.string.title_section5).toUpperCase(l));
+                            break;
 
-
+                    }
+                }
+            }
+        ).attach();
     }
 
     /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+     * A {@link FragmentStateAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    public class SectionsPagerAdapter extends FragmentStateAdapter {
+        int PAGE_COUNT = 5;
 
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
+        public SectionsPagerAdapter(FragmentActivity fa) {
+            super(fa);
         }
 
+        @NonNull
         @Override
-        public Fragment getItem(int position) {
+        public Fragment createFragment(int position) {
             switch (position) {
                 case 0:
                     return new Simple1_Fragment();
@@ -57,32 +90,14 @@ public class MainActivity extends AppCompatActivity {
                 case 4:
                     return new Phonebook_Fragment();
                 default:
-                    return null;
+                    return new Simple1_Fragment();  //default.
             }
         }
 
         @Override
-        public int getCount() {
+        public int getItemCount() {
             // Show X total pages.  which is 1+ the case in getItem.
-            return 5;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            Locale l = Locale.getDefault();
-            switch (position) {
-                case 0:
-                    return getString(R.string.title_section1).toUpperCase(l);
-                case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
-                case 2:
-                    return getString(R.string.title_section3).toUpperCase(l);
-                case 3:
-                    return getString(R.string.title_section4).toUpperCase(l);
-                case 4:
-                    return getString(R.string.title_section5).toUpperCase(l);
-            }
-            return null;
+            return PAGE_COUNT;
         }
     }
 
