@@ -1,16 +1,23 @@
 Communication Android GUI/UI Examples
 ===========
-`intentDemo` show varying intents to say make phones calls, launch the browser, etc.
-
-`SimpleFragComDemo` shows how use callbacks and setters.  In portrait mode it uses a fragmentmanager to display the second fragment.  In Landscape mode, both fragments are showing.
 
 `FragComDemo` (java) shows how to use factory methods and callbacks, with three fragments
 
 `FragComDemo_kt` (kotlin) shows how to use factory methods and callbacks, with three fragments
 
-`FragComNavVModelDemo` shows how to use Arch Navigation and a ModelView to deal with parameters.  It just used the ModelView as a plain of java object, except it is "shared" between the fragments.
+`FragComNavLiveDemo` (java) shows how to use Arch Navigation and a ModelView and LiveData to deal with parameters and set all the fields of the fragments.  This example is similar to the fragComDemo.
 
-`FragComNavLiveDemo` shows how to use Arch Navigation and a ModelView/LiveData to deal with parameters.  
+`FragComNavLiveDemo_kt` (kotlin) shows how to use Arch Navigation and a ModelView and LiveData to deal with parameters and set all the fields of the fragments.  This example is similar to the fragComDemo.
+
+`FragComNavVModelDemo` (java) shows how to use Arch Navigation and an AndroidModelView to deal with parameters.  Only one parameter uses livedata, while the other 2 use a manual method. This example is similar to the fragComDemo.
+
+`intentDemo` show varying intents to say make phones calls, launch the browser, etc.
+
+`SimpleFragComDemo` shows how use callbacks and setters.  In portrait mode it uses a fragmentmanager to display the second fragment.  In Landscape mode, both fragments are showing.
+
+
+
+
 
 ---
 
