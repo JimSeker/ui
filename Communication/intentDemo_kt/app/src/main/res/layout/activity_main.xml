@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/hello"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1"/>
+
+    <Button
+        android:id="@+id/callbrowser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="8dp"
+        android:text="Call browser"
+        app:layout_constraintLeft_toLeftOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"/>
+
+
+    <Button
+        android:id="@+id/takepic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="8dp"
+        android:text="Take picture"
+        app:layout_constraintLeft_toLeftOf="@+id/showmap"
+        app:layout_constraintTop_toBottomOf="@+id/showmap"/>
+
+
+    <Button
+        android:id="@+id/pickcontact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Pick a Contact"
+        app:layout_constraintLeft_toLeftOf="@+id/takepic"
+        app:layout_constraintTop_toBottomOf="@+id/takepic" />
+
+
+    <Button
+        android:id="@+id/activitytwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="8dp"
+        android:text="Call ActivityTwo"
+        app:layout_constraintLeft_toLeftOf="@+id/pickcontact"
+        app:layout_constraintTop_toBottomOf="@+id/pickcontact"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"/>
+
+    <Button
+        android:id="@+id/showmap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="8dp"
+        android:text="Show Map"
+        app:layout_constraintLeft_toLeftOf="@+id/callnumber"
+        app:layout_constraintTop_toBottomOf="@+id/callnumber"/>
+
+    <Button
+        android:id="@+id/searchmap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginStart="8dp"
+        android:text="Search on Map"
+        app:layout_constraintBottom_toBottomOf="@+id/showmap"
+        app:layout_constraintLeft_toRightOf="@+id/showmap"/>
+
+    <Button
+        android:id="@+id/callnumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="8dp"
+        android:text="Call Someone"
+        app:layout_constraintLeft_toLeftOf="@+id/callbrowser"
+        app:layout_constraintTop_toBottomOf="@+id/callbrowser"/>
+
+    <Button
+        android:id="@+id/dialnumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginStart="8dp"
+        android:text="Dial"
+        app:layout_constraintBottom_toBottomOf="@+id/callnumber"
+        app:layout_constraintLeft_toRightOf="@+id/callnumber"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

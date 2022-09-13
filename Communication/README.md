@@ -13,13 +13,11 @@ Communication Android GUI/UI Examples
 
 `FragComNavVModelDemo_kt` (kotlin) shows how to use Arch Navigation and an AndroidModelView to deal with parameters.  Only one parameter uses livedata, while the other 2 use a manual method. This example is similar to the fragComDemo.
 
-`intentDemo` show varying intents to say make phones calls, launch the browser, etc.
+`intentDemo` (java) show varying intents to say make phones calls, launch the browser, etc.
+
+`intentDemo_kt` (kotlin) show varying intents to say make phones calls, launch the browser, etc.
 
 `SimpleFragComDemo` shows how use callbacks and setters.  In portrait mode it uses a fragmentmanager to display the second fragment.  In Landscape mode, both fragments are showing.
-
-
-
-
 
 ---
 

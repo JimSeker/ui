@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">intentDemo_kt</string>
+    <string name="hello">Demo of Intents</string>
+</resources>
