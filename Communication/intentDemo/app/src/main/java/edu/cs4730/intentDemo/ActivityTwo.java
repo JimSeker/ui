@@ -7,10 +7,12 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ *  simple example.  it display the data sent to it and returns a fixed set of data.
+ */
+
 public class ActivityTwo extends AppCompatActivity {
-    /**
-     * Called when the activity is first created.
-     */
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

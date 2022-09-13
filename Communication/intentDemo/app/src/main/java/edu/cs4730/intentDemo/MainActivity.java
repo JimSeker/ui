@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (view.getId()) {
             case R.id.callbrowser:
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.cs.uwyo.edu"));
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.eecs.uwyo.edu"));
                 startActivity(intent);
                 break;
             case R.id.callnumber:
