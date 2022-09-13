@@ -24,12 +24,11 @@
         tools:layout_constraintTop_creator="1"/>
 
     <Button
-        android:id="@+id/Button01"
+        android:id="@+id/callbrowser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="8dp"
-        android:onClick="callIntent"
         android:text="Call browser"
         app:layout_constraintLeft_toLeftOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -38,107 +37,76 @@
 
 
     <Button
-        android:id="@+id/Button06"
+        android:id="@+id/takepic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="8dp"
-        android:onClick="callIntent"
         android:text="Take picture"
-        app:layout_constraintLeft_toLeftOf="@+id/Button04"
-        app:layout_constraintTop_toBottomOf="@+id/Button04"/>
+        app:layout_constraintLeft_toLeftOf="@+id/showmap"
+        app:layout_constraintTop_toBottomOf="@+id/showmap"/>
 
 
     <Button
-        android:id="@+id/Button07"
+        android:id="@+id/pickcontact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="8dp"
-        android:onClick="callIntent"
-        android:text="Show contacts"
-        app:layout_constraintBottom_toBottomOf="@+id/Button06"
-        app:layout_constraintLeft_toRightOf="@+id/Button06"/>
-
-    <Button
-        android:id="@+id/Button08"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
         android:layout_marginTop="8dp"
-        android:onClick="callIntent"
-        android:text="Edit first contact"
-        app:layout_constraintLeft_toLeftOf="@+id/Button06"
-        app:layout_constraintTop_toBottomOf="@+id/Button06"/>
-
-    <Button
-        android:id="@+id/Button10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="8dp"
-        android:onClick="callIntent"
         android:text="Pick a Contact"
-        app:layout_constraintBottom_toBottomOf="@+id/Button08"
-        app:layout_constraintLeft_toRightOf="@+id/Button08"/>
+        app:layout_constraintLeft_toLeftOf="@+id/takepic"
+        app:layout_constraintTop_toBottomOf="@+id/takepic" />
 
 
     <Button
-        android:id="@+id/Button09"
+        android:id="@+id/activitytwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="8dp"
-        android:onClick="callIntent"
-
         android:text="Call ActivityTwo"
-        app:layout_constraintLeft_toLeftOf="@+id/Button08"
-        app:layout_constraintTop_toBottomOf="@+id/Button08"
+        app:layout_constraintLeft_toLeftOf="@+id/pickcontact"
+        app:layout_constraintTop_toBottomOf="@+id/pickcontact"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintTop_creator="1"/>
 
     <Button
-        android:id="@+id/Button04"
+        android:id="@+id/showmap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="8dp"
-        android:onClick="callIntent"
         android:text="Show Map"
-        app:layout_constraintLeft_toLeftOf="@+id/Button02"
-        app:layout_constraintTop_toBottomOf="@+id/Button02"/>
+        app:layout_constraintLeft_toLeftOf="@+id/callnumber"
+        app:layout_constraintTop_toBottomOf="@+id/callnumber"/>
 
     <Button
-        android:id="@+id/Button05"
+        android:id="@+id/searchmap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
-        android:layout_marginLeft="8dp"
-        android:onClick="callIntent"
+        android:layout_marginStart="8dp"
         android:text="Search on Map"
-        app:layout_constraintBottom_toBottomOf="@+id/Button04"
-        app:layout_constraintLeft_toRightOf="@+id/Button04"/>
+        app:layout_constraintBottom_toBottomOf="@+id/showmap"
+        app:layout_constraintLeft_toRightOf="@+id/showmap"/>
 
     <Button
-        android:id="@+id/Button02"
+        android:id="@+id/callnumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="8dp"
-        android:onClick="callIntent"
         android:text="Call Someone"
-        app:layout_constraintLeft_toLeftOf="@+id/Button01"
-        app:layout_constraintTop_toBottomOf="@+id/Button01"/>
+        app:layout_constraintLeft_toLeftOf="@+id/callbrowser"
+        app:layout_constraintTop_toBottomOf="@+id/callbrowser"/>
 
     <Button
-        android:id="@+id/Button03"
+        android:id="@+id/dialnumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
-        android:layout_marginLeft="8dp"
-        android:onClick="callIntent"
+        android:layout_marginStart="8dp"
         android:text="Dial"
-        app:layout_constraintBottom_toBottomOf="@+id/Button02"
-        app:layout_constraintLeft_toRightOf="@+id/Button02"/>
+        app:layout_constraintBottom_toBottomOf="@+id/callnumber"
+        app:layout_constraintLeft_toRightOf="@+id/callnumber"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

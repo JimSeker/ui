@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -20,23 +21,22 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class IntentDemoActivity extends AppCompatActivity {
+/**
+ * Example of how to call varying system intents, such maps, phone, etc.
+ * also how to call another activity with data and return data as well.
+ */
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     // for checking permissions.
-    ActivityResultLauncher<String> cameraRpl, phoneRpl;
+    ActivityResultLauncher<String> cameraRpl, phoneRpl, contactRpl;
 
-    String TAG = "IntentDemoActivity";
+    String TAG = "MainActivity";
 
-    /**
-     * Called when the activity is first created.
-     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-
-        //Note, the "listeners" are setup in the main.xml file, in android:onClick="callIntent"
-        //callIntent must take a parameter View v, like a standard OnClickListner.
+        setContentView(R.layout.activity_main);
 
         //For the camera permissions
         cameraRpl = registerForActivityResult(
@@ -65,48 +65,60 @@ public class IntentDemoActivity extends AppCompatActivity {
                     }
                 }
             });
+        //for the Contact permissions
+        contactRpl = registerForActivityResult(
+            new ActivityResultContracts.RequestPermission(),
+            new ActivityResultCallback<Boolean>() {
+                @Override
+                public void onActivityResult(Boolean isGranted) {
+                    if (isGranted) {
+                        pickContact();  //we have permissions now.
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Unable to complete Contact action, because I need permissions", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
 
-        //Also note, the map may not always work in the simulator and
-        //sometimes the camera crashes, and I can't get the contact editor to work at all in the simulator. 
+        //set all the listners for the buttons.
+        findViewById(R.id.callbrowser).setOnClickListener(this);
+        findViewById(R.id.takepic).setOnClickListener(this);
+        findViewById(R.id.pickcontact).setOnClickListener(this);
+        findViewById(R.id.activitytwo).setOnClickListener(this);
+        findViewById(R.id.showmap).setOnClickListener(this);
+        findViewById(R.id.searchmap).setOnClickListener(this);
+        findViewById(R.id.callnumber).setOnClickListener(this);
+        findViewById(R.id.dialnumber).setOnClickListener(this);
 
     }
 
+    @Override
     @SuppressLint("NonConstantResourceId")
-    public void callIntent(View view) {
-        Intent intent = null;
+    public void onClick(View view) {
+        Intent intent;
         switch (view.getId()) {
-            case R.id.Button01:
+            case R.id.callbrowser:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.cs.uwyo.edu"));
                 startActivity(intent);
                 break;
-            case R.id.Button02:
+            case R.id.callnumber:
                 makeCall();  //needs permissions, so moved to a method.
                 break;
-            case R.id.Button03:
+            case R.id.dialnumber:
                 intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:(307)555555"));
                 startActivity(intent);
                 break;
-            case R.id.Button04:
+            case R.id.showmap:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:41.312927,105.587251?z=19"));
                 startActivity(intent);
                 break;
-            case R.id.Button05:
+            case R.id.searchmap:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=query"));
                 startActivity(intent);
                 break;
-            case R.id.Button06:
+            case R.id.takepic:
                 takePic();
                 break;
-            case R.id.Button07:
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("content://contacts/people/"));
-                startActivity(intent);
-                break;
-            case R.id.Button08:
-                //This always force closes...
-                intent = new Intent(Intent.ACTION_EDIT, Uri.parse("content://contacts/people/1"));
-                startActivity(intent);
-                break;
-            case R.id.Button09:
+            case R.id.activitytwo:
                 intent = new Intent(this, ActivityTwo.class);
                 intent.putExtra("key1", "Some Data");
                 intent.putExtra("key2", "More Data");
@@ -114,15 +126,15 @@ public class IntentDemoActivity extends AppCompatActivity {
                 // callback via this code
                 act2ActivityResultLauncher.launch(intent);
                 break;
-            case R.id.Button10:
-                intent = new Intent(Intent.ACTION_PICK, Uri.parse("content://contacts/people/"));
-                contactActivityResultLauncher.launch(intent);
+            case R.id.pickcontact:
+                pickContact();
                 break;
             default:
                 break;
         }
     }
 
+    //These the launchers for results.
     ActivityResultLauncher<Intent> cameraActivityResultLauncher = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(),
         new ActivityResultCallback<ActivityResult>() {
@@ -131,9 +143,10 @@ public class IntentDemoActivity extends AppCompatActivity {
                 if (result.getResultCode() == Activity.RESULT_OK) {
                     // There are no request codes
                     Intent data = result.getData();
-                    Uri info = data.getData();
-                    if (info != null) {
-                        Toast.makeText(getApplicationContext(), info.toString(), Toast.LENGTH_LONG).show();
+                    Bundle extras = data.getExtras();
+                    if (extras != null) {
+                        Toast.makeText(getApplicationContext(),"There is a picture", Toast.LENGTH_LONG).show();
+                        //See PicCaptureIntent in AudioVideo repo for how deal with this and take pictures.
                     } else {
                         Toast.makeText(getApplicationContext(), "error in returned data.", Toast.LENGTH_LONG).show();
                     }
@@ -180,6 +193,7 @@ public class IntentDemoActivity extends AppCompatActivity {
         });
 
 
+    //For these three intents, we nee permissions, so check permission first, then launch the intents.
     public void makeCall() {
 
         //make sure I permissions first.
@@ -189,8 +203,8 @@ public class IntentDemoActivity extends AppCompatActivity {
             phoneRpl.launch(Manifest.permission.CALL_PHONE);
             return;
         }
-        Intent intent;
-        intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:3075555555"));
+
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:3075555555"));
         startActivity(intent);
     }
 
@@ -203,9 +217,21 @@ public class IntentDemoActivity extends AppCompatActivity {
             cameraRpl.launch(Manifest.permission.CAMERA);
             return;
         }
-        Intent intent;
-        intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraActivityResultLauncher.launch(intent);
+    }
+
+    public void pickContact() {
+        //make sure I permissions first.
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            //I'm on not explaining why, just asking for permission.
+            Log.v(TAG, "asking for permissions");
+            contactRpl.launch(Manifest.permission.READ_CONTACTS);
+            return;
+        }
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+        contactActivityResultLauncher.launch(intent);
     }
 
 }
