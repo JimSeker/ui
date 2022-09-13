@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 /**
- * A simple {@link Fragment} subclass.
+ * a simple fragment to display data.
  */
 public class InfoFragment extends Fragment {
     TextView label;
