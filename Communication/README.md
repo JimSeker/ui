@@ -17,7 +17,10 @@ Communication Android GUI/UI Examples
 
 `intentDemo_kt` (kotlin) show varying intents to say make phones calls, launch the browser, etc.
 
-`SimpleFragComDemo` shows how use callbacks and setters.  In portrait mode it uses a fragmentmanager to display the second fragment.  In Landscape mode, both fragments are showing.
+`SimpleFragComDemo` (java) shows how use callbacks and setters.  In portrait mode it uses a fragmentmanager to display the second fragment.  In Landscape mode, both fragments are showing.
+
+`SimpleFragComDemo_kt` (kotlin) shows how use callbacks and setters.  In portrait mode it uses a fragmentmanager to display the second fragment.  In Landscape mode, both fragments are showing.
+
 
 ---
 
