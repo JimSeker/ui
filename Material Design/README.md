@@ -1,11 +1,15 @@
 Android material Design Examples
 ==============
 
-`SimpleDemo` is basic example of using Material design.  There is no real java code here, it's all in the values/color and styles.xml files (values and values-v21).  There are also two screenshots device-4.4.png and device-5.0.png to show how style looks.
+`CirToolbarNavDrawerDemo` (java) uses toolbarnavDrawerDemo from the navigation directory and add a floating action button.  shows a toolbar, drawlayout with listview, textview for main content.
 
-`CirToolbarNavDrawerDemo` uses toolbarnavDrawerDemo from the navigation directory and add a floating action button.  shows a toolbar, drawlayout with listview, textview for main content.
+`CirToolbarNavDrawerDemo_kt` (kotlin) uses toolbarnavDrawerDemo from the navigation directory and add a floating action button.  shows a toolbar, drawlayout with listview, textview for main content.
 
 `DarkThemeDemo` is an example of how to dynamically change your themes, using a Light, Dark, or DayNight theme both appcompat and MaterialDesign.
+
+`SimpleDemo` is basic example of using Material design.  There is no real java code here, it's all in the values/color and styles.xml files (values and values-v21).  There are also two screenshots device-4.4.png and device-5.0.png to show how style looks.
+
+`SupportDesignBottomNavDemo` shows how to use the ButtomNavigationView  in the material design library.
 
 `snackbarDemo`  show the snackbar triggered from a fab.  It also show how the callbacks works, so you can determine how the
 user dealt with the snackbar (ie swiped it away, timed out, etc ).
@@ -22,7 +26,6 @@ user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
 `SupportPaletteDemo` A simple example using a bitmap to get the palette and change the some textviews with it.  The example uses 4 different images that change via a imagebutton.
 
-`SupportDesignBottomNavDemo` shows how to use the ButtomNavigationView  in the material design library.
 
 ---
 
