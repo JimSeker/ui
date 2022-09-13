@@ -1,18 +1,13 @@
 package edu.cs4730.cirtoolbarnavdrawerdemo;
 
 import android.content.res.Configuration;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-
 import android.os.Bundle;
-
 import androidx.appcompat.widget.Toolbar;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
