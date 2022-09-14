@@ -11,12 +11,15 @@ Android material Design Examples
 
 `SimpleDemo` is basic example of using Material design.  There is no real java code here, it's all in the values/color and styles.xml files (values and values-v21).  There are also two screenshots device-4.4.png and device-5.0.png to show how style looks.
 
-`SupportDesignBottomNavDemo` shows how to use the ButtomNavigationView  in the material design library.
+`snackbarDemo` (java) show the snackbar triggered from a fab.  It also show how the callbacks works, so you can determine how the
+user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
-`snackbarDemo`  show the snackbar triggered from a fab.  It also show how the callbacks works, so you can determine how the
+`snackbarDemo_kt` (kotlin) show the snackbar triggered from a fab.  It also show how the callbacks works, so you can determine how the
 user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
 `snackbarExtendedDemo` show how to set the snackbar to indefinite, so it will continue to show, until we programmatically dismiss it.
+
+`SupportDesignBottomNavDemo` shows how to use the ButtomNavigationView  in the material design library.
 
 `SupportDesignDemo` is demo of some of the support Design widgets.  Floating action Button, inputtextlayout, snack bar, and using the snackbar and floating action button together (and the fab moves out of the way), Uses the Drawerlayout with a NavigationView.  main content uses a fragment (via a framelayout).
 
