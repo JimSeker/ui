@@ -17,7 +17,9 @@ user dealt with the snackbar (ie swiped it away, timed out, etc ).
 `snackbarDemo_kt` (kotlin) show the snackbar triggered from a fab.  It also show how the callbacks works, so you can determine how the
 user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
-`snackbarExtendedDemo` show how to set the snackbar to indefinite, so it will continue to show, until we programmatically dismiss it.
+`snackbarExtendedDemo` (java) show how to set the snackbar to indefinite, so it will continue to show, until we programmatically dismiss it.
+
+`snackbarExtendedDemo_kt` (kotlin) show how to set the snackbar to indefinite, so it will continue to show, until we programmatically dismiss it.
 
 `SupportDesignBottomNavDemo` shows how to use the ButtomNavigationView  in the material design library.
 
