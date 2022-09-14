@@ -1,6 +1,5 @@
 package edu.cs4730.extendedsnackbar;
 
-
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
@@ -9,7 +8,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
-
 
 /**
  * A simple example of how to make the snackbar show indefinitely and how to dismiss it as well.
