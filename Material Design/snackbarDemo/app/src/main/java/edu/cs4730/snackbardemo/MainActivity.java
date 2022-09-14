@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onDismissed(Snackbar snackbar, int event) {
                             super.onDismissed(snackbar, event);
                             switch (event) {
-                                case Snackbar.Callback.DISMISS_EVENT_ACTION:
+                                case  Snackbar.Callback.DISMISS_EVENT_ACTION:
                                     Toast.makeText(getBaseContext(), "Dismiss from onclick", Toast.LENGTH_SHORT).show();
                                     break;
                                 case Snackbar.Callback.DISMISS_EVENT_SWIPE:
@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
                                 case Snackbar.Callback.DISMISS_EVENT_CONSECUTIVE:
                                     Toast.makeText(getBaseContext(), "Dismiss from another snackbar showing", Toast.LENGTH_SHORT).show();
                                     break;
+                                default:
+                                    Toast.makeText(getBaseContext(), "Dismiss for other reason.", Toast.LENGTH_SHORT).show();
+
                             }
                         }
                     })
