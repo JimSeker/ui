@@ -52,8 +52,8 @@ public class BlankFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam1 = requireArguments().getString(ARG_PARAM1);
+            mParam2 = requireArguments().getString(ARG_PARAM2);
         }
     }
 

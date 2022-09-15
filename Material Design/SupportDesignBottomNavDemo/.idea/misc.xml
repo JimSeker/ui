@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/seker/git/ui/Material Design/SupportDesignBottomNavDemo/app/src/main/res/drawable/favorite.xml" value="0.1" />
+        <entry key="..\:/Users/seker/git/ui/Material Design/SupportDesignBottomNavDemo/app/src/main/res/drawable/mylocation.xml" value="0.1" />
+        <entry key="..\:/Users/seker/git/ui/Material Design/SupportDesignBottomNavDemo/app/src/main/res/drawable/recent.xml" value="0.1" />
         <entry key="..\:/Users/seker/git/ui/Material Design/SupportDesignBottomNavDemo/app/src/main/res/layout/activity_main.xml" value="0.16033434650455927" />
         <entry key="..\:/Users/seker/git/ui/Material Design/SupportDesignBottomNavDemo/app/src/main/res/layout/fragment_blank.xml" value="0.24728260869565216" />
         <entry key="..\:/Users/seker/git/ui/Material Design/SupportDesignBottomNavDemo/app/src/main/res/menu/navigation_menu.xml" value="0.275" />
