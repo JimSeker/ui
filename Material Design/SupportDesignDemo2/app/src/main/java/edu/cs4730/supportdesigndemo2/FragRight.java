@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 /**
  * This is a simple fragment to display data and it the "right" most fragment in the viewpager.
- *   The code here is identical to the code in the left fragment.
+ * The code here is identical to the code in the left fragment.
  */
 
 public class FragRight extends Fragment {
@@ -40,7 +40,7 @@ public class FragRight extends Fragment {
         View view = inflater.inflate(R.layout.left, container, false);
         tx = view.findViewById(R.id.tvleft);
 
-        mViewModel.getDataRight().observe(this, new Observer<String>() {
+        mViewModel.getDataRight().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String data) {
                 tx.setText(data);

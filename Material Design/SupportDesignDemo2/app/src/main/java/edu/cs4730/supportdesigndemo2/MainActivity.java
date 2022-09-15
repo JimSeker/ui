@@ -20,9 +20,9 @@ import androidx.viewpager2.widget.ViewPager2;
  * for more useful information:
  * https://youtu.be/zQekzaAgIlQ
  * <p>
- * One problem, here is I need to get the background of the tablelayout darker, so you can easily
- * removed   <item name="android:textColorSecondary">@color/textColorSecondary</item> from colors.xml
- * so now it defaults to a more readable color.
+ * One problem, here is I need to get the background of the tablelayout darker, so you can easily read it.
+ * remove the  <item name="android:textColorSecondary">@color/textColorSecondary</item> from colors.xml
+ * and it will default to a more readable color.
  */
 
 public class MainActivity extends AppCompatActivity {
