@@ -29,7 +29,9 @@ user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
 `SupportDesignDemo_kt` (kotlin) is demo of some of the support Design widgets.  Floating action Button, inputtextlayout, snack bar, and using the snackbar and floating action button together (and the fab moves out of the way), Uses the Drawerlayout with a NavigationView.  main content uses a fragment (via a framelayout).
 
-`SupportDesignDemo2` uses the support design tablayout with a viewpager2, with a viewmodel, to hold the data in the Left and right fragment.  
+`SupportDesignDemo2` (java) uses the support design tablayout with a viewpager2, with a viewmodel, to hold the data in the Left and right fragment.  
+
+`SupportDesignDemo2_kt` (kotlin) uses the support design tablayout with a viewpager2, with a viewmodel, to hold the data in the Left and right fragment.  
 
 `SupportDesignDemo3` show how to use a picture with the toolbar and how to collapse the picture.  Also a little bit with the support design palette.
 
