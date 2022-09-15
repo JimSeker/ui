@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <!-- 500 color -->
+    <color name="colorPrimary">#3f51b5</color>
+    <!-- 700 color -->
+    <color name="colorPrimaryDark">#303f9f</color>
+    <!-- 200 color -->
+    <color name="colorPrimaryLight">#9fa8da</color>
+    <!-- A200 other color, so pink...? -->
+    <color name="colorAccent">#ff4081</color>
+    <!-- A700 other color, so pink...? -->
+    <color name="colorAccentDark">#c51162</color>
+
+    <color name="colorText">#FFFFFF</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#727272</color>
+
+    <color name="windowBackgroundColor">#607d8b</color> <!--blue gray 500-->
+    <color name="windowBackgroundColorDark">#263238</color> <!--blue gray 900-->
+    <color name="navigationBarColor">#303f9f</color> <!--#303f9f-->
+
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
 </resources>

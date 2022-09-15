@@ -13,7 +13,7 @@ import android.view.View;
  * appcompat and material design.
  *
  * The code here just changes the themes.  The default is the light theme.   See the styles.xml
- * file in /values for the 6 themes.  I went with the defaults for all 6 of them.
+ * file in /values for the 6 themes. set a theme of the each, but left the "daynight" as the default color scheme.
  *
  * A note the Theme can only be set before the super.onCreate(), so preferences are used so when the
  * app start it can set the theme.
