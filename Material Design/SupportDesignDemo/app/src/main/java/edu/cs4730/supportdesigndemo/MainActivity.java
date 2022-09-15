@@ -21,21 +21,14 @@ import android.view.MenuItem;
 import android.view.View;
 
 /*
- * This example is to show many of the features avialable in the support design library.
+ * This example is to show many of the features available in the support design library.
  * http://android-developers.blogspot.com/2015/05/android-design-support-library.html
  *
  * Many of them are in the fragments.
  *
  * But one feature is the show here (and xml) is the NavigationView in the Navigation Draw.
- * It allows the user to create a layout simliar to google's play nav drawer.  With a layout
+ * It allows the user to create a layout similar to google's play nav drawer.  With a layout
  * at the top and a set of items via a menu xml file.
- *
- * A note, in 'com.android.support:design:23.0.0' (and 23.0.1) the ischecked method has a bug?  It comes back
- * always true, so sections of this example are commented out to delete with it.    If/when the
- * bug is fixed in a future version of I'll uncomment it.  Or go back to 22.2.1 and uncomment the
- * lines as well.
- *    NOTE, this bug is fixed in 23.1.0  so it works again.
- *
  *
  */
 
