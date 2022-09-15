@@ -33,9 +33,13 @@ user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
 `SupportDesignDemo2_kt` (kotlin) uses the support design tablayout with a viewpager2, with a viewmodel, to hold the data in the Left and right fragment.  
 
-`SupportDesignDemo3` show how to use a picture with the toolbar and how to collapse the picture.  Also a little bit with the support design palette.
+`SupportDesignDemo3` (java) show how to use a picture with the toolbar and how to collapse the picture.  Also a little bit with the support design palette.
 
-`SupportDesignDemo4` show how to use the larger toolbar and how to collapse it as well.  Drawerlayout, with a NavigationView using a recyclerview a the main content.
+`SupportDesignDemo3_kt` (kotlin) show how to use a picture with the toolbar and how to collapse the picture.  Also a little bit with the support design palette.
+
+`SupportDesignDemo4` (java) show how to use the larger toolbar and how to collapse it as well.  Drawerlayout, with a NavigationView using a recyclerview a the main content.
+
+`SupportDesignDemo4_kt` (kotlin) show how to use the larger toolbar and how to collapse it as well.  Drawerlayout, with a NavigationView using a recyclerview a the main content.
 
 `SupportPaletteDemo` A simple example using a bitmap to get the palette and change the some textviews with it.  The example uses 4 different images that change via a imagebutton.
 
