@@ -25,7 +25,9 @@ user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
 `SupportDesignBottomNavDemo_kt` (kotlin) shows how to use the ButtomNavigationView  in the material design library.
 
-`SupportDesignDemo` is demo of some of the support Design widgets.  Floating action Button, inputtextlayout, snack bar, and using the snackbar and floating action button together (and the fab moves out of the way), Uses the Drawerlayout with a NavigationView.  main content uses a fragment (via a framelayout).
+`SupportDesignDemo` (java) is demo of some of the support Design widgets.  Floating action Button, inputtextlayout, snack bar, and using the snackbar and floating action button together (and the fab moves out of the way), Uses the Drawerlayout with a NavigationView.  main content uses a fragment (via a framelayout).
+
+`SupportDesignDemo_kt` (kotlin) is demo of some of the support Design widgets.  Floating action Button, inputtextlayout, snack bar, and using the snackbar and floating action button together (and the fab moves out of the way), Uses the Drawerlayout with a NavigationView.  main content uses a fragment (via a framelayout).
 
 `SupportDesignDemo2` uses the support design tablayout with a viewpager2, with a viewmodel, to hold the data in the Left and right fragment.  
 
