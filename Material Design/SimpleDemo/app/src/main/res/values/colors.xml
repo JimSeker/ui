@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- a good place to try different colors is http://www.materialpalette.com/
-        Also googles: http://www.google.com/design/spec/style/color.html-->
+    <!-- a good place to try different colors is http://www.materialpalette.com/ -->
     <!-- 500 color -->
-    <color name="colorPrimary">#3f51b5</color>
+    <color name="primaryColor">#3f51b5</color>
     <!-- 700 color -->
-    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="primaryColorDark">#303f9f</color>
+    <!-- 200 color -->
+    <color name="primaryColorLight">#9fa8da</color>
     <!-- A200 other color, so pink...? -->
-    <color name="colorAccent">#ff4081</color>
-    <color name="primaryColorLight">#C5CAE9</color>
+    <color name="accentColor">#ff4081</color>
+    <!-- A700 other color, so pink...? -->
+    <color name="accentColorDark">#c51162</color>
+
+
 
     <color name="textColor">#FFFFFF</color>
     <color name="textColorPrimary">#212121</color>
     <color name="textColorSecondary">#727272</color>
 
-    <color name="windowBackgroundColor">#607d8b</color>
-    <color name="navigationBarColor">#303f9f</color> 
+    <color name="windowBackgroundColor">#607d8b</color> <!--blue gray 500-->
+    <color name="windowBackgroundColorDark">#263238</color> <!--blue gray 900-->
+    <color name="navigationBarColor">#303f9f</color> <!--#303f9f-->
+
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
 </resources>
