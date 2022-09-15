@@ -21,7 +21,9 @@ user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
 `snackbarExtendedDemo_kt` (kotlin) show how to set the snackbar to indefinite, so it will continue to show, until we programmatically dismiss it.
 
-`SupportDesignBottomNavDemo` shows how to use the ButtomNavigationView  in the material design library.
+`SupportDesignBottomNavDemo` (java) shows how to use the ButtomNavigationView  in the material design library.
+
+`SupportDesignBottomNavDemo_kt` (kotlin) shows how to use the ButtomNavigationView  in the material design library.
 
 `SupportDesignDemo` is demo of some of the support Design widgets.  Floating action Button, inputtextlayout, snack bar, and using the snackbar and floating action button together (and the fab moves out of the way), Uses the Drawerlayout with a NavigationView.  main content uses a fragment (via a framelayout).
 
