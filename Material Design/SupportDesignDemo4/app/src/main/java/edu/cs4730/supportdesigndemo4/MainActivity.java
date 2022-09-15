@@ -52,9 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
         //use the toolbar instead of the default one.
         toolbar = findViewById(R.id.app_bar);
-        //toolbar.setSubtitle(R.string.app_name);
         setSupportActionBar(toolbar);
-        //getSupportActionBar().setTitle(R.string.app_name);
+
 
         //SO to get any text or title it is set here.  otherwise, there is no text in the toolbar.
         mCollapsingToolbarLayout = findViewById(R.id.collapsingtoolbarlayout1);
@@ -124,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
