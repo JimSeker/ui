@@ -41,8 +41,9 @@ user dealt with the snackbar (ie swiped it away, timed out, etc ).
 
 `SupportDesignDemo4_kt` (kotlin) show how to use the larger toolbar and how to collapse it as well.  Drawerlayout, with a NavigationView using a recyclerview a the main content.
 
-`SupportPaletteDemo` A simple example using a bitmap to get the palette and change the some textviews with it.  The example uses 4 different images that change via a imagebutton.
+`SupportPaletteDemo` (java) A simple example using a bitmap to get the palette and change the some textviews with it.  The example uses 4 different images that change via a imagebutton.
 
+`SupportPaletteDemo_kt` (kotlin) A simple example using a bitmap to get the palette and change the some textviews with it.  The example uses 4 different images that change via a imagebutton.
 
 ---
 
