@@ -114,7 +114,22 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                //we are doing nothing, so just close the drawer.
+
+                //instead of this below, we could just call the
+                //onOptionsItemSelected(menuItem);
+
+                int id = menuItem.getItemId();
+                //noinspection SimplifiableIfStatement
+                if (id == R.id.navigation_item_1) {
+                    //do something.
+                } else if (id == R.id.navigation_item_2) {
+                    //do something
+                } else if (id == R.id.navigation_item_3) {
+                    //do something.
+                } else if (id == R.id.navigation_item_4) {
+                    //do something.
+                }
+                //now mark it the menu as checked (highlighted in ui) just close the drawer.
                 menuItem.setChecked(true);
                 mDrawerlayout.closeDrawers();
                 return true;
