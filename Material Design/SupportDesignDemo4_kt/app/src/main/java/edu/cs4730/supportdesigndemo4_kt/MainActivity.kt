@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.navigation.NavigationView
-import java.util.Arrays
+import java.util.*
 
 
 /**
@@ -104,7 +104,20 @@ class MainActivity : AppCompatActivity() {
         //this ia the support Navigation view.
         mNavigationView = findViewById(R.id.navview)
         //setup a listener, which acts very similiar to how menus are handled.
-        mNavigationView.setNavigationItemSelectedListener { menuItem -> //we are doing nothing, so just close the drawer.
+        mNavigationView.setNavigationItemSelectedListener { menuItem ->
+            //instead of this below, we could just call the
+            //onOptionsItemSelected(menuItem);
+            val id = menuItem.itemId
+            //noinspection SimplifiableIfStatement
+            if (id == R.id.navigation_item_1) {
+                //do something.
+            } else if (id == R.id.navigation_item_2) {
+                //do something
+            } else if (id == R.id.navigation_item_3) {
+                //do something.
+            } else if (id == R.id.navigation_item_4) {
+                //do something.
+            }
             menuItem.isChecked = true
             mDrawerlayout.closeDrawers()
             true
