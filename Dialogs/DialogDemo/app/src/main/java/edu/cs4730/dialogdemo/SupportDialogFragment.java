@@ -57,7 +57,7 @@ public class SupportDialogFragment extends Fragment {
 
 
     /*
-     *  The method is not necessary.
+     *  The method is not necessary, just a convenience method.
      *
      *  This builds an alert dialog, with the positive button set to Yes, Negative button set to NO.
      *  There is a listener if the dialog is canceled (ie the back button is used)
@@ -66,32 +66,32 @@ public class SupportDialogFragment extends Fragment {
     void showdialog(String title) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
-        builder.setTitle(title);
-        builder.setMessage("Play again?");
-        //Button Button
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                displaylog("play again");
+        builder.setTitle(title)
+            .setMessage("Play again?")
+            //Button Button
+            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    displaylog("play again");
 
-            }
-        });
-        //Negative button
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                displaylog("exit");
+                }
+            })
+            //Negative button
+            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    displaylog("exit");
 
-            }
-        });
-        //If the user uses the back button instead.
-        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                displaylog("canceled ");
+                }
+            })
+            //If the user uses the back button instead.
+            .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                    displaylog("canceled ");
 
-            }
-        });
+                }
+            });
         builder.show();
     }
 
@@ -104,14 +104,14 @@ public class SupportDialogFragment extends Fragment {
         final String[] items = {"Remove Walls", "Add Walls",
             "Add/Remove Objects", "Add/Remove Score"};
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
-        builder.setTitle("Choose Type:");
-        builder.setSingleChoiceItems(items, -1,
-            new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int item) {
-                    dialog.dismiss();  //the dismiss is needed here or the dialog stays showing.
-                    displaylog(items[item]);
-                }
-            });
+        builder.setTitle("Choose Type:")
+            .setSingleChoiceItems(items, -1,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                        dialog.dismiss();  //the dismiss is needed here or the dialog stays showing.
+                        displaylog(items[item]);
+                    }
+                });
         builder.show();
     }
 }
