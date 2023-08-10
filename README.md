@@ -29,6 +29,8 @@ All flutter examples have been moved to the [Flutter repo](https://github.com/Ji
 
 `mvcDemo` (java) is an example using the Model-view-controller model.
 
+`mvcViewsDemo` (java) is an example using the Model-view-controller model.  Uses newer ViewBinding method.
+
 `mvcDemo_kt` (kotlin) is an example using the Model-view-controller model.
 
 --- 
