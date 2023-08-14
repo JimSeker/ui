@@ -86,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@+id/TVname" />
 
     <RadioGroup
-        android:id="@+id/SndGroup"
+        android:id="@+id/myRadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -126,10 +126,10 @@
         android:layout_marginTop="30dp"
         android:text="Button alert:"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/SndGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/myRadioGroup" />
 
     <Button
-        android:id="@+id/Button01"
+        android:id="@+id/btnalert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -165,7 +165,7 @@
         android:src="@drawable/phone"
         app:layout_constraintBottom_toBottomOf="@+id/TVpic"
         app:layout_constraintLeft_toRightOf="@+id/TVpic"
-        app:layout_constraintTop_toBottomOf="@+id/Button01"
+        app:layout_constraintTop_toBottomOf="@+id/btnalert"
         app:layout_constraintVertical_bias="0.294"
         android:contentDescription="Android icon" />
 
