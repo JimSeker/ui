@@ -6,6 +6,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import edu.cs4730.fragdemosimple.databinding.ActivityMainBinding;
+
 /*
   This is a very simple demo of changing between two fragments.
   This really not a good way to do this and is for demo purposes.  I needed something
@@ -15,11 +17,14 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     boolean firstfragment = true;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
 
         //if this a not new, then place add firstfragment to the framelayout
         if (savedInstanceState == null) {

@@ -7,11 +7,14 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import edu.cs4730.fragdemosimple.databinding.TwoFragmentBinding;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class twoFragment extends Fragment {
 
+    private TwoFragmentBinding binding;
 
     public twoFragment() {
         // Required empty public constructor
@@ -21,7 +24,8 @@ public class twoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.two_fragment, container, false);
+        binding = TwoFragmentBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
 }

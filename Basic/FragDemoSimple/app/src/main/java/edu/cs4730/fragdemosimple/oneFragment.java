@@ -8,11 +8,14 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import edu.cs4730.fragdemosimple.databinding.OneFragmentBinding;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class oneFragment extends Fragment {
 
+    private OneFragmentBinding binding;
     public oneFragment() {
         // Required empty public constructor
     }
@@ -20,7 +23,7 @@ public class oneFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.one_fragment, container, false);
-        return rootView;
+        binding = OneFragmentBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 }
