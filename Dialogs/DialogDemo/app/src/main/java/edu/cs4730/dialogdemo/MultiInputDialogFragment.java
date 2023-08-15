@@ -5,13 +5,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.EditText;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.DialogFragment;
+
+import edu.cs4730.dialogdemo.databinding.FragmentMultiInputDialogBinding;
 
 
 /**
@@ -62,27 +61,25 @@ public class MultiInputDialogFragment extends DialogFragment {
         }
     }
 
-    EditText et_name, et_amount;
-
     @Override
     public Dialog onCreateDialog(Bundle SavedIntanceState) {
 
         LayoutInflater inflater = LayoutInflater.from(requireActivity());
-        View myView = inflater.inflate(R.layout.fragment_multi_input_dialog, null);
-        et_name = (EditText) myView.findViewById(R.id.et_name);
-        if (name != null) et_name.setText(name);
-        et_amount = (EditText) myView.findViewById(R.id.et_amount);
-        if (amount != null) et_amount.setText(amount);
+        FragmentMultiInputDialogBinding binding = FragmentMultiInputDialogBinding.inflate(inflater);
+
+        if (name != null) binding.etName.setText(name);
+        if (amount != null) binding.etAmount.setText(amount);
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
-        builder.setView(myView).setTitle("Multi Input Dialog");
+        builder.setView(binding.getRoot()).setTitle("Multi Input Dialog");
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 String[] returnlist =
                     new String[]{
-                        et_name.getText().toString(),
-                        et_amount.getText().toString()
+                        binding.etName.getText().toString(),
+                        binding.etAmount.getText().toString()
                     };
                 //send the list back to the MainActivity to process.
                 mListener.onMultiInputInteraction(returnlist);
@@ -91,11 +88,11 @@ public class MultiInputDialogFragment extends DialogFragment {
 
             }
         })
-            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
+        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
                     dialog.cancel();
                 }
-            });
+        });
 
         return builder.create();
 

@@ -5,13 +5,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.EditText;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.DialogFragment;
+
+import edu.cs4730.dialogdemo.databinding.FragmentEditNameBinding;
+
 
 /**
  * This is a "custom" dialog, which has an edittext box and returns
@@ -23,27 +23,26 @@ public class myEditNameDialogFrag extends DialogFragment {
 
     private EditNameDialogListener mListener;
 
-    private EditText mEditText;
-
     public myEditNameDialogFrag() {
         // Empty constructor required for DialogFragment
     }
-
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         LayoutInflater inflater = LayoutInflater.from(requireActivity());
-        View myView = inflater.inflate(R.layout.fragment_edit_name, null);
-        mEditText = (EditText) myView.findViewById(R.id.txt_your_name);
-        mEditText.requestFocus();
+        FragmentEditNameBinding binding = FragmentEditNameBinding.inflate(inflater);
+
+        //the keyboard should come up and focus should be set to this input box.
+        binding.txtYourName.requestFocus();
+
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
-        builder.setView(myView).setTitle("Hello");
+        builder.setView(binding.getRoot()).setTitle("Hello");
 
         builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                mListener.onFinishEditDialog(mEditText.getText().toString());
+                mListener.onFinishEditDialog(binding.txtYourName.getText().toString());
                 dismiss();
             }
         }).setCancelable(false);  //don't let them cancel this dialog.  ie use the backbutton to get out of it.
@@ -60,7 +59,6 @@ public class myEditNameDialogFrag extends DialogFragment {
     public interface EditNameDialogListener {
         void onFinishEditDialog(String inputText);
     }
-
 
     @Override
     public void onAttach(Context context) {

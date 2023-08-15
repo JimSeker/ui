@@ -2,17 +2,14 @@ package edu.cs4730.dialogdemo_kt
 
 import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.fragment.app.DialogFragment
-import java.lang.RuntimeException
+import edu.cs4730.dialogdemo_kt.databinding.FragmentMultiInputDialogBinding
 
 /**
  * This is a dialogfragment that has two text boxes.
@@ -33,28 +30,28 @@ class MultiInputDialogFragment : DialogFragment() {
         }
     }
 
-    lateinit var et_name: EditText
-    lateinit var et_amount: EditText
+
     override fun onCreateDialog(SavedIntanceState: Bundle?): Dialog {
         val inflater = LayoutInflater.from(requireActivity())
-        val myView = inflater.inflate(R.layout.fragment_multi_input_dialog, null)
-        et_name = myView.findViewById<View>(R.id.et_name) as EditText
-        if (name != null) et_name.setText(name)
-        et_amount = myView.findViewById<View>(R.id.et_amount) as EditText
-        if (amount != null) et_amount.setText(amount)
+        val binding: FragmentMultiInputDialogBinding =
+            FragmentMultiInputDialogBinding.inflate(inflater)
+
+        if (name != null) binding.etName.setText(name)
+        if (amount != null) binding.etAmount.setText(amount)
+
         val builder = AlertDialog.Builder(
             ContextThemeWrapper(
                 requireActivity(),
                 R.style.ThemeOverlay_AppCompat_Dialog
             )
         )
-        builder.setView(myView).setTitle("Multi Input Dialog")
+        builder.setView(binding.root).setTitle("Multi Input Dialog")
         builder.setPositiveButton(
             "Save"
         ) { dialog, id ->
             val returnlist = arrayOf(
-                et_name.text.toString(),
-                et_amount.text.toString()
+                binding.etName.text.toString(),
+                binding.etAmount.text.toString()
             )
             //send the list back to the MainActivity to process.
             mListener!!.onMultiInputInteraction(returnlist)

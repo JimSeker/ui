@@ -35,7 +35,7 @@ class myAlertDialogFragment : DialogFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        val activity: Activity? = activity
+        val activity: Activity = requireActivity()
         mListener = try {
             activity as OnDialogFragmentListener?
         } catch (e: ClassCastException) {

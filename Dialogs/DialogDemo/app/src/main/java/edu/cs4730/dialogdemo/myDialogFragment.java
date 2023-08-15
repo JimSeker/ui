@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
@@ -86,9 +87,9 @@ public class myDialogFragment extends DialogFragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        Activity activity = getActivity();
+        Activity activity = requireActivity();
         try {
             mListener = (OnDialogFragmentListener) activity;
         } catch (ClassCastException e) {
@@ -102,6 +103,4 @@ public class myDialogFragment extends DialogFragment {
         super.onDetach();
         mListener = null;
     }
-
-
 }

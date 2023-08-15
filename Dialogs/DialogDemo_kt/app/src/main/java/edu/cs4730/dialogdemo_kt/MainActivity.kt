@@ -1,10 +1,10 @@
 package edu.cs4730.dialogdemo_kt
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import edu.cs4730.dialogdemo_kt.databinding.ActivityMainBinding
 
 /**
  * very little to see here.  The listeners for the custom dialogs are implemented here
@@ -16,15 +16,20 @@ class MainActivity : AppCompatActivity(), myEditNameDialogFrag.EditNameDialogLis
 
     lateinit var fragmentManager: FragmentManager
     lateinit var myCustomFragment: CustomFragment
-    lateinit var bnv: BottomNavigationView
+
+    //lateinit var bnv: BottomNavigationView
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        //setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         fragmentManager = supportFragmentManager
         myCustomFragment = CustomFragment()
-        bnv = findViewById(R.id.bnv)
-        bnv.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener { item -> //At this point, we are doing the same thing that is done for menu selections.
+        //bnv = findViewById(R.id.bnv)
+        binding.bnv.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener { item -> //At this point, we are doing the same thing that is done for menu selections.
             //if we had a onOptionsItemSelect method for a menu, we could just use it.
             val id = item.itemId
             if (id == R.id.nav_support) {

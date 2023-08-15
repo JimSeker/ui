@@ -2,18 +2,15 @@ package edu.cs4730.dialogdemo_kt
 
 import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.fragment.app.DialogFragment
-import java.lang.ClassCastException
+import edu.cs4730.dialogdemo_kt.databinding.FragmentEditNameDialogBinding
 
 /**
  * This is a "custom" dialog, which has an edittext box and returns
@@ -22,24 +19,22 @@ import java.lang.ClassCastException
  */
 class myEditNameDialogFrag : DialogFragment() {
     private var mListener: EditNameDialogListener? = null
-    lateinit var mEditText: EditText
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val inflater = LayoutInflater.from(requireActivity())
-        val myView: View = inflater.inflate(R.layout.fragment_my_edit_name_dialog, null)
-        mEditText = myView.findViewById<View>(R.id.txt_your_name) as EditText
-        mEditText.requestFocus()
+        val binding: FragmentEditNameDialogBinding = FragmentEditNameDialogBinding.inflate(inflater)
+        binding.txtYourName.requestFocus()
         val builder = AlertDialog.Builder(
             ContextThemeWrapper(
                 requireActivity(),
                 R.style.AppTheme_Dialog
             )
         )
-        builder.setView(myView).setTitle("Hello")
+        builder.setView(binding.root).setTitle("Hello")
         builder.setPositiveButton(
             "Done"
         ) { dialog, id ->
-            mListener!!.onFinishEditDialog(mEditText.text.toString())
+            mListener!!.onFinishEditDialog(binding.txtYourName.text.toString())
             dismiss()
         }
             .setCancelable(false) //don't let them cancel this dialog.  ie use the backbutton to get out of it.

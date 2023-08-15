@@ -2,18 +2,12 @@ package edu.cs4730.dialogdemo;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.navigation.NavigationView;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
+
+import edu.cs4730.dialogdemo.databinding.ActivityMainBinding;
 
 
 /**
@@ -27,21 +21,23 @@ public class MainActivity extends AppCompatActivity
     myAlertDialogFragment.OnDialogFragmentListener,
     MultiInputDialogFragment.OnDialogFragmentInteractionListener {
 
+    ActivityMainBinding binding;
     FragmentManager fragmentManager;
     CustomFragment myCustomFragment;
-    BottomNavigationView bnv;
+    //BottomNavigationView bnv;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+        binding=ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         fragmentManager = getSupportFragmentManager();
         myCustomFragment = new CustomFragment();
-        bnv = findViewById(R.id.bnv);
-        bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+       // bnv = findViewById(R.id.bnv);
+        binding.bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 //At this point, we are doing the same thing that is done for menu selections.

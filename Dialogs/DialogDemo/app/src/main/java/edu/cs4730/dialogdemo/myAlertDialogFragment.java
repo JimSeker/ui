@@ -18,7 +18,6 @@ public class myAlertDialogFragment extends DialogFragment {
 
     private OnDialogFragmentListener mListener;
 
-
     public static myAlertDialogFragment newInstance(int title) {
         myAlertDialogFragment frag = new myAlertDialogFragment();
         Bundle args = new Bundle();
@@ -61,7 +60,7 @@ public class myAlertDialogFragment extends DialogFragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        Activity activity = getActivity();
+        Activity activity = requireActivity();
         try {
             mListener = (OnDialogFragmentListener) activity;
         } catch (ClassCastException e) {
