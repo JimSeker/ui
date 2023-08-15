@@ -2,6 +2,10 @@ Dialogs Android GUI/UI Examples
 ===========
 These are examples of how to create dialog boxes in android.
 
+`CustomDialogDemo` (java) is a simple inline custom dialog example, taken from the DialogDemo
+
+`CustomDialogDemo_kt` (kotlin) is a simple inline custom dialog example, taken from the DialogDemo_kt
+
 `DialogDemo` (java) shows how to use the andriodx Dialogs and how to extend dialogs to create custom dialogs.
 
 `DialogDemo_kt` (kotlin) shows how to use the andriodx Dialogs and how to extend dialogs to create custom dialogs.

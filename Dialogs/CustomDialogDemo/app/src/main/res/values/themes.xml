@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!--  see https://developer.android.com/training/material/theme.html  -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryColorDark</item>
+        <item name="colorPrimaryVariant">@color/primaryColorDark</item>
+        <!--ie text color-->
+        <item name="colorOnPrimary">@color/textColor</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/accentColor</item>
+        <item name="colorAccent">@color/accentColor</item>
+        <item name="colorSecondaryVariant">@color/accentColorDark</item>
+        <!--ie text color-->
+        <item name="colorOnSecondary">@color/textColorSecondary</item>
+
+        <item name="android:navigationBarColor">@color/navigationBarColor</item>
+        <item name="android:windowBackground">@color/windowBackgroundColor</item>
+
+        <!-- Status bar color. but doesn't do anything in appCompat, for MaterialComponents-->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="colorSurface">@color/primaryColorDark</item>
+
+    </style>
+
+</resources>
