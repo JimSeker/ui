@@ -7,28 +7,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import edu.cs4730.botnavguidemo.databinding.ImageFragmentBinding;
 
 public class Image_Fragment extends Fragment {
 
     String TAG = "Image_Fragment";
-    Context myContext;
+    ImageFragmentBinding binding;
 
     public Image_Fragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.image_fragment, container, false);
-        return view;
+        binding = ImageFragmentBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        myContext = context;
         Log.d(TAG, "onAttach");
     }
 }

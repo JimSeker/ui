@@ -13,29 +13,27 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 
+import edu.cs4730.botnavguidemo.databinding.FragmentBottomsheetBinding;
 
 public class BottomNavigationDialogFragment extends BottomSheetDialogFragment {
 
-
     private OnFragmentInteractionListener mListener;
+    private FragmentBottomsheetBinding binding;
 
     public interface OnFragmentInteractionListener {
         void onFragmentPicker(int id);
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View myView = inflater.inflate(R.layout.fragment_bottomsheet, container, false);
-        NavigationView nw = myView.findViewById(R.id.navigation_view);
-        nw.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        binding = FragmentBottomsheetBinding.inflate(inflater, container, false);
+        binding.navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 mListener.onFragmentPicker(menuItem.getItemId());
@@ -44,13 +42,13 @@ public class BottomNavigationDialogFragment extends BottomSheetDialogFragment {
             }
         });
 
-        return myView;
+        return binding.getRoot();
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        Activity activity = getActivity();
+        Activity activity = requireActivity();
         try {
             mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
@@ -64,6 +62,5 @@ public class BottomNavigationDialogFragment extends BottomSheetDialogFragment {
         super.onDetach();
         mListener = null;
     }
-
 
 }

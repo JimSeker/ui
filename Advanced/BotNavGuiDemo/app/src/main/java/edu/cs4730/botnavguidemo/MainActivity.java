@@ -2,57 +2,48 @@ package edu.cs4730.botnavguidemo;
 
 import android.os.Bundle;
 
-import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationDialogFragment.OnFragmentInteractionListener{
-    BottomAppBar appBar;
+import edu.cs4730.botnavguidemo.databinding.ActivityMainBinding;
+
+public class MainActivity extends AppCompatActivity implements BottomNavigationDialogFragment.OnFragmentInteractionListener {
+    //BottomAppBar appBar;
     String TAG = "MainActivity";
-
-    private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
-    private ActionBarDrawerToggle mDrawerToggle;
     FragmentManager fragmentManager;
 
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        appBar = findViewById(R.id.bottomAppBar);
-        setSupportActionBar(appBar);  //this set the bottom bar to the the Action Bar.
-        appBar.setTitle(R.string.title_home);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        setSupportActionBar(binding.bottomAppBar);  //this set the bottom bar to the the Action Bar.
+        binding.bottomAppBar.setTitle(R.string.title_home);
         fragmentManager = getSupportFragmentManager();
 
-        appBar.setNavigationOnClickListener(new View.OnClickListener() {
+        binding.bottomAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "AppBar Navigation clicked.");
                 BottomSheetDialogFragment bottomSheetDialogFragment = new BottomNavigationDialogFragment();
                 bottomSheetDialogFragment.show(getSupportFragmentManager(), bottomSheetDialogFragment.getTag());
-//                return true;
             }
         });
 
         fragmentManager = getSupportFragmentManager();
 
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new FloatingActionButton.OnClickListener() {
+        binding.fab.setOnClickListener(new FloatingActionButton.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO
@@ -81,10 +72,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationD
         if (id == R.id.navigation_home) {
 
             return true;
-        }else if (id == R.id.navigation_dashboard) {
+        } else if (id == R.id.navigation_dashboard) {
 
             return true;
-        }else if (id == R.id.navigation_notifications) {
+        } else if (id == R.id.navigation_notifications) {
 
             return true;
         }
