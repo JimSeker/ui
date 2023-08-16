@@ -10,40 +10,42 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
+import edu.cs4730.guidemo.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
     String TAG = "MainActivity";
-    private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
+    ActivityMainBinding binding;
+
     private ActionBarDrawerToggle mDrawerToggle;
     FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        mDrawerLayout = findViewById(R.id.drawer_layout);
-        mDrawerList = findViewById(R.id.left_drawer);
         fragmentManager = getSupportFragmentManager();
 
         //first setup the listview with some simple categories via an array.
         String[] values = getResources().getStringArray(R.array.sections);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-            R.layout.drawer_list_item, values);
-        mDrawerList = findViewById(R.id.left_drawer);
-        mDrawerList.setAdapter(adapter);
-        mDrawerList.setOnItemClickListener(new OnItemClickListener() {
+                R.layout.drawer_list_item, values);
+
+        binding.leftDrawer.setAdapter(adapter);
+        binding.leftDrawer.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int position, long index) {
                 //based on click, change to correct fragment.
-                String item = mDrawerList.getAdapter().getItem(position).toString();
+                String item = binding.leftDrawer.getAdapter().getItem(position).toString();
                 switch (position) {
                     case 0:
                         fragmentManager.beginTransaction().replace(R.id.container, new Text_Fragment()).commit();
@@ -77,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 // update selected item and title, then close the drawer
-                mDrawerList.setItemChecked(position, true);
+                binding.leftDrawer.setItemChecked(position, true);
                 //now close the drawer!
-                mDrawerLayout.closeDrawer(mDrawerList);
+                binding.drawerLayout.closeDrawer(binding.leftDrawer);
             }
         });
 
@@ -90,10 +92,10 @@ public class MainActivity extends AppCompatActivity {
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
         mDrawerToggle = new ActionBarDrawerToggle(
-            this, /* host Activity */
-            mDrawerLayout, /* DrawerLayout object */
-            R.string.drawer_open, /* "open drawer" description for accessibility */
-            R.string.drawer_close /* "close drawer" description for accessibility */
+                this, /* host Activity */
+                binding.drawerLayout, /* DrawerLayout object */
+                R.string.drawer_open, /* "open drawer" description for accessibility */
+                R.string.drawer_close /* "close drawer" description for accessibility */
         ) {
             public void onDrawerClosed(View view) {
                 getSupportActionBar().setTitle(R.string.app_name);
@@ -105,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
-        mDrawerLayout.addDrawerListener(mDrawerToggle);
+        binding.drawerLayout.addDrawerListener(mDrawerToggle);
         //first instance, so the default is zero.
         fragmentManager.beginTransaction().replace(R.id.container, new Text_Fragment()).commit();
-        mDrawerList.setItemChecked(0, true);
+        binding.leftDrawer.setItemChecked(0, true);
     }
 
     @Override
@@ -119,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // The action bar home/up action should open or close the drawer.
         // ActionBarDrawerToggle will take care of this.
         if (mDrawerToggle.onOptionsItemSelected(item)) {
@@ -146,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);

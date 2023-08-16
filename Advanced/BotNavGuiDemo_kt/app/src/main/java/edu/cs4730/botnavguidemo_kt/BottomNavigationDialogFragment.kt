@@ -7,11 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.navigation.NavigationView
-import java.lang.ClassCastException
+import edu.cs4730.botnavguidemo_kt.databinding.FragmentBottomsheetBinding
 
 class BottomNavigationDialogFragment : BottomSheetDialogFragment() {
     private var mListener: OnFragmentInteractionListener? = null
+
+    lateinit var  binding: FragmentBottomsheetBinding
 
     interface OnFragmentInteractionListener {
         fun onFragmentPicker(id: Int)
@@ -25,19 +26,18 @@ class BottomNavigationDialogFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val myView: View = inflater.inflate(R.layout.fragment_bottomsheet, container, false)
-        val nw: NavigationView = myView.findViewById(R.id.navigation_view)
-        nw.setNavigationItemSelectedListener { menuItem ->
+        binding = FragmentBottomsheetBinding.inflate(inflater, container, false)
+        binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             mListener!!.onFragmentPicker(menuItem.itemId)
             dismiss()
             false
         }
-        return myView
+        return binding.root
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        val activity: Activity? = activity
+        val activity: Activity = requireActivity()
         mListener = try {
             activity as OnFragmentInteractionListener?
         } catch (e: ClassCastException) {

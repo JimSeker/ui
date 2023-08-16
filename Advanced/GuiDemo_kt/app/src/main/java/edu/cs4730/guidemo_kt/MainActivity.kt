@@ -1,32 +1,29 @@
 package edu.cs4730.guidemo_kt
 
 import android.content.res.Configuration
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
-import android.widget.ListView
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.drawerlayout.widget.DrawerLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
+import edu.cs4730.guidemo_kt.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     var TAG = "MainActivity"
-    lateinit var mDrawerLayout: DrawerLayout
-    lateinit var mDrawerList: ListView
+    lateinit var binding: ActivityMainBinding
     lateinit var mDrawerToggle: ActionBarDrawerToggle
     lateinit var fragmentManager: FragmentManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        mDrawerLayout = findViewById(R.id.drawer_layout)
-        mDrawerList = findViewById(R.id.left_drawer)
         fragmentManager = supportFragmentManager
 
         //first setup the listview with some simple categories via an array.
@@ -38,12 +35,10 @@ class MainActivity : AppCompatActivity() {
             this,
             R.layout.drawer_list_item, values
         )
-        mDrawerList = findViewById(R.id.left_drawer)
-        mDrawerList.adapter = adapter
-
-        mDrawerList.onItemClickListener =
+        binding.leftDrawer.adapter = adapter
+        binding.leftDrawer.onItemClickListener =
             OnItemClickListener { arg0, view, position, index -> //based on click, change to correct fragment.
-                val item = mDrawerList.adapter.getItem(position).toString()
+                val item = binding.leftDrawer.adapter.getItem(position).toString()
                 when (position) {
                     0 -> fragmentManager.beginTransaction().replace(R.id.container, Text_Fragment())
                         .commit()
@@ -67,9 +62,9 @@ class MainActivity : AppCompatActivity() {
                         .replace(R.id.container, Picker_Fragment()).commit()
                 }
                 // update selected item and title, then close the drawer
-                mDrawerList.setItemChecked(position, true)
+                binding.leftDrawer.setItemChecked(position, true)
                 //now close the drawer!
-                mDrawerLayout.closeDrawer(mDrawerList)
+                binding.drawerLayout.closeDrawer(binding.leftDrawer)
             }
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
@@ -85,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         // between the sliding drawer and the action bar app icon
         mDrawerToggle = object : ActionBarDrawerToggle(
             this,  /* host Activity */
-            mDrawerLayout,  /* DrawerLayout object */
+            binding.drawerLayout,  /* DrawerLayout object */
             R.string.drawer_open,  /* "open drawer" description for accessibility */
             R.string.drawer_close /* "close drawer" description for accessibility */
         ) {
@@ -99,11 +94,11 @@ class MainActivity : AppCompatActivity() {
                 invalidateOptionsMenu() // creates call to onPrepareOptionsMenu()
             }
         }
-        mDrawerLayout.addDrawerListener(mDrawerToggle)
+        binding.drawerLayout.addDrawerListener(mDrawerToggle)
         //first instance, so the default is zero.
         //first instance, so the default is zero.
         fragmentManager.beginTransaction().replace(R.id.container, Text_Fragment()).commit()
-        mDrawerList.setItemChecked(0, true)
+        binding.leftDrawer.setItemChecked(0, true)
     }
 
 
@@ -127,7 +122,6 @@ class MainActivity : AppCompatActivity() {
             true
         } else super.onOptionsItemSelected(item)
     }
-
 
     //needed to make the nav drawer draw correctly.
     override fun onPostCreate(savedInstanceState: Bundle?) {

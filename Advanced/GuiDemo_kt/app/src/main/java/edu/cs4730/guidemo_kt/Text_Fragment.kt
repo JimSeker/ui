@@ -7,10 +7,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import edu.cs4730.guidemo_kt.databinding.TextFragmentBinding
 
 class Text_Fragment : Fragment() {
     var TAG = "Text_fragment"
-    lateinit var tx: TextView
+    lateinit var binding: TextFragmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,11 +22,11 @@ class Text_Fragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         Log.d("Left", "OnCreateView")
-        val view = inflater.inflate(R.layout.text_fragment, container, false)
-        tx = view.findViewById(R.id.big)
-        tx.setText("Large TextView")
-        return view
+        binding = TextFragmentBinding.inflate(inflater, container, false)
+
+        binding.big.text = "Large TextView"
+        return binding.root
     }
 }

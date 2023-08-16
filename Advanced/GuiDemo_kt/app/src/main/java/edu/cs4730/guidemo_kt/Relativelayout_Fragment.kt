@@ -7,10 +7,12 @@ import android.content.Context
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import edu.cs4730.guidemo_kt.databinding.RelativelayoutFragmentBinding
 
 class Relativelayout_Fragment : Fragment() {
     var TAG = "Relativelayout_Fragment"
-    lateinit var myContext: Context
+    lateinit var binding: RelativelayoutFragmentBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -19,15 +21,14 @@ class Relativelayout_Fragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val myView: View
-        myView = inflater.inflate(R.layout.relativelayout_fragment, container, false)
-        return myView
+    ): View {
+        binding = RelativelayoutFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        myContext = context
         Log.d(TAG, "onAttach")
     }
 }

@@ -23,8 +23,7 @@ import edu.cs4730.botnavguidemo.databinding.PickerFragmentBinding;
  * shows how to use pickers.
  */
 public class Picker_Fragment extends Fragment implements Button.OnClickListener {
-//    TextView tv_date, tv_time;
-//    Button btn_date, btn_time;
+
     //used for the pickers to set the current time/date
     PickerFragmentBinding binding;
     Calendar dateAndTime = Calendar.getInstance();

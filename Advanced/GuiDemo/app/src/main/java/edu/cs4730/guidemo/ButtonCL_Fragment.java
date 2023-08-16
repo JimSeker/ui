@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import edu.cs4730.guidemo.databinding.ConstraintlayoutFragmentBinding;
 
 /**
  * This is basically code to show the constraintlayout with so many button.
@@ -18,52 +21,44 @@ import androidx.fragment.app.Fragment;
 public class ButtonCL_Fragment extends Fragment implements View.OnClickListener {
 
     String TAG = "Button_Fragment";
-    Context myContext;
-    TextView output;
+    ConstraintlayoutFragmentBinding binding;
 
     public ButtonCL_Fragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myView = inflater.inflate(R.layout.constraintlayout_fragment, container, false);
+        binding = ConstraintlayoutFragmentBinding.inflate(inflater, container, false);
         //set it up so all the button work in this fragment.
-        (myView.findViewById(R.id.button01)).setOnClickListener(this);
-        (myView.findViewById(R.id.button02)).setOnClickListener(this);
-        (myView.findViewById(R.id.button03)).setOnClickListener(this);
-        (myView.findViewById(R.id.button04)).setOnClickListener(this);
-        (myView.findViewById(R.id.button05)).setOnClickListener(this);
-        (myView.findViewById(R.id.button06)).setOnClickListener(this);
-        (myView.findViewById(R.id.button07)).setOnClickListener(this);
-        (myView.findViewById(R.id.button08)).setOnClickListener(this);
-        (myView.findViewById(R.id.button09)).setOnClickListener(this);
-        (myView.findViewById(R.id.button10)).setOnClickListener(this);
-        (myView.findViewById(R.id.button11)).setOnClickListener(this);
-        //output to the screen.
-        output = myView.findViewById(R.id.output);
-        return myView;
+        binding.button01.setOnClickListener(this);
+        binding.button02.setOnClickListener(this);
+        binding.button03.setOnClickListener(this);
+        binding.button04.setOnClickListener(this);
+        binding.button05.setOnClickListener(this);
+        binding.button06.setOnClickListener(this);
+        binding.button07.setOnClickListener(this);
+        binding.button08.setOnClickListener(this);
+        binding.button09.setOnClickListener(this);
+        binding.button10.setOnClickListener(this);
+        binding.button11.setOnClickListener(this);
+        return binding.getRoot();
     }
 
-
-    /*
+    /**
      * This on is the for the implements View.OnClickListener
-     *
      */
     @Override
     public void onClick(View v) {
-        Toast.makeText(myContext, "a button was clicked", Toast.LENGTH_SHORT).show();
-        output.append("\na button was clicked");
+        Toast.makeText(requireContext(), "a button was clicked", Toast.LENGTH_SHORT).show();
+        binding.output.append("\na button was clicked");
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        myContext = context;
         Log.d(TAG, "onAttach");
     }
-
-
 }

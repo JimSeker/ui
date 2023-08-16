@@ -7,11 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ViewFlipper;
-import android.widget.ViewSwitcher;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import edu.cs4730.guidemo.databinding.ViewswitchFragmentBinding;
 
 /**
  * This shows how the view switcher can work.
@@ -19,21 +19,11 @@ import androidx.fragment.app.Fragment;
  */
 public class ViewSwitch_Fragment extends Fragment {
     String TAG = "ViewSwitch_fragment";
-    Context myContext;
-
-    //Switcher to change view when input mode changes
-    ViewSwitcher myViewSwitch;
-    Button myButton;
-
-    //ViewFlipper variables.
-    ViewFlipper myViewFlipper;
-    Button myVFButton;
-    Button myVFanim;
+    ViewswitchFragmentBinding binding;
 
     public ViewSwitch_Fragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,59 +32,51 @@ public class ViewSwitch_Fragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
-        View myView = inflater.inflate(R.layout.viewswitch_fragment, container, false);
-
-        //setup the ViewSwitch variable.
-        myViewSwitch = myView.findViewById(R.id.viewSwitcher1);
+        binding = ViewswitchFragmentBinding.inflate(inflater, container, false);
 
         //setup the button
-        myButton = myView.findViewById(R.id.vs_button);
-        myButton.setOnClickListener(new View.OnClickListener() {
+        binding.vsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myViewSwitch.showNext();
+                binding.viewSwitcher1.showNext();
             }
         });
 
         //ViewFlipper code
-        myViewFlipper = myView.findViewById(R.id.viewFlipper1);
         //set animation, which can be used in viewswitcher as well
-        myViewFlipper.setInAnimation(AnimationUtils.loadAnimation(myContext, android.R.anim.slide_in_left)); //or android.R.anim.fade_in
-        myViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(myContext, android.R.anim.slide_out_right));  //or android.R.anim.fade_out
+        binding.viewFlipper1.setInAnimation(AnimationUtils.loadAnimation(requireContext(), android.R.anim.slide_in_left)); //or android.R.anim.fade_in
+        binding.viewFlipper1.setOutAnimation(AnimationUtils.loadAnimation(requireContext(), android.R.anim.slide_out_right));  //or android.R.anim.fade_out
         //setup the button
-        myVFButton = myView.findViewById(R.id.vf_button1);
-        myVFButton.setOnClickListener(new View.OnClickListener() {
+        binding.vfButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myViewFlipper.showNext();
+                binding.viewFlipper1.showNext();
             }
         });
 
-        myVFanim = myView.findViewById(R.id.vf_button2);
-        myVFanim.setOnClickListener(new View.OnClickListener() {
+
+        binding.VFanim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (myViewFlipper.isFlipping()) { //is animated so stop it.
-                    myViewFlipper.stopFlipping();
-                    myVFanim.setText("Start animation");
+                if (binding.viewFlipper1.isFlipping()) { //is animated so stop it.
+                    binding.viewFlipper1.stopFlipping();
+                    binding.VFanim.setText("Start animation");
                 } else {  //start animation
-                    myViewFlipper.startFlipping();
+                    binding.viewFlipper1.startFlipping();
                     //Can also setup how long, with setFlipInterval( int milliseconds)  appears to be 1 second default.
-                    myVFanim.setText("Stop animation");
+                    binding.VFanim.setText("Stop animation");
                 }
             }
         });
-        return myView;
+        return binding.getRoot();
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        myContext = context;
         Log.d(TAG, "onAttach");
     }
 }

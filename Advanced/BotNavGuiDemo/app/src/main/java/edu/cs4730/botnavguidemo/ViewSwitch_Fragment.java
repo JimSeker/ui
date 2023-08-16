@@ -61,16 +61,16 @@ public class ViewSwitch_Fragment extends Fragment {
         });
 
 
-        binding.vfButton2.setOnClickListener(new View.OnClickListener() {
+        binding.VFanim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (binding.viewFlipper1.isFlipping()) { //is animated so stop it.
                     binding.viewFlipper1.stopFlipping();
-                    binding.vfButton2.setText("Start animation");
+                    binding.VFanim.setText("Start animation");
                 } else {  //start animation
                     binding.viewFlipper1.startFlipping();
                     //Can also setup how long, with setFlipInterval( int milliseconds)  appears to be 1 second default.
-                    binding.vfButton2.setText("Stop animation");
+                    binding.VFanim.setText("Stop animation");
                 }
             }
         });

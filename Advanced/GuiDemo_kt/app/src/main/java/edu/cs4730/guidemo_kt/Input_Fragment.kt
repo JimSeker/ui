@@ -5,42 +5,34 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import android.widget.EditText
 import android.text.TextWatcher
 import android.text.Editable
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import androidx.fragment.app.Fragment
+import edu.cs4730.guidemo_kt.databinding.InputFragmentBinding
 
 class Input_Fragment : Fragment(), View.OnClickListener {
     var TAG = "Input_fragment"
-    lateinit var myContext: Context
-    lateinit var et_single: EditText
-    lateinit var et_mutli: EditText
-    lateinit var et_pwd: EditText
-    lateinit var btn: Button
+    lateinit var binding: InputFragmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "OnCreate")
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.input_fragment, container, false)
-        et_single = view.findViewById(R.id.et_single)
-        et_pwd = view.findViewById(R.id.et_pwd)
-        et_pwd.addTextChangedListener(
+        binding = InputFragmentBinding.inflate(inflater, container, false)
+
+        binding.etPwd.addTextChangedListener(
             object : TextWatcher {
                 override fun beforeTextChanged(
-                    s: CharSequence,
-                    start: Int,
-                    count: Int,
-                    after: Int
+                    s: CharSequence, start: Int, count: Int, after: Int
                 ) {
                     //doing nothing.
                 }
@@ -51,22 +43,20 @@ class Input_Fragment : Fragment(), View.OnClickListener {
 
                 override fun afterTextChanged(s: Editable) {
                     // When the text is changed.
-                    Toast.makeText(myContext, et_pwd.getText(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), binding.etPwd.text, Toast.LENGTH_SHORT).show()
                 }
             }
         )
-        btn = view.findViewById(R.id.button)
-        btn.setOnClickListener(this)
-        return view
+        binding.button.setOnClickListener(this)
+        return binding.root
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        myContext = context
         Log.d(TAG, "onAttach")
     }
 
     override fun onClick(v: View) {
-        Toast.makeText(myContext, et_single!!.text, Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), binding.etSingle.text, Toast.LENGTH_LONG).show()
     }
 }

@@ -11,60 +11,55 @@ import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import edu.cs4730.guidemo_kt.databinding.RadiocheckFragmentBinding
 
 /**
- * Example of Radio button
- * and check box.
+ * Example of Radio button and check box.
  */
 class RadioCheck_Fragment : Fragment(), RadioGroup.OnCheckedChangeListener {
     var TAG = "RadioCheck_Fragment"
-    lateinit var myContext: Context //needed for a number of things, but mostly for toast, set in onAttach.
-    lateinit var myRadioGroup: RadioGroup
-    lateinit var myCheckBox: CheckBox
+    lateinit var binding : RadiocheckFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.radiocheck_fragment, container, false)
+    ): View {
+        binding = RadiocheckFragmentBinding.inflate(inflater, container, false)
 
         //setup the radiogroup.
-        myRadioGroup = view.findViewById(R.id.radioGroup1) //get the radio group
-        //note, we didn't get the individual radio Buttons, we don't normally need them.
         //listener is onCheckedChanged and implemented from class level.
-        myRadioGroup.setOnCheckedChangeListener(this)
+        binding.radioGroup1.setOnCheckedChangeListener(this)
 
         //setup the check box.
-        myCheckBox = view.findViewById(R.id.checkBox1)
-        myCheckBox.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+        binding.checkBox1.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             //We know which checkbox, so ignoring buttonView variable.
             if (isChecked) {
-                myCheckBox.setText("Uncheck me and I'll clear the raido Buttons too!")
+                binding.checkBox1.setText("Uncheck me and I'll clear the raido Buttons too!")
             } else {
-                myRadioGroup.clearCheck() //clears any radio buttons.
-                myCheckBox.setText("Please Check me!")
+                binding.radioGroup1.clearCheck() //clears any radio buttons.
+                binding.checkBox1.setText("Please Check me!")
             }
         })
-        return view
+        return binding.root
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        myContext = context
+
         Log.d(TAG, "onAttach")
     }
 
     override fun onCheckedChanged(group: RadioGroup, checkedId: Int) {
-        if (group === myRadioGroup) { //if not, we are in trouble!
+        if (group == binding.radioGroup1) { //if not, we are in trouble!
             if (checkedId == R.id.radio0) {
                 // information radio button clicked
-                Toast.makeText(myContext, "Radio Button 0 checked.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Radio Button 0 checked.", Toast.LENGTH_SHORT).show()
             } else if (checkedId == R.id.radio1) {
                 // Confirmation radio button clicked
-                Toast.makeText(myContext, "Radio Button 1 checked.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Radio Button 1 checked.", Toast.LENGTH_SHORT).show()
             } else if (checkedId == R.id.radio2) {
                 //radio button 2 clicked
-                Toast.makeText(myContext, "Radio Button 2 checked.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Radio Button 2 checked.", Toast.LENGTH_SHORT).show()
             }
         }
     }

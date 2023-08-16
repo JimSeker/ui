@@ -58,7 +58,7 @@
         android:text="click for Next view" />
 
         <Button
-            android:id="@+id/vf_button2"
+            android:id="@+id/VFanim"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Start animation" />

@@ -23,7 +23,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/spinnerSB"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:layout_constraintTop_creator="1"
@@ -38,7 +38,7 @@
         android:layout_marginRight="8dp" />
 
     <SeekBar
-        android:id="@+id/seekBar1"
+        android:id="@+id/mySeekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:layout_constraintTop_creator="1"
@@ -46,7 +46,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner1"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSB"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="8dp"
@@ -59,14 +59,14 @@
         android:layout_height="wrap_content"
         android:text="Second Spinner"
         tools:layout_constraintTop_creator="1"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar1"
+        app:layout_constraintTop_toBottomOf="@+id/mySeekBar"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/mySpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:layout_constraintRight_creator="1"
@@ -95,7 +95,7 @@
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
+        android:id="@+id/pb_cir"
         tools:layout_constraintTop_creator="1"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:layout_constraintLeft_creator="1"
@@ -107,15 +107,15 @@
         android:text="Start Progress Bar Example"
         android:id="@+id/prgbtn"
         tools:layout_constraintTop_creator="1"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        app:layout_constraintTop_toBottomOf="@+id/pb_cir"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/progressBar" />
+        app:layout_constraintLeft_toLeftOf="@+id/pb_cir" />
 
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar2"
+        android:id="@+id/pb_hor"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         android:layout_marginStart="8dp"
