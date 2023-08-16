@@ -16,7 +16,6 @@ import android.view.View;
 import edu.cs4730.botnavguidemo.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationDialogFragment.OnFragmentInteractionListener {
-    //BottomAppBar appBar;
     String TAG = "MainActivity";
     FragmentManager fragmentManager;
 
