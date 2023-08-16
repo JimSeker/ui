@@ -19,31 +19,28 @@ import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
 
+import edu.cs4730.archnavdrawerlayout.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    private ActivityMainBinding binding;
     private ActionBarDrawerToggle mDrawerToggle;
-    private DrawerLayout mDrawerlayout;
-    private NavigationView mNavigationView;
+
     String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        toolbar = findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
-
-        //standard navigation drawer setup.
-        mDrawerlayout = findViewById(R.id.drawer_layout);
-
+        setSupportActionBar(binding.appBar);
         //this is needed if you want the open/close to show in the toolbar.
         mDrawerToggle = new ActionBarDrawerToggle(this,  // host activity
-            mDrawerlayout,  //drawerlayout object
-            toolbar,  //toolbar
-            R.string.drawer_open,  //open drawer description  required!
-            R.string.drawer_close) {  //closed drawer description
+                binding.drawerLayout,  //drawerlayout object
+                binding.appBar,  //toolbar
+                R.string.drawer_open,  //open drawer description  required!
+                R.string.drawer_close) {  //closed drawer description
 
             //called once the drawer has closed.
             @Override
@@ -61,55 +58,17 @@ public class MainActivity extends AppCompatActivity {
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
-        mDrawerlayout.addDrawerListener(mDrawerToggle);
+        binding.drawerLayout.addDrawerListener(mDrawerToggle);
 
-        //this ia the support Navigation view.
-        mNavigationView = findViewById(R.id.navview);
-        //setup a listener, which acts very similar to how menus are handled, but with a NavView and arch Navigation
-        //this how to do it manually.
-//        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//                //we could just as easily call onOptionsItemSelected(menuItem) and how it deal with it.
-//                int id = menuItem.getItemId();
-//                if (id == R.id.action_first) {
-//                    //load fragment
-//                    if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
-//                        menuItem.setChecked(true);  //make sure to check/highlight the item.
-//                        getSupportFragmentManager().beginTransaction().replace(R.id.container, new OneFragment()).commit();
-//                    }
-//                    mDrawerlayout.closeDrawers();  //close the drawer, since the user has selected it.
-//                    return true;
-//                } else if (id == R.id.action_second) {
-//                    //load fragment
-//                    if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
-//                        menuItem.setChecked(true); //make sure the item is checked/highlighted
-//                        getSupportFragmentManager().beginTransaction().replace(R.id.container, new TwoFragment()).commit();
-//                    }
-//                    //now close the nav drawer.
-//                    mDrawerlayout.closeDrawers();
-//                    return true;
-//                } else if (id == R.id.action_third) {
-//                    //load fragment
-//                    if (!menuItem.isChecked()) {  //only need to do this if fragment is already loaded.
-//                        menuItem.setChecked(true);
-//                        getSupportFragmentManager().beginTransaction().replace(R.id.container, new threeFragment()).commit();
-//                    }
-//                    mDrawerlayout.closeDrawers();
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
         //Note for this to work with arch Navigation, these id must be the same id in menu.xml and the nav_graph.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-            R.id.action_first, R.id.action_second, R.id.action_third)
-            .build();
+                R.id.action_first, R.id.action_second, R.id.action_third)
+                .build();
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         NavController navController = navHostFragment.getNavController();
 
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(mNavigationView, navController);
+        NavigationUI.setupWithNavController(binding.navview, navController);
     }
 
 
