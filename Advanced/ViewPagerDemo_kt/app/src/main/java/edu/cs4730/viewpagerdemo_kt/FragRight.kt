@@ -1,6 +1,5 @@
 package edu.cs4730.viewpagerdemo_kt
 
-import android.widget.TextView
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
@@ -8,13 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import edu.cs4730.viewpagerdemo_kt.databinding.RightBinding
 
 /**
  * This is a simple fragment to display data and it the "right" most fragment in the viewpager.
  * The code here is identical to the code in the left fragment.
  */
 class FragRight : Fragment() {
-    lateinit var tx: TextView
+    lateinit var binding: RightBinding
     lateinit var mViewModel: DataViewModel
     var TAG = "Right"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,15 +27,12 @@ class FragRight : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
         Log.d("Left", "OnCreateView")
-        val view = inflater.inflate(R.layout.left, container, false)
-        tx = view.findViewById(R.id.tvleft)
-        mViewModel.dataRight.observe(viewLifecycleOwner, { data -> tx.text = data })
-        return view
+        binding = RightBinding.inflate(inflater, container, false)
+        mViewModel.dataRight.observe(viewLifecycleOwner) { data -> binding.tvright.text = data }
+        return binding.root
     }
 
     override fun onPause() {

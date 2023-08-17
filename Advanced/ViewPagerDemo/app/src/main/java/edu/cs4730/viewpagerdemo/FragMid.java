@@ -5,10 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
+import edu.cs4730.viewpagerdemo.databinding.MiddleBinding;
 
 /**
  * This is the middle fragment, which uses a edittext to put text on the either the left or right
@@ -17,30 +19,26 @@ import androidx.lifecycle.ViewModelProvider;
  */
 
 public class FragMid extends Fragment implements Button.OnClickListener {
-    Button btn_lt, btn_rt;
-    EditText et;
+    MiddleBinding binding;
     DataViewModel mViewModel;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.middle, container, false);
-        btn_lt = view.findViewById(R.id.btn_lt);
-        btn_lt.setOnClickListener(this);
-        btn_rt = view.findViewById(R.id.btn_rt);
-        btn_rt.setOnClickListener(this);
-        et = view.findViewById(R.id.editText1);
+        binding = MiddleBinding.inflate(inflater, container, false);
+        binding.btnLt.setOnClickListener(this);
+        binding.btnRt.setOnClickListener(this);
         mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
-        return view;
+        return binding.getRoot();
     }
 
     @Override
     public void onClick(View v) {
-        if (v == btn_lt) { //left button
-            mViewModel.appendStrLeft(et.getText().toString());
+        if (v == binding.btnLt) { //left button
+            mViewModel.appendStrLeft(binding.editText1.getText().toString());
         } else {  //right button
-            mViewModel.appendStrRight(et.getText().toString());
+            mViewModel.appendStrRight(binding.editText1.getText().toString());
         }
-        et.setText("");
+        binding.editText1.setText("");
     }
 }

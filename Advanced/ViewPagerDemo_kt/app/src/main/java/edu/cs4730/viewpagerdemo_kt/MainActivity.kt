@@ -7,23 +7,26 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager.widget.ViewPager
+import edu.cs4730.viewpagerdemo_kt.databinding.ActivityMainBinding
 
 @SuppressLint("StaticFieldLeak")
 class MainActivity : AppCompatActivity() {
 
     var TAG = "MainActivity"
+
     companion object {
         lateinit var leftfrag: FragLeft
         lateinit var midfrag: FragMid
         lateinit var rightfrag: FragRight
     }
-    var viewPager: ViewPager? = null
+
+    lateinit var binding: ActivityMainBinding
     lateinit var mViewModel: DataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         mViewModel = ViewModelProvider(this)[DataViewModel::class.java]
 
         leftfrag = FragLeft()
@@ -31,10 +34,9 @@ class MainActivity : AppCompatActivity() {
         rightfrag = FragRight()
         val fragmentManager = supportFragmentManager
 
-        viewPager = findViewById(R.id.pager)
-        if (viewPager != null) {
+        if (binding.pager != null) {
             //in portrait mode, so setup the viewpager with the fragments, using the adapter
-            viewPager!!.adapter = ThreeFragmentPagerAdapter(fragmentManager)
+            binding.pager!!.adapter = ThreeFragmentPagerAdapter(fragmentManager)
         } else {
             //in landscape mode  //so no viewpager.
             fragmentManager.beginTransaction()
@@ -71,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //getPageTitle required for the PageStripe to work and have a value.
-        override fun getPageTitle(position: Int): CharSequence? {
+        override fun getPageTitle(position: Int): CharSequence {
 
             //return String.valueOf(position);  //returns string of position for title
             return "Page " + (position + 1).toString()

@@ -1,13 +1,12 @@
 package edu.cs4730.viewpagerdemo_kt
 
-import android.widget.EditText
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import edu.cs4730.viewpagerdemo_kt.databinding.MiddleBinding
 
 /**
  * This is the middle fragment, which uses a edittext to put text on the either the left or right
@@ -15,31 +14,24 @@ import androidx.lifecycle.ViewModelProvider
  * an observer.
  */
 class FragMid : Fragment(), View.OnClickListener {
-    lateinit var btn_lt: Button
-    lateinit var btn_rt: Button
-    lateinit var et: EditText
+    lateinit var binding: MiddleBinding
     lateinit var mViewModel: DataViewModel
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.middle, container, false)
-        btn_lt = view.findViewById(R.id.btn_lt)
-        btn_lt.setOnClickListener(this)
-        btn_rt = view.findViewById(R.id.btn_rt)
-        btn_rt.setOnClickListener(this)
-        et = view.findViewById(R.id.editText1)
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        binding = MiddleBinding.inflate(inflater, container, false)
+        binding.btnLt.setOnClickListener(this)
+        binding.btnRt.setOnClickListener(this)
         mViewModel = ViewModelProvider(requireActivity()).get(DataViewModel::class.java)
-        return view
+        return binding.root
     }
 
     override fun onClick(v: View) {
-        if (v === btn_lt) { //left button
-            mViewModel.appendStrLeft(et.text.toString())
+        if (v === binding.btnLt) { //left button
+            mViewModel.appendStrLeft(binding.editText1.text.toString())
         } else {  //right button
-            mViewModel.appendStrRight(et.text.toString())
+            mViewModel.appendStrRight(binding.editText1.text.toString())
         }
-        et.setText("")
+        binding.editText1.setText("")
     }
 }
