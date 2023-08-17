@@ -12,7 +12,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
+
+import edu.cs4730.viewpager2demo.databinding.ActivityMainBinding;
 
 /**
  * this is an example using 3 fragments and a viewpager.
@@ -23,18 +24,19 @@ import androidx.viewpager2.widget.ViewPager2;
 
 public class MainActivity extends AppCompatActivity {
     String TAG = "MainActivity";
-    ViewPager2 viewPager;
+    ActivityMainBinding binding;
     FragLeft leftfrag;
     FragMid midfrag;
     FragRight rightfrag;
-    TabLayout tabLayout;
+    //TabLayout tabLayout;
 
     DataViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         mViewModel = new ViewModelProvider(this).get(DataViewModel.class);
 
@@ -43,13 +45,12 @@ public class MainActivity extends AppCompatActivity {
         rightfrag = new FragRight();
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        viewPager = findViewById(R.id.pager);
-        if (viewPager != null) {
+        if (binding.pager != null) {
             //in portrait mode, so setup the viewpager with the fragments, using the adapter
-            viewPager.setAdapter(new ThreeFragmentPagerAdapter(this));
-            tabLayout= findViewById(R.id.tab_layout);
-            new TabLayoutMediator(tabLayout,
-                viewPager,
+            binding.pager.setAdapter(new ThreeFragmentPagerAdapter(this));
+
+            new TabLayoutMediator(binding.tabLayout,
+                    binding.pager,
                 new TabLayoutMediator.TabConfigurationStrategy() {
                     @Override
                     public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /*
+    /**
      * We need to extend a FragmentPagerAdapter to add our three fragments.
      *   We need to override getCount and getItem.  Also getPageTitle since we are
      *   using a PageStripe.
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // return the correct fragment based on where in pager we are.
+        @NonNull
         @Override
         public Fragment createFragment(int position) {
 
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 case 2:
                     return rightfrag;
                 default:
-                    return null;
+                    return rightfrag;  //should be null, but that would cause the app to blow up.
             }
         }
 

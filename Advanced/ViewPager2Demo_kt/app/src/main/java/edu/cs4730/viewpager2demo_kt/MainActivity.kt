@@ -7,9 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import edu.cs4730.viewpager2demo_kt.databinding.ActivityMainBinding
 
 @SuppressLint("StaticFieldLeak")
 class MainActivity : AppCompatActivity() {
@@ -19,13 +18,13 @@ class MainActivity : AppCompatActivity() {
         lateinit var midfrag: FragMid
         lateinit var rightfrag: FragRight
     }
-    lateinit var tabLayout: TabLayout
-    var viewPager: ViewPager2? = null
+    lateinit var binding: ActivityMainBinding
     lateinit var mViewModel: DataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         mViewModel = ViewModelProvider(this)[DataViewModel::class.java]
 
@@ -34,14 +33,12 @@ class MainActivity : AppCompatActivity() {
         rightfrag = FragRight()
         val fragmentManager = supportFragmentManager
 
-        viewPager = findViewById(R.id.pager)
-        if (viewPager != null) {
+        if (binding.pager != null) {
             //in portrait mode, so setup the viewpager with the fragments, using the adapter
-            viewPager!!.adapter = ThreeFragmentPagerAdapter(this)
-            tabLayout = findViewById(R.id.tab_layout)
+            binding.pager!!.adapter = ThreeFragmentPagerAdapter(this)
             TabLayoutMediator(
-                tabLayout,
-                viewPager!!
+                binding.tabLayout!!,
+                binding.pager!!
             ) { tab, position -> tab.text = "Position " + (position + 1) }.attach()
         } else {
             //in landscape mode  //so no viewpager.
@@ -53,7 +50,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     /**
      * We need to extend a FragmentPagerAdapter to add our three fragments.
      *   We need to override getCount and getItem.  Also getPageTitle since we are
@@ -61,7 +57,7 @@ class MainActivity : AppCompatActivity() {
      */
     class ThreeFragmentPagerAdapter  //required constructor that simply supers.
         (fa: FragmentActivity?) : FragmentStateAdapter(fa!!) {
-        var PAGE_COUNT = 3
+        private var PAGE_COUNT = 3
 
         // return the correct fragment based on where in pager we are.
         override fun createFragment(position: Int): Fragment {

@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'kotlin-android'
 android {
-    compileSdkVersion 33
+    compileSdk 33
 
     defaultConfig {
         applicationId "edu.cs4730.viewpager2demo"
-        minSdkVersion 26
-        targetSdkVersion 33
+        minSdkVersion 28
+        targetSdk 33
         versionCode 1
         versionName "1.0"
     }
@@ -19,14 +19,18 @@ android {
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'edu.cs4730.viewpager2demo'
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
-    implementation "androidx.lifecycle:lifecycle-livedata:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.6.1"
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
-    implementation "com.google.android.material:material:1.6.1"  //tablayout.
+    implementation "com.google.android.material:material:1.9.0"  //tablayout.
 }
