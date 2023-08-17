@@ -20,6 +20,7 @@ import android.content.Context;
 import android.text.InputFilter;
 import android.util.AttributeSet;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.emoji.widget.EmojiTextViewHelper;
@@ -49,7 +50,7 @@ public class CustomTextView extends AppCompatTextView {
     }
 
     @Override
-    public void setFilters(InputFilter[] filters) {
+    public void setFilters(@NonNull InputFilter[] filters) {
         super.setFilters(getEmojiTextViewHelper().getFilters(filters));
     }
 

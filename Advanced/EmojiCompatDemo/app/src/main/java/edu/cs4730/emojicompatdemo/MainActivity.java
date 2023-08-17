@@ -16,6 +16,8 @@ import androidx.emoji.bundled.BundledEmojiCompatConfig;
 import androidx.emoji.text.EmojiCompat;
 import androidx.emoji.text.FontRequestEmojiCompatConfig;
 
+import edu.cs4730.emojicompatdemo.databinding.ActivityMainBinding;
+
 /**
  * show how to make sure the app is using the most current emojiis.
  * <p>
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String starstruck = "\uD83E\uDD29";
 
     static final String EMOJI = avocado + " " + starstruck;
+
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,35 +78,31 @@ public class MainActivity extends AppCompatActivity {
         }
         EmojiCompat.init(config);
         //now we can use the fonts and
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
 
         // TextView variant provided by EmojiCompat library
-        final TextView emojiTextView = findViewById(R.id.emoji_text_view);
-        emojiTextView.setText(getString(R.string.emoji_text_view, EMOJI));
+        binding.emojiTextView.setText(getString(R.string.emoji_text_view, EMOJI));
 
         // EditText variant provided by EmojiCompat library
-        final TextView emojiEditText = findViewById(R.id.emoji_edit_text);
-        emojiEditText.setText(getString(R.string.emoji_edit_text, EMOJI));
+        binding.emojiEditText.setText(getString(R.string.emoji_edit_text, EMOJI));
 
         // Button variant provided by EmojiCompat library
-        final TextView emojiButton = findViewById(R.id.emoji_button);
-        emojiButton.setText(getString(R.string.emoji_button, EMOJI));
-        emojiButton.setOnClickListener(new View.OnClickListener() {
+        binding.emojiButton.setText(getString(R.string.emoji_button, EMOJI));
+        binding.emojiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //note the logger prints the emojis, I thought it would print the code instead.
-                Log.d(TAG, "it's this" + emojiEditText.getText().toString());
+                Log.d(TAG, "it's this" + binding.emojiEditText.getText().toString());
             }
         });
 
         // Regular TextView without EmojiCompat support; you have to manually process the text
-        final TextView regularTextView = findViewById(R.id.regular_text_view);
-        EmojiCompat.get().registerInitCallback(new InitCallback(regularTextView));
+        EmojiCompat.get().registerInitCallback(new InitCallback(binding.regularTextView));
 
         // Custom TextView
-        final TextView customTextView = findViewById(R.id.emoji_custom_text_view);
-        customTextView.setText(getString(R.string.custom_text_view, EMOJI));
+        binding.emojiCustomTextView.setText(getString(R.string.custom_text_view, EMOJI));
 
     }
 
