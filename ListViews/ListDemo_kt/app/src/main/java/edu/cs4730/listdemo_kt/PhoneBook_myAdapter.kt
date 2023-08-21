@@ -1,23 +1,18 @@
 package edu.cs4730.listdemo_kt
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.Button
-import android.widget.TextView
-
+import edu.cs4730.listdemo_kt.databinding.PhonebookRowlayoutBinding
 
 /*
  * From http://code.google.com/p/myandroidwidgets/source/browse/trunk/Phonebook/src/com/abeanie/PhonebookAdapter.java
  * description found at http://techdroid.kbeanie.com/2009/07/custom-listview-for-android.html
  */
 
-/*
- * From http://code.google.com/p/myandroidwidgets/source/browse/trunk/Phonebook/src/com/abeanie/PhonebookAdapter.java
- * description found at http://techdroid.kbeanie.com/2009/07/custom-listview-for-android.html
- */
 class Phonebook_myAdapter(
     private val context: Context,
     private val listPhonebook: MutableList<Phonebook_DataModel>
@@ -34,34 +29,38 @@ class Phonebook_myAdapter(
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
-
+    lateinit var binding: PhonebookRowlayoutBinding
+    var TAG = "Phonebook_myAdapter"
     override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup): View {
-        var convertView = convertView
+
         val entry = listPhonebook[position]
         if (convertView == null) {
-            val inflater = context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            convertView = inflater.inflate(R.layout.phonebook_rowlayout, null)
+            binding = PhonebookRowlayoutBinding.inflate(
+                (context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+            )
+            Log.d(TAG, "convertView is null")
+        } else {
+            //I'm not 100 percent sure this works.  my testing seems to say it does work.
+            Log.d(TAG, "convertView is NOT null")
+            binding = PhonebookRowlayoutBinding.bind(convertView)
         }
-        val tvContact = convertView!!.findViewById<View>(R.id.tvContact) as TextView
-        tvContact.text = entry.name
-        val tvPhone = convertView!!.findViewById<View>(R.id.tvMobile) as TextView
-        tvPhone.text = entry.phone
-        val tvMail = convertView!!.findViewById<View>(R.id.tvMail) as TextView
-        tvMail.text = entry.mail
+        binding.tvContact.text = entry.name
+        binding.tvMobile.text = entry.phone
+        binding.tvMail.text = entry.mail
 
         // Set the onClick Listener on this button
-        val btnRemove = convertView.findViewById<View>(R.id.btnRemove) as Button
-        btnRemove.isFocusableInTouchMode = false
-        btnRemove.isFocusable = false
-        btnRemove.setOnClickListener(this)
+
+        // Set the onClick Listener on this button
+        binding.btnRemove.isFocusableInTouchMode = false
+        binding.btnRemove.isFocusable = false
+        binding.btnRemove.setOnClickListener(this)
         // Set the entry, so that you can capture which item was clicked and
         // then remove it
         // As an alternative, you can use the id/position of the item to capture
         // the item that was clicked.
         // btnRemove.setId(position);
-        btnRemove.tag = entry
-        return convertView
+        binding.btnRemove.tag = entry
+        return binding.root
     }
 
     override fun onClick(view: View) {

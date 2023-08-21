@@ -4,24 +4,22 @@ package edu.cs4730.ListDemo;
  * http://www.vogella.de/articles/AndroidListView/article.html
  */
 
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.ListFragment;
+
+import edu.cs4730.ListDemo.databinding.ListfragmentLayoutBinding;
 
 public class Simple2_ListFragment extends ListFragment {
     String TAG = "Simple2_frag";
-    Context myContext;
+    ListfragmentLayoutBinding binding;
 
     String[] values = new String[]{
             "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
@@ -68,19 +66,19 @@ public class Simple2_ListFragment extends ListFragment {
     };
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.listfragment_layout, container, false);
+        binding = ListfragmentLayoutBinding.inflate(inflater, container, false);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(inflater.getContext(),  R.layout.simple2_rowlayout, R.id.label, values);
         setListAdapter(adapter);
-        return view;
+        return binding.getRoot();
 
     }
 
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        String item = (String)  values[position];   //getListAdapter().getItem(position);
+        String item =  values[position];   //getListAdapter().getItem(position);
         Toast.makeText(requireContext(), item + " selected", Toast.LENGTH_LONG).show();
     }
 

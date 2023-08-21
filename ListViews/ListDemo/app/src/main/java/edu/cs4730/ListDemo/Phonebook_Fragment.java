@@ -18,23 +18,27 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import edu.cs4730.ListDemo.databinding.PhonebookFragmentBinding;
 
 public class Phonebook_Fragment extends Fragment {
 
     String TAG = "Phone_Fragment";
+
+    PhonebookFragmentBinding binding;
 
     public Phonebook_Fragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View myView = inflater.inflate(R.layout.phonebook_fragment, container, false);
+        binding = PhonebookFragmentBinding.inflate(inflater, container, false);
 
-        ListView list = myView.findViewById(R.id.ListView01);
-        list.setClickable(true);
+        binding.ListView01.setClickable(true);
 
         final List<Phonebook_DataModel> listOfPhonebook = new ArrayList<Phonebook_DataModel>();
         listOfPhonebook.add(new Phonebook_DataModel("Test", "9981728", "test@test.com"));
@@ -44,10 +48,14 @@ public class Phonebook_Fragment extends Fragment {
         listOfPhonebook.add(new Phonebook_DataModel("Test4", "00000", "test4test.com"));
         listOfPhonebook.add(new Phonebook_DataModel("Test5", "00000", "test5@test.com"));
         listOfPhonebook.add(new Phonebook_DataModel("Test6", "00000", "test6@test.com"));
+        listOfPhonebook.add(new Phonebook_DataModel("Test7", "00000", "test7@test.com"));
+        listOfPhonebook.add(new Phonebook_DataModel("Test8", "00000", "test8@test.com"));
+        listOfPhonebook.add(new Phonebook_DataModel("Test9", "00000", "test9@test.com"));
+
 
         Phonebook_myAdapter adapter = new Phonebook_myAdapter(requireContext(), listOfPhonebook);
 
-        list.setOnItemClickListener(new OnItemClickListener() {
+        binding.ListView01.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int position, long index) {
@@ -56,15 +64,14 @@ public class Phonebook_Fragment extends Fragment {
             }
         });
 
-        list.setAdapter(adapter);
+        binding.ListView01.setAdapter(adapter);
 
-        return myView;
+        return binding.getRoot();
     }
 
     private void showToast(String message) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show();
     }
-
 
 }
 

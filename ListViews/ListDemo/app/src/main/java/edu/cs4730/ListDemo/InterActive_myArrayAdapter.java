@@ -20,6 +20,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 
 import android.widget.TextView;
 
+
+
 public class InterActive_myArrayAdapter extends ArrayAdapter<InterActive_DataModel> {
 
     private final List<InterActive_DataModel> list;

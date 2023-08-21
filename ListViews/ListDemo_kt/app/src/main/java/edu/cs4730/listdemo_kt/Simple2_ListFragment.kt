@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
 import androidx.fragment.app.ListFragment
+import edu.cs4730.listdemo_kt.databinding.ListfragmentLayoutBinding
 
 /*
  * http://www.vogella.de/articles/AndroidListView/article.html
@@ -58,16 +59,14 @@ import androidx.fragment.app.ListFragment
         "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Wallis and Futuna", "Western Sahara",
         "Yemen", "Yugoslavia", "Zambia", "Zimbabwe"
     )
-
+    lateinit var binding: ListfragmentLayoutBinding
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.listfragment_layout, container, false)
+        inflater: LayoutInflater,       container: ViewGroup?,        savedInstanceState: Bundle?
+    ): View {
+        binding= ListfragmentLayoutBinding.inflate(inflater, container, false)
         val adapter = ArrayAdapter(inflater.context, R.layout.simple2_rowlayout, R.id.label, values)
         listAdapter = adapter
-        return view
+        return binding.root
     }
 
     override fun onListItemClick(l: ListView, v: View, position: Int, id: Long) {
