@@ -1,44 +1,48 @@
 package edu.cs4730.listdemo_kt
 
-import java.util.Locale
-
 import android.os.Bundle
-import android.view.View
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager.widget.ViewPager
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.google.android.material.tabs.TabLayoutMediator
+import edu.cs4730.listdemo_kt.databinding.ActivityMainBinding
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     var TAG = "MainActivity"
 
-
-    lateinit var mSectionsPagerAdapter: SectionsPagerAdapter
-    lateinit var mViewPager: ViewPager
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = findViewById<View>(R.id.pager) as ViewPager
-        mViewPager.adapter = mSectionsPagerAdapter
-        //mViewPager.setCurrentItem(7);// set to a specific page in the pager.
+        binding.pager.setAdapter(SectionsPagerAdapter(this))
+        //now setup the tablelayout titles.
+        TabLayoutMediator(
+            binding.tabLayout, binding.pager
+        ) { tab, position ->
+            val l = Locale.getDefault()
+            when (position) {
+                0 -> tab.text = getString(R.string.title_section1).uppercase(l)
+                1 -> tab.text = getString(R.string.title_section2).uppercase(l)
+                2 -> tab.text = getString(R.string.title_section3).uppercase(l)
+                3 -> tab.text = getString(R.string.title_section4).uppercase(l)
+                4 -> tab.text = getString(R.string.title_section5).uppercase(l)
+            }
+        }.attach()
     }
 
     /**
-     * A [FragmentPagerAdapter] that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
+     * A [FragmentStateAdapter] that returns a fragment corresponding to
+
      */
-    class SectionsPagerAdapter(fm: FragmentManager?) :
-        FragmentPagerAdapter(fm!!) {
-        override fun getItem(position: Int): Fragment {
+    class SectionsPagerAdapter(fa: FragmentActivity?) : FragmentStateAdapter(fa!!) {
+        private var PAGE_COUNT = 5
+        override fun createFragment(position: Int): Fragment {
             return when (position) {
                 0 -> Simple1_ListFragment()
                 1 -> Simple2_ListFragment()
@@ -49,21 +53,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        override fun getCount(): Int {
+        override fun getItemCount(): Int {
             // Show X total pages.
-            return 5
-        }
-
-        override fun getPageTitle(position: Int): CharSequence? {
-            val l = Locale.getDefault()
-            when (position) {
-                0 -> return "Simple"
-                1 -> return "Simple 2"
-                2 -> return "Simple 3"
-                3 -> return "InterActive"
-                4 -> return "Phone list"
-            }
-            return null
+            return PAGE_COUNT
         }
     }
 }

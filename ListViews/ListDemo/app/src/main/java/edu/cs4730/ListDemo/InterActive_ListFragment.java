@@ -2,26 +2,29 @@ package edu.cs4730.ListDemo;
 
 import java.util.ArrayList;
 import java.util.List;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.ListFragment;
+
+
+import edu.cs4730.ListDemo.databinding.ListfragmentLayoutBinding;
 
 public class InterActive_ListFragment extends ListFragment {
     String TAG = "InterActive_ListFragment";
+	ListfragmentLayoutBinding binding;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.listfragment_layout, container, false);
+		binding = ListfragmentLayoutBinding.inflate(inflater, container, false);
 		ArrayAdapter<InterActive_DataModel> adapter = new InterActive_myArrayAdapter(requireActivity(),	getModel());
 		setListAdapter(adapter);
-		return view;
+		return binding.getRoot();
 	}
 
 	private List<InterActive_DataModel> getModel() {
