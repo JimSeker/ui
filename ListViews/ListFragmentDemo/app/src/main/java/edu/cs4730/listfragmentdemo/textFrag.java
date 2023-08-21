@@ -6,7 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import edu.cs4730.listfragmentdemo.databinding.TextFragmentBinding;
 
 /**
  * This is a simple fragment used to display the data for whichever shakespeare that is clicked on
@@ -16,7 +19,7 @@ import androidx.fragment.app.Fragment;
 public class textFrag extends Fragment {
 
     int myPosition = 0;
-    TextView tv;
+    TextFragmentBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,18 +29,15 @@ public class textFrag extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-
-        // If activity recreated (such as from screen rotate), restore
+                // If activity recreated (such as from screen rotate), restore
         // the previous article selection set by onSaveInstanceState().
         // This is primarily necessary when in the two-pane layout.
         if (savedInstanceState != null) {
             myPosition = savedInstanceState.getInt("position");
         }
-        View view = inflater.inflate(R.layout.text_fragment, container, false);
-        tv = view.findViewById(R.id.text);
+        binding = TextFragmentBinding.inflate(inflater, container, false);
         setText(myPosition);
-        return view;
+        return binding.getRoot();
     }
 
     /*
@@ -45,13 +45,12 @@ public class textFrag extends Fragment {
      */
     public void setText(int item) {
 
-        tv.setText(Shakespeare.DIALOGUE[item]);
+        binding.text.setText(Shakespeare.DIALOGUE[item]);
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-
         // Save the current article selection in case we need to recreate the fragment
         outState.putInt("position", myPosition);
     }

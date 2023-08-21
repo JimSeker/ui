@@ -2,6 +2,7 @@ package edu.cs4730.listviewswiperefresh;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -9,6 +10,8 @@ import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import edu.cs4730.listviewswiperefresh.databinding.ActivityMainBinding;
 
 /**
  * A simple example of how to use the refreshlayout with a listview.
@@ -66,8 +69,7 @@ public class MainActivity extends AppCompatActivity {
         "Yemen", "Yugoslavia", "Zambia", "Zimbabwe"
     };
 
-    ListView mListView;
-    SwipeRefreshLayout mSwipeRefreshLayout;
+    ActivityMainBinding binding;
     ArrayAdapter<String> mAdapter;
     Random mRandom = new Random();
 
@@ -75,21 +77,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-
-        mSwipeRefreshLayout = findViewById(R.id.activity_main_swipe_refresh_layout);
-        mListView = findViewById(R.id.ListView01);
         String[] fakelist = getRandomList();
         mAdapter = new ArrayAdapter<String>(
             MainActivity.this,
             android.R.layout.simple_list_item_1, fakelist);
-        mListView.setAdapter(mAdapter);
+        binding.ListView01.setAdapter(mAdapter);
 
         //setup some colors for the refresh circle.
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue);
+        binding.activityMainSwipeRefreshLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue);
         //now setup the swiperefrestlayout listener where the main work is done.
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        binding.activityMainSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 //where we call the refresher parts.  normally some kind of networking async task or web service.
@@ -102,9 +102,9 @@ public class MainActivity extends AppCompatActivity {
                 mAdapter = new ArrayAdapter<String>(
                         MainActivity.this,
                         android.R.layout.simple_list_item_1, fakelist);
-                mListView.setAdapter(mAdapter);
+                binding.ListView01.setAdapter(mAdapter);
                 //new turn off the refresh.
-                mSwipeRefreshLayout.setRefreshing(false);
+                binding.activityMainSwipeRefreshLayout.setRefreshing(false);
                 */
                 refreshslower();  //this will be slower, for the demo.
             }
@@ -119,14 +119,14 @@ public class MainActivity extends AppCompatActivity {
      * the refreshing circle.
      */
     void refreshslower() {
-        new Handler().postDelayed(new Runnable() {
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
                 //update the listview with new values.
                 mAdapter = new ArrayAdapter<String>(MainActivity.this,
                     android.R.layout.simple_list_item_1, getRandomList());
-                mListView.setAdapter(mAdapter);
-                mSwipeRefreshLayout.setRefreshing(false);  //turn of the refresh.
+                binding.ListView01.setAdapter(mAdapter);
+                binding.activityMainSwipeRefreshLayout.setRefreshing(false);  //turn of the refresh.
             }
         }, 1500);
     }

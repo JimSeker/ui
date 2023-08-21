@@ -2,6 +2,7 @@ package edu.cs4730.listfragmentdemo_kt
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import edu.cs4730.listfragmentdemo_kt.databinding.ActivityMainBinding
 
 /**
  * This is an example using the listfragment.  There is very little code here that is not default
@@ -11,9 +12,11 @@ import androidx.appcompat.app.AppCompatActivity
  */
 class MainActivity : AppCompatActivity(), titlefrag.OnFragmentInteractionListener {
     lateinit var myTextFrag: textFrag
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //get the textFrag from the support manager;
         myTextFrag = supportFragmentManager.findFragmentById(R.id.frag_text) as textFrag

@@ -2,11 +2,13 @@ package edu.cs4730.listviewswiperefresh_kt
 
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
+import edu.cs4730.listviewswiperefresh_kt.databinding.ActivityMainBinding
 import java.util.*
 
 /**
@@ -67,27 +69,26 @@ class MainActivity : AppCompatActivity() {
     )
 
 
-    lateinit var mListView: ListView
-    lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
+    lateinit var binding: ActivityMainBinding
     lateinit var mAdapter: ArrayAdapter<String>
     var mRandom = Random()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        mSwipeRefreshLayout = findViewById(R.id.activity_main_swipe_refresh_layout)
-        mListView = findViewById(R.id.ListView01)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         val fakelist = getRandomList()
         mAdapter = ArrayAdapter(this@MainActivity,
             android.R.layout.simple_list_item_1, fakelist
         )
-        mListView.adapter = mAdapter
+        binding.ListView01.adapter = mAdapter
 
         //setup some colors for the refresh circle.
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue)
+        binding.activityMainSwipeRefreshLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue)
         //now setup the swiperefrestlayout listener where the main work is done.
-        mSwipeRefreshLayout.setOnRefreshListener(OnRefreshListener {
+        binding.activityMainSwipeRefreshLayout.setOnRefreshListener(OnRefreshListener {
             //where we call the refresher parts.  normally some kind of networking async task or web service.
             //this is a bad way to do this, I'm just redoing the adapter, normally, the adapter would update
             //and then use the mAdapter.notifyDataSetChanged();
@@ -97,9 +98,9 @@ class MainActivity : AppCompatActivity() {
             mAdapter = ArrayAdapter(this@MainActivity,
                 android.R.layout.simple_list_item_1, fakelist
             )
-            mListView.adapter = mAdapter
+            binding.ListView01.adapter = mAdapter
             //new turn off the refresh.
-            mSwipeRefreshLayout.isRefreshing = false
+            binding.activityMainSwipeRefreshLayout.isRefreshing = false
             */
             refreshSlower() //this will be slower, for the demo.
         })
@@ -112,14 +113,14 @@ class MainActivity : AppCompatActivity() {
      * the refreshing circle.
      */
     fun refreshSlower() {
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             //update the listview with new values.
             mAdapter = ArrayAdapter(
                 this@MainActivity,
                 android.R.layout.simple_list_item_1, getRandomList()
             )
-            mListView.adapter = mAdapter
-            mSwipeRefreshLayout.isRefreshing = false //turn of the refresh.
+            binding.ListView01.adapter = mAdapter
+            binding.activityMainSwipeRefreshLayout.isRefreshing = false //turn of the refresh.
         }, 1500)
     }
 

@@ -12,6 +12,8 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.ListFragment;
 
+import edu.cs4730.listfragmentdemo.databinding.ListfragmentLayoutBinding;
+
 /**
  * This ia listfragment.  All we need to do is setlistadapter in onCreateView (there is no layout)
  * and override onListItemClick.  Since we also have callbacks, also deal with those.
@@ -23,14 +25,15 @@ public class titlefrag extends ListFragment {
      * The fragment's current callback object, which is notified of list item clicks.
      */
     private OnFragmentInteractionListener mListener;
+    ListfragmentLayoutBinding binding;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.listfragment_layout, container, false);
+        binding = ListfragmentLayoutBinding.inflate(inflater, container, false);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(requireActivity(), android.R.layout.simple_list_item_1, Shakespeare.TITLES);
         setListAdapter(adapter);
-        return view;
+        return binding.getRoot();
     }
 
     @Override

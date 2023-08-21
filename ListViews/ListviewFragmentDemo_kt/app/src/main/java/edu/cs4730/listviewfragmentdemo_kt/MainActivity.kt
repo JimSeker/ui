@@ -3,6 +3,7 @@ package edu.cs4730.listviewfragmentdemo_kt
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import edu.cs4730.listviewfragmentdemo_kt.databinding.ActivityMainBinding
 
 /**
  * This is an example using the listview in a fragment.  There is very little code here that is not default
@@ -16,11 +17,14 @@ class MainActivity : AppCompatActivity(), titlefrag.OnFragmentInteractionListene
     var TwoPane = false
 
     lateinit var myTextFrag: textFrag
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        if (findViewById<View?>(R.id.container) == null) {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        if (binding.container == null) {
             //landscape or large mode. both fragments will be displayed on the screen.
             // nothing to do, since it already showing.
             TwoPane = true
@@ -29,9 +33,7 @@ class MainActivity : AppCompatActivity(), titlefrag.OnFragmentInteractionListene
             //portrait or small screen.  the container exists.
             TwoPane = false
             //add the title fragment.
-            supportFragmentManager.beginTransaction()
-                .add(R.id.container, titlefrag())
-                .commit()
+            supportFragmentManager.beginTransaction().add(R.id.container, titlefrag()).commit()
         }
     }
 

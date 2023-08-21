@@ -10,6 +10,7 @@ import android.content.Context
 import android.view.View
 import android.widget.ListView
 import androidx.fragment.app.ListFragment
+import edu.cs4730.listfragmentdemo_kt.databinding.ListfragmentLayoutBinding
 import java.lang.ClassCastException
 
 /**
@@ -21,16 +22,15 @@ class titlefrag : ListFragment() {
      * The fragment's current callback object, which is notified of list item clicks.
      */
     private var mListener: OnFragmentInteractionListener? = null
+    lateinit var binding: ListfragmentLayoutBinding
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.listfragment_layout, container, false)
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        binding = ListfragmentLayoutBinding.inflate(inflater, container, false)
         val adapter =
             ArrayAdapter(requireActivity(), android.R.layout.simple_list_item_1, Shakespeare.TITLES)
         listAdapter = adapter
-        return view
+        return binding.root
     }
 
     override fun onAttach(context: Context) {
@@ -40,8 +40,7 @@ class titlefrag : ListFragment() {
             activity as OnFragmentInteractionListener?
         } catch (e: ClassCastException) {
             throw ClassCastException(
-                activity.toString()
-                        + " must implement OnFragmentInteractionListener"
+                activity.toString() + " must implement OnFragmentInteractionListener"
             )
         }
     }

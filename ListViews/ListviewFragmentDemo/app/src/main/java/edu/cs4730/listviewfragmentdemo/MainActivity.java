@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import edu.cs4730.listviewfragmentdemo.databinding.ActivityMainBinding;
+
 /**
  * This is an example using the listview in a fragment.  There is very little code here that is not default
  * except the callbacks for the fragment named titlefrag.  There is a layout and layout-land for this
@@ -15,14 +17,16 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity implements titlefrag.OnFragmentInteractionListener {
     boolean TwoPane = false;
-
+    ActivityMainBinding binding;
     textFrag myTextFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        if (findViewById(R.id.container) == null) {
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        if (binding.container == null) {
             //landscape or large mode. both fragments will be displayed on the screen.
             // nothing to do, since it already showing.
             TwoPane = true;
@@ -32,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements titlefrag.OnFragm
             TwoPane = false;
             //add the title fragment.
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new titlefrag())
+                    .add(binding.container.getId(), new titlefrag())
                     .commit();
         }
     }
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements titlefrag.OnFragm
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             // Replace whatever is in the fragment_container view with this fragment,
             // and add the transaction to the back stack so the user can navigate back
-            transaction.replace(R.id.container, myTextFrag, "second");
+            transaction.replace(binding.container.getId(), myTextFrag, "second");
             transaction.addToBackStack(null);
             // Commit the transaction
             transaction.commit();

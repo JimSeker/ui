@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import edu.cs4730.listfragmentdemo_kt.databinding.TextFragmentBinding
 
 /**
  * This is a simple fragment used to display the data for whichever shakespeare that is clicked on
@@ -13,38 +14,33 @@ import androidx.fragment.app.Fragment
  */
 class textFrag : Fragment() {
     var myPosition = 0
-    lateinit var tv: TextView
-
+    lateinit var binding: TextFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
-
+    ): View {
         // If activity recreated (such as from screen rotate), restore
         // the previous article selection set by onSaveInstanceState().
         // This is primarily necessary when in the two-pane layout.
         if (savedInstanceState != null) {
             myPosition = savedInstanceState.getInt("position")
         }
-        val view = inflater.inflate(R.layout.text_fragment, container, false)
-        tv = view.findViewById(R.id.text)
+        binding = TextFragmentBinding.inflate(inflater, container, false)
         setText(myPosition)
-        return view
+        return binding.root
     }
 
     /**
      * simple method to set the text of the TextView from the layout, called from the TitleFrag.
      */
     fun setText(item: Int) {
-        tv.text = Shakespeare.DIALOGUE[item]
+        binding.text.text = Shakespeare.DIALOGUE[item]
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-
         // Save the current article selection in case we need to recreate the fragment
         outState.putInt("position", myPosition)
     }

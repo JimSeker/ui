@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import edu.cs4730.listviewfragmentdemo.databinding.TextFragmentBinding;
+
 /**
  * This is a simple fragment used to display the data for whichever shakspeare that is clicked on
  * in the titlefrag fragment.  This is mostly google's code.  It also shows how to quickly save a small
@@ -20,7 +22,7 @@ public class textFrag extends Fragment {
 
     private int myPosition = 0;
     private static final String ARG_PARAM1 = "param1";
-    TextView tv;
+    TextFragmentBinding binding;
 
     public static textFrag newInstance(int param1) {
         textFrag fragment = new textFrag();
@@ -48,18 +50,16 @@ public class textFrag extends Fragment {
         if (savedInstanceState != null) {
             myPosition = savedInstanceState.getInt("position");
         }
-        View view = inflater.inflate(R.layout.text_fragment, container, false);
-        tv = view.findViewById(R.id.text);
+        binding = TextFragmentBinding.inflate(inflater, container, false);
         setText(myPosition);
-        return view;
+        return binding.getRoot();
     }
 
     /*
      * simple method to set the text of the TextView from the layout, called from the TitleFrag.
      */
     public void setText(int item) {
-
-        tv.setText(Shakespeare.DIALOGUE[item]);
+        binding.text.setText(Shakespeare.DIALOGUE[item]);
     }
 
     @Override

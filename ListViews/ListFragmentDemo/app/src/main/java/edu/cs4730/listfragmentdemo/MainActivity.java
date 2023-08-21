@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import edu.cs4730.listfragmentdemo.databinding.ActivityMainBinding;
+
 /**
  * This is an example using the listfragment.  There is very little code here that is not default
  * except the callbacks for the listfragment named titlefrag.
@@ -15,11 +17,13 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity implements titlefrag.OnFragmentInteractionListener {
 
     textFrag myTextFrag;
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //get the textFrag from the support manager;
         myTextFrag = (textFrag) getSupportFragmentManager().findFragmentById(R.id.frag_text);
