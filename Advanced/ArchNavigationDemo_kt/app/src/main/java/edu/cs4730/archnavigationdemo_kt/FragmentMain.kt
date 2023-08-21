@@ -5,30 +5,28 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import androidx.fragment.app.Fragment
+import edu.cs4730.archnavigationdemo_kt.databinding.FragmentMainBinding
 
 /**
  * This fragment is the "main" fragment that is shown first.
  */
 class FragmentMain : Fragment() {
+    lateinit var binding: FragmentMainBinding
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
         // Inflate the layout for this fragment
-        val myView = inflater.inflate(R.layout.fragment_main, container, false)
-        val btn = myView.findViewById<Button>(R.id.button)
+        binding = FragmentMainBinding.inflate(inflater, container, false)
 
         //add transaction for the button or the convenience method below (uncommented).
-        //btn.setOnClickListener { view -> findNavController(view).navigate(R.id.action_fragmentMain_to_fragment_two) }
+        //binding.button.setOnClickListener { view -> findNavController(view).navigate(R.id.action_fragmentMain_to_fragment_two) }
         //or convenience method
-        btn.setOnClickListener(
+        binding.button.setOnClickListener(
             createNavigateOnClickListener(
-                R.id.action_fragmentMain_to_fragment_two,
-                null
+                R.id.action_fragmentMain_to_fragment_two, null
             )
         )
-        return myView
+        return binding.root
     }
 }

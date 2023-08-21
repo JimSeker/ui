@@ -2,6 +2,7 @@ package edu.cs4730.archnavigationdemo_kt
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import edu.cs4730.archnavigationdemo_kt.databinding.ActivityMainBinding
 
 /**
  * Nothing really to see here.  It's all about the fragments and Navigation demo.
@@ -9,8 +10,10 @@ import android.os.Bundle
  */
 
 class MainActivity : AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }
