@@ -9,15 +9,18 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.cs4730.recyclerviewdemo2.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity {
-    RecyclerView mRecyclerView;
+   ActivityMainBinding binding;
     phoneAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //setup data.
         final List<Phonebook> listOfPhonebook = new ArrayList<Phonebook>();
@@ -30,14 +33,13 @@ public class MainActivity extends AppCompatActivity {
         listOfPhonebook.add(new Phonebook("Test6", "00000", "test6@test.com"));
 
         //setup the RecyclerView
-        mRecyclerView = findViewById(R.id.list);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        binding.list.setHasFixedSize(true);
+        binding.list.setLayoutManager(new LinearLayoutManager(this));
+        binding.list.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = new phoneAdapter(listOfPhonebook, R.layout.phone_row, this);
         //add the adapter to the recyclerview
-        mRecyclerView.setAdapter(mAdapter);
+        binding.list.setAdapter(mAdapter);
     }
 
 }

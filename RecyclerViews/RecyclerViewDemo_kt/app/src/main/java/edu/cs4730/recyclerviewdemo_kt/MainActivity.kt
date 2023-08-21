@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import edu.cs4730.recyclerviewdemo_kt.databinding.ActivityMainBinding
 import java.util.Arrays;
 
 
@@ -14,30 +15,30 @@ import java.util.Arrays;
  * There is not a "simple" adapter, it must be extended.  see myAdapter.
  */
 class MainActivity : AppCompatActivity() {
-    lateinit var mRecyclerView: RecyclerView
+    lateinit var binding: ActivityMainBinding
     lateinit var mAdapter: myAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         val values = Arrays.asList(
             "Android", "iPhone", "WindowsMobile", "Blackberry", "WebOS", "Ubuntu", "Windows7",
             "Max OS X", "Linux", "OS/2"
         )
 
         //setup the RecyclerView
-        mRecyclerView = findViewById(R.id.list)
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
-        mRecyclerView.setHasFixedSize(true)
+        binding.list.setHasFixedSize(true)
 
         // use a linear layout manager
-        mRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.list.layoutManager = LinearLayoutManager(this)
         //and default animator
-        mRecyclerView.itemAnimator = DefaultItemAnimator()
+        binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = myAdapter(values, R.layout.my_row, this)
         //add the adapter to the recyclerview
-        mRecyclerView.adapter = mAdapter
+        binding.list.adapter = mAdapter
     }
 }

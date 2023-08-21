@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.cs4730.recyclerviewdemo.databinding.ActivityMainBinding;
+
 /**
  * A very simple example of how to setup a RecyclerView with cards views.
  * A  RecyclerView.Adapter needs to be implemented inorder for it to work.
@@ -17,32 +19,31 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 
 public class MainActivity extends AppCompatActivity {
-    RecyclerView mRecyclerView;
+    ActivityMainBinding binding;
     myAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         List<String> values = Arrays.asList("Android", "iPhone", "WindowsMobile",
             "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
             "Linux", "OS/2");
 
         //setup the RecyclerView
-        mRecyclerView = findViewById(R.id.list);
-
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
-        mRecyclerView.setHasFixedSize(true);
+        binding.list.setHasFixedSize(true);
 
         // use a linear layout manager
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.list.setLayoutManager(new LinearLayoutManager(this));
         //and default animator
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        binding.list.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = new myAdapter(values, R.layout.my_row, this);
         //add the adapter to the recyclerview
-        mRecyclerView.setAdapter(mAdapter);
+        binding.list.setAdapter(mAdapter);
     }
 }

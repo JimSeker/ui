@@ -4,15 +4,16 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import edu.cs4730.recyclerviewdemo2_kt.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var mRecyclerView: RecyclerView
+    lateinit var binding: ActivityMainBinding
     lateinit var mAdapter: phoneAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //setup data.
         val listOfPhonebook: MutableList<Phonebook> = ArrayList()
@@ -25,14 +26,13 @@ class MainActivity : AppCompatActivity() {
         listOfPhonebook.add(Phonebook("Test6", "00000", "test6@test.com"))
 
         //setup the RecyclerView
-        mRecyclerView = findViewById(R.id.list)
-        mRecyclerView.setHasFixedSize(true)
-        mRecyclerView.setLayoutManager(LinearLayoutManager(this))
-        mRecyclerView.setItemAnimator(DefaultItemAnimator())
+        binding.list.setHasFixedSize(true)
+        binding.list.layoutManager = LinearLayoutManager(this)
+        binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = phoneAdapter(listOfPhonebook, R.layout.phone_row, this)
         //add the adapter to the recyclerview
-        mRecyclerView.setAdapter(mAdapter)
+        binding.list.adapter = mAdapter
     }
 
 }
