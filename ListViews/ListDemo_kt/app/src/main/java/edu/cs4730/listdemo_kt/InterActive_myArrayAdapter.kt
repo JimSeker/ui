@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.CheckBox
-import android.widget.TextView
+import edu.cs4730.listdemo_kt.databinding.InteractiveRowlayoutBinding
 
 /*  the code taken from below, but has been heavy modified to the point of looking almost
  * nothing like the code on his site.
@@ -20,21 +20,20 @@ class InterActive_myArrayAdapter(
 ) :
     ArrayAdapter<InterActive_DataModel?>(context, R.layout.interactive_rowlayout, list) {
     private var onBind = false
+    lateinit var binding: InteractiveRowlayoutBinding
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var convertView = convertView
-        val checkbox: CheckBox
-        val text: TextView
+
         if (convertView == null) {
-            //having problems with the convertVeiw when not null, so just redoing it each time.  ...
-            val inflator = context.layoutInflater
-            convertView = inflator.inflate(R.layout.interactive_rowlayout, null)
+            binding = InteractiveRowlayoutBinding.inflate(context.layoutInflater)
+        } else {
+            binding = InteractiveRowlayoutBinding.bind(convertView)
         }
+
         onBind = true //we are setting data.
-        text = convertView!!.findViewById<View>(R.id.label) as TextView
-        text.text = list[position].name
-        checkbox = convertView.findViewById<View>(R.id.check) as CheckBox
-        checkbox.isChecked = list[position].isSelected
-        checkbox.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.label.text = list[position].name
+
+        binding.check.isChecked = list[position].isSelected
+        binding.check.setOnCheckedChangeListener { buttonView, isChecked ->
             if (!onBind) { //if we are nto setting up the data, then do something.  Otherwise, this can cause a loop.
                 //gatTag exists in base class, so no casting is needed here to checkbox.
                 val t = buttonView.tag as String
@@ -54,9 +53,8 @@ class InterActive_myArrayAdapter(
         }
         //Tag is an like a temp space, in a widget where you can set some information as an Object Class
         //in this case, the position variable.
-        checkbox.tag =
-            position.toString() //used to find the list position when we change the check mark
+        binding.check.tag = position.toString() //used to find the list position when we change the check mark
         onBind = false //end of setting data.
-        return convertView
+        return binding.root
     }
 }

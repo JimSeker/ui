@@ -1,7 +1,7 @@
 package edu.cs4730.ListDemo;
 /*  the code taken from below, but has been heavy modified to the point of looking almost
  * nothing like the code on his site.
- *  
+ *
  * From http://www.vogella.de/articles/AndroidListView/article.html
  */
 
@@ -20,6 +20,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 
 import android.widget.TextView;
 
+import edu.cs4730.ListDemo.databinding.InteractiveRowlayoutBinding;
 
 
 public class InterActive_myArrayAdapter extends ArrayAdapter<InterActive_DataModel> {
@@ -27,6 +28,7 @@ public class InterActive_myArrayAdapter extends ArrayAdapter<InterActive_DataMod
     private final List<InterActive_DataModel> list;
     private final Activity context;
     private boolean onBind = false;
+    InteractiveRowlayoutBinding binding;
 
     public InterActive_myArrayAdapter(Activity context, List<InterActive_DataModel> list) {
         super(context, R.layout.interactive_rowlayout, list);
@@ -36,21 +38,18 @@ public class InterActive_myArrayAdapter extends ArrayAdapter<InterActive_DataMod
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        CheckBox checkbox;
-        TextView text;
+
         if (convertView == null) {
-            //having problems with the convertVeiw when not null, so just redoing it each time.  ...
-            LayoutInflater inflator = context.getLayoutInflater();
-            convertView = inflator.inflate(R.layout.interactive_rowlayout, null);
+            binding = InteractiveRowlayoutBinding.inflate(context.getLayoutInflater());
+        } else {
+            binding = InteractiveRowlayoutBinding.bind(convertView);
         }
         onBind = true; //we are setting data.
-        text = (TextView) convertView.findViewById(R.id.label);
-        text.setText(list.get(position).getName());
 
-        checkbox = (CheckBox) convertView.findViewById(R.id.check);
-        checkbox.setChecked(list.get(position).isSelected());
+        binding.label.setText(list.get(position).getName());
+        binding.check.setChecked(list.get(position).isSelected());
 
-        checkbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+        binding.check.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (!onBind) { //if we are nto setting up the data, then do something.  Otherwise, this can cause a loop.
@@ -74,9 +73,9 @@ public class InterActive_myArrayAdapter extends ArrayAdapter<InterActive_DataMod
         });
         //Tag is an like a temp space, in a widget where you can set some information as an Object Class
         //in this case, the position variable.
-        checkbox.setTag(String.valueOf(position));  //used to find the list position when we change the check mark
+        binding.check.setTag(String.valueOf(position));  //used to find the list position when we change the check mark
         onBind = false; //end of setting data.
-        return convertView;
+        return binding.getRoot();
     }
 
 }
