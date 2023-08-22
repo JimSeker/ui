@@ -13,17 +13,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.cs4730.recyclerviewdemo3.databinding.PhonebookRowlayoutBinding;
+
 /**
  *  needs a comment here.
  */
 
 public class Phonebook_myAdapter extends RecyclerView.Adapter<Phonebook_myAdapter.ViewHolder> implements OnClickListener {
-    private Context context;
+    private Context mContext;
     private int rowLayout;
     private List<Phonebook_DataModel> listPhonebook;
 
     public Phonebook_myAdapter(List<Phonebook_DataModel> listPhonebook, int rowLayout, Context context) {
-        this.context = context;
+        this.mContext = context;
         this.listPhonebook = listPhonebook;
         this.rowLayout = rowLayout;
     }
@@ -31,7 +33,7 @@ public class Phonebook_myAdapter extends RecyclerView.Adapter<Phonebook_myAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
+        PhonebookRowlayoutBinding v = PhonebookRowlayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
         return new ViewHolder(v);
     }
 
@@ -40,18 +42,20 @@ public class Phonebook_myAdapter extends RecyclerView.Adapter<Phonebook_myAdapte
         //find our place in the datamodel and recycler view.
         Phonebook_DataModel entry = listPhonebook.get(position);
         //setup the view with data.
-        viewHolder.tvContact.setText(entry.getName());
-        viewHolder.tvPhone.setText(entry.getPhone());
-        viewHolder.tvMail.setText(entry.getMail());
+        viewHolder.viewBinding.tvContact.setText(entry.getName());
+        viewHolder.viewBinding.tvMobile.setText(entry.getPhone());
+        viewHolder.viewBinding.tvMail.setText(entry.getMail());
 
         // Set the onClick Listener on this button
-        viewHolder.btnRemove.setOnClickListener(this);
+        viewHolder.viewBinding.btnRemove.setOnClickListener(this);
+        viewHolder.viewBinding.btnRemove.setFocusableInTouchMode(false);
+        viewHolder.viewBinding.btnRemove.setFocusable(false);
         // Set the entry, so that you can capture which item was clicked and
         // then remove it
         // As an alternative, you can use the id/position of the item to capture
         // the item that was clicked.
         // btnRemove.setId(position);
-        viewHolder.btnRemove.setTag(entry);
+        viewHolder.viewBinding.btnRemove.setTag(entry);
 
     }
 
@@ -64,19 +68,10 @@ public class Phonebook_myAdapter extends RecyclerView.Adapter<Phonebook_myAdapte
      * setup the ViewHolder class with the widget variables, to be used in onBindViewholder
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvContact;
-        TextView tvPhone;
-        TextView tvMail;
-        Button btnRemove;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            tvContact = (TextView) itemView.findViewById(R.id.tvContact);
-            tvPhone = (TextView) itemView.findViewById(R.id.tvMobile);
-            tvMail = (TextView) itemView.findViewById(R.id.tvMail);
-            btnRemove = (Button) itemView.findViewById(R.id.btnRemove);
-            btnRemove.setFocusableInTouchMode(false);
-            btnRemove.setFocusable(false);
+        PhonebookRowlayoutBinding viewBinding;
+        public ViewHolder(PhonebookRowlayoutBinding itemView) {
+            super(itemView.getRoot());
+            viewBinding = itemView;
         }
     }
 

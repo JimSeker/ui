@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.cs4730.recyclerviewdemo3.databinding.Simple1RowlayoutBinding;
+
 /**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
  * see http://developer.android.com/training/improving-layouts/smooth-scrolling.html
@@ -32,14 +34,14 @@ public class Simple1_myAdapter extends RecyclerView.Adapter<Simple1_myAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
+        Simple1RowlayoutBinding v = Simple1RowlayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
         return new ViewHolder(v);
     }
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         String entry = myList[i];
-        viewHolder.myName.setText(entry);
-        viewHolder.myName.setOnClickListener(new View.OnClickListener() {
+        viewHolder.viewBinding.Name.setText(entry);
+        viewHolder.viewBinding.Name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TextView tv = (TextView)v;
@@ -54,11 +56,10 @@ public class Simple1_myAdapter extends RecyclerView.Adapter<Simple1_myAdapter.Vi
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView myName;
-        public ImageView Pic;
-        public ViewHolder(View itemView) {
-            super(itemView);
-            myName = itemView.findViewById(R.id.Name);
+        public Simple1RowlayoutBinding viewBinding;
+        public ViewHolder(Simple1RowlayoutBinding itemView) {
+            super(itemView.getRoot());
+            viewBinding = itemView;
         }
     }
 }

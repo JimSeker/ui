@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import edu.cs4730.recyclerviewdemo3_kt.databinding.Simple2RowlayoutBinding
+import edu.cs4730.recyclerviewdemo3_kt.databinding.Simple3RowlayoutBinding
 
 /**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
@@ -21,31 +23,25 @@ class Simple3_myAdapter(
     private val mContext: Context
 ) : RecyclerView.Adapter<Simple3_myAdapter.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v = LayoutInflater.from(viewGroup.context).inflate(rowLayout, viewGroup, false)
+        val v = Simple3RowlayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false)
         return ViewHolder(v)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
         val entry = myList!![i]
-        viewHolder.myName.text = entry
-        viewHolder.myName.setOnClickListener { v ->
+        viewHolder.viewBinding.Name.text = entry
+        viewHolder.viewBinding.Name.setOnClickListener { v ->
             val tv = v as TextView
             Toast.makeText(mContext, tv.text, Toast.LENGTH_SHORT).show()
         }
-        viewHolder.Pic.setImageResource(R.drawable.phone)
+        viewHolder.viewBinding.picture.setImageResource(R.drawable.phone)
     } //mContext.getDrawable(country.getImageResourceId(mContext))
 
     override fun getItemCount(): Int {
         return myList?.size ?: 0
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var myName: TextView
-        var Pic: ImageView
-
-        init {
-            myName = itemView.findViewById<View>(R.id.Name) as TextView
-            Pic = itemView.findViewById<View>(R.id.picture) as ImageView
-        }
+    inner class ViewHolder(var viewBinding: Simple3RowlayoutBinding) :
+        RecyclerView.ViewHolder(viewBinding.root) {
     }
 }

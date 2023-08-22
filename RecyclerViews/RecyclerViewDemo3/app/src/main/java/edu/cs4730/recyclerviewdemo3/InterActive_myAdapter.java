@@ -18,6 +18,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.cs4730.recyclerviewdemo3.databinding.InteractiveRowlayoutBinding;
+
 
 public class InterActive_myAdapter extends RecyclerView.Adapter<InterActive_myAdapter.ViewHolder> {
 
@@ -35,16 +37,16 @@ public class InterActive_myAdapter extends RecyclerView.Adapter<InterActive_myAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
+        InteractiveRowlayoutBinding v = InteractiveRowlayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
         return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         onBind = true;  //this will stop the checkbox listener from doing anything while we are setting up the data.
-        viewHolder.text.setText(myList.get(i).getName());
-        viewHolder.checkbox.setChecked(myList.get(i).isSelected());
-        viewHolder.checkbox.setOnCheckedChangeListener(
+        viewHolder.viewBinding.label.setText(myList.get(i).getName());
+        viewHolder.viewBinding.check.setChecked(myList.get(i).isSelected());
+        viewHolder.viewBinding.check.setOnCheckedChangeListener(
             new OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -70,7 +72,7 @@ public class InterActive_myAdapter extends RecyclerView.Adapter<InterActive_myAd
         );
         //Tag is an like a temp space, in a widget where you can set some information as an Object Class
         //in this case, the position variable.
-        viewHolder.checkbox.setTag(String.valueOf(i));  //used to find the list position when we change the check mark
+        viewHolder.viewBinding.check.setTag(String.valueOf(i));  //used to find the list position when we change the check mark
         onBind = false;
     }
 
@@ -79,19 +81,12 @@ public class InterActive_myAdapter extends RecyclerView.Adapter<InterActive_myAd
         return myList == null ? 0 : myList.size();
     }
 
-    /*
-     * setup the ViewHolder class with the widget variables, to be used in onBindViewholder
-     */
+    //viewbinding setups the references for us.
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        CheckBox checkbox;
-        TextView text;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            text = (TextView) itemView.findViewById(R.id.label);
-            checkbox = (CheckBox) itemView.findViewById(R.id.check);
-
-
+        InteractiveRowlayoutBinding viewBinding;
+        public ViewHolder(InteractiveRowlayoutBinding itemView) {
+            super(itemView.getRoot());
+            viewBinding = itemView;
         }
     }
 

@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import edu.cs4730.recyclerviewdemo3_kt.R
+import edu.cs4730.recyclerviewdemo3_kt.databinding.PhonebookRowlayoutBinding
 
 /**
  * needs a comment here.
@@ -16,10 +17,10 @@ import edu.cs4730.recyclerviewdemo3_kt.R
 class Phonebook_myAdapter(
     private val listPhonebook: MutableList<Phonebook_DataModel>?,
     private val rowLayout: Int,
-    private val context: Context
+    private val mContext: Context
 ) : RecyclerView.Adapter<Phonebook_myAdapter.ViewHolder>(), View.OnClickListener {
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v = LayoutInflater.from(viewGroup.context).inflate(rowLayout, viewGroup, false)
+        val v = PhonebookRowlayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false)
         return ViewHolder(v)
     }
 
@@ -27,41 +28,30 @@ class Phonebook_myAdapter(
         //find our place in the datamodel and recycler view.
         val entry = listPhonebook!![position]
         //setup the view with data.
-        viewHolder.tvContact.text = entry.name
-        viewHolder.tvPhone.text = entry.phone
-        viewHolder.tvMail.text = entry.mail
+        viewHolder.viewBinding.tvContact.text = entry.name
+        viewHolder.viewBinding.tvMobile.text = entry.phone
+        viewHolder.viewBinding.tvMail.text = entry.mail
 
         // Set the onClick Listener on this button
-        viewHolder.btnRemove.setOnClickListener(this)
+        viewHolder.viewBinding.btnRemove.setOnClickListener(this)
+        viewHolder.viewBinding.btnRemove.isFocusableInTouchMode = false
+        viewHolder.viewBinding.btnRemove.isFocusable = false
         // Set the entry, so that you can capture which item was clicked and
         // then remove it
         // As an alternative, you can use the id/position of the item to capture
         // the item that was clicked.
         // btnRemove.setId(position);
-        viewHolder.btnRemove.tag = entry
+
+        viewHolder.viewBinding.btnRemove.tag = entry
     }
 
     override fun getItemCount(): Int {
         return listPhonebook?.size ?: 0
     }
 
-    /*
-     * setup the ViewHolder class with the widget variables, to be used in onBindViewholder
-     */
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var tvContact: TextView
-        var tvPhone: TextView
-        var tvMail: TextView
-        var btnRemove: Button
-
-        init {
-            tvContact = itemView.findViewById<View>(R.id.tvContact) as TextView
-            tvPhone = itemView.findViewById<View>(R.id.tvMobile) as TextView
-            tvMail = itemView.findViewById<View>(R.id.tvMail) as TextView
-            btnRemove = itemView.findViewById<View>(R.id.btnRemove) as Button
-            btnRemove.isFocusableInTouchMode = false
-            btnRemove.isFocusable = false
-        }
+    //viewbinding provides the references
+    inner class ViewHolder(var viewBinding: PhonebookRowlayoutBinding) :
+        RecyclerView.ViewHolder(viewBinding.root) {
     }
 
     override fun onClick(view: View) {

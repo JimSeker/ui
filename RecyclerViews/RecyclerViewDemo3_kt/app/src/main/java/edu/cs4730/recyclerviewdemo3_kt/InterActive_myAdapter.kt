@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
+import edu.cs4730.recyclerviewdemo3_kt.databinding.InteractiveRowlayoutBinding
 
 /**
  *  A simple example of how to make the views interaction with a checkbox and data model.
@@ -18,16 +19,16 @@ import android.widget.TextView
 ) : RecyclerView.Adapter<InterActive_myAdapter.ViewHolder>() {
     private var onBind = false
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v = LayoutInflater.from(viewGroup.context).inflate(rowLayout, viewGroup, false)
+        val v = InteractiveRowlayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false)
         return ViewHolder(v)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
         onBind =
             true //this will stop the checkbox listener from doing anything while we are setting up the data.
-        viewHolder.text.text = myList!![i].name
-        viewHolder.checkbox.isChecked = myList[i].isSelected
-        viewHolder.checkbox.setOnCheckedChangeListener { buttonView, isChecked ->
+        viewHolder.viewBinding.label.text = myList!![i].name
+        viewHolder.viewBinding.check.isChecked = myList[i].isSelected
+        viewHolder.viewBinding.check.setOnCheckedChangeListener { buttonView, isChecked ->
             if (!onBind) {  //if we are nto setting up the data, then do something.  Otherwise, this can cause a loop.
                 //get the "tag" out of the checkbox [tag exists base class view], so I know where it is in the myList.
                 val t = buttonView.tag as String
@@ -46,7 +47,7 @@ import android.widget.TextView
         }
         //Tag is an like a temp space, in a widget where you can set some information as an Object Class
         //in this case, the position variable.
-        viewHolder.checkbox.tag =
+        viewHolder.viewBinding.check.tag =
             i.toString() //used to find the list position when we change the check mark
         onBind = false
     }
@@ -55,16 +56,7 @@ import android.widget.TextView
         return myList?.size ?: 0
     }
 
-    /*
-     * setup the ViewHolder class with the widget variables, to be used in onBindViewholder
-     */
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var checkbox: CheckBox
-        var text: TextView
-
-        init {
-            text = itemView.findViewById<View>(R.id.label) as TextView
-            checkbox = itemView.findViewById<View>(R.id.check) as CheckBox
-        }
+    ///viewbinding provides the references.
+    inner class ViewHolder(var viewBinding: InteractiveRowlayoutBinding) : RecyclerView.ViewHolder(viewBinding.root) {
     }
 }

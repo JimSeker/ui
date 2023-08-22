@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
+import edu.cs4730.recyclerviewdemo2_kt.databinding.PhoneRowBinding
 
 /**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
@@ -22,27 +23,13 @@ internal constructor(
     private val rowLayout: Int,
     private val mContext: Context
 ) : RecyclerView.Adapter<phoneAdapter.ViewHolder>() {
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var tvContact: TextView
-        var tvPhone: TextView
-        var tvMail: TextView
-        var btnRemove: Button
-
-        //all the declares and findby are here.  onBind is where the data is setup.
-        init {
-            tvContact = itemView.findViewById(R.id.tvContact)
-            tvPhone = itemView.findViewById(R.id.tvMobile)
-            tvMail = itemView.findViewById(R.id.tvMail)
-            btnRemove = itemView.findViewById(R.id.btnRemove)
-        }
-    }
+    //the viewbinding now provides the references.
+    class ViewHolder(var viewBinding: PhoneRowBinding) :
+        RecyclerView.ViewHolder(viewBinding.root) {}
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v = LayoutInflater.from(viewGroup.context).inflate(rowLayout, viewGroup, false)
+        val v = PhoneRowBinding.inflate(LayoutInflater.from(mContext), viewGroup, false)
         return ViewHolder(v)
     }
 
@@ -50,18 +37,18 @@ internal constructor(
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
         val entry = myList!![i]
         //here is here the data is set, no variables are declared here.
-        viewHolder.tvContact.text = entry.name
-        viewHolder.tvPhone.text = entry.phone
-        viewHolder.tvMail.text = entry.mail
-        viewHolder.btnRemove.isFocusableInTouchMode = false
-        viewHolder.btnRemove.isFocusable = false
-        viewHolder.btnRemove.setOnClickListener { v ->
+        viewHolder.viewBinding.tvContact.text = entry.name
+        viewHolder.viewBinding.tvMobile.text = entry.phone
+        viewHolder.viewBinding.tvMail.text = entry.mail
+        viewHolder.viewBinding.btnRemove.isFocusableInTouchMode = false
+        viewHolder.viewBinding.btnRemove.isFocusable = false
+        viewHolder.viewBinding.btnRemove.setOnClickListener { v ->
             val entry = v.tag as Phonebook
             //We could call a dialog showDialog(entry), if we wanted to change it instead of deleting it.
             myList.remove(entry)
             notifyDataSetChanged()
         }
-        viewHolder.btnRemove.tag = entry
+        viewHolder.viewBinding.btnRemove.tag = entry
     }
 
     // Return the size of your dataset (invoked by the layout manager)

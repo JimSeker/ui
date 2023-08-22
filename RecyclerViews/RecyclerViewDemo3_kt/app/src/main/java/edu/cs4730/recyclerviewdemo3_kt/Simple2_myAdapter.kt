@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import edu.cs4730.recyclerviewdemo3_kt.R
+import edu.cs4730.recyclerviewdemo3_kt.databinding.Simple2RowlayoutBinding
 
 /**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
@@ -22,14 +23,14 @@ class Simple2_myAdapter(
     private val mContext: Context
 ) : RecyclerView.Adapter<Simple2_myAdapter.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v = LayoutInflater.from(viewGroup.context).inflate(rowLayout, viewGroup, false)
+        val v = Simple2RowlayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false)
         return ViewHolder(v)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
         val entry = myList!![i]
-        viewHolder.myLabel.text = entry
-        viewHolder.myLabel.setOnClickListener { v ->
+        viewHolder.viewBinding.label.text = entry
+        viewHolder.viewBinding.label.setOnClickListener { v ->
             val tv = v as TextView
             Toast.makeText(mContext, tv.text, Toast.LENGTH_SHORT).show()
         }
@@ -39,12 +40,7 @@ class Simple2_myAdapter(
         return myList?.size ?: 0
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var myLabel: TextView
-        var Pic: ImageView? = null
-
-        init {
-            myLabel = itemView.findViewById<View>(R.id.label) as TextView
-        }
+    inner class ViewHolder(var viewBinding: Simple2RowlayoutBinding) :
+        RecyclerView.ViewHolder(viewBinding.root) {
     }
 }
