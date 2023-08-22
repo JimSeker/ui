@@ -2,7 +2,6 @@ package edu.cs4730.callbacksitemviewdemo_kt
 
 import android.content.Context
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.DefaultItemAnimator
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import edu.cs4730.callbacksitemviewdemo_kt.databinding.FragmentMainBinding
 import java.lang.ClassCastException
 import java.util.*
 
@@ -21,7 +21,7 @@ import java.util.*
  */
 class MainFragment : Fragment() {
     private var mCallback: OntransInteractionCallback? = null
-    private lateinit var mRecyclerView: RecyclerView
+    private lateinit var binding: FragmentMainBinding
     private lateinit var mAdapter: myAdapter
     private val TAG = "MainFragment"
     private val mList: List<String>
@@ -29,20 +29,10 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val myView = inflater.inflate(R.layout.fragment_main, container, false)
-        mRecyclerView = myView.findViewById(R.id.listtrans)
-        mRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
-        mRecyclerView.itemAnimator = DefaultItemAnimator()
+        binding = FragmentMainBinding.inflate(inflater, container, false)
+        binding.myRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
+        binding.myRecyclerView.itemAnimator = DefaultItemAnimator()
         mAdapter = myAdapter(mList, R.layout.row_layout, requireActivity())
-
-
-//        mAdapter.setOnItemClickListener { view, id -> // String name = users.get(position).name;
-//            Log.v(TAG, "Listener at $TAG")
-//            Toast.makeText(context, "MainFragment: $id was clicked!", Toast.LENGTH_SHORT).show()
-//            //we could just send the id or in this case get the name as something more useful here.
-//            val name = mAdapter.myList[id.toInt()]
-//            mCallback!!.ontransInteraction(name)
-//        }
 
         mAdapter.setOnItemClickListener(object : myAdapter.OnItemClickListener {
             override fun onItemClick(itemView: View, id: String) {
@@ -61,8 +51,8 @@ class MainFragment : Fragment() {
         })
 
         //add the adapter to the recyclerview
-        mRecyclerView.adapter = mAdapter
-        return myView
+       binding.myRecyclerView.adapter = mAdapter
+        return binding.root
     }
 
     //use this one instead of the one above.  Note it's the parameter, context instead of activity.

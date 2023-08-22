@@ -15,7 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
+import edu.cs4730.callbacksitemviewdemo.databinding.FragmentMainBinding;
 
 /**
  * A simple fragment that displays a recyclerview and has a callback
@@ -24,7 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainFragment extends Fragment {
 
     private OntransInteractionCallback mCallback;
-    private RecyclerView mRecyclerView;
+    private FragmentMainBinding binding;
     private myAdapter mAdapter;
     final private String TAG = "MainFragment";
     private List<String> mList;
@@ -39,10 +40,9 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View myView = inflater.inflate(R.layout.fragment_main, container, false);
-        mRecyclerView = myView.findViewById(R.id.listtrans);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        binding = FragmentMainBinding.inflate(inflater, container, false);
+        binding.myRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
+        binding.myRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         mAdapter = new myAdapter(mList, R.layout.row_layout, requireActivity());
         mAdapter.setOnItemClickListener(new myAdapter.OnItemClickListener() {
@@ -57,9 +57,9 @@ public class MainFragment extends Fragment {
             }
         });
         //add the adapter to the recyclerview
-        mRecyclerView.setAdapter(mAdapter);
+        binding.myRecyclerView.setAdapter(mAdapter);
 
-        return myView;
+        return binding.getRoot();
     }
 
 
