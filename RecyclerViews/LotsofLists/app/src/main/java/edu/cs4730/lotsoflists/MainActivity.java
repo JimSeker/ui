@@ -34,6 +34,9 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.cs4730.lotsoflists.databinding.ActivityMainBinding;
+import edu.cs4730.lotsoflists.databinding.LayoutDialogBinding;
+
 /**
  * complex example of a navigation drawer with recyclerview.  Plus you can add more items
  * to the list and add more categories (ie new lists) as well.
@@ -43,13 +46,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    ActivityMainBinding binding;
     private ActionBarDrawerToggle mDrawerToggle;
-    private DrawerLayout mDrawerlayout;
-    private ListView mDrawerList;
-    RecyclerView mRecyclerView;
     myAdapter mAdapter;
-    FloatingActionButton fab, addBut;
     Boolean IsCatInput = false;
 
     ListsViewModel mViewModel;
@@ -58,22 +57,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //use the androidx toolbar instead of the default one.
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.appBar);
 
-        mViewModel = new ViewModelProvider(this).get( ListsViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(ListsViewModel.class);
 
         //setup the RecyclerView
-        mRecyclerView = (RecyclerView) findViewById(R.id.list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        binding.list.setLayoutManager(new LinearLayoutManager(this));
+        binding.list.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = new myAdapter(null, R.layout.my_row, this);  //observer will fix the null
         //add the adapter to the recyclerview
-        mRecyclerView.setAdapter(mAdapter);
+        binding.list.setAdapter(mAdapter);
 
         mViewModel.getListLD().observe(this, new Observer<List<String>>() {
             @Override
@@ -106,10 +104,9 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(mRecyclerView);
+        itemTouchHelper.attachToRecyclerView(binding.list);
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        binding.list.addOnScrollListener(new RecyclerView.OnScrollListener() {
             //yes this code is kind of a mess.   And better I got some of from here:
             //https://github.com/Suleiman19/Android-Material-Design-for-pre-Lollipop/tree/master/MaterialSample/app/src/main/java/com/suleiman/material/activities
             //in the fabhideactivity.java
@@ -125,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     //but I want the fab back after the scrolling is done.  Not scroll down a little... that is just stupid.
                     if (!isVisible) {
-                        fab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2F)).start();
+                        binding.fab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2F)).start();
                         //scrollDist = 0;
                         isVisible = true;
                         Log.v("c", "state changed, show be showing....");
@@ -141,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                 //  Check scrolled distance against the minimum
                 if (isVisible && scrollDist > HIDE_THRESHOLD) {
                     //  Hide fab & reset scrollDist
-                    fab.animate().translationY(fab.getHeight() + getResources().getDimensionPixelSize(R.dimen.fab_margin)).setInterpolator(new AccelerateInterpolator(2F)).start();
+                    binding.fab.animate().translationY(binding.fab.getHeight() + getResources().getDimensionPixelSize(R.dimen.fab_margin)).setInterpolator(new AccelerateInterpolator(2F)).start();
                     scrollDist = 0;
                     isVisible = false;
                     Log.v("onScrolled", "maded fab invisible");
@@ -149,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 //  -MINIMUM because scrolling up gives - dy values
                 else if (!isVisible && scrollDist < -SHOW_THRESHOLD) {
                     //  Show fab & reset scrollDist
-                    fab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2F)).start();
+                    binding.fab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2F)).start();
 
                     scrollDist = 0;
                     isVisible = true;
@@ -163,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 IsCatInput = false;
@@ -176,13 +173,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         mDrawerToggle = new ActionBarDrawerToggle(this,  // host activity
-            mDrawerlayout,  //drawerlayout object
-            toolbar,  //toolbar
-            R.string.drawer_open,  //open drawer description  required!
-            R.string.drawer_close) {  //closed drawer description
+                binding.drawerLayout,  //drawerlayout object
+                binding.appBar,  //toolbar
+                R.string.drawer_open,  //open drawer description  required!
+                R.string.drawer_close) {  //closed drawer description
 
             //called once the drawer has closed.
             @Override
@@ -202,10 +197,9 @@ public class MainActivity extends AppCompatActivity {
         };
         //To disable the icon for the drawer, change this to false
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerlayout.addDrawerListener(mDrawerToggle);
+        binding.drawerLayout.addDrawerListener(mDrawerToggle);
         //setup the addcat "button"
-        addBut = (FloatingActionButton) findViewById(R.id.addCat);
-        addBut.setOnClickListener(new View.OnClickListener() {
+        binding.addCat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 IsCatInput = true;
@@ -213,10 +207,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //lastly setup the listview with some simple categories via an array.
-        catAdapter = new ArrayAdapter<String>(this,
-            R.layout.drawer_list_item,
-            new ArrayList<String>());
-            //mViewModel.getAllCat() );
+        catAdapter = new ArrayAdapter<String>(this, R.layout.drawer_list_item, new ArrayList<String>());
+        //mViewModel.getAllCat() );
         mViewModel.getCatLD().observe(this, new Observer<List<String>>() {
             @Override
             public void onChanged(List<String> strings) {
@@ -224,23 +216,22 @@ public class MainActivity extends AppCompatActivity {
                 catAdapter.addAll(strings);
             }
         });
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        mDrawerList.setAdapter(catAdapter);
-        mDrawerList.setItemChecked(mViewModel.getlist(), true);  //set the highlight correctly.
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        binding.leftDrawer.setAdapter(catAdapter);
+        binding.leftDrawer.setItemChecked(mViewModel.getlist(), true);  //set the highlight correctly.
+        binding.leftDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int position, long index) {
                 //yes, this should do something for more interesting.  but this is an example.
-                String item = mDrawerList.getAdapter().getItem(position).toString();
+                String item = binding.leftDrawer.getAdapter().getItem(position).toString();
 
                 //change the list view to correct one.
                 mViewModel.setlist(position);
 
                 // update selected item and title, then close the drawer
-                mDrawerList.setItemChecked(position, true);
+                binding.leftDrawer.setItemChecked(position, true);
                 //now close the drawer!
-                mDrawerlayout.closeDrawers();
-
+                binding.drawerLayout.closeDrawers();
             }
         });
 
@@ -254,29 +245,26 @@ public class MainActivity extends AppCompatActivity {
     public void showInputDialog(String title) {
 
         LayoutInflater inflater = LayoutInflater.from(this);
-        final View textenter = inflater.inflate(R.layout.layout_dialog, null);
-        final EditText userinput = (EditText) textenter.findViewById(R.id.item_added);
+        LayoutDialogBinding binding = LayoutDialogBinding.inflate(inflater);
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AppTheme_Dialog));
-        builder.setView(textenter).setTitle(title);
+        builder.setView(binding.getRoot()).setTitle(title);
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
-
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 //add the list and allow the observer to fixes the lists.
                 if (IsCatInput) { //add new category
-                    mViewModel.addCat(userinput.getText().toString());
+                    mViewModel.addCat(binding.itemAdded.getText().toString());
                 } else { //add new data item to list.
-                    mViewModel.addItem(userinput.getText().toString());
+                    mViewModel.addItem(binding.itemAdded.getText().toString());
                 }
                 //Toast.makeText(getBaseContext(), userinput.getText().toString(), Toast.LENGTH_LONG).show();
             }
-        })
-            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    dialog.cancel();
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
 
-                }
-            });
+            }
+        });
         AlertDialog dialog = builder.create();
         dialog.show();
     }

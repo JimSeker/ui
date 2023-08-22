@@ -21,6 +21,8 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import edu.cs4730.lotsoflists_kt.databinding.ActivityMainBinding
+import edu.cs4730.lotsoflists_kt.databinding.LayoutDialogBinding
 
 
 /**
@@ -31,34 +33,29 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
  * The list data is all handled in the ViewModel, ListsViewModel.
  */
 class MainActivity : AppCompatActivity() {
-    private lateinit var toolbar: Toolbar
+    private lateinit var binding: ActivityMainBinding
+
     private lateinit var mDrawerToggle: ActionBarDrawerToggle
-    private lateinit var mDrawerlayout: DrawerLayout
-    private lateinit var mDrawerList: ListView
-    lateinit var mRecyclerView: RecyclerView
     lateinit var mAdapter: myAdapter
-    lateinit var fab: FloatingActionButton
-    lateinit var addBut: FloatingActionButton
     var IsCatInput = false
     lateinit var mViewModel: ListsViewModel
     lateinit var catAdapter: ArrayAdapter<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //use the androidx toolbar instead of the default one.
-        toolbar = findViewById<View>(R.id.app_bar) as Toolbar
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.appBar)
         mViewModel = ViewModelProvider(this)[ListsViewModel::class.java]
 
         //setup the RecyclerView
-        mRecyclerView = findViewById<View>(R.id.list) as RecyclerView
-        mRecyclerView.layoutManager = LinearLayoutManager(this)
-        mRecyclerView.itemAnimator = DefaultItemAnimator()
+        binding.list.layoutManager = LinearLayoutManager(this)
+        binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = myAdapter(null, R.layout.my_row, this) //observer will fix the null
         //add the adapter to the recyclerview
-        mRecyclerView.adapter = mAdapter
+        binding.list.adapter = mAdapter
         mViewModel.listLD.observe(
             this
         ) { myList -> mAdapter.newData(myList) }
@@ -90,9 +87,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
-        itemTouchHelper.attachToRecyclerView(mRecyclerView)
-        fab = findViewById<View>(R.id.fab) as FloatingActionButton
-        mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        itemTouchHelper.attachToRecyclerView(binding.list)
+
+        binding.list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             //yes this code is kind of a mess.   And better I got some of from here:
             //https://github.com/Suleiman19/Android-Material-Design-for-pre-Lollipop/tree/master/MaterialSample/app/src/main/java/com/suleiman/material/activities
             //in the fabhideactivity.java
@@ -105,8 +102,8 @@ class MainActivity : AppCompatActivity() {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     //but I want the fab back after the scrolling is done.  Not scroll down a little... that is just stupid.
                     if (!isVisible) {
-                        fab.animate().translationY(0f).setInterpolator(DecelerateInterpolator(2F))
-                            .start()
+                        binding.fab.animate().translationY(0f)
+                            .setInterpolator(DecelerateInterpolator(2F)).start()
                         //scrollDist = 0;
                         isVisible = true
                         Log.v("c", "state changed, show be showing....")
@@ -120,16 +117,16 @@ class MainActivity : AppCompatActivity() {
                 //  Check scrolled distance against the minimum
                 if (isVisible && scrollDist > HIDE_THRESHOLD) {
                     //  Hide fab & reset scrollDist
-                    fab.animate()
-                        .translationY((fab.height + resources.getDimensionPixelSize(R.dimen.fab_margin)).toFloat())
+                    binding.fab.animate()
+                        .translationY((binding.fab.height + resources.getDimensionPixelSize(R.dimen.fab_margin)).toFloat())
                         .setInterpolator(AccelerateInterpolator(2F)).start()
                     scrollDist = 0
                     isVisible = false
                     Log.v("onScrolled", "maded fab invisible")
                 } else if (!isVisible && scrollDist < -SHOW_THRESHOLD) {
                     //  Show fab & reset scrollDist
-                    fab.animate().translationY(0f).setInterpolator(DecelerateInterpolator(2F))
-                        .start()
+                    binding.fab.animate().translationY(0f)
+                        .setInterpolator(DecelerateInterpolator(2F)).start()
                     scrollDist = 0
                     isVisible = true
                     Log.v("onScrolled", "maded fab visible")
@@ -141,7 +138,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        fab.setOnClickListener {
+        binding.fab.setOnClickListener {
             IsCatInput = false
             showInputDialog("Input New Data")
         }
@@ -149,11 +146,10 @@ class MainActivity : AppCompatActivity() {
         // enable ActionBar app icon to behave as action to toggle nav drawer
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
-        mDrawerlayout = findViewById<View>(R.id.drawer_layout) as DrawerLayout
         mDrawerToggle = object : ActionBarDrawerToggle(
             this,  // host activity
-            mDrawerlayout,  //drawerlayout object
-            toolbar,  //toolbar
+            binding.drawerLayout,  //drawerlayout object
+            binding.appBar,  //toolbar
             R.string.drawer_open,  //open drawer description  required!
             R.string.drawer_close
         ) {
@@ -174,18 +170,15 @@ class MainActivity : AppCompatActivity() {
         }
         //To disable the icon for the drawer, change this to false
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerlayout.addDrawerListener(mDrawerToggle)
+        binding.drawerLayout.addDrawerListener(mDrawerToggle)
         //setup the addcat "button"
-        addBut = findViewById<View>(R.id.addCat) as FloatingActionButton
-        addBut.setOnClickListener {
+        binding.addCat.setOnClickListener {
             IsCatInput = true
             showInputDialog("Add New Category")
         }
         //lastly setup the listview with some simple categories via an array.
         catAdapter = ArrayAdapter<String>(
-            this,
-            R.layout.drawer_list_item,
-            ArrayList<String>()
+            this, R.layout.drawer_list_item, ArrayList<String>()
         )
         //mViewModel.getAllCat() );
         mViewModel.catLD.observe(
@@ -194,20 +187,19 @@ class MainActivity : AppCompatActivity() {
             catAdapter.clear()
             catAdapter.addAll(strings)
         }
-        mDrawerList = findViewById<View>(R.id.left_drawer) as ListView
-        mDrawerList.adapter = catAdapter
-        mDrawerList.setItemChecked(mViewModel.getlist(), true) //set the highlight correctly.
-        mDrawerList.onItemClickListener =
+        binding.leftDrawer.adapter = catAdapter
+        binding.leftDrawer.setItemChecked(mViewModel.getlist(), true) //set the highlight correctly.
+        binding.leftDrawer.onItemClickListener =
             OnItemClickListener { arg0, view, position, index -> //yes, this should do something for more interesting.  but this is an example.
-                val item = mDrawerList.adapter.getItem(position).toString()
+                val item = binding.leftDrawer.adapter.getItem(position).toString()
 
                 //change the list view to correct one.
                 mViewModel.setlist(position)
 
                 // update selected item and title, then close the drawer
-                mDrawerList.setItemChecked(position, true)
+                binding.leftDrawer.setItemChecked(position, true)
                 //now close the drawer!
-                mDrawerlayout.closeDrawers()
+                binding.drawerLayout.closeDrawers()
             }
     }
 
@@ -217,22 +209,21 @@ class MainActivity : AppCompatActivity() {
      */
     fun showInputDialog(title: String?) {
         val inflater = LayoutInflater.from(this)
-        val textenter = inflater.inflate(R.layout.layout_dialog, null)
-        val userinput = textenter.findViewById<View>(R.id.item_added) as EditText
+
+        val binding = LayoutDialogBinding.inflate(inflater)
         val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Dialog))
-        builder.setView(textenter).setTitle(title)
+        builder.setView(binding.root).setTitle(title)
         builder.setPositiveButton(
             "Add"
         ) { dialog, id ->
             //add the list and allow the observer to fixes the lists.
             if (IsCatInput) { //add new category
-                mViewModel.addCat(userinput.text.toString())
+                mViewModel.addCat(binding.itemAdded.text.toString())
             } else { //add new data item to list.
-                mViewModel.addItem(userinput.text.toString())
+                mViewModel.addItem(binding.itemAdded.text.toString())
             }
             //Toast.makeText(getBaseContext(), userinput.getText().toString(), Toast.LENGTH_LONG).show();
-        }
-            .setNegativeButton(
+        }.setNegativeButton(
                 "Cancel"
             ) { dialog, id -> dialog.cancel() }
         val dialog = builder.create()
