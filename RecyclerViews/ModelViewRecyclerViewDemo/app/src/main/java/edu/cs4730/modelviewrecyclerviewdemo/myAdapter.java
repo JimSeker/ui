@@ -13,12 +13,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.cs4730.modelviewrecyclerviewdemo.databinding.RowLayoutBinding;
+
 /**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
  * see http://developer.android.com/training/improving-layouts/smooth-scrolling.html
  * except instead having to implement a ViewHolder, it is implemented within
  * the adapter.
- *
+ * <p>
  * This code has a ViewModel/LiveData so that the click can be observed by the Fragment and mainActivity.
  * Since the viewmodel can't be static, it is passed the viewholder.
  * likely we should pass the viewmodel to the adapter instead of the fragment, but this example is showing
@@ -38,26 +40,11 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     // you provide access to all the views for a data item in a view holder
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView mName;
-        public Button mButton;
+        RowLayoutBinding viewBinding;
 
-        private final String TAG = "ViewHolder";
-
-        public ViewHolder(View view, final DataViewModel mViewModel) {
-            super(view);
-            mName = view.findViewById(R.id.name);
-            mButton = view.findViewById(R.id.myButton);
-            //use itemView instead of button, if you want a click listener for the whole layout.
-            //itemView.setOnClickListener(new View.OnClickListener() {
-            // Setup the click listener for the button
-            mButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Triggers the observer else where.
-                    Log.wtf(TAG, "setting! " + mName.getTag().toString());
-                    mViewModel.setItem(mName.getTag().toString());
-                }
-            });
+        public ViewHolder(RowLayoutBinding itemview) {
+            super(itemview.getRoot());
+            viewBinding = itemview;
         }
     }
 
@@ -76,8 +63,8 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     // Create new views (invoked by the layout manager)
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
-        return new ViewHolder(v, mViewModel);
+        RowLayoutBinding v = RowLayoutBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup, false);
+        return new ViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -85,8 +72,18 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         String entry = myList.get(i);
 
-        viewHolder.mName.setText(entry);
-        viewHolder.mName.setTag(i);  //sample data to show.
+        viewHolder.viewBinding.name.setText(entry);
+        viewHolder.viewBinding.name.setTag(i);  //sample data to show.
+        viewHolder.viewBinding.myButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Triggers the observer else where.
+                Log.wtf(TAG, "setting! " +viewHolder.viewBinding.name.getTag().toString());
+                mViewModel.setItem(viewHolder.viewBinding.name.getTag().toString());
+                //using the tag, which is set to the index, you can get the data from the list.
+                //but note, this case is very simple, so all the data is just in the viewBinding too.
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -1,4 +1,5 @@
 package edu.cs4730.modelviewrecyclerviewdemo;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,10 +14,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import edu.cs4730.modelviewrecyclerviewdemo.databinding.ActivityMainBinding;
+
 /**
  * This is a simple demo of how to get data from an recyclerview demo all the way back to the
  * mainactivity.
- *
+ * <p>
  * this is an example of using the ViewModel with LiveData instead of all the callBacks and listeners
  * to get data from the recyclerview to the mainactivity.  There are no callsbacks in this example.
  */
@@ -25,19 +28,19 @@ public class MainActivity extends AppCompatActivity {
     String TAG = "MainActivity";
 
     DataViewModel mViewModel;
-
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        mViewModel = new ViewModelProvider(this).get( DataViewModel.class);
+        setSupportActionBar(binding.toolbar);
 
-        FloatingActionButton fab =  findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        mViewModel = new ViewModelProvider(this).get(DataViewModel.class);
+
+        binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Name is " + mViewModel.getItem(), Snackbar.LENGTH_LONG)
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         mViewModel.getItemLD().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                Log.d(TAG, "triggered "  + s);
+                Log.d(TAG, "triggered " + s);
                 Toast.makeText(getBaseContext(), "MainActivity Received " + s, Toast.LENGTH_LONG).show();
             }
         });

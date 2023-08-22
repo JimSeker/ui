@@ -8,19 +8,21 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import edu.cs4730.modelviewrecyclerviewdemo_kt.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     var TAG = "MainActivity"
     lateinit var mViewModel: DataViewModel
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
         mViewModel = ViewModelProvider(this)[DataViewModel::class.java]
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
-        fab.setOnClickListener { view ->
+       binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Name is " + mViewModel.getItem(), Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
