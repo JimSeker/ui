@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import edu.cs4730.recyclerviewdemo_kt.databinding.MyRowBinding
 
 /**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
@@ -18,34 +19,26 @@ import android.widget.Toast
 class myAdapter     //constructor
     (private val myList: List<String>?, private val rowLayout: Int, private val mContext: Context) :
     RecyclerView.Adapter<myAdapter.ViewHolder>() {
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var myName: TextView
-        var Pic: ImageView
 
-        init {
-            myName = itemView.findViewById<View>(R.id.Name) as TextView
-            Pic = itemView.findViewById<View>(R.id.picture) as ImageView
-        }
-    }
+    // the viewbinding provides the references now.
+    inner class ViewHolder(var viewBinding: MyRowBinding) :
+        RecyclerView.ViewHolder(viewBinding.root) {}
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v = LayoutInflater.from(viewGroup.context).inflate(rowLayout, viewGroup, false)
+        val v = MyRowBinding.inflate(LayoutInflater.from(mContext), viewGroup, false)
         return ViewHolder(v)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
         val entry = myList!![i]
-        viewHolder.myName.text = entry
-        viewHolder.myName.setOnClickListener { v ->
+        viewHolder.viewBinding.Name.text = entry
+        viewHolder.viewBinding.Name.setOnClickListener { v ->
             val tv = v as TextView
             Toast.makeText(mContext, tv.text, Toast.LENGTH_SHORT).show()
         }
-        viewHolder.Pic.setImageResource(R.drawable.phone)
+        viewHolder.viewBinding.picture.setImageResource(R.drawable.phone)
     }
 
     // Return the size of your dataset (invoked by the layout manager)

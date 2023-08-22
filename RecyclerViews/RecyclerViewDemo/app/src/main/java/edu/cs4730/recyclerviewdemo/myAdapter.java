@@ -4,13 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import edu.cs4730.recyclerviewdemo.databinding.MyRowBinding;
 
 /**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
@@ -30,13 +31,10 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     // you provide access to all the views for a data item in a view holder
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView myName;
-        public ImageView Pic;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            myName = itemView.findViewById(R.id.Name);
-            Pic = itemView.findViewById(R.id.picture);
+        public MyRowBinding viewBinding;
+        public ViewHolder(MyRowBinding viewBinding) {
+            super(viewBinding.getRoot());
+            this.viewBinding = viewBinding;
         }
     }
 
@@ -50,7 +48,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     // Create new views (invoked by the layout manager)
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
+        MyRowBinding v = MyRowBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
         return new ViewHolder(v);
     }
 
@@ -58,15 +56,15 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         String entry = myList.get(i);
-        viewHolder.myName.setText(entry);
-        viewHolder.myName.setOnClickListener(new View.OnClickListener() {
+        viewHolder.viewBinding.Name.setText(entry);
+        viewHolder.viewBinding.Name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TextView tv = (TextView) v;
                 Toast.makeText(mContext, tv.getText(), Toast.LENGTH_SHORT).show();
             }
         });
-        viewHolder.Pic.setImageResource(R.drawable.phone);
+        viewHolder.viewBinding.picture.setImageResource(R.drawable.phone);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
