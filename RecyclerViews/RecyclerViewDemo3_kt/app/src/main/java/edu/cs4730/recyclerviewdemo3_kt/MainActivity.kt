@@ -8,29 +8,31 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import edu.cs4730.recyclerviewdemo3_kt.databinding.ActivityMainBinding
 import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
     lateinit var mSectionsPagerAdapter: SectionsPagerAdapter
-    lateinit var mViewPager: ViewPager2
-    lateinit var tabLayout: TabLayout
+    lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = SectionsPagerAdapter(this)
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = findViewById(R.id.pager)
-        mViewPager.adapter = mSectionsPagerAdapter
+
+        binding.pager.adapter = mSectionsPagerAdapter
         //now setup the headers for it.
         TabLayoutMediator(
-            tabLayout,
-            mViewPager
+            binding.tabLayout,
+            binding.pager
         ) { tab, position ->
             val l = Locale.getDefault()
             when (position) {

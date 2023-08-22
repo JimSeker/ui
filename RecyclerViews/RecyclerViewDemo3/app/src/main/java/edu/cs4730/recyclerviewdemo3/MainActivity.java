@@ -14,29 +14,29 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import edu.cs4730.recyclerviewdemo3.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity {
 
     SectionsPagerAdapter mSectionsPagerAdapter;
-    ViewPager2 mViewPager;
-    TabLayout tabLayout;
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(this);
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = findViewById(R.id.pager);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        binding.pager.setAdapter(mSectionsPagerAdapter);
         //now setup the headers for it.
-        tabLayout = findViewById(R.id.tab_layout);
-        new TabLayoutMediator(tabLayout,
-            mViewPager,
+        new TabLayoutMediator(binding.tabLayout,
+            binding.pager,
             new TabLayoutMediator.TabConfigurationStrategy() {
                 @Override
                 public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {

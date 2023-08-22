@@ -10,34 +10,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.cs4730.recyclerviewdemo3.databinding.InteractiveFragmentBinding;
+
 
 public class InterActive_Fragment extends Fragment {
     String TAG = "InterActive RV";
-    RecyclerView mRecyclerView;
+    InteractiveFragmentBinding binding;
     InterActive_myAdapter mAdapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myView = inflater.inflate(R.layout.interactive_fragment, container, false);
+        binding = InteractiveFragmentBinding.inflate(inflater, container, false);
 
         //setup the RecyclerView
-        mRecyclerView = (RecyclerView) myView.findViewById(R.id.list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+       binding.list.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.list.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = new InterActive_myAdapter(getModel(), R.layout.interactive_rowlayout, requireContext());
         //add the adapter to the recyclerview
-        mRecyclerView.setAdapter(mAdapter);
+        binding.list.setAdapter(mAdapter);
 
-
-        return myView;
+        return binding.getRoot();
     }
 
     private List<InterActive_DataModel> getModel() {

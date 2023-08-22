@@ -8,6 +8,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.DefaultItemAnimator
+import edu.cs4730.recyclerviewdemo3_kt.databinding.Simple3FragmentBinding
 import java.util.*
 
 /**
@@ -15,7 +16,7 @@ import java.util.*
  * this uses a cardview as the layout, so it looks "better" and you see where each view is separated.
  */
 class Simple3_Fragment : Fragment() {
-    lateinit var mRecyclerView: RecyclerView
+    lateinit var binding: Simple3FragmentBinding
     lateinit var mAdapter: Simple3_myAdapter
     var values = Arrays.asList(
         "Android", "iPhone", "WindowsMobile",
@@ -28,15 +29,14 @@ class Simple3_Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val myView = inflater.inflate(R.layout.simple3_fragment, container, false)
+        binding = Simple3FragmentBinding.inflate(inflater, container, false)
         //setup the RecyclerView
-        mRecyclerView = myView.findViewById<View>(R.id.list) as RecyclerView
-        mRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        mRecyclerView.itemAnimator = DefaultItemAnimator()
+        binding.list.layoutManager = LinearLayoutManager(requireContext())
+        binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = Simple3_myAdapter(values, R.layout.simple3_rowlayout, requireContext())
         //add the adapter to the recyclerview
-        mRecyclerView.adapter = mAdapter
-        return myView
+        binding.list.adapter = mAdapter
+        return binding.root
     }
 }

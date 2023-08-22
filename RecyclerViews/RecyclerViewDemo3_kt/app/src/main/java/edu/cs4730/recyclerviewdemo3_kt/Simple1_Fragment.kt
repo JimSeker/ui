@@ -8,6 +8,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.DefaultItemAnimator
+import edu.cs4730.recyclerviewdemo3_kt.databinding.Simple1FragmentBinding
 
 /**
  * A "simple" version of the recyclerview with layout.
@@ -15,7 +16,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
  * Everything is labeled, simple1_ that goes with this one.
  */
 class Simple1_Fragment : Fragment() {
-    lateinit var mRecyclerView: RecyclerView
+    lateinit var binding: Simple1FragmentBinding
     lateinit var mAdapter: Simple1_myAdapter
     var values = arrayOf(
         "Android", "iPhone", "WindowsMobile",
@@ -28,16 +29,15 @@ class Simple1_Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val myView = inflater.inflate(R.layout.simple1_fragment, container, false)
+        binding = Simple1FragmentBinding.inflate(inflater, container, false)
 
         //setup the RecyclerView
-        mRecyclerView = myView.findViewById(R.id.list)
-        mRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        mRecyclerView.itemAnimator = DefaultItemAnimator()
+        binding.list.layoutManager = LinearLayoutManager(requireContext())
+        binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = Simple1_myAdapter(values, R.layout.simple1_rowlayout, requireContext())
         //add the adapter to the recyclerview
-        mRecyclerView.adapter = mAdapter
-        return myView
+        binding.list.adapter = mAdapter
+        return binding.root
     }
 }

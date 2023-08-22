@@ -8,6 +8,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.DefaultItemAnimator
+import edu.cs4730.recyclerviewdemo3_kt.databinding.Simple2FragmentBinding
 
 /**
  * A second "simple" recyclerview with a more complex layout.
@@ -15,7 +16,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
  * again, everything associated with this example is prefixed with simple2_
  */
 class Simple2_Fragment : Fragment() {
-    lateinit var mRecyclerView: RecyclerView
+    lateinit var binding: Simple2FragmentBinding
     lateinit var mAdapter: Simple2_myAdapter
     var values = arrayOf(
         "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
@@ -66,16 +67,16 @@ class Simple2_Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val myView = inflater.inflate(R.layout.simple1_fragment, container, false)
+        binding = Simple2FragmentBinding.inflate(inflater, container, false)
 
         //setup the RecyclerView
-        mRecyclerView = myView.findViewById<View>(R.id.list) as RecyclerView
-        mRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        mRecyclerView.itemAnimator = DefaultItemAnimator()
+
+        binding.list.layoutManager = LinearLayoutManager(requireContext())
+        binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = Simple2_myAdapter(values, R.layout.simple2_rowlayout, requireContext())
         //add the adapter to the recyclerview
-        mRecyclerView.adapter = mAdapter
-        return myView
+        binding.list.adapter = mAdapter
+        return binding.root
     }
 }

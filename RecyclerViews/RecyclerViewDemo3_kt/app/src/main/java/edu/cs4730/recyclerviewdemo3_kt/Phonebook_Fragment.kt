@@ -11,6 +11,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.DefaultItemAnimator
+import edu.cs4730.recyclerviewdemo3_kt.databinding.PhonebookFragmentBinding
 import java.util.ArrayList
 
 /**
@@ -22,38 +23,33 @@ import java.util.ArrayList
 class Phonebook_Fragment : Fragment() {
     var TAG = "Phone_Fragment"
     lateinit var listOfPhonebook: MutableList<Phonebook_DataModel>
-    lateinit var mRecyclerView: RecyclerView
+    lateinit var binding: PhonebookFragmentBinding
     lateinit var mAdapter: Phonebook_myAdapter
 
-    //getting a cast except if I don't fully declare it.
-    var mCoordinatorLayout: CoordinatorLayout? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val myView = inflater.inflate(R.layout.phonebook_fragment, container, false)
+    ): View {
+        binding = PhonebookFragmentBinding.inflate(inflater, container, false)
 
         //setup a simple list of data to start with.
         listOfPhonebook = setup()
 
         //fab and coordinatorlayout setup.
-        var fab: FloatingActionButton
-        mCoordinatorLayout = myView.findViewById<View>(R.id.coordinatorlayout1) as CoordinatorLayout
-        myView.findViewById<View>(R.id.fab).setOnClickListener {
-            Snackbar.make(mCoordinatorLayout!!, "add is not implemented.", Snackbar.LENGTH_LONG)
+        binding.fab.setOnClickListener {
+            Snackbar.make(binding.coordinatorlayout1, "add is not implemented.", Snackbar.LENGTH_LONG)
                 .show()
         }
 
         //setup the RecyclerView
-        mRecyclerView = myView.findViewById(R.id.list)
-        mRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        mRecyclerView.itemAnimator = DefaultItemAnimator()
+        binding.list.layoutManager = LinearLayoutManager(requireContext())
+        binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
         mAdapter =
             Phonebook_myAdapter(listOfPhonebook, R.layout.phonebook_rowlayout, requireContext())
         //add the adapter to the recyclerview
-        mRecyclerView.adapter = mAdapter
-        return myView
+        binding.list.adapter = mAdapter
+        return binding.root
     }
 
     fun setup(): MutableList<Phonebook_DataModel> {

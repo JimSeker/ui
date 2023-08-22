@@ -8,28 +8,28 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.DefaultItemAnimator
+import edu.cs4730.recyclerviewdemo3_kt.databinding.InteractiveFragmentBinding
 import java.util.ArrayList
 
 class InterActive_Fragment : Fragment() {
     var TAG = "InterActive RV"
-    lateinit var mRecyclerView: RecyclerView
+    lateinit var binding: InteractiveFragmentBinding
     lateinit var mAdapter: InterActive_myAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val myView = inflater.inflate(R.layout.interactive_fragment, container, false)
+        binding = InteractiveFragmentBinding.inflate(inflater, container, false)
 
         //setup the RecyclerView
-        mRecyclerView = myView.findViewById<View>(R.id.list) as RecyclerView
-        mRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        mRecyclerView.itemAnimator = DefaultItemAnimator()
+        binding.list.layoutManager = LinearLayoutManager(requireContext())
+        binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = InterActive_myAdapter(model, R.layout.interactive_rowlayout, requireContext())
         //add the adapter to the recyclerview
-        mRecyclerView.adapter = mAdapter
-        return myView
+        binding.list.adapter = mAdapter
+        return binding.list
     }
 
     // Initially select one of the items
