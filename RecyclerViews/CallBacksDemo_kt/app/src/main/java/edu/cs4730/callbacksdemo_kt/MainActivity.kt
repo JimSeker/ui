@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import edu.cs4730.callbacksdemo_kt.databinding.ActivityMainBinding
 
 /*
  * This is a simple demo of how to get data from an recyclerview demo all the way back to the
@@ -16,17 +17,19 @@ import com.google.android.material.snackbar.Snackbar
  *
  * Another interesting idea would be to just use a handler that is sent to
  * the adapter and then calls it (where it is declared here).  It's not implemented here, just
- * stated as another possibility.
+ * stated as another possibility.  See the viewmodel version for another way to do this.
  */
 class MainActivity : AppCompatActivity(), MainFragment.OntransInteractionCallback {
     var TAG = "MainActivity"
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
-        fab.setOnClickListener { view ->
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+        binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }

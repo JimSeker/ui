@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import edu.cs4730.callbacksdemo_kt.databinding.FragmentMainBinding
 import java.util.*
 
 /**
@@ -19,21 +20,22 @@ import java.util.*
  */
 class MainFragment : Fragment() {
     private var mCallback: OntransInteractionCallback? = null
-    lateinit var mRecyclerView: RecyclerView
+    lateinit var binding: FragmentMainBinding
     lateinit var mAdapter: myAdapter
     var TAG = "MainFragment"
     private val mList: List<String>
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val myView = inflater.inflate(R.layout.fragment_main, container, false)
-        mRecyclerView = myView.findViewById<View>(R.id.listtrans) as RecyclerView
-        mRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
-        mRecyclerView.itemAnimator = DefaultItemAnimator()
+    ): View {
+        binding = FragmentMainBinding.inflate(inflater, container, false)
+
+        binding.myRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
+        binding.myRecyclerView.itemAnimator = DefaultItemAnimator()
         mAdapter = myAdapter(mList, R.layout.row_layout, requireActivity())
         mAdapter.setOnItemClickListener(object : myAdapter.OnItemClickListener {
-           override fun onItemClick(itemView: View, id: String) {
+            override fun onItemClick(itemView: View, id: String) {
                 // String name = users.get(position).name;
                 Log.v(TAG, "Listener at $TAG")
                 Toast.makeText(
@@ -45,8 +47,8 @@ class MainFragment : Fragment() {
             }
         })
         //add the adapter to the recyclerview
-        mRecyclerView.adapter = mAdapter
-        return myView
+        binding.myRecyclerView.adapter = mAdapter
+        return binding.root
     }
 
     //use this one instead of the one above.  Note it's the parameter, context instead of activity.

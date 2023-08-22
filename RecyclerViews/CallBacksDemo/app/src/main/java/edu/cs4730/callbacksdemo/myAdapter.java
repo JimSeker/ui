@@ -12,6 +12,8 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.cs4730.callbacksdemo.databinding.RowLayoutBinding;
+
 /**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
  * see http://developer.android.com/training/improving-layouts/smooth-scrolling.html
@@ -28,11 +30,8 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     private int rowLayout;
     private Context mContext;  //for things like a toast or other things that need context.
     private final String TAG = "myAdapter";
-
-
     // Define listener member variable
     private OnItemClickListener listener;
-
     // Define the listener interface
     public interface OnItemClickListener {
         void onItemClick(View itemView, String id);
@@ -43,32 +42,12 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
         this.listener = listener;
     }
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView mName;
-        public Button mButton;
-        private final String TAG = "ViewHolder";
+        RowLayoutBinding viewBinding;
 
-        public ViewHolder(View view, final OnItemClickListener mlistener) {
-            super(view);
-            mName = (TextView) view.findViewById(R.id.name);
-            mButton = (Button) view.findViewById(R.id.myButton);
-            //use itemView instead of button, if you want a click listener for the whole layout.
-            //itemView.setOnClickListener(new View.OnClickListener() {
-            // Setup the click listener for the button
-            mButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Triggers click upwards to the adapter on click
-                    if (mlistener != null) {
-                        Log.v(TAG, "Listener at " + TAG);
-                        mlistener.onItemClick(itemView, mName.getTag().toString());
-                    }
-                }
-            });
+        public ViewHolder(RowLayoutBinding itemview) {
+            super(itemview.getRoot());
+            viewBinding = itemview;
         }
     }
 
@@ -82,8 +61,8 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     // Create new views (invoked by the layout manager)
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
-        return new ViewHolder(v, listener);
+        RowLayoutBinding v = RowLayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
+        return new ViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -91,8 +70,21 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         String entry = myList.get(i);
 
-        viewHolder.mName.setText(entry);
-        viewHolder.mName.setTag(i);  //sample data to show.
+        viewHolder.viewBinding.name.setText(entry);
+        viewHolder.viewBinding.name.setTag(i);  //sample data to show.
+        // Setup the click listener for the button
+        viewHolder.viewBinding.myButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Triggers click upwards to the adapter on click
+                if (listener != null) {
+                    Log.v(TAG, "Listener at " + TAG);
+                    listener.onItemClick(v, viewHolder.viewBinding.name.getTag().toString());
+                    //this gets you index to the array, but this example is very simple and
+                    //all the info is also in the view/viewbinding
+                }
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)

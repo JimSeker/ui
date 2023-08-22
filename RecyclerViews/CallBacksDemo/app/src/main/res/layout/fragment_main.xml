@@ -7,7 +7,7 @@
     tools:context=".MainFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listtrans"
+        android:id="@+id/myRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

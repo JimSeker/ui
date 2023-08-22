@@ -2,12 +2,11 @@ package edu.cs4730.callbacksdemo_kt
 
 import android.content.Context
 import android.util.Log
-import androidx.recyclerview.widget.RecyclerView
-import android.widget.TextView
-import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import edu.cs4730.callbacksdemo_kt.databinding.RowLayoutBinding
 
 /**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
@@ -28,7 +27,7 @@ class myAdapter     //constructor
     private val TAG = "myAdapter"
 
     // Define listener member variable
-    private lateinit var listener: OnItemClickListener
+    private var listener: OnItemClickListener? = null;
 
     // Define the listener interface
     interface OnItemClickListener {
@@ -40,40 +39,33 @@ class myAdapter     //constructor
         this.listener = listener
     }
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    class ViewHolder(view: View, mlistener: myAdapter.OnItemClickListener) : RecyclerView.ViewHolder(view) {
-        var mName: TextView
-        var mButton: Button
-        private val TAG = "ViewHolder"
-
-        init {
-            mName = view.findViewById<View>(R.id.name) as TextView
-            mButton = view.findViewById<View>(R.id.myButton) as Button
-            //use itemView instead of button, if you want a click listener for the whole layout.
-            //itemView.setOnClickListener(new View.OnClickListener() {
-            // Setup the click listener for the button
-            mButton.setOnClickListener { // Triggers click upwards to the adapter on click
-                if (mlistener != null) {
-                    Log.v(TAG, "Listener at $TAG")
-                    mlistener.onItemClick(itemView, mName.tag.toString())
-                }
-            }
-        }
-    }
+    //the viewbinding now provides the references.
+    class ViewHolder(var viewBinding: RowLayoutBinding) :
+        RecyclerView.ViewHolder(viewBinding.root) {}
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v = LayoutInflater.from(viewGroup.context).inflate(rowLayout, viewGroup, false)
-        return ViewHolder(v, listener)
+        val v = RowLayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
+        return ViewHolder(v)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
         val entry = myList!![i]
-        viewHolder.mName.text = entry
-        viewHolder.mName.tag = i //sample data to show.
+        viewHolder.viewBinding.name.text = entry
+        viewHolder.viewBinding.name.tag = i //sample data to show.
+
+        // Setup the click listener for the button
+        // Setup the click listener for the button
+        viewHolder.viewBinding.myButton.setOnClickListener { v ->
+            // Triggers click upwards to the adapter on click
+            if (listener != null) {
+                Log.v(TAG, "Listener at $TAG")
+                listener!!.onItemClick(v, viewHolder.viewBinding.name.tag.toString())
+                //this gets you the index to the array, but this example is very simple and
+                //all the info is also in the view/viewbinding
+            }
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)

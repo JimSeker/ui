@@ -13,27 +13,30 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import edu.cs4730.callbacksdemo.databinding.ActivityMainBinding;
+
 /*
  * This is a simple demo of how to get data from an recyclerview demo all the way back to the
  * mainactivity.
  *
  * Another interesting idea would be to just use a handler that is sent to
  * the adapter and then calls it (where it is declared here).  It's not implemented here, just
- * stated as another possibility.
+ * stated as another possibility.   See the viewmodel version for another way to do this.
  */
 
 public class MainActivity extends AppCompatActivity implements MainFragment.OntransInteractionCallback {
     String TAG = "MainActivity";
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        setSupportActionBar(binding.toolbar);
+
+        binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

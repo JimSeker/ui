@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.cs4730.callbacksdemo.databinding.FragmentMainBinding;
+
 /**
  * A simple fragment that displays a recyclerview and has a callback
  * plus creates the listener needed in the adapter.
@@ -24,7 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainFragment extends Fragment {
 
     private OntransInteractionCallback mCallback;
-    RecyclerView mRecyclerView;
+    FragmentMainBinding binding;
     myAdapter mAdapter;
     String TAG = "MainFragment";
     private List<String> mList;
@@ -36,12 +38,12 @@ public class MainFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View myView = inflater.inflate(R.layout.fragment_main, container, false);
-        mRecyclerView = (RecyclerView) myView.findViewById(R.id.listtrans);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        FragmentMainBinding binding = FragmentMainBinding.inflate(inflater, container, false);
+
+        binding.myRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
+        binding.myRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         mAdapter = new myAdapter(mList, R.layout.row_layout, requireActivity());
         mAdapter.setOnItemClickListener(new myAdapter.OnItemClickListener() {
@@ -54,9 +56,9 @@ public class MainFragment extends Fragment {
             }
         });
         //add the adapter to the recyclerview
-        mRecyclerView.setAdapter(mAdapter);
+        binding.myRecyclerView.setAdapter(mAdapter);
 
-        return myView;
+        return binding.getRoot();
     }
 
     //use this one instead of the one above.  Note it's the parameter, context instead of activity.
