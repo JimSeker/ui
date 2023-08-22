@@ -14,6 +14,8 @@ import java.util.Random;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.cs4730.recyclerviewswiperefresh.databinding.MyRowBinding;
+
 /**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
  * see http://developer.android.com/training/improving-layouts/smooth-scrolling.html
@@ -21,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * the adapter.
  */
 
-public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
+public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
     private String[] values;
     private List<String> myList;
@@ -36,23 +38,25 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
         //now get actual list to display.
         randomlist();
     }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
-        return new ViewHolder(v);
+        MyRowBinding binding = MyRowBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
+        return new ViewHolder(binding);
     }
+
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         String entry = myList.get(i);
-        viewHolder.myName.setText(entry);
-        viewHolder.myName.setOnClickListener(new View.OnClickListener() {
+        viewHolder.viewBinding.Name.setText(entry);
+        viewHolder.viewBinding.Name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView tv = (TextView)v;
-                Toast.makeText(mContext,tv.getText(),Toast.LENGTH_SHORT).show();
+                TextView tv = (TextView) v;
+                Toast.makeText(mContext, tv.getText(), Toast.LENGTH_SHORT).show();
             }
         });
-        viewHolder.Pic.setImageResource(R.drawable.phone);
+        viewHolder.viewBinding.picture.setImageResource(R.drawable.phone);
     }
 
     @Override
@@ -61,12 +65,11 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView myName;
-        public ImageView Pic;
-        public ViewHolder(View itemView) {
-            super(itemView);
-            myName = (TextView) itemView.findViewById(R.id.Name);
-            Pic= (ImageView)itemView.findViewById(R.id.picture);
+        MyRowBinding viewBinding;
+
+        public ViewHolder(MyRowBinding viewBinding) {
+            super(viewBinding.getRoot());
+            this.viewBinding = viewBinding;
         }
     }
 

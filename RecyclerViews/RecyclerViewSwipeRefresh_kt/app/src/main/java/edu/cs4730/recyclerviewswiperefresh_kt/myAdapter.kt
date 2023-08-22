@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import edu.cs4730.recyclerviewswiperefresh_kt.databinding.MyRowBinding
 import java.util.*
 
 /**
@@ -17,39 +18,29 @@ import java.util.*
  * the adapter.
  */
 class myAdapter(
-    private val values: Array<String>,
-    private val rowLayout: Int,
-    private val mContext: Context
+    private val values: Array<String>, private val rowLayout: Int, private val mContext: Context
 ) : RecyclerView.Adapter<myAdapter.ViewHolder>() {
     private var myList: MutableList<String>? = null
     private val mRandom = Random()
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v = LayoutInflater.from(viewGroup.context).inflate(rowLayout, viewGroup, false)
+        val v = MyRowBinding.inflate(LayoutInflater.from(mContext), viewGroup, false)
         return ViewHolder(v)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
         val entry = myList!![i]
-        viewHolder.myName.text = entry
-        viewHolder.myName.setOnClickListener { v ->
+        viewHolder.viewBinding.Name.text = entry
+        viewHolder.viewBinding.Name.setOnClickListener { v ->
             val tv = v as TextView
             Toast.makeText(mContext, tv.text, Toast.LENGTH_SHORT).show()
         }
-        viewHolder.Pic.setImageResource(R.drawable.phone)
+        viewHolder.viewBinding.picture.setImageResource(R.drawable.phone)
     }
 
     override fun getItemCount(): Int {
         return if (myList == null) 0 else myList!!.size
     }
-
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var myName: TextView
-        var Pic: ImageView
-
-        init {
-            myName = itemView.findViewById<View>(R.id.Name) as TextView
-            Pic = itemView.findViewById<View>(R.id.picture) as ImageView
-        }
+    inner class ViewHolder(var viewBinding: MyRowBinding) : RecyclerView.ViewHolder(viewBinding.root) {
     }
 
     //a simple method to create a random list of vlaues.

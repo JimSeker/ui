@@ -2,6 +2,7 @@ package edu.cs4730.recyclerviewswiperefresh;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import edu.cs4730.recyclerviewswiperefresh.databinding.ActivityMainBinding;
 
 /**
  * A simple example of how to use the refreshlayout with a recyclerview.  most of the recyclerview and adapter
@@ -25,9 +28,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView mRecyclerView;
+    ActivityMainBinding binding;
     myAdapter mAdapter;
-    SwipeRefreshLayout mSwipeRefreshLayout;
     String[] values  = new String[]{
         "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
         "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina",
@@ -76,22 +78,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         //setup the RecyclerView
-        mRecyclerView = findViewById(R.id.list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        binding.list.setLayoutManager(new LinearLayoutManager(this));
+        binding.list.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = new myAdapter(values, R.layout.my_row, this);
         //add the adapter to the recyclerview
-        mRecyclerView.setAdapter(mAdapter);
+        binding.list.setAdapter(mAdapter);
 
         //SwipeRefreshlayout setup.
-        mSwipeRefreshLayout = findViewById(R.id.activity_main_swipe_refresh_layout);
         //setup some colors for the refresh circle.
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue);
+        binding.activityMainSwipeRefreshLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue);
         //now setup the swiperefrestlayout listener where the main work is done.
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        binding.activityMainSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 //where we call the refresher parts.  normally some kind of networking async task or web service.
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(mRecyclerView);
+        itemTouchHelper.attachToRecyclerView(binding.list);
     }
 
     /*
@@ -131,13 +132,13 @@ public class MainActivity extends AppCompatActivity {
      * the refreshing circle.
      */
     void refreshslower() {
-        new Handler().postDelayed(new Runnable() {
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
                 //update the listview with new values.
                 mAdapter.randomlist();  //normally something better then a random update.
                 mAdapter.notifyDataSetChanged();  //cause the recyclerview to update.
-                mSwipeRefreshLayout.setRefreshing(false);  //turn of the refresh.
+                binding.activityMainSwipeRefreshLayout.setRefreshing(false);  //turn of the refresh.
             }
         }, 2500);
     }

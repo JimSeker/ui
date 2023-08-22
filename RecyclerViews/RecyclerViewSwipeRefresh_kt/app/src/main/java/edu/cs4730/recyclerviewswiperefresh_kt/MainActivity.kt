@@ -2,18 +2,19 @@ package edu.cs4730.recyclerviewswiperefresh_kt
 
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import edu.cs4730.recyclerviewswiperefresh_kt.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var mRecyclerView: RecyclerView
+    lateinit var binding: ActivityMainBinding
     lateinit var mAdapter: myAdapter
-    lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
     var values = arrayOf(
         "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
         "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina",
@@ -61,23 +62,22 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater);
+        setContentView(binding.root);
 
         //setup the RecyclerView
-        mRecyclerView = findViewById(R.id.list)
-        mRecyclerView.layoutManager = LinearLayoutManager(this)
-        mRecyclerView.itemAnimator = DefaultItemAnimator()
+        binding.list.layoutManager = LinearLayoutManager(this)
+        binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = myAdapter(values, R.layout.my_row, this)
         //add the adapter to the recyclerview
-        mRecyclerView.adapter = mAdapter
+        binding.list.adapter = mAdapter
 
         //SwipeRefreshlayout setup.
-        mSwipeRefreshLayout = findViewById(R.id.activity_main_swipe_refresh_layout)
         //setup some colors for the refresh circle.
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue)
+        binding.activityMainSwipeRefreshLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue)
         //now setup the swiperefrestlayout listener where the main work is done.
-        mSwipeRefreshLayout.setOnRefreshListener {
+        binding.activityMainSwipeRefreshLayout.setOnRefreshListener {
             //where we call the refresher parts.  normally some kind of networking async task or web service.
             // For demo purpose, the code in the refreshslower method so it will take a couple of seconds
             //otherwise, the task or service would just be called here.
@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
-        itemTouchHelper.attachToRecyclerView(mRecyclerView)
+        itemTouchHelper.attachToRecyclerView(binding.list)
 
     }
 
@@ -117,11 +117,11 @@ class MainActivity : AppCompatActivity() {
      * the refreshing circle.
      */
     fun refreshslower() {
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             //update the listview with new values.
             mAdapter.randomlist() //normally something better then a random update.
             mAdapter.notifyDataSetChanged() //cause the recyclerview to update.
-            mSwipeRefreshLayout.isRefreshing = false //turn of the refresh.
+            binding.activityMainSwipeRefreshLayout.isRefreshing = false //turn of the refresh.
         }, 2500)
     }
 
