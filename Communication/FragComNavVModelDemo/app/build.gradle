@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
+    compileSdk 34
     defaultConfig {
         applicationId "edu.cs4730.fragcomnavvmodeldemo"
-        minSdkVersion 26
-        targetSdkVersion 33
+        minSdkVersion 28
+        targetSdk 34
         versionCode 1
         versionName "1.0"
     }
@@ -15,19 +15,33 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures {
+        viewBinding = true
+    }
+    namespace 'edu.cs4730.fragcomnavvmodeldemo'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.navigation:navigation-fragment:2.5.2'
-    implementation 'androidx.navigation:navigation-ui:2.5.2'
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
+    implementation 'androidx.navigation:navigation-fragment:2.7.0'
+    implementation 'androidx.navigation:navigation-ui:2.7.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.6.1"
     //really dumb, needed to stop a duplicate dependency, even though not use kotlin at all, hopefully at some point won't need it.
    // implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0'
-    implementation "androidx.lifecycle:lifecycle-livedata:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.6.1"
 
     // Feature module Support
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.5.2"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.7.0"
+    //really dumb, needed to stop a duplicate dependency, even though not use kotlin at all, hopefully at some point won't need it.
+    //but with android view model, doesn't seem to have the same problem.  really weird.  leaving the commented out line just in case.
+    constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+        }
+    }
 }

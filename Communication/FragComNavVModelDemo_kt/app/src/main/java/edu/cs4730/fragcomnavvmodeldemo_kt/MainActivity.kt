@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import edu.cs4730.fragcomnavvmodeldemo_kt.databinding.ActivityMainBinding
 
 /**
  * simple example use a AndroidviewModel as plain old java object.  Except it shared between all the fragments and MainActivity.
@@ -17,10 +18,11 @@ import androidx.lifecycle.ViewModelProvider
 class MainActivity : AppCompatActivity() {
 
     lateinit var mViewModel: DataViewModel
-
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         mViewModel = ViewModelProvider(this)[DataViewModel::class.java]
 
         mViewModel.data.observe(this, Observer<String?> { data -> //do something with the data

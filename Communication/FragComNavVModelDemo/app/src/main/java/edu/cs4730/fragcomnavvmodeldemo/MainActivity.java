@@ -8,23 +8,25 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.util.Log;
 
+import edu.cs4730.fragcomnavvmodeldemo.databinding.ActivityMainBinding;
+
 /**
  * simple example use a AndroidviewModel as plain old java object.  Except it shared between all the fragments and MainActivity.
  * Note it would even better with LiveData, but that is another example.
- *
+ * <p>
  * the numbers are not live data, so no observers.  those are set "manually".  while the string data item is using mutable live data
  * so an observer can be used to update the data whenever it changes.
  */
 
 public class MainActivity extends AppCompatActivity {
-
     DataViewModel mViewModel;
-
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         mViewModel = new ViewModelProvider(this).get(DataViewModel.class);
 
         mViewModel.getData().observe(this, new Observer<String>() {

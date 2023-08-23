@@ -25,7 +25,7 @@
         app:layout_constraintHorizontal_bias="0.375" />
 
     <Button
-        android:id="@+id/ff_btn1"
+        android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Call Second Fragment"
@@ -37,28 +37,28 @@
         android:layout_marginTop="8dp" />
 
     <TextView
-        android:id="@+id/ff_tv1"
+        android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium"
         tools:layout_constraintTop_creator="1"
-        app:layout_constraintTop_toBottomOf="@+id/ff_btn1"
+        app:layout_constraintTop_toBottomOf="@+id/btn1"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/ff_btn1"
+        app:layout_constraintLeft_toLeftOf="@+id/btn1"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="8dp" />
 
     <TextView
-        android:id="@+id/ff_tv2"
+        android:id="@+id/tv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium"
         tools:layout_constraintTop_creator="1"
-        app:layout_constraintTop_toBottomOf="@+id/ff_tv1"
+        app:layout_constraintTop_toBottomOf="@+id/tv1"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/ff_tv1"
+        app:layout_constraintLeft_toLeftOf="@+id/tv1"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="8dp" />
 
