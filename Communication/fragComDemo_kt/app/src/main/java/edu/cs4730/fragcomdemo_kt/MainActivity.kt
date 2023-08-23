@@ -3,6 +3,7 @@ package edu.cs4730.fragcomdemo_kt
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
+import edu.cs4730.fragcomdemo_kt.databinding.ActivityMainBinding
 
 
 /**
@@ -14,16 +15,17 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
     var num_one = 0 //number of times firstfragment was called.
     var num_two = 0 //number of times secondfragment was called.
     var TAG = "MainActivity"
-
+    lateinit var  binding: ActivityMainBinding
     //used to move the fragments.
     lateinit var fragmentManager: FragmentManager
     var whichfragment = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         fragmentManager = supportFragmentManager
         //setup the mainFragment to show.
-        fragmentManager.beginTransaction().add(R.id.container, MainFragment()).commit()
+        fragmentManager.beginTransaction().add(binding.container.id, MainFragment()).commit()
     }
 
 
@@ -40,7 +42,7 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
         whichfragment = if (which == 1) { //first fragment
             //replace with first fragment
             transaction.replace(
-                R.id.container,
+                binding.container.id,
                 FirstFragment.newInstance(num_one.toString(), "Called From MainFrag")
             )
             num_one++
@@ -48,7 +50,7 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
         } else { //must be 2 (hopefully!)
             //replace with first fragment
             transaction.replace(
-                R.id.container,
+                binding.container.id,
                 SecondFragment.newInstance(num_two.toString(), "Called From MainFrag")
             )
             num_two++
@@ -70,7 +72,7 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
         //now change to the SecondFragment, pressing the back button should go to main fragment.
         val transaction = fragmentManager.beginTransaction()
         //remove firstfragment from the stack and replace it with two.
-        transaction.replace(R.id.container, SecondFragment.newInstance(num_two.toString(), Data))
+        transaction.replace(binding.container.id, SecondFragment.newInstance(num_two.toString(), Data))
         // and add the transaction to the back stack so the user can navigate back
         transaction.addToBackStack(null)
 
@@ -89,7 +91,7 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
         val transaction = fragmentManager.beginTransaction()
 
         //remove Secondfragment from the stack and replace it with one.
-        transaction.replace(R.id.container, FirstFragment.newInstance(num_one.toString(), Data))
+        transaction.replace(binding.container.id, FirstFragment.newInstance(num_one.toString(), Data))
         // and add the transaction to the back stack so the user can navigate back
         transaction.addToBackStack(null)
 
@@ -97,12 +99,4 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
         transaction.commit()
         num_one++
     }
-
-    /**
-     * If we wanted to deal with the back button, this is the method for it.
-     */
-    override fun onBackPressed() {
-        super.onBackPressed()
-    }
-
 }

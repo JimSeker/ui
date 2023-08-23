@@ -1,15 +1,14 @@
 package edu.cs4730.fragcomdemo_kt
 
-import android.widget.TextView
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.app.Activity
 import android.content.Context
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import java.lang.ClassCastException
+import edu.cs4730.fragcomdemo_kt.SecondFragment.OnFragmentInteractionListener2
+import edu.cs4730.fragcomdemo_kt.databinding.FragmentSecondBinding
 
 /**
  * A simple [Fragment] subclass. Activities that contain this fragment
@@ -22,9 +21,7 @@ class SecondFragment : Fragment() {
     private var mParam1: String? = null
     private var mParam2: String? = null
     private var mListener: OnFragmentInteractionListener2? = null
-    lateinit var tv1: TextView
-    lateinit var tv2: TextView
-    lateinit var btn1: Button
+    lateinit var binding: FragmentSecondBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -36,22 +33,19 @@ class SecondFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val myView = inflater.inflate(R.layout.fragment_second, container, false)
-        tv1 = myView.findViewById(R.id.sf_tv1)
-        tv1.text = "Parameter1: $mParam1"
-        tv2 = myView.findViewById(R.id.sf_tv2)
-        tv2.text = "Parameter2: $mParam2"
-        btn1 = myView.findViewById(R.id.sf_btn1)
-        btn1.setOnClickListener {
+        binding = FragmentSecondBinding.inflate(inflater, container, false)
+        binding.sfTv1.text = "Parameter1: $mParam1"
+        binding.sfTv2.text = "Parameter2: $mParam2"
+        binding.sfBtn1.setOnClickListener {
             if (mListener != null) {
                 //this is calling the interface, which call into the activity, so it
                 //can change to the first fragment and send a simple string as well.
                 mListener!!.onFragmentInteraction2("Called by SecondFramgnet")
             }
         }
-        return myView
+        return binding.root
     }
 
     override fun onAttach(context: Context) {

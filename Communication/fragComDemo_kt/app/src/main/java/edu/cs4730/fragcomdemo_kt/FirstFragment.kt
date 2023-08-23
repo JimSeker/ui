@@ -1,15 +1,14 @@
 package edu.cs4730.fragcomdemo_kt
 
-import android.widget.TextView
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.app.Activity
 import android.content.Context
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import java.lang.ClassCastException
+import edu.cs4730.fragcomdemo_kt.FirstFragment.OnFragmentInteractionListener1
+import edu.cs4730.fragcomdemo_kt.databinding.FragmentFirstBinding
 
 /**
  * A simple [Fragment] subclass. Activities that contain this fragment
@@ -22,9 +21,7 @@ class FirstFragment : Fragment() {
     private lateinit var mParam1: String
     private lateinit var mParam2: String
     private var mListener: OnFragmentInteractionListener1? = null
-    lateinit var tv1: TextView
-    lateinit var tv2: TextView
-    lateinit var btn1: Button
+    lateinit var binding: FragmentFirstBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -34,24 +31,21 @@ class FirstFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val myView = inflater.inflate(R.layout.fragment_first, container, false)
-        tv1 = myView.findViewById(R.id.ff_tv1)
-        tv1.text = "Parameter1: $mParam1"
-        tv2 = myView.findViewById(R.id.ff_tv2)
-        tv2.text = "Parameter2: $mParam2"
-        btn1 = myView.findViewById(R.id.ff_btn1)
-        btn1.setOnClickListener {
+        binding = FragmentFirstBinding.inflate(inflater, container, false)
+
+        binding.ffTv1.text = "Parameter1: $mParam1"
+        binding.ffTv2.text = "Parameter2: $mParam2"
+        binding.ffBtn1.setOnClickListener {
             if (mListener != null) {
                 //this is calling the interface, which call into the activity, so it
                 //can change to the first fragment and send a simple string as well.
                 mListener!!.onFragmentInteraction1("Called by FirstFramgnet")
             }
         }
-        return myView
+        return binding.root
     }
 
     override fun onAttach(context: Context) {
@@ -61,8 +55,7 @@ class FirstFragment : Fragment() {
             activity as OnFragmentInteractionListener1
         } catch (e: ClassCastException) {
             throw ClassCastException(
-                activity.toString()
-                        + " must implement OnFragmentInteractionListener"
+                "$activity must implement OnFragmentInteractionListener"
             )
         }
     }

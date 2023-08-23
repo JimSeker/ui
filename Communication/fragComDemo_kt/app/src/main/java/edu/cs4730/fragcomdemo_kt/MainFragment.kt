@@ -8,6 +8,7 @@ import android.content.Context
 import android.view.View
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import edu.cs4730.fragcomdemo_kt.databinding.FragmentMainBinding
 import java.lang.ClassCastException
 
 /**
@@ -15,18 +16,16 @@ import java.lang.ClassCastException
  */
 class MainFragment : Fragment() {
     private var mListener: OnFragmentInteractionListener? = null
-    lateinit var btn1: Button
-    lateinit var btn2: Button
+    lateinit var binding: FragmentMainBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val myView = inflater.inflate(R.layout.fragment_main, container, false)
+        binding = FragmentMainBinding.inflate(inflater, container, false)
 
         //button to call firstfragment
-        btn1 = myView.findViewById(R.id.button1)
-        btn1.setOnClickListener(View.OnClickListener {
+        binding.button1.setOnClickListener(View.OnClickListener {
             if (mListener != null) {
                 //this is calling the interface, which call into the activity, so it
                 //can change to the first fragment and send a simple string as well.
@@ -34,15 +33,14 @@ class MainFragment : Fragment() {
             }
         })
         //button to call secondfragment.
-        btn2 = myView.findViewById(R.id.button2)
-        btn2.setOnClickListener(View.OnClickListener {
+        binding.button2.setOnClickListener(View.OnClickListener {
             if (mListener != null) {
                 //this is calling the interface, which call into the activity, so it
                 //can change to the second fragment and send a simple string as well.
                 mListener!!.onFragmentInteraction(2)
             }
         })
-        return myView
+        return binding.root
     }
 
     override fun onAttach(context: Context) {

@@ -11,28 +11,29 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import edu.cs4730.fragcomdemo.databinding.FragmentMainBinding;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-
-    Button btn1, btn2;
+    FragmentMainBinding binding;
 
     public MainFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myView = inflater.inflate(R.layout.fragment_main, container, false);
+        binding = FragmentMainBinding.inflate(inflater, container, false);
 
         //button to call firstfragment
-        btn1 = myView.findViewById(R.id.button1);
-        btn1.setOnClickListener(new View.OnClickListener() {
+
+        binding.button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mListener != null) {
@@ -43,8 +44,7 @@ public class MainFragment extends Fragment {
             }
         });
         //button to call secondfragment.
-        btn2 = myView.findViewById(R.id.button2);
-        btn2.setOnClickListener(new View.OnClickListener() {
+        binding.button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mListener != null) {
@@ -54,7 +54,7 @@ public class MainFragment extends Fragment {
                 }
             }
         });
-        return myView;
+        return binding.getRoot();
     }
 
     @Override
@@ -65,7 +65,7 @@ public class MainFragment extends Fragment {
             mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
-                + " must implement OnFragmentInteractionListener");
+                    + " must implement OnFragmentInteractionListener");
         }
     }
 

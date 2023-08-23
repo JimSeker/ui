@@ -6,14 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import edu.cs4730.fragcomdemo.databinding.ActivityMainBinding;
+
 
 /**
  * This activity is acting as the go between for the First and Second fragment.
  * The main fragment is used to use launch either fragment.
  */
-public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener,
-    FirstFragment.OnFragmentInteractionListener1,
-    SecondFragment.OnFragmentInteractionListener2 {
+public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener, FirstFragment.OnFragmentInteractionListener1, SecondFragment.OnFragmentInteractionListener2 {
 
     int num_one = 0;  //number of times firstfragment was called.
     int num_two = 0;  //number of times secondfragment was called.
@@ -21,18 +21,20 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
     //used to move the fragments.
     FragmentManager fragmentManager;
     int whichfragment = 0;
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         fragmentManager = getSupportFragmentManager();
         //setup the mainFragment to show.
-        fragmentManager.beginTransaction().add(R.id.container, new MainFragment()).commit();
+        fragmentManager.beginTransaction().add(binding.container.getId(), new MainFragment()).commit();
     }
 
-    /*
+    /**
      * This is the callback for MainFragment.  It takes as which number, which well is the fragment
      * to launch.
      */
@@ -42,15 +44,15 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
         //remove the current fragment...
-        //transaction.remove(fragmentManager.findFragmentById(R.id.container));
+        //transaction.remove(fragmentManager.findFragmentById(binding.container.getId()));
         if (which == 1) { //first fragment
             //replace with first fragment
-            transaction.replace(R.id.container, FirstFragment.newInstance(String.valueOf(num_one), "Called From MainFrag"));
+            transaction.replace(binding.container.getId(), FirstFragment.newInstance(String.valueOf(num_one), "Called From MainFrag"));
             num_one++;
             whichfragment = 1;
         } else { //must be 2 (hopefully!)
             //replace with first fragment
-            transaction.replace(R.id.container, SecondFragment.newInstance(String.valueOf(num_two), "Called From MainFrag"));
+            transaction.replace(binding.container.getId(), SecondFragment.newInstance(String.valueOf(num_two), "Called From MainFrag"));
             num_two++;
             whichfragment = 2;
         }
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
         //now change to the SecondFragment, pressing the back button should go to main fragment.
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         //remove firstfragment from the stack and replace it with two.
-        transaction.replace(R.id.container, SecondFragment.newInstance(String.valueOf(num_two), Data));
+        transaction.replace(binding.container.getId(), SecondFragment.newInstance(String.valueOf(num_two), Data));
         // and add the transaction to the back stack so the user can navigate back
         transaction.addToBackStack(null);
 
@@ -92,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
         //remove Secondfragment from the stack and replace it with one.
-        transaction.replace(R.id.container, FirstFragment.newInstance(String.valueOf(num_one), Data));
+        transaction.replace(binding.container.getId(), FirstFragment.newInstance(String.valueOf(num_one), Data));
         // and add the transaction to the back stack so the user can navigate back
         transaction.addToBackStack(null);
 
@@ -101,14 +103,4 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
 
         num_one++;
     }
-
-    /**
-     * If we wanted to deal with the back button, this is the method for it.
-     */
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-    }
-
 }

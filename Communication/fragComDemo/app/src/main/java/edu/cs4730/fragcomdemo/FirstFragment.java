@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import edu.cs4730.fragcomdemo.databinding.FragmentFirstBinding;
+
 /**
  * A simple {@link Fragment} subclass. Activities that contain this fragment
  * must implement the {@link FirstFragment.OnFragmentInteractionListener1}
@@ -30,8 +32,7 @@ public class FirstFragment extends Fragment {
 
     private OnFragmentInteractionListener1 mListener;
 
-    TextView tv1, tv2;
-    Button btn1;
+    FragmentFirstBinding binding;
 
     /**
      * Use this factory method to create a new instance of this fragment using
@@ -65,17 +66,14 @@ public class FirstFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myView = inflater.inflate(R.layout.fragment_first, container, false);
+        binding = FragmentFirstBinding.inflate(inflater, container, false);
 
-        tv1 = myView.findViewById(R.id.ff_tv1);
-        tv1.setText("Parameter1: " + mParam1);
-        tv2 = myView.findViewById(R.id.ff_tv2);
-        tv2.setText("Parameter2: " + mParam2);
-        btn1 = myView.findViewById(R.id.ff_btn1);
-        btn1.setOnClickListener(new View.OnClickListener() {
+        binding.ffTv1.setText("Parameter1: " + mParam1);
+        binding.ffTv2.setText("Parameter2: " + mParam2);
+        binding.ffBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mListener != null) {
@@ -86,7 +84,7 @@ public class FirstFragment extends Fragment {
             }
         });
 
-        return myView;
+        return binding.getRoot();
     }
 
     @Override
@@ -97,7 +95,7 @@ public class FirstFragment extends Fragment {
             mListener = (OnFragmentInteractionListener1) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
-                + " must implement OnFragmentInteractionListener");
+                    + " must implement OnFragmentInteractionListener");
         }
     }
 
