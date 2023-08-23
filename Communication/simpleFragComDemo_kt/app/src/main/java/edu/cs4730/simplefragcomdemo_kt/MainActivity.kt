@@ -1,10 +1,10 @@
 package edu.cs4730.simplefragcomdemo_kt
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
+import edu.cs4730.simplefragcomdemo_kt.databinding.ActivityMainBinding
 
 /**
  * simple example of callbacks and two fragments.
@@ -21,15 +21,17 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
     lateinit var main: MainFragment
     lateinit var info: InfoFragment
     var twopane = false
+    lateinit var binding: ActivityMainBinding
     lateinit var fragmentManager: FragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         fragmentManager = supportFragmentManager
 
         //setup the correct layout, based on if container (portrait) exists.
-        if (findViewById<View?>(R.id.container) == null) { //two pane
+        if (binding.container == null) { //two pane
             twopane = true
             //since the fragments are already showing and exist, just go get them.
             main = fragmentManager.findFragmentById(R.id.frag_main) as MainFragment
@@ -40,7 +42,7 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
             main = MainFragment()
             info = InfoFragment()
             fragmentManager.beginTransaction()
-                .add(R.id.container, main)
+                .add(binding.container!!.id, main)
                 .commit()
         }
     }
@@ -56,7 +58,7 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
             //so we need to display the fragment info and then update it as well.
             val transaction = fragmentManager.beginTransaction()
             //now setup to replace the current fragment.
-            transaction.replace(R.id.container, info)
+            transaction.replace(binding.container!!.id, info)
             // and add the transaction to the back stack so the user can navigate back
             transaction.addToBackStack(null)
             // Commit the transaction

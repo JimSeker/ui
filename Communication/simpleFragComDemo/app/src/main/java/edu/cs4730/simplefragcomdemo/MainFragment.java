@@ -11,6 +11,8 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import edu.cs4730.simplefragcomdemo.databinding.FragmentMainBinding;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -20,19 +22,18 @@ import androidx.fragment.app.Fragment;
 public class MainFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-    Button myButton;
+    FragmentMainBinding binding;
 
     public MainFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myView = inflater.inflate(R.layout.fragment_main, container, false);
-        myButton = myView.findViewById(R.id.button01);
-        myButton.setOnClickListener(new View.OnClickListener() {
+        binding = FragmentMainBinding.inflate(inflater, container, false);
+        binding.button01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mListener != null) {
@@ -41,7 +42,7 @@ public class MainFragment extends Fragment {
             }
         });
 
-        return myView;
+        return binding.getRoot();
     }
 
     @Override

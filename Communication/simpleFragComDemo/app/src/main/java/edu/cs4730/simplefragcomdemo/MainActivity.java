@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import edu.cs4730.simplefragcomdemo.databinding.ActivityMainBinding;
+
 /**
  * simple example of callbacks and two fragments.
  *
@@ -19,34 +21,32 @@ import androidx.fragment.app.FragmentTransaction;
  */
 
 public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener {
-
     MainFragment main;
     InfoFragment info;
     Boolean twopane = false;
     FragmentManager fragmentManager;
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         fragmentManager = getSupportFragmentManager();
 
         //setup the correct layout, based on if container (portrait) exists.
-        if (findViewById(R.id.container) == null) { //two pane
+        if (binding.container == null) { //two pane
             twopane = true;
             //since the fragments are already showing and exist, just go get them.
             main = (MainFragment) fragmentManager.findFragmentById(R.id.frag_main);
             info = (InfoFragment) fragmentManager.findFragmentById(R.id.frag_info);
-
         } else {
             twopane = false;
             //just a framelayout, so construct the fragments and then display main.
             main = new MainFragment();
             info = new InfoFragment();
             fragmentManager.beginTransaction()
-                .add(R.id.container, main)
+                .add(binding.container.getId(), main)
                 .commit();
         }
     }
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
             //so we need to display the fragment info and then update it as well.
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             //now setup to replace the current fragment.
-            transaction.replace(R.id.container, info);
+            transaction.replace(binding.container.getId(), info);
             // and add the transaction to the back stack so the user can navigate back
             transaction.addToBackStack(null);
             // Commit the transaction

@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.app.Activity
 import android.content.Context
 import android.view.View
-import android.widget.Button
 import androidx.fragment.app.Fragment
+import edu.cs4730.simplefragcomdemo_kt.databinding.FragmentMainBinding
 import java.lang.ClassCastException
 
 /**
@@ -19,20 +19,18 @@ import java.lang.ClassCastException
  */
 class MainFragment : Fragment() {
     private var mListener: OnFragmentInteractionListener? = null
-    lateinit var myButton: Button
+    lateinit var binding: FragmentMainBinding
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val myView = inflater.inflate(R.layout.fragment_main, container, false)
-        myButton = myView.findViewById(R.id.button01)
-        myButton.setOnClickListener {
+        binding = FragmentMainBinding.inflate(inflater, container, false)
+        binding.button01.setOnClickListener {
             if (mListener != null) {
                 mListener!!.onFragmentInteraction(1)
             }
         }
-        return myView
+        return binding.root
     }
 
     override fun onAttach(context: Context) {
@@ -42,8 +40,7 @@ class MainFragment : Fragment() {
             activity as OnFragmentInteractionListener
         } catch (e: ClassCastException) {
             throw ClassCastException(
-                activity.toString()
-                        + " must implement OnFragmentInteractionListener"
+                activity.toString() + " must implement OnFragmentInteractionListener"
             )
         }
     }

@@ -15,6 +15,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import edu.cs4730.intentdemo_kt.databinding.ActivityMainBinding
 
 /**
  * Example of how to call varying system intents, such maps, phone, etc.
@@ -25,13 +26,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var cameraRpl: ActivityResultLauncher<String>
     lateinit var phoneRpl: ActivityResultLauncher<String>
     lateinit var contactRpl: ActivityResultLauncher<String>
-
+    lateinit var binding: ActivityMainBinding
     var TAG = "MainActivity"
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        //For the camera permissions
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //For the camera permissions
         cameraRpl = registerForActivityResult<String, Boolean>(
@@ -77,48 +77,44 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
 
-        //set all the listners for the buttons.
-        findViewById<View>(R.id.callbrowser).setOnClickListener(this)
-        findViewById<View>(R.id.takepic).setOnClickListener(this)
-        findViewById<View>(R.id.pickcontact).setOnClickListener(this)
-        findViewById<View>(R.id.activitytwo).setOnClickListener(this)
-        findViewById<View>(R.id.showmap).setOnClickListener(this)
-        findViewById<View>(R.id.searchmap).setOnClickListener(this)
-        findViewById<View>(R.id.callnumber).setOnClickListener(this)
-        findViewById<View>(R.id.dialnumber).setOnClickListener(this)
+        //set all the listeners for the buttons.
+        binding.callbrowser.setOnClickListener(this)
+        binding.takepic.setOnClickListener(this)
+        binding.pickcontact.setOnClickListener(this)
+        binding.activitytwo.setOnClickListener(this)
+        binding.showmap.setOnClickListener(this)
+        binding.searchmap.setOnClickListener(this)
+        binding.callnumber.setOnClickListener(this)
+        binding.dialnumber.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
         val intent: Intent
-        when (view.id) {
-            R.id.callbrowser -> {
-                intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.eecs.uwyo.edu"))
-                startActivity(intent)
-            }
-            R.id.callnumber -> makeCall() //needs permissions, so moved to a method.
-            R.id.dialnumber -> {
-                intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:(307)555555"))
-                startActivity(intent)
-            }
-            R.id.showmap -> {
-                intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:41.312927,105.587251?z=19"))
-                startActivity(intent)
-            }
-            R.id.searchmap -> {
-                intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=query"))
-                startActivity(intent)
-            }
-            R.id.takepic -> takePic()
-            R.id.activitytwo -> {
-                intent = Intent(this, ActivityTwo::class.java)
-                intent.putExtra("key1", "Some Data")
-                intent.putExtra("key2", "More Data")
-                // Set the request code to any code you like, you can identify the
-                // callback via this code
-                act2ActivityResultLauncher.launch(intent)
-            }
-            R.id.pickcontact -> pickContact()
-            else -> {}
+        if (view === binding.callbrowser) {
+            intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.eecs.uwyo.edu"))
+            startActivity(intent)
+        } else if (view === binding.callnumber) {
+            makeCall() //needs permissions, so moved to a method.
+        } else if (view === binding.dialnumber) {
+            intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:(307)555555"))
+            startActivity(intent)
+        } else if (view === binding.showmap) {
+            intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:41.312927,105.587251?z=19"))
+            startActivity(intent)
+        } else if (view === binding.searchmap) {
+            intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=query"))
+            startActivity(intent)
+        } else if (view === binding.takepic) {
+            takePic()
+        } else if (view === binding.activitytwo) {
+            intent = Intent(this, ActivityTwo::class.java)
+            intent.putExtra("key1", "Some Data")
+            intent.putExtra("key2", "More Data")
+            // Set the request code to any code you like, you can identify the
+            // callback via this code
+            act2ActivityResultLauncher.launch(intent)
+        } else if (view === binding.pickcontact) {
+            pickContact()
         }
     }
 
@@ -149,8 +145,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val data = result.data
             val c = contentResolver.query(data!!.data!!, null, null, null, null)
             c!!.moveToFirst() //I know the query worked, since we just picked it, otherwise, should be an if statement.
-            val name =
-                c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME))
+            val name = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME))
             Toast.makeText(applicationContext, "You Picked: $name", Toast.LENGTH_LONG).show()
             c.close()
         } else {
@@ -166,8 +161,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val data = result.data
             if (data!!.hasExtra("returnKey1")) {
                 Toast.makeText(
-                    applicationContext, data.extras!!.getString("returnKey1"),
-                    Toast.LENGTH_SHORT
+                    applicationContext, data.extras!!.getString("returnKey1"), Toast.LENGTH_SHORT
                 ).show()
             }
         } else {
@@ -176,13 +170,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    //For these three intents, we nee permissions, so check permission first, then launch the intents.
+    //For these three intents, we need permissions, so check permission first, then launch the intents.
     fun makeCall() {
 
         //make sure I permissions first.
         if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.CALL_PHONE
+                this, Manifest.permission.CALL_PHONE
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             //I'm on not explaining why, just asking for permission.
@@ -198,8 +191,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         //make sure I permissions first.
         if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.CAMERA
+                this, Manifest.permission.CAMERA
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             //I'm on not explaining why, just asking for permission.
@@ -214,8 +206,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     fun pickContact() {
         //make sure I permissions first.
         if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.READ_CONTACTS
+                this, Manifest.permission.READ_CONTACTS
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             //I'm on not explaining why, just asking for permission.

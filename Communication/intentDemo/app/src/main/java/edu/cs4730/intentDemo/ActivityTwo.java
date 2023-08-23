@@ -7,16 +7,20 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import edu.cs4730.intentDemo.databinding.TwoActivityBinding;
+
 /**
- *  simple example.  it display the data sent to it and returns a fixed set of data.
+ * simple example.  it display the data sent to it and returns a fixed set of data.
  */
 
 public class ActivityTwo extends AppCompatActivity {
+    TwoActivityBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.two_activity);
+        binding = TwoActivityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
             return;
@@ -24,10 +28,8 @@ public class ActivityTwo extends AppCompatActivity {
         String value1 = extras.getString("key1");
         String value2 = extras.getString("key2");
         if (value1 != null && value2 != null) {
-            EditText text1 = findViewById(R.id.EditText01);
-            EditText text2 = findViewById(R.id.EditText02);
-            text1.setText(value1);
-            text2.setText(value2);
+            binding.EditText01.setText(value1);
+            binding.EditText02.setText(value2);
         }
     }
 

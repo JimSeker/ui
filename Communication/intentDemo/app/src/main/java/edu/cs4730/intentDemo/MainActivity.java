@@ -21,6 +21,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import edu.cs4730.intentDemo.databinding.ActivityMainBinding;
+
 /**
  * Example of how to call varying system intents, such maps, phone, etc.
  * also how to call another activity with data and return data as well.
@@ -30,13 +32,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // for checking permissions.
     ActivityResultLauncher<String> cameraRpl, phoneRpl, contactRpl;
-
+    ActivityMainBinding binding;
     String TAG = "MainActivity";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //For the camera permissions
         cameraRpl = registerForActivityResult(
@@ -79,15 +82,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
 
-        //set all the listners for the buttons.
-        findViewById(R.id.callbrowser).setOnClickListener(this);
-        findViewById(R.id.takepic).setOnClickListener(this);
-        findViewById(R.id.pickcontact).setOnClickListener(this);
-        findViewById(R.id.activitytwo).setOnClickListener(this);
-        findViewById(R.id.showmap).setOnClickListener(this);
-        findViewById(R.id.searchmap).setOnClickListener(this);
-        findViewById(R.id.callnumber).setOnClickListener(this);
-        findViewById(R.id.dialnumber).setOnClickListener(this);
+        //set all the listeners for the buttons.
+        binding.callbrowser.setOnClickListener(this);
+        binding.takepic.setOnClickListener(this);
+        binding.pickcontact.setOnClickListener(this);
+        binding.activitytwo.setOnClickListener(this);
+        binding.showmap.setOnClickListener(this);
+        binding.searchmap.setOnClickListener(this);
+        binding.callnumber.setOnClickListener(this);
+        binding.dialnumber.setOnClickListener(this);
 
     }
 
@@ -95,42 +98,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @SuppressLint("NonConstantResourceId")
     public void onClick(View view) {
         Intent intent;
-        switch (view.getId()) {
-            case R.id.callbrowser:
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.eecs.uwyo.edu"));
-                startActivity(intent);
-                break;
-            case R.id.callnumber:
-                makeCall();  //needs permissions, so moved to a method.
-                break;
-            case R.id.dialnumber:
-                intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:(307)555555"));
-                startActivity(intent);
-                break;
-            case R.id.showmap:
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:41.312927,105.587251?z=19"));
-                startActivity(intent);
-                break;
-            case R.id.searchmap:
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=query"));
-                startActivity(intent);
-                break;
-            case R.id.takepic:
-                takePic();
-                break;
-            case R.id.activitytwo:
-                intent = new Intent(this, ActivityTwo.class);
-                intent.putExtra("key1", "Some Data");
-                intent.putExtra("key2", "More Data");
-                // Set the request code to any code you like, you can identify the
-                // callback via this code
-                act2ActivityResultLauncher.launch(intent);
-                break;
-            case R.id.pickcontact:
-                pickContact();
-                break;
-            default:
-                break;
+
+        if (view == binding.callbrowser) {
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.eecs.uwyo.edu"));
+            startActivity(intent);
+        } else if (view == binding.callnumber) {
+            makeCall();  //needs permissions, so moved to a method.
+        } else if (view == binding.dialnumber) {
+            intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:(307)555555"));
+            startActivity(intent);
+        } else if (view == binding.showmap) {
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:41.312927,105.587251?z=19"));
+            startActivity(intent);
+        } else if (view == binding.searchmap) {
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=query"));
+            startActivity(intent);
+        } else if (view == binding.takepic) {
+            takePic();
+        } else if (view == binding.activitytwo) {
+            intent = new Intent(this, ActivityTwo.class);
+            intent.putExtra("key1", "Some Data");
+            intent.putExtra("key2", "More Data");
+            // Set the request code to any code you like, you can identify the
+            // callback via this code
+            act2ActivityResultLauncher.launch(intent);
+        } else if (view == binding.pickcontact) {
+            pickContact();
         }
     }
 
@@ -193,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
-    //For these three intents, we nee permissions, so check permission first, then launch the intents.
+    //For these three intents, we need permissions, so check permission first, then launch the intents.
     public void makeCall() {
 
         //make sure I permissions first.
