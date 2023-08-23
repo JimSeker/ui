@@ -1,11 +1,12 @@
 package edu.cs4730.menudemo_kt
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.content.Intent
+import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NavUtils
+import edu.cs4730.menudemo_kt.databinding.ActivityFragmenuBinding
 
 /**
  * So this activity shows hwo the menu can change based on the fragments
@@ -15,10 +16,12 @@ class FragMenuActivity : AppCompatActivity() {
     lateinit var one: FragMenu1
     lateinit var two: FragMenu2
     var isfrag1 = true
+    lateinit var binding: ActivityFragmenuBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fragmenu)
+        binding = ActivityFragmenuBinding.inflate(layoutInflater)
+        setContentView(binding.getRoot())
 
         //turn on up button
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -26,8 +29,7 @@ class FragMenuActivity : AppCompatActivity() {
         //setup the two fragments, and then add one to screen.
         one = FragMenu1()
         two = FragMenu2()
-        supportFragmentManager.beginTransaction()
-            .add(R.id.text_container, one).commit()
+        supportFragmentManager.beginTransaction().add(binding.textContainer.id, one).commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -58,16 +60,16 @@ class FragMenuActivity : AppCompatActivity() {
             return true
         } else if (id == R.id.frag1) {
             if (!isfrag1) {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.text_container, one).commit()
+                supportFragmentManager.beginTransaction().replace(binding.textContainer.id, one)
+                    .commit()
                 isfrag1 = true
                 supportInvalidateOptionsMenu()
             }
             return true
         } else if (id == R.id.frag2) {
             if (isfrag1) {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.text_container, two).commit()
+                supportFragmentManager.beginTransaction().replace(binding.textContainer.id, two)
+                    .commit()
                 isfrag1 = false
                 supportInvalidateOptionsMenu()
             }

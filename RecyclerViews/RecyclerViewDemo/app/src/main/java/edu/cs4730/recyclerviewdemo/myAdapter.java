@@ -25,11 +25,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     private List<String> myList;
     private int rowLayout;
     private Context mContext;
-
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-
+    //viewbinding provides the references now.
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public MyRowBinding viewBinding;
         public ViewHolder(MyRowBinding viewBinding) {

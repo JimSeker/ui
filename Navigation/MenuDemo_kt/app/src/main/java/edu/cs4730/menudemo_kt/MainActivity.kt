@@ -9,16 +9,17 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
+import edu.cs4730.menudemo_kt.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var popup: TextView
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        popup = findViewById<View>(R.id.label2) as TextView
-        popup.setOnClickListener { v ->
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.popup.setOnClickListener { v ->
             showPopupMenu(v) //this is to the code below, not an API call.
         }
     }
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         ) //note "this" is the activity context, if you are using this in a fragment.  using getActivity()
         popupM.inflate(R.menu.popup)
         popupM.setOnMenuItemClickListener { item ->
-            Toast.makeText(applicationContext, item.toString(), Toast.LENGTH_LONG).show()
+            Toast.makeText(this@MainActivity, item.toString(), Toast.LENGTH_LONG).show()
             true
         }
         popupM.show()

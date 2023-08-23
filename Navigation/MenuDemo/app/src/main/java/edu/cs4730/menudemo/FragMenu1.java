@@ -13,8 +13,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import edu.cs4730.menudemo.databinding.FragmenuBinding;
+
 
 public class FragMenu1 extends Fragment {
+
+    FragmenuBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,13 +28,11 @@ public class FragMenu1 extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragmenu, container, false);
-        TextView tv = (TextView) view.findViewById(R.id.tv);
-        tv.setText("Fragment #1");
-        return view;
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmenuBinding.inflate(inflater, container, false);
+        binding.tv.setText("Fragment #1");
+        return binding.getRoot();
     }
-
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
@@ -41,7 +43,7 @@ public class FragMenu1 extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.frag1item) {
-            Toast.makeText(requireActivity().getApplicationContext(), "Fragment #1", Toast.LENGTH_LONG).show();
+            Toast.makeText(requireContext(), "Fragment #1", Toast.LENGTH_LONG).show();
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -25,20 +25,22 @@ import android.widget.TextView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import edu.cs4730.menudemo.databinding.ActivityViewpagerbuttonmenuBinding;
+
 /**
  * This example shows how to use a viewpager2 with button menu items to change the pager.
  */
 
 public class ViewPagerButtonMenuActivity extends AppCompatActivity {
     PageFragment one = null, two = null, three = null, four = null, five = null;
-    ViewPager2 viewPager;
-    TabLayout tabLayout;
+    ActivityViewpagerbuttonmenuBinding binding;
     myFragmentPagerAdapter mPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewpagerbuttonmenu);
+        binding = ActivityViewpagerbuttonmenuBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //turn on up button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -70,28 +72,26 @@ public class ViewPagerButtonMenuActivity extends AppCompatActivity {
             five = PageFragment.create(5);
         }
 
-        viewPager = findViewById(R.id.pager);
         mPagerAdapter = new myFragmentPagerAdapter(this);
-        viewPager.setAdapter(mPagerAdapter);
+        binding.pager.setAdapter(mPagerAdapter);
         //viewPager.setCurrentItem(2);
         //we need to know when a page has changed, so we can change/fix the next/previous/finish buttons
-        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+        binding.pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 supportInvalidateOptionsMenu();
             }
         });
-        tabLayout = findViewById(R.id.tab_layout);
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);  //dont show all the tabs, which is MODE_FIXED.
-        new TabLayoutMediator(tabLayout,
-            viewPager,
-            new TabLayoutMediator.TabConfigurationStrategy() {
-                @Override
-                public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                    tab.setText("This Page is " + (position + 1));
+        binding.tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);  //dont show all the tabs, which is MODE_FIXED.
+        new TabLayoutMediator(binding.tabLayout,
+                binding.pager,
+                new TabLayoutMediator.TabConfigurationStrategy() {
+                    @Override
+                    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                        tab.setText("This Page is " + (position + 1));
+                    }
                 }
-            }
         ).attach();
     }
 
@@ -100,16 +100,16 @@ public class ViewPagerButtonMenuActivity extends AppCompatActivity {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.activity_screen_slide, menu);
 
-        menu.findItem(R.id.action_previous).setEnabled(viewPager.getCurrentItem() > 0);
+        menu.findItem(R.id.action_previous).setEnabled(binding.pager.getCurrentItem() > 0);
         //help since this attribute is ignored in the xml by api <11.  ie 2.3.3
         //but the change is should xml, use app: instead of android is the ActionBarActivity can read it.
         //see xml
         //MenuItemCompat.setShowAsAction(menu.findItem(R.id.action_previous),MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
         MenuItem item = menu.add(Menu.NONE, R.id.action_next, Menu.NONE,
-            (viewPager.getCurrentItem() == mPagerAdapter.getItemCount() - 1)
-                ? R.string.action_finish
-                : R.string.action_next);
+                (binding.pager.getCurrentItem() == mPagerAdapter.getItemCount() - 1)
+                        ? R.string.action_finish
+                        : R.string.action_next);
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         return true;
     }
@@ -126,12 +126,12 @@ public class ViewPagerButtonMenuActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.action_previous) {
             // Go to the previous step in the wizard. If there is no previous step,
             // setCurrentItem will do nothing.
-            viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
+            binding.pager.setCurrentItem(binding.pager.getCurrentItem() - 1);
             return true;
         } else if (item.getItemId() == R.id.action_next) {
             // Advance to the next step in the wizard. If there is no next step, setCurrentItem
             // will do nothing.
-            viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+            binding.pager.setCurrentItem(binding.pager.getCurrentItem() + 1);
             return true;
         }
         return super.onOptionsItemSelected(item);

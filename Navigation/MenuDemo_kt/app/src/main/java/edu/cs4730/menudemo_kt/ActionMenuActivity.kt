@@ -1,24 +1,24 @@
 package edu.cs4730.menudemo_kt
 
-import androidx.appcompat.app.AppCompatActivity
-import android.widget.TextView
-import android.os.Bundle
-import androidx.core.app.NavUtils
 import android.content.Intent
+import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NavUtils
+import edu.cs4730.menudemo_kt.databinding.ActionmenuBinding
 
 /**
  * This activity show how to setup both buttons, and menus (and sub menus).
  * but all the work is in the menu/action.xml file.
  */
 class ActionMenuActivity : AppCompatActivity() {
-    lateinit var label1: TextView
+    lateinit var binding: ActionmenuBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.actionmenu)
-        label1 = findViewById<View>(R.id.label1) as TextView
+        binding = ActionmenuBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //turn on up button
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)

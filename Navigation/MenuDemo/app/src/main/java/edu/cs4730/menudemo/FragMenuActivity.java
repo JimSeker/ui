@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import androidx.core.app.NavUtils;
 import androidx.appcompat.app.AppCompatActivity;
 
+import edu.cs4730.menudemo.databinding.ActivityFragmenuBinding;
+
 /**
  * So this activity shows hwo the menu can change based on the fragments
  * which is FragMenu1 and FragMenu2 will show extra menu items.
@@ -17,11 +19,13 @@ public class FragMenuActivity extends AppCompatActivity {
     FragMenu1 one;
     FragMenu2 two;
     boolean isfrag1 = true;
+    ActivityFragmenuBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragmenu);
+        binding = ActivityFragmenuBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //turn on up button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -30,9 +34,8 @@ public class FragMenuActivity extends AppCompatActivity {
         one = new FragMenu1();
         two = new FragMenu2();
         getSupportFragmentManager().beginTransaction()
-            .add(R.id.text_container, one).commit();
+            .add(binding.textContainer.getId(), one).commit();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,7 +70,7 @@ public class FragMenuActivity extends AppCompatActivity {
         } else if (id == R.id.frag1) {
             if (!isfrag1) {
                 getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.text_container, one).commit();
+                    .replace(binding.textContainer.getId(), one).commit();
                 isfrag1 = true;
                 supportInvalidateOptionsMenu();
             }
@@ -75,7 +78,7 @@ public class FragMenuActivity extends AppCompatActivity {
         } else if (id == R.id.frag2) {
             if (isfrag1) {
                 getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.text_container, two).commit();
+                    .replace(binding.textContainer.getId(), two).commit();
                 isfrag1 = false;
                 supportInvalidateOptionsMenu();
             }

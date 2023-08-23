@@ -11,17 +11,19 @@ import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
+import edu.cs4730.menudemo.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity {
-    TextView popup;
+    ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-
-        popup = (TextView) findViewById(R.id.label2);
-        popup.setOnClickListener( new OnClickListener(){
+        binding.popup.setOnClickListener( new OnClickListener(){
             @Override
             public void onClick(View v) {
                 showPopupMenu(v); //this is to the code below, not an API call.
@@ -36,12 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(getApplicationContext(), item.toString(), Toast.LENGTH_LONG).show();
-                //textview.append("\n you clicked "+item.toString());
+                Toast.makeText(MainActivity.this, item.toString(), Toast.LENGTH_LONG).show();
                 return true;
             }
         });
-
         popupM.show();
     }
 

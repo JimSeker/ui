@@ -9,11 +9,11 @@ import androidx.core.app.NavUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.android.material.tabs.TabLayoutMediator.TabConfigurationStrategy
+import edu.cs4730.menudemo_kt.databinding.ActivityViewpagerbuttonmenuBinding
 
 /**
  * This example shows how to use a viewpager2 with button menu items to change the pager.
@@ -25,12 +25,12 @@ class ViewPagerButtonMenuActivity : AppCompatActivity() {
     lateinit var three: PageFragment
     lateinit var four: PageFragment
     lateinit var five: PageFragment
-    lateinit var viewPager: ViewPager2
-    lateinit var tabLayout: TabLayout
+    lateinit var binding: ActivityViewpagerbuttonmenuBinding
     lateinit var mPagerAdapter: myFragmentPagerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_viewpagerbuttonmenu)
+        binding = ActivityViewpagerbuttonmenuBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //turn on up button
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -59,21 +59,21 @@ class ViewPagerButtonMenuActivity : AppCompatActivity() {
             four = PageFragment.create(4)
             five = PageFragment.create(5)
         }
-        viewPager = findViewById(R.id.pager)
+
         mPagerAdapter = myFragmentPagerAdapter(this)
-        viewPager.adapter = mPagerAdapter
+        binding.pager.adapter = mPagerAdapter
         //viewPager.setCurrentItem(2);
         //we need to know when a page has changed, so we can change/fix the next/previous/finish buttons
-        viewPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
+        binding.pager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 supportInvalidateOptionsMenu()
             }
         })
-        tabLayout = findViewById(R.id.tab_layout)
-        tabLayout.tabMode = TabLayout.MODE_SCROLLABLE //dont show all the tabs, which is MODE_FIXED.
-        TabLayoutMediator(tabLayout,
-            viewPager,
+
+        binding.tabLayout.tabMode = TabLayout.MODE_SCROLLABLE //dont show all the tabs, which is MODE_FIXED.
+        TabLayoutMediator(binding.tabLayout,
+            binding.pager,
             TabConfigurationStrategy { tab, position ->
                 tab.text = "This Page is " + (position + 1)
             }
@@ -83,14 +83,14 @@ class ViewPagerButtonMenuActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.activity_screen_slide, menu)
-        menu.findItem(R.id.action_previous).isEnabled = viewPager.currentItem > 0
+        menu.findItem(R.id.action_previous).isEnabled = binding.pager.currentItem > 0
         //help since this attribute is ignored in the xml by api <11.  ie 2.3.3
         //but the change is should xml, use app: instead of android is the ActionBarActivity can read it.
         //see xml
         //MenuItemCompat.setShowAsAction(menu.findItem(R.id.action_previous),MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         val item = menu.add(
             Menu.NONE, R.id.action_next, Menu.NONE,
-            if (viewPager.currentItem == mPagerAdapter.itemCount - 1) R.string.action_finish else R.string.action_next
+            if (binding.pager.currentItem == mPagerAdapter.itemCount - 1) R.string.action_finish else R.string.action_next
         )
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM or MenuItem.SHOW_AS_ACTION_WITH_TEXT)
         return true
@@ -105,12 +105,12 @@ class ViewPagerButtonMenuActivity : AppCompatActivity() {
         } else if (item.itemId == R.id.action_previous) {
             // Go to the previous step in the wizard. If there is no previous step,
             // setCurrentItem will do nothing.
-            viewPager.currentItem = viewPager.currentItem - 1
+            binding.pager.currentItem = binding.pager.currentItem - 1
             return true
         } else if (item.itemId == R.id.action_next) {
             // Advance to the next step in the wizard. If there is no next step, setCurrentItem
             // will do nothing.
-            viewPager.currentItem = viewPager.currentItem + 1
+            binding.pager.currentItem = binding.pager.currentItem + 1
             return true
         }
         return super.onOptionsItemSelected(item)

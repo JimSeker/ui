@@ -7,11 +7,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import edu.cs4730.menudemo_kt.databinding.FragmenuBinding
 
 class FragMenu1 : Fragment() {
+    private lateinit var binding: FragmenuBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //required if the fragment is adding menu items, otherwise it calls the menu methods.
@@ -19,14 +21,11 @@ class FragMenu1 : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragmenu, container, false)
-        val tv = view.findViewById<View>(R.id.tv) as TextView
-        tv.text = "Fragment #1"
-        return view
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        binding = FragmenuBinding.inflate(inflater, container, false);
+        binding.tv.text = "Fragment #1"
+        return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -36,8 +35,7 @@ class FragMenu1 : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.frag1item) {
-            Toast.makeText(requireActivity().applicationContext, "Fragment #1", Toast.LENGTH_LONG)
-                .show()
+            Toast.makeText(requireContext(), "Fragment #1", Toast.LENGTH_LONG).show()
             return true
         }
         return super.onOptionsItemSelected(item)
