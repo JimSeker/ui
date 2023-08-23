@@ -7,7 +7,7 @@ import edu.cs4730.fragformexample_kt.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     lateinit var myFormFragment: FormFragment
-    private lateinit var  binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     //variable for the log
     var TAG = "FormFragment"
@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         if (savedInstanceState == null) {
             myFormFragment = FormFragment()
-            supportFragmentManager.beginTransaction()
-                .add(R.id.container, myFormFragment).commit()
+            supportFragmentManager.beginTransaction().add(binding.container.id, myFormFragment)
+                .commit()
         }
     }
 }

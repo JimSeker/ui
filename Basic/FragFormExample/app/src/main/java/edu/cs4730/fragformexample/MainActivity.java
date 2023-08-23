@@ -27,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             myFormFragment = new FormFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, myFormFragment).commit();
+            getSupportFragmentManager().beginTransaction().add(binding.container.getId(), myFormFragment).commit();
         }
     }
 }
