@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ListDemo_kt</string>
+    <string name="app_name">ListView Demo_kt</string>
     <string name="title_activity_main">ListView Demo</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_section1">Simple </string>
