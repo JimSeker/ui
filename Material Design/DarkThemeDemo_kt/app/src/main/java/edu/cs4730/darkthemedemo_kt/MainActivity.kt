@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import edu.cs4730.darkthemedemo_kt.databinding.ActivityMainBinding
 
 
 /**
@@ -29,44 +30,48 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     lateinit var preferences: SharedPreferences
     var mytheme :Int  = 0
+    lateinit var binding: ActivityMainBinding
+
     @SuppressLint("ApplySharedPref")
     override fun onCreate(savedInstanceState: Bundle?) {
         preferences = getSharedPreferences("example", MODE_PRIVATE)
         mytheme = preferences.getInt("Theme", R.style.AppTheme)
         setTheme(mytheme) //must be fore the super!
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        findViewById<View>(R.id.button0).setOnClickListener {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.button0.setOnClickListener {
             val editor = preferences.edit()
             editor.putInt("Theme", R.style.AppTheme)
             editor.commit()
             recreate()
         }
-        findViewById<View>(R.id.button1).setOnClickListener {
+        binding.button1.setOnClickListener {
             val editor = preferences.edit()
             editor.putInt("Theme", R.style.AppTheme1)
             editor.commit()
             recreate()
         }
-        findViewById<View>(R.id.button2).setOnClickListener {
+        binding.button2.setOnClickListener {
             val editor = preferences.edit()
             editor.putInt("Theme", R.style.AppTheme2)
             editor.commit()
             recreate()
         }
-        findViewById<View>(R.id.button3).setOnClickListener {
+        binding.button3.setOnClickListener {
             val editor = preferences.edit()
             editor.putInt("Theme", R.style.AppTheme3)
             editor.commit()
             recreate()
         }
-        findViewById<View>(R.id.button4).setOnClickListener {
+        binding.button4.setOnClickListener {
             val editor = preferences.edit()
             editor.putInt("Theme", R.style.AppTheme4)
             editor.commit()
             recreate()
         }
-        findViewById<View>(R.id.button5).setOnClickListener {
+        binding.button5.setOnClickListener {
             val editor = preferences.edit()
             editor.putInt("Theme", R.style.AppTheme5)
             editor.commit()

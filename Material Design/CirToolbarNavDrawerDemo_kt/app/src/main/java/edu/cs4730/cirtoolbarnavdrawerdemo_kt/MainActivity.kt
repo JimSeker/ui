@@ -9,10 +9,8 @@ import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-
+import edu.cs4730.cirtoolbarnavdrawerdemo_kt.databinding.ActivityMainBinding
 
 /**
  * This is the same as ToolbarNavDrawer example in the navigation directory.  The support design
@@ -20,20 +18,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
  * No attempt at animation was made in this example for the FAB.
  */
 class MainActivity : AppCompatActivity() {
-    private lateinit var toolbar: Toolbar
+    private lateinit var binding: ActivityMainBinding
     private lateinit var mDrawerToggle: ActionBarDrawerToggle
-    private lateinit var mDrawerlayout: DrawerLayout
-    private lateinit var mDrawerList: ListView
-    private lateinit var mTextView: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //use the androidx... .toolbar instead of the actionbar, which is disabled in the style.
-        toolbar = findViewById(R.id.app_bar)
-        setSupportActionBar(toolbar)
-        mTextView = findViewById(R.id.textview01)
-        mDrawerlayout = findViewById(R.id.drawer_layout)
+        setSupportActionBar(binding.appBar)
 
         //lastly setup the listview with some simple categories via an array.
         val values = arrayOf("Item 1", "Item 2", "Item 3", "Item 4")
@@ -41,27 +34,26 @@ class MainActivity : AppCompatActivity() {
             this,
             R.layout.drawer_list_item, values
         )
-        mDrawerList = findViewById(R.id.left_drawer)
-        mDrawerList.adapter = adapter
-        mDrawerList.onItemClickListener = OnItemClickListener { arg0, view, position, index -> //yes, this should do something for more interesting.  but this is an example.
-            val item = mDrawerList.adapter.getItem(position).toString()
-            mTextView.text = item
+        binding.leftDrawer.adapter = adapter
+        binding.leftDrawer.onItemClickListener = OnItemClickListener { arg0, view, position, index -> //yes, this should do something for more interesting.  but this is an example.
+            val item = binding.leftDrawer.adapter.getItem(position).toString()
+            binding.textview01.text = item
             // update selected item and title, then close the drawer
-            mDrawerList.setItemChecked(position, true)
+            binding.leftDrawer.setItemChecked(position, true)
             //now close the drawer!
-            mDrawerlayout.closeDrawers()
+            binding.drawerLayout.closeDrawers()
         }
         //set the default value and position to checked.
-        mDrawerList.setItemChecked(0, true)
-        mTextView.text = values[0]
+        binding.leftDrawer.setItemChecked(0, true)
+        binding.textview01.text = values[0]
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
         mDrawerToggle = object : ActionBarDrawerToggle(
             this,  // host activity
-            mDrawerlayout,  //drawerlayout object
-            toolbar,  //toolbar
+            binding.drawerLayout,  //drawerlayout object
+            binding.appBar,  //toolbar
             R.string.drawer_open,  //open drawer description  required!
             R.string.drawer_close
         ) {
@@ -82,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         }
         //To disable the icon for the drawer, change this to false
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerlayout.addDrawerListener(mDrawerToggle)
+        binding.drawerLayout.addDrawerListener(mDrawerToggle)
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
             Toast.makeText(baseContext, "You clicked it!", Toast.LENGTH_LONG).show()

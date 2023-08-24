@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">SimpleDemo</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Change the theme of you phone from light to dark to see the different.</string>
     <string name="action_settings">Settings</string>
 
 </resources>

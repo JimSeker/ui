@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
+import edu.cs4730.darkthemedemo.databinding.ActivityMainBinding;
+
 /**
  * This example is how to change themes dynamically and use to use the DayNight theme in
  * appcompat and material design.
@@ -28,6 +30,8 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
     SharedPreferences preferences;
     int mytheme;
+    ActivityMainBinding binding;
+
     @SuppressLint("ApplySharedPref")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +39,10 @@ public class MainActivity extends AppCompatActivity {
         mytheme = preferences.getInt("Theme", R.style.AppTheme);
         setTheme(mytheme);  //must be fore the super!
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        findViewById(R.id.button0).setOnClickListener(new View.OnClickListener() {
+        binding.button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences.Editor editor = preferences.edit();
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
+        binding.button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences.Editor editor = preferences.edit();
@@ -57,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+        binding.button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences.Editor editor = preferences.edit();
@@ -66,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 recreate();
             }
         });
-        findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
+        binding.button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences.Editor editor = preferences.edit();
@@ -75,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 recreate();
             }
         });
-        findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
+        binding.button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences.Editor editor = preferences.edit();
@@ -84,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 recreate();
             }
         });
-        findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
+        binding.button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences.Editor editor = preferences.edit();
