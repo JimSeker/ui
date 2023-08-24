@@ -2,8 +2,7 @@ package edu.cs4730.supportdesigndemo;
 
 import android.os.Bundle;
 
-import com.google.android.material.textfield.TextInputLayout;
-
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -11,7 +10,8 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+
+import edu.cs4730.supportdesigndemo.databinding.FragmentTextinputlayoutBinding;
 
 /**
  * A simple example to show how to use the text input layout for a editText.
@@ -19,29 +19,23 @@ import android.widget.EditText;
  * even after the user starts typing and allows you to set an error message as well.
  */
 public class TextInputLayoutFragment extends Fragment {
-
-    EditText et1, et2;
-    TextInputLayout mTextInputLayout;
-
+    FragmentTextinputlayoutBinding binding;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myView = inflater.inflate(R.layout.fragment_textinputlayout, container, false);
-        et1 = myView.findViewById(R.id.edittext01);
+        binding = FragmentTextinputlayoutBinding.inflate(inflater, container, false);
 
-        mTextInputLayout = myView.findViewById(R.id.textinput02);
-        et2 = myView.findViewById(R.id.edittext02);
-        et2.addTextChangedListener(new TextWatcher() {
+        binding.edittext02.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!s.toString().equals("abc")) {
                     //set the error message that will display below the edittext
-                    mTextInputLayout.setError("Incorrect input.");
+                    binding.textinput02.setError("Incorrect input.");
                 } else {
-                    mTextInputLayout.setError("");  //clear the error message.
+                    binding.textinput02.setError("");  //clear the error message.
                 }
             }
 
@@ -56,7 +50,7 @@ public class TextInputLayoutFragment extends Fragment {
 
         });
 
-        return myView;
+        return binding.getRoot();
     }
 
 

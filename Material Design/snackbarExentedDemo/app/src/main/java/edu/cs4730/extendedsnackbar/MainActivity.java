@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import edu.cs4730.extendedsnackbar.databinding.ActivityMainBinding;
+
 /**
  * A simple example of how to make the snackbar show indefinitely and how to dismiss it as well.
  * <p>
@@ -17,24 +19,23 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Snackbar mMessageSnackbar = null;
-    private Button myButton;
+    private Snackbar mMessageSnackbar;
+    private ActivityMainBinding binding;
     Thread myThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        myButton = findViewById(R.id.mybutton);
-        myButton.setOnClickListener(new View.OnClickListener() {
+        binding.mybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myThread = new Thread(new CountingThread());
                 myThread.start();
             }
         });
-
     }
 
     class CountingThread implements Runnable {
@@ -45,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {  //we need to run this on the main ui thread to access the UI.
                 @Override
                 public void run() {
-                    mMessageSnackbar = Snackbar.make(
-                        MainActivity.this.findViewById(android.R.id.content), "indefinite snackbar...", Snackbar.LENGTH_INDEFINITE);
+                    mMessageSnackbar = Snackbar.make(MainActivity.this.findViewById(android.R.id.content), "indefinite snackbar...", Snackbar.LENGTH_INDEFINITE);
                     //give the snackbar some color, so it really obvious.
                     mMessageSnackbar.getView().setBackgroundColor(getResources().getColor(R.color.colorPrimary, getApplicationContext().getTheme()));
                     mMessageSnackbar.show();
+
                 }
             });
             // wait for a while.
@@ -62,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     mMessageSnackbar.dismiss();
-                    mMessageSnackbar = null;
                 }
             });
         }

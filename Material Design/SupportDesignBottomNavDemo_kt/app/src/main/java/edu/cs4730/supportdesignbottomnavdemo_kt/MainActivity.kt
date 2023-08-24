@@ -2,8 +2,8 @@ package edu.cs4730.supportdesignbottomnavdemo_kt
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import edu.cs4730.supportdesignbottomnavdemo_kt.databinding.ActivityMainBinding
 
 
 /**
@@ -16,37 +16,37 @@ class MainActivity : AppCompatActivity() {
     lateinit var recentFrag: BlankFragment
     lateinit var favFrag: BlankFragment
     lateinit var nearbyFrag: BlankFragment
-    lateinit var bnv: BottomNavigationView
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //setup the three fragments, which is just the same blankfragment with a different text, that will be used by the nav.
         recentFrag = BlankFragment.newInstance("Recent", "")
         favFrag = BlankFragment.newInstance("Favorites", "")
         nearbyFrag = BlankFragment.newInstance("Nearby", "")
-        bnv = findViewById(R.id.bnv)
-        bnv.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener { item -> //At this point, we are doing the same thing that is done for menu selections.
+
+        binding.bnv.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener { item -> //At this point, we are doing the same thing that is done for menu selections.
             //if we had a onOptionsItemSelect method for a menu, we could just use it.
             val id = item.itemId
             if (id == R.id.recent) {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, recentFrag).commit()
+                supportFragmentManager.beginTransaction().replace(binding.container.id, recentFrag)
+                    .commit()
                 return@OnItemSelectedListener true
             } else if (id == R.id.favorites) {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, favFrag).commit()
+                supportFragmentManager.beginTransaction().replace(binding.container.id, favFrag)
+                    .commit()
                 return@OnItemSelectedListener true
             } else if (id == R.id.nearby) {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, nearbyFrag).commit()
+                supportFragmentManager.beginTransaction().replace(binding.container.id, nearbyFrag)
+                    .commit()
                 return@OnItemSelectedListener true
             }
             false
         })
 
         //set the first one as the default.
-        supportFragmentManager.beginTransaction()
-            .add(R.id.container, recentFrag).commit()
+        supportFragmentManager.beginTransaction().add(binding.container.id, recentFrag).commit()
     }
 }

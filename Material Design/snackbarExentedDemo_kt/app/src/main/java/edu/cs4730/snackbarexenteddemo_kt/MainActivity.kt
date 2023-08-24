@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import edu.cs4730.snackbarexenteddemo_kt.databinding.ActivityMainBinding
 
 /**
  * A simple example of how to make the snackbar show indefinitely and how to dismiss it as well.
@@ -14,13 +15,14 @@ import com.google.android.material.snackbar.Snackbar
  */
 class MainActivity : AppCompatActivity() {
     private lateinit var mMessageSnackbar: Snackbar
-    private lateinit var myButton: Button
+    private lateinit var binding: ActivityMainBinding
     var myThread: Thread? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        myButton = findViewById(R.id.mybutton)
-        myButton.setOnClickListener {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.mybutton.setOnClickListener {
             myThread = Thread(CountingThread())
             myThread!!.start()
         }

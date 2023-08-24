@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import edu.cs4730.supportdesignbottomnavdemo_kt.databinding.FragmentBlankBinding
 
 /**
  * This is a blank and generic fragment.  It doesn't actually do anything.  It's the generic
@@ -15,6 +15,7 @@ class BlankFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null
     private var mParam2: String? = null
+    lateinit var binding: FragmentBlankBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -26,12 +27,11 @@ class BlankFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val myView = inflater.inflate(R.layout.fragment_blank, container, false)
-        val label = myView.findViewById<TextView>(R.id.label1)
-        label.text = mParam1
-        return myView
+        binding = FragmentBlankBinding.inflate(inflater, container, false)
+        binding.label1.text = mParam1
+        return binding.root
     }
 
     companion object {

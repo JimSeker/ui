@@ -3,12 +3,15 @@ package edu.cs4730.supportdesignbottomnavdemo;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import edu.cs4730.supportdesignbottomnavdemo.databinding.FragmentBlankBinding;
 
 
 /**
@@ -25,6 +28,7 @@ public class BlankFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    FragmentBlankBinding binding;
 
     public BlankFragment() {
         // Required empty public constructor
@@ -58,13 +62,13 @@ public class BlankFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myView = inflater.inflate(R.layout.fragment_blank, container, false);
-        TextView label = myView.findViewById(R.id.label1);
-        label.setText(mParam1);
-        return myView;
+        binding = FragmentBlankBinding.inflate(inflater, container, false);
+
+        binding.label1.setText(mParam1);
+        return binding.getRoot();
     }
 
 }

@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
+import edu.cs4730.supportdesigndemo_kt.databinding.FragmentSnackbarBinding
 
 /**
  * This is an example of how to use the snackbar.  Which is very similar to a toast with
@@ -15,11 +16,11 @@ import com.google.android.material.snackbar.Snackbar
  * as well via the setAction call.
  */
 class SnackBarFragment : Fragment() {
-    lateinit var btn: Button
-    lateinit var myView: View
+    lateinit var binding: FragmentSnackbarBinding
+
     var SBonClickListener = View.OnClickListener {
         Toast.makeText(
-            activity, "You clicked undo", Toast.LENGTH_LONG
+            requireActivity(), "You clicked undo", Toast.LENGTH_LONG
         ).show()
     }
 
@@ -27,14 +28,13 @@ class SnackBarFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        myView = inflater.inflate(R.layout.fragment_snackbar, container, false)
-        btn = myView.findViewById(R.id.button01)
-        btn.setOnClickListener {
+        binding = FragmentSnackbarBinding.inflate(inflater, container, false)
+        binding.button01.setOnClickListener {
             //This setups and show the snackbar message.
-            Snackbar.make(myView, "Hi there?", Snackbar.LENGTH_LONG) //or LENGTH_SHORT
+            Snackbar.make(binding.root, "Hi there?", Snackbar.LENGTH_LONG) //or LENGTH_SHORT
                 .setAction("Undo?", SBonClickListener) //this line is optional.
                 .show()
         }
-        return myView
+        return binding.root
     }
 }

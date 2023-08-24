@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
+import edu.cs4730.supportdesigndemo_kt.databinding.FragmentSbfabBinding
 
 /**
  * This example uses both a Floating Action button and a snackbar.
@@ -18,33 +19,27 @@ import com.google.android.material.snackbar.Snackbar
  * so that there is no over lap.
  */
 class SB_FABFragment : Fragment() {
-    lateinit var btn: Button
-    lateinit var mCoordinatorLayout: CoordinatorLayout
+    lateinit var binding: FragmentSbfabBinding
+
     var SBonClickListener =
         View.OnClickListener { Toast.makeText(requireContext(), "Yea!", Toast.LENGTH_SHORT).show() }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val myView = inflater.inflate(R.layout.fragment_sbfab, container, false)
-        mCoordinatorLayout = myView.findViewById(R.id.coordinatorlayout1)
-        btn = myView.findViewById(R.id.button02)
-        btn.setOnClickListener {
-            Snackbar.make(mCoordinatorLayout, "Did the FAB move?", Snackbar.LENGTH_LONG)
+        binding = FragmentSbfabBinding.inflate(inflater, container, false)
+
+        binding.button02.setOnClickListener {
+            Snackbar.make(binding.coordinatorlayout1, "Did the FAB move?", Snackbar.LENGTH_LONG)
                 .setAction("Yes?", SBonClickListener) //this line is optional!
                 .show()
         }
-        myView.findViewById<View>(R.id.fab).setOnClickListener {
+        binding.fab.setOnClickListener {
             Snackbar.make(
-                mCoordinatorLayout,
-                "I knew you had to click the FAB.",
-                Snackbar.LENGTH_LONG
-            )
-                .show()
+                binding.coordinatorlayout1, "I knew you had to click the FAB.", Snackbar.LENGTH_LONG
+            ).show()
         }
-        return myView
+        return binding.root
     }
 }

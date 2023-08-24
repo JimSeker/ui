@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import edu.cs4730.supportdesigndemo_kt.databinding.FragmentFabBinding
 
 /**
  * A simple demo of the Foating Action button.
@@ -13,26 +14,27 @@ import androidx.fragment.app.Fragment
  * see the xml doc.
  */
 class FABFragment : Fragment() {
+    lateinit var binding: FragmentFabBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val myView = inflater.inflate(R.layout.fragment_fab, container, false)
-        myView.findViewById<View>(R.id.fab1).setOnClickListener {
+        binding = FragmentFabBinding.inflate(inflater, container, false)
+        binding.fab1.setOnClickListener {
             Toast.makeText(
                 requireContext(),
                 "You clicked add!",
                 Toast.LENGTH_LONG
             ).show()
         }
-        myView.findViewById<View>(R.id.fab2).setOnClickListener {
+        binding.fab2.setOnClickListener {
             Toast.makeText(
                 requireContext(),
                 "You clicked check!",
                 Toast.LENGTH_LONG
             ).show()
         }
-        return myView
+        return binding.root
     }
 }

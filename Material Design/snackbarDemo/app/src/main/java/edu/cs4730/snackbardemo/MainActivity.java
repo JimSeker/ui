@@ -11,21 +11,24 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
+import edu.cs4730.snackbardemo.databinding.ActivityMainBinding;
+
 /**
  * A demo of the snackbar callbacks.  So you can tell if the user swiped it away, or other actions.
  * And yes, the irony of using a toast to show snackbar is not lost on me either.
  */
 public class MainActivity extends AppCompatActivity {
 
+    ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        setSupportActionBar(binding.toolbar);
+
+        binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

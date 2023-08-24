@@ -6,10 +6,9 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.navigation.NavigationView
+import edu.cs4730.supportdesigndemo_kt.databinding.ActivityMainBinding
 
 /*
  * This example is to show many of the features available in the support design library.
@@ -24,31 +23,28 @@ import com.google.android.material.navigation.NavigationView
  *
  */
 class MainActivity : AppCompatActivity() {
-    private lateinit var toolbar: Toolbar
+    private lateinit var binding: ActivityMainBinding
     private lateinit var mDrawerToggle: ActionBarDrawerToggle
-    private lateinit var mDrawerlayout: DrawerLayout
-    private lateinit var mNavigationView: NavigationView
     lateinit var fragmentManager: FragmentManager
     var TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //use the v7.toolbar instead of the default one.
-        toolbar = findViewById<View>(R.id.app_bar) as Toolbar
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.appBar)
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
 
         //standard navigation drawer setup.
-        mDrawerlayout = findViewById<View>(R.id.drawer_layout) as DrawerLayout
         mDrawerToggle = object : ActionBarDrawerToggle(
             this,  // host activity
-            mDrawerlayout,  //drawerlayout object
-            toolbar,  //toolbar
+            binding.drawerLayout,  //drawerlayout object
+            binding.appBar,  //toolbar
             R.string.drawer_open,  //open drawer description  required!
             R.string.drawer_close
         ) {
@@ -69,21 +65,20 @@ class MainActivity : AppCompatActivity() {
         }
         //To disable the icon for the drawer, change this to false
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerlayout.addDrawerListener(mDrawerToggle)
+        binding.drawerLayout.addDrawerListener(mDrawerToggle)
 
         //this ia the support Navigation view.
-        mNavigationView = findViewById(R.id.navview)
         //setup a listener, which acts very similar to how menus are handled.
-        mNavigationView.setNavigationItemSelectedListener(NavigationView.OnNavigationItemSelectedListener { menuItem -> //we could just as easily call onOptionsItemSelected(menuItem) and how it deal with it.
+        binding.navview.setNavigationItemSelectedListener(NavigationView.OnNavigationItemSelectedListener { menuItem -> //we could just as easily call onOptionsItemSelected(menuItem) and how it deal with it.
             val id = menuItem.itemId
             if (id == R.id.navigation_item_1) {
                 //load fragment
                 if (!menuItem.isChecked) {  //only need to do this if fragment is already loaded.
                     menuItem.isChecked = true //make sure to check/highlight the item.
-                    fragmentManager.beginTransaction().replace(R.id.container, SnackBarFragment())
-                        .commit()
+                    fragmentManager.beginTransaction()
+                        .replace(binding.container.id, SnackBarFragment()).commit()
                 }
-                mDrawerlayout.closeDrawers() //close the drawer, since the user has selected it.
+                binding.drawerLayout.closeDrawers() //close the drawer, since the user has selected it.
                 return@OnNavigationItemSelectedListener true
 
             } else if (id == R.id.navigation_item_2) {
@@ -91,29 +86,29 @@ class MainActivity : AppCompatActivity() {
                 if (!menuItem.isChecked) {  //only need to do this if fragment is already loaded.
                     menuItem.isChecked = true //make sure the item is checked/highlighted
                     Log.v(TAG, "fab fragment?")
-                    fragmentManager.beginTransaction().replace(R.id.container, FABFragment())
+                    fragmentManager.beginTransaction().replace(binding.container.id, FABFragment())
                         .commit()
                 }
                 //now close the nav drawer.
-                mDrawerlayout.closeDrawers()
+                binding.drawerLayout.closeDrawers()
                 return@OnNavigationItemSelectedListener true
             } else if (id == R.id.navigation_item_3) {
                 //load fragment
                 if (!menuItem.isChecked) {  //only need to do this if fragment is already loaded.
                     menuItem.isChecked = true
-                    fragmentManager.beginTransaction().replace(R.id.container, SB_FABFragment())
-                        .commit()
+                    fragmentManager.beginTransaction()
+                        .replace(binding.container.id, SB_FABFragment()).commit()
                 }
-                mDrawerlayout.closeDrawers()
+                binding.drawerLayout.closeDrawers()
                 return@OnNavigationItemSelectedListener true
             } else if (id == R.id.navigation_item_4) {
                 //load fragment
                 if (!menuItem.isChecked) {  //only need to do this if fragment is already loaded.
                     menuItem.isChecked = true
                     fragmentManager.beginTransaction()
-                        .replace(R.id.container, TextInputLayoutFragment()).commit()
+                        .replace(binding.container.id, TextInputLayoutFragment()).commit()
                 }
-                mDrawerlayout.closeDrawers()
+                binding.drawerLayout.closeDrawers()
                 return@OnNavigationItemSelectedListener true
             }
             false
@@ -122,7 +117,8 @@ class MainActivity : AppCompatActivity() {
         //finally deal with the fragments.
         fragmentManager = supportFragmentManager
         //first instance, so the default is zero.
-        fragmentManager.beginTransaction().replace(R.id.container, SnackBarFragment()).commit()
+        fragmentManager.beginTransaction().replace(binding.container.id, SnackBarFragment())
+            .commit()
     }
 
     /**
