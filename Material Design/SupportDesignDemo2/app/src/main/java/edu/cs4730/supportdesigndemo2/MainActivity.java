@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import edu.cs4730.supportdesigndemo2.databinding.ActivityMainBinding;
+
 
 /**
  * design tablayout with a viewpager.   So now that the design support better understands
@@ -27,17 +29,17 @@ import androidx.viewpager2.widget.ViewPager2;
 
 public class MainActivity extends AppCompatActivity {
     String TAG = "MainActivity";
-    ViewPager2 viewPager;
+    ActivityMainBinding binding;
     FragLeft leftfrag;
     FragMid midfrag;
     FragRight rightfrag;
-    TabLayout mTabLayout;
     DataViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //should not be necessary.
         mViewModel = new ViewModelProvider(this).get(DataViewModel.class);
@@ -46,21 +48,17 @@ public class MainActivity extends AppCompatActivity {
         midfrag = new FragMid();
         rightfrag = new FragRight();
 
-        viewPager = findViewById(R.id.pager);
-        viewPager.setAdapter(new ThreeFragmentPagerAdapter(this));
+
+        binding.pager.setAdapter(new ThreeFragmentPagerAdapter(this));
 
         //new Tablayout from the support design library
-        mTabLayout = findViewById(R.id.tab_layout);
         //mTabLayout.setupWithViewPager(viewPager);
-        new TabLayoutMediator(mTabLayout,
-            viewPager,
-            new TabLayoutMediator.TabConfigurationStrategy() {
-                @Override
-                public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                    tab.setText("Page " + String.valueOf(position + 1));
-                }
+        new TabLayoutMediator(binding.tabLayout, binding.pager, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                tab.setText("Page " + String.valueOf(position + 1));
             }
-        ).attach();
+        }).attach();
     }
 
     /**

@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,14 +12,14 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import edu.cs4730.supportdesigndemo2.databinding.LeftBinding;
+
 /**
  * This is a simple fragment to display data and it the "left" most fragment in the viewpager.
  *   The code here is identical to the code in the right fragment.
  */
-
-
 public class FragLeft extends Fragment {
-    TextView tx;
+    LeftBinding binding;
     DataViewModel mViewModel;
     String TAG = "Left";
 
@@ -38,17 +37,15 @@ public class FragLeft extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d("Left", "OnCreateView");
-        View view = inflater.inflate(R.layout.left, container, false);
-        tx = view.findViewById(R.id.tvleft);
-
+        binding = LeftBinding.inflate(inflater, container, false);
 
         mViewModel.getDataLeft().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String data) {
-                tx.setText(data);
+                binding.tvleft.setText(data);
             }
         });
-        return view;
+        return binding.getRoot();
     }
 
     @Override

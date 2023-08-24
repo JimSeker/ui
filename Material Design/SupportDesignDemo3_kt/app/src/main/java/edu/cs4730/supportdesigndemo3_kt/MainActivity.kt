@@ -2,16 +2,11 @@ package edu.cs4730.supportdesigndemo3_kt
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.palette.graphics.Palette
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import edu.cs4730.supportdesigndemo3_kt.databinding.ActivityMainBinding
 
 
 /**
@@ -22,18 +17,16 @@ import com.google.android.material.snackbar.Snackbar
  * and http://antonioleiva.com/collapsing-toolbar-layout/
  */
 class MainActivity : AppCompatActivity() {
-    private lateinit var collapsingToolbarLayout: CollapsingToolbarLayout
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        collapsingToolbarLayout =
-            findViewById<View>(R.id.collapsing_toolbar) as CollapsingToolbarLayout
-        collapsingToolbarLayout.title = resources.getString(R.string.app_name)
-        val fab = findViewById<View>(R.id.fab) as FloatingActionButton
-        fab.setOnClickListener { view ->
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
+
+        binding.collapsingToolbar.title = resources.getString(R.string.app_name)
+        binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
@@ -47,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             R.drawable.wolf_gray
         )
         Palette.from(bitmap).generate { palette -> //a dark color  a dark blue
-            collapsingToolbarLayout.setContentScrimColor(
+            binding.collapsingToolbar.setContentScrimColor(
                 palette!!.getDarkVibrantColor(
                     ContextCompat.getColor(
                         applicationContext, R.color.colorPrimary
@@ -55,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 )
             )
             //a muted color   mostly gray
-//            collapsingToolbarLayout.setContentScrimColor(
+//            binding.collapsingToolbar.setContentScrimColor(
 //                palette.getMutedColor(
 //                    ContextCompat.getColor(
 //                        applicationContext, R.color.colorPrimary
@@ -63,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 //                )
 //            )
             //dark muted color  very dark blue, almost black.
-//            collapsingToolbarLayout.setContentScrimColor(
+//            binding.collapsingToolbar.setContentScrimColor(
 //                palette.getDarkMutedColor(
 //                    ContextCompat.getColor(
 //                        applicationContext, R.color.colorPrimary
@@ -71,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 //                )
 //            )
             //very bright color
-//            collapsingToolbarLayout.setContentScrimColor(
+//            binding.collapsingToolbar.setContentScrimColor(
 //                palette.getLightVibrantColor(
 //                    ContextCompat.getColor(
 //                        applicationContext, R.color.colorPrimary
@@ -79,7 +72,7 @@ class MainActivity : AppCompatActivity() {
 //                )
 //            )
             //this one doesn't seem to do anything.
-//            collapsingToolbarLayout.setStatusBarScrimColor(
+//            binding.collapsingToolbar.setStatusBarScrimColor(
 //                palette.getDarkMutedColor(
 //                    ContextCompat.getColor(
 //                        applicationContext, R.color.colorPrimaryDark
@@ -90,23 +83,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toolbarTextAppearance() {
-        collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar)
-        collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar)
+        binding.collapsingToolbar.setCollapsedTitleTextAppearance(R.style.collapsedappbar)
+        binding.collapsingToolbar.setExpandedTitleTextAppearance(R.style.expandedappbar)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
-        return if (id == R.id.action_settings) {
-            true
-        } else super.onOptionsItemSelected(item)
-    }
 }

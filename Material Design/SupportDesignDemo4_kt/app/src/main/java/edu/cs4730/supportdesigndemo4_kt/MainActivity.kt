@@ -7,15 +7,9 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.navigation.NavigationView
-import java.util.*
-
+import edu.cs4730.supportdesigndemo4_kt.databinding.ActivityMainBinding
 
 /**
  * an attempt at a collapsing toolbar (will, I thought it would scroll off as well).  show title text
@@ -30,53 +24,43 @@ import java.util.*
  * basing come from the talltoolbar example to get icons and stuff.
  */
 class MainActivity : AppCompatActivity() {
-    lateinit var mRecyclerView: RecyclerView
+    lateinit var binding: ActivityMainBinding
     lateinit var mAdapter: myAdapter
-    private lateinit var toolbar: Toolbar
-    lateinit var mCollapsingToolbarLayout: CollapsingToolbarLayout
     private lateinit var mDrawerToggle: ActionBarDrawerToggle
-    private lateinit var mDrawerlayout: DrawerLayout
-    private lateinit var mNavigationView: NavigationView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //use the toolbar instead of the default one.
-        toolbar = findViewById(R.id.app_bar)
-        setSupportActionBar(toolbar)
-
+        setSupportActionBar(binding.appBar)
 
         //SO to get any text or title it is set here.  otherwise, there is no text in the toolbar.
-        mCollapsingToolbarLayout = findViewById(R.id.collapsingtoolbarlayout1)
-        mCollapsingToolbarLayout.title = resources.getString(R.string.app_name)
+        binding.collapsingtoolbarlayout1.title = resources.getString(R.string.app_name)
 
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
-        val values = Arrays.asList(
-            "Android", "iPhone", "WindowsMobile",
+        val values = listOf("Android", "iPhone", "WindowsMobile",
             "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-            "Linux", "OS/2"
-        )
+            "Linux", "OS/2")
 
         //setup the RecyclerView
-        mRecyclerView = findViewById(R.id.list)
-        mRecyclerView.layoutManager = LinearLayoutManager(this)
-        mRecyclerView.itemAnimator = DefaultItemAnimator()
+        binding.list.layoutManager = LinearLayoutManager(this)
+        binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = myAdapter(values, R.layout.my_row, this)
+        mAdapter = myAdapter(values, this)
         //add the adapter to the recyclerview
-        mRecyclerView.adapter = mAdapter
+        binding.list.adapter = mAdapter
 
         //standard navigation drawer setup.
-        mDrawerlayout = findViewById(R.id.drawer_layout)
         mDrawerToggle = object : ActionBarDrawerToggle(
             this,  // host activity
-            mDrawerlayout,  //drawerlayout object
-            toolbar,  //toolbar
+            binding.drawerLayout,  //drawerlayout object
+            binding.appBar,  //toolbar
             R.string.drawer_open,  //open drawer description  required!
             R.string.drawer_close
         ) {
@@ -94,17 +78,16 @@ class MainActivity : AppCompatActivity() {
                 //likely don't need this.
                 supportActionBar!!.setTitle(R.string.app_name)
                 //need this or no title shows.
-                mCollapsingToolbarLayout.title = resources.getString(R.string.app_name)
+                binding.collapsingtoolbarlayout1.title = resources.getString(R.string.app_name)
                 invalidateOptionsMenu() // creates call to onPrepareOptionsMenu()
             }
         }
         //To disable the icon for the drawer, change this to false
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerlayout.addDrawerListener(mDrawerToggle)
+        binding.drawerLayout.addDrawerListener(mDrawerToggle)
         //this ia the support Navigation view.
-        mNavigationView = findViewById(R.id.navview)
         //setup a listener, which acts very similiar to how menus are handled.
-        mNavigationView.setNavigationItemSelectedListener { menuItem ->
+        binding.navview.setNavigationItemSelectedListener { menuItem ->
             //instead of this below, we could just call the
             //onOptionsItemSelected(menuItem);
             val id = menuItem.itemId
@@ -119,7 +102,7 @@ class MainActivity : AppCompatActivity() {
                 //do something.
             }
             menuItem.isChecked = true
-            mDrawerlayout.closeDrawers()
+            binding.drawerLayout.closeDrawers()
             true
         }
     }

@@ -23,6 +23,8 @@ import android.view.View;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.cs4730.supportdesigndemo4.databinding.ActivityMainBinding;
+
 /**
  * an attempt at a collapsing toolbar (will, I thought it would scroll off as well).  show title text
  * is an issue.
@@ -35,31 +37,23 @@ import java.util.List;
  */
 
 public class MainActivity extends AppCompatActivity {
-    RecyclerView mRecyclerView;
+    ActivityMainBinding binding;
     myAdapter mAdapter;
-    private Toolbar toolbar;
-    CollapsingToolbarLayout mCollapsingToolbarLayout;
-
     private ActionBarDrawerToggle mDrawerToggle;
-    private DrawerLayout mDrawerlayout;
-    private NavigationView mNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //use the toolbar instead of the default one.
-        toolbar = findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.appBar);
 
 
         //SO to get any text or title it is set here.  otherwise, there is no text in the toolbar.
-        mCollapsingToolbarLayout = findViewById(R.id.collapsingtoolbarlayout1);
-        mCollapsingToolbarLayout.setTitle(getResources().getString(R.string.app_name));
-
-
+        binding.collapsingtoolbarlayout1.setTitle(getResources().getString(R.string.app_name));
+        
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -69,20 +63,17 @@ public class MainActivity extends AppCompatActivity {
             "Linux", "OS/2");
 
         //setup the RecyclerView
-        mRecyclerView = findViewById(R.id.list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        binding.list.setLayoutManager(new LinearLayoutManager(this));
+        binding.list.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
         mAdapter = new myAdapter(values, R.layout.my_row, this);
         //add the adapter to the recyclerview
-        mRecyclerView.setAdapter(mAdapter);
+        binding.list.setAdapter(mAdapter);
 
         //standard navigation drawer setup.
-        mDrawerlayout = findViewById(R.id.drawer_layout);
-
         mDrawerToggle = new ActionBarDrawerToggle(this,  // host activity
-            mDrawerlayout,  //drawerlayout object
-            toolbar,  //toolbar
+            binding.drawerLayout,  //drawerlayout object
+            binding.appBar,  //toolbar
             R.string.drawer_open,  //open drawer description  required!
             R.string.drawer_close) {  //closed drawer description
 
@@ -101,23 +92,20 @@ public class MainActivity extends AppCompatActivity {
                 //likely don't need this.
                 getSupportActionBar().setTitle(R.string.app_name);
                 //need this or no title shows.
-                mCollapsingToolbarLayout.setTitle(getResources().getString(R.string.app_name));
+                binding.collapsingtoolbarlayout1.setTitle(getResources().getString(R.string.app_name));
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
         //To disable the icon for the drawer, change this to false
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerlayout.addDrawerListener(mDrawerToggle);
+        binding.drawerLayout.addDrawerListener(mDrawerToggle);
         //this ia the support Navigation view.
-        mNavigationView = findViewById(R.id.navview);
-        //setup a listener, which acts very similiar to how menus are handled.
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        //setup a listener, which acts very similar to how menus are handled.
+        binding.navview.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
                 //instead of this below, we could just call the
                 //onOptionsItemSelected(menuItem);
-
                 int id = menuItem.getItemId();
                 //noinspection SimplifiableIfStatement
                 if (id == R.id.navigation_item_1) {
@@ -131,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //now mark it the menu as checked (highlighted in ui) just close the drawer.
                 menuItem.setChecked(true);
-                mDrawerlayout.closeDrawers();
+                binding.drawerLayout.closeDrawers();
                 return true;
             }
         });

@@ -9,6 +9,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import edu.cs4730.supportdesigndemo2_kt.databinding.ActivityMainBinding
 
 /**
  * design tablayout with a viewpager.   So now that the design support better understands
@@ -23,30 +24,28 @@ import com.google.android.material.tabs.TabLayoutMediator
  */
 class MainActivity : AppCompatActivity() {
     var TAG = "MainActivity"
-    lateinit var viewPager: ViewPager2
+    lateinit var binding: ActivityMainBinding
     lateinit var leftfrag: FragLeft
     lateinit var midfrag: FragMid
     lateinit var rightfrag: FragRight
-    lateinit var mTabLayout: TabLayout
     lateinit var mViewModel: DataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater);
+        setContentView(binding.root);
 
         //should not be necessary.
         mViewModel = ViewModelProvider(this)[DataViewModel::class.java]
         leftfrag = FragLeft()
         midfrag = FragMid()
         rightfrag = FragRight()
-        viewPager = findViewById(R.id.pager)
-        viewPager.adapter = ThreeFragmentPagerAdapter(this)
+
+        binding.pager.adapter = ThreeFragmentPagerAdapter(this)
 
         //new Tablayout from the support design library
-        mTabLayout = findViewById(R.id.tab_layout)
-        //mTabLayout.setupWithViewPager(viewPager);
-        TabLayoutMediator(mTabLayout,
-            viewPager
+        TabLayoutMediator(
+            binding.tabLayout, binding.pager
         ) { tab, position ->
             tab.text = "Page " + (position + 1).toString()
         }.attach()

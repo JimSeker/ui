@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import edu.cs4730.supportdesigndemo4.databinding.MyRowBinding;
+
 /**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
  * see http://developer.android.com/training/improving-layouts/smooth-scrolling.html
@@ -29,44 +31,41 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
     public myAdapter(List<String> myList, int rowLayout, Context context) {
         this.myList = myList;
-        this.rowLayout = rowLayout;
         this.mContext = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
-        return new ViewHolder(v);
+        MyRowBinding binding = MyRowBinding.inflate(LayoutInflater.from(mContext));
+        return new ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         String entry = myList.get(i);
-        viewHolder.myName.setText(entry);
-        viewHolder.myName.setOnClickListener(new View.OnClickListener() {
+        viewHolder.viewBinding.Name.setText(entry);
+        viewHolder.viewBinding.Name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TextView tv = (TextView) v;
                 Toast.makeText(mContext, tv.getText(), Toast.LENGTH_SHORT).show();
             }
         });
-        viewHolder.Pic.setImageResource(R.drawable.phone);
-    }  //mContext.getDrawable(country.getImageResourceId(mContext))
+        viewHolder.viewBinding.picture.setImageResource(R.drawable.phone);
+    }
 
     @Override
     public int getItemCount() {
         return myList == null ? 0 : myList.size();
     }
 
+    //viewbinding provides the references.
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView myName;
-        public ImageView Pic;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            myName = itemView.findViewById(R.id.Name);
-            Pic = itemView.findViewById(R.id.picture);
+        MyRowBinding viewBinding;
+        public ViewHolder(MyRowBinding v) {
+            super(v.getRoot());
+            viewBinding = v;
         }
     }
 }
