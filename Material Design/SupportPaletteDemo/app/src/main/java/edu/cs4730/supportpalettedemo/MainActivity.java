@@ -14,14 +14,15 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import edu.cs4730.supportpalettedemo.databinding.ActivityMainBinding;
+
 /**
  * https://github.com/codepath/android_guides/wiki/Dynamic-Color-using-Palettes
  * http://willowtreeapps.com/blog/palette-the-new-api-for-android/
  * https://www.bignerdranch.com/blog/extracting-colors-to-a-palette-with-android-lollipop/
  */
 public class MainActivity extends AppCompatActivity {
-    TextView iv_vibrant, iv_vibrantdark, iv_vibrantlight, iv_muted, iv_muteddark, iv_mutedlight;
-    ImageButton ib;
+    ActivityMainBinding binding;
     int which = 1;
     Bitmap myBitmap;
     Palette.Swatch mySwatch;
@@ -29,10 +30,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        ib = findViewById(R.id.imageView);
-        ib.setOnClickListener(new View.OnClickListener() {
+
+        binding.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 which++;
@@ -40,14 +42,6 @@ public class MainActivity extends AppCompatActivity {
                 setup();
             }
         });
-
-        iv_vibrant = findViewById(R.id.iv_vibrant);
-        iv_vibrantdark = findViewById(R.id.iv_vibrantdark);
-        iv_vibrantlight = findViewById(R.id.iv_vibrantlight);
-        iv_muted = findViewById(R.id.iv_muted);
-        iv_muteddark = findViewById(R.id.iv_muteddark);
-        iv_mutedlight = findViewById(R.id.iv_mutedlight);
-
         setup();
 
     }
@@ -69,66 +63,66 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        ib.setImageBitmap(myBitmap);
+        binding.imageView.setImageBitmap(myBitmap);
         if (myBitmap != null && !myBitmap.isRecycled()) {
             //synchronous method, which does work on the main thread and is not recommended
             //  Palette palette = new Palette.Builder(myBitmap).generate();
-            //Aysnchronous method.  Since I didn't use the variable, just the method in the listener, I didn't delcare a variable for it  This line commented out shows the full declaration if needed.
+            //Asynchronous method.  Since I didn't use the variable, just the method in the listener, I didn't declare a variable for it  This line commented out shows the full declaration if needed.
             //AsyncTask<Bitmap, Void, Palette> palette = new Palette.Builder(myBitmap).generate(new Palette.PaletteAsyncListener() {
             new Palette.Builder(myBitmap).generate(new Palette.PaletteAsyncListener() {
                 @Override
                 public void onGenerated(Palette palette) {
                     mySwatch = palette.getVibrantSwatch();
                     if (mySwatch != null) {
-                        iv_vibrant.setTextColor(mySwatch.getBodyTextColor());  //set textcolor which will be easy to read on the background color.
-                        iv_vibrant.setBackgroundColor(mySwatch.getRgb());  //set background color, which is the color
+                        binding.ivVibrant.setTextColor(mySwatch.getBodyTextColor());  //set textcolor which will be easy to read on the background color.
+                        binding.ivVibrant.setBackgroundColor(mySwatch.getRgb());  //set background color, which is the color
                     } else {
-                        iv_vibrant.setTextColor(Color.BLACK);
-                        iv_vibrant.setBackgroundColor(Color.WHITE);
+                        binding.ivVibrant.setTextColor(Color.BLACK);
+                        binding.ivVibrant.setBackgroundColor(Color.WHITE);
                     }
 
                     mySwatch = palette.getDarkVibrantSwatch();
                     if (mySwatch != null) {
-                        iv_vibrantdark.setTextColor(mySwatch.getBodyTextColor());  //set textcolor which will be easy to read on the background color.
-                        iv_vibrantdark.setBackgroundColor(mySwatch.getRgb());  //set background color, which is the color
+                        binding.ivVibrantdark.setTextColor(mySwatch.getBodyTextColor());  //set textcolor which will be easy to read on the background color.
+                        binding.ivVibrantdark.setBackgroundColor(mySwatch.getRgb());  //set background color, which is the color
                     } else {
-                        iv_vibrantdark.setTextColor(Color.BLACK);
-                        iv_vibrantdark.setBackgroundColor(Color.WHITE);
+                        binding.ivVibrantdark.setTextColor(Color.BLACK);
+                        binding.ivVibrantdark.setBackgroundColor(Color.WHITE);
                     }
 
                     mySwatch = palette.getLightVibrantSwatch();
                     if (mySwatch != null) {
-                        iv_vibrantlight.setTextColor(mySwatch.getBodyTextColor());  //set textcolor which will be easy to read on the background color.
-                        iv_vibrantlight.setBackgroundColor(mySwatch.getRgb());  //set background color, which is the color
+                        binding.ivVibrantlight.setTextColor(mySwatch.getBodyTextColor());  //set textcolor which will be easy to read on the background color.
+                        binding.ivVibrantlight.setBackgroundColor(mySwatch.getRgb());  //set background color, which is the color
                     } else {
-                        iv_vibrantlight.setTextColor(Color.BLACK);
-                        iv_vibrantlight.setBackgroundColor(Color.WHITE);
+                        binding.ivVibrantlight.setTextColor(Color.BLACK);
+                        binding.ivVibrantlight.setBackgroundColor(Color.WHITE);
                     }
 
                     mySwatch = palette.getMutedSwatch();
                     if (mySwatch != null) {
-                        iv_muted.setTextColor(mySwatch.getBodyTextColor());  //set textcolor which will be easy to read on the background color.
-                        iv_muted.setBackgroundColor(mySwatch.getRgb());  //set background color, which is the color
+                        binding.ivMuted.setTextColor(mySwatch.getBodyTextColor());  //set textcolor which will be easy to read on the background color.
+                        binding.ivMuted.setBackgroundColor(mySwatch.getRgb());  //set background color, which is the color
                     } else {
-                        iv_muted.setTextColor(Color.BLACK);
-                        iv_muted.setBackgroundColor(Color.WHITE);
+                        binding.ivMuted.setTextColor(Color.BLACK);
+                        binding.ivMuted.setBackgroundColor(Color.WHITE);
                     }
 
                     mySwatch = palette.getDarkMutedSwatch();
                     if (mySwatch != null) {
-                        iv_muteddark.setTextColor(mySwatch.getBodyTextColor());  //set textcolor which will be easy to read on the background color.
-                        iv_muteddark.setBackgroundColor(mySwatch.getRgb());  //set background color, which is the color
+                        binding.ivMuteddark.setTextColor(mySwatch.getBodyTextColor());  //set textcolor which will be easy to read on the background color.
+                        binding.ivMuteddark.setBackgroundColor(mySwatch.getRgb());  //set background color, which is the color
                     } else {
-                        iv_muteddark.setTextColor(Color.BLACK);
-                        iv_muteddark.setBackgroundColor(Color.WHITE);
+                        binding.ivMuteddark.setTextColor(Color.BLACK);
+                        binding.ivMuteddark.setBackgroundColor(Color.WHITE);
                     }
                     mySwatch = palette.getLightMutedSwatch();
                     if (mySwatch != null) {
-                        iv_mutedlight.setTextColor(mySwatch.getBodyTextColor());  //set textcolor which will be easy to read on the background color.
-                        iv_mutedlight.setBackgroundColor(mySwatch.getRgb());  //set background color, which is the color
+                        binding.ivMutedlight.setTextColor(mySwatch.getBodyTextColor());  //set textcolor which will be easy to read on the background color.
+                        binding.ivMutedlight.setBackgroundColor(mySwatch.getRgb());  //set background color, which is the color
                     } else {
-                        iv_mutedlight.setTextColor(Color.BLACK);
-                        iv_mutedlight.setBackgroundColor(Color.WHITE);
+                        binding.ivMutedlight.setTextColor(Color.BLACK);
+                        binding.ivMutedlight.setBackgroundColor(Color.WHITE);
                     }
                 }
             });
