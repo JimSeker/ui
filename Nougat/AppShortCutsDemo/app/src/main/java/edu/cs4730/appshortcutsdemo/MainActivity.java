@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import edu.cs4730.appshortcutsdemo.databinding.ActivityMainBinding;
+
 /**
  * this is a simple demo to show how static shorts (see xml/shortcuts.xml)
  * <p>
@@ -31,14 +33,13 @@ public class MainActivity extends AppCompatActivity {
     String TAG = "MainActivity";
     private ShortcutManager mShortcutManager;
 
-    TextView logger;
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        logger = (TextView) findViewById(R.id.logger);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //get an instance of the shortcurManager
         mShortcutManager = getSystemService(ShortcutManager.class);  //ShortcutManager.class is android, not a class I created.
@@ -117,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void logthis(String item) {
-        logger.append(item);
-        logger.append("\n");
+        binding.logger.append(item);
+        binding.logger.append("\n");
     }
 }

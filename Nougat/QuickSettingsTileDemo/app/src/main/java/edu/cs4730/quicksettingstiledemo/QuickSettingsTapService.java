@@ -1,10 +1,7 @@
 package edu.cs4730.quicksettingstiledemo;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Icon;
-import android.os.Binder;
-import android.os.IBinder;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.util.Log;

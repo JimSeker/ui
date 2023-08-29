@@ -1,25 +1,23 @@
 package edu.cs4730.multiwindowsdemo;
 
 import android.os.PersistableBundle;
+import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
+import edu.cs4730.multiwindowsdemo.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
     String TAG = "MainActivity";
-    TextView logger;
-
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        logger = (TextView) findViewById(R.id.logger);
         logthis("onCreate");
 
         checkmode();
@@ -88,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
     void logthis(String item) {
         Log.d(TAG, item);
-        logger.append(item);
-        logger.append("\n");
+        binding.logger.append(item);
+        binding.logger.append("\n");
     }
 }

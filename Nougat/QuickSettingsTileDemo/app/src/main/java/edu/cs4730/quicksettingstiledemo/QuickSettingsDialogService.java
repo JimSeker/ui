@@ -1,6 +1,6 @@
 package edu.cs4730.quicksettingstiledemo;
 
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.os.Bundle;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;

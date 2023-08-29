@@ -15,22 +15,27 @@
 package edu.cs4730.quicksettingstiledemo;
 
 import android.content.Intent;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import java.util.Locale;
+
+import edu.cs4730.quicksettingstiledemo.databinding.ActivityResultBinding;
 
 public class ResultActivity extends AppCompatActivity {
 
     public static final String RESULT_ACTIVITY_INFO_KEY = "resultActivityInfo";
     public static final String RESULT_ACTIVITY_NAME_KEY = "resultActivityName";
+    ActivityResultBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result);
+        binding = ActivityResultBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         if (getIntent() != null) {
             Bundle extras = getIntent().getExtras();
@@ -38,20 +43,12 @@ public class ResultActivity extends AppCompatActivity {
             String tileState = extras.getString(RESULT_ACTIVITY_INFO_KEY);
             String tileName = extras.getString(RESULT_ACTIVITY_NAME_KEY);
 
-            TextView outputText = (TextView)findViewById(R.id.result_info);
-            outputText.setText(String.format(Locale.US,
-                    getString(R.string.result_output),
-                    tileName,
-                    tileState));
+            binding.resultInfo.setText(String.format(Locale.US, getString(R.string.result_output), tileName, tileState));
 
-            TextView returnHome = (TextView)findViewById(R.id.result_return_main);
-            returnHome.setOnClickListener(new View.OnClickListener() {
-
+            binding.resultReturnMain.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent goHome = new Intent(getApplicationContext(),
-                            MainActivity.class);
-
+                    Intent goHome = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(goHome);
                 }
             });
