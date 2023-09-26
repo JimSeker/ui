@@ -1,12 +1,10 @@
 package edu.cs4730.navdrawerdemo;
 
-import android.content.res.Configuration;
-
 import androidx.annotation.NonNull;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,60 +12,51 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+
+import edu.cs4730.navdrawerdemo.databinding.ActivityMainBinding;
 
 
 public class MainActivity extends AppCompatActivity {
-    private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
+    private ActivityMainBinding binding;
     private ActionBarDrawerToggle mDrawerToggle;
-    private TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        mTextView = findViewById(R.id.textview01);
-        mDrawerLayout = findViewById(R.id.drawer_layout);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //first setup the listview with some simple categories via an array.
         String[] values = new String[]{"Item 1", "Item 2", "Item 3", "Item 4"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-            R.layout.drawer_list_item, values);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        mDrawerList.setAdapter(adapter);
-        mDrawerList.setOnItemClickListener(new OnItemClickListener() {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.drawer_list_item, values);
+        binding.leftDrawer.setAdapter(adapter);
+        binding.leftDrawer.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int position, long index) {
                 //yes, this should do something for more interesting.  but this is an example.
-                String item = mDrawerList.getAdapter().getItem(position).toString();
-                mTextView.setText(item);
+                String item = binding.leftDrawer.getAdapter().getItem(position).toString();
+                binding.textview01.setText(item);
                 // update selected item and title, then close the drawer
-                mDrawerList.setItemChecked(position, true);
+                binding.leftDrawer.setItemChecked(position, true);
                 //now close the drawer!
-                mDrawerLayout.closeDrawer(mDrawerList);
+                binding.drawerLayout.closeDrawers();
 
             }
         });
         //set the default value and position to checked.
-        mDrawerList.setItemChecked(0, true);
-        mTextView.setText(values[0]);
+        binding.leftDrawer.setItemChecked(0, true);
+        binding.textview01.setText(values[0]);
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
-        mDrawerToggle = new ActionBarDrawerToggle(
-            this, /* host Activity */
-            mDrawerLayout, /* DrawerLayout object */
-            R.string.drawer_open, /* "open drawer" description for accessibility */
-            R.string.drawer_close /* "close drawer" description for accessibility */
-        ) {
+        mDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
+                binding.drawerLayout, /* DrawerLayout object */
+                R.string.drawer_open, /* "open drawer" description for accessibility */
+                R.string.drawer_close /* "close drawer" description for accessibility */) {
             public void onDrawerClosed(View view) {
                 getSupportActionBar().setTitle(R.string.app_name);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
@@ -78,11 +67,8 @@ public class MainActivity extends AppCompatActivity {
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
-        mDrawerLayout.addDrawerListener(mDrawerToggle);
-
-
+        binding.drawerLayout.addDrawerListener(mDrawerToggle);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
