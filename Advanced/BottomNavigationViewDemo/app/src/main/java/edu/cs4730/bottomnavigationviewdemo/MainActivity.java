@@ -13,35 +13,38 @@ import android.view.MenuItem;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import edu.cs4730.bottomnavigationviewdemo.databinding.ActivityMainBinding;
+
 /**
  * and example use the BottomNavigationView and Navigation.
  * https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView
  * https://material.io/develop/android/components/bottom-navigation-view/
  */
 public class MainActivity extends AppCompatActivity {
-
+    ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        /* if not using arch navigation, then you need to implement this.
-        navView.setOnItemSelectedListener(
+        /*
+        // if not using arch navigation, then you need to implement this.
+        binding.navView.setOnItemSelectedListener(
             new BottomNavigationView.OnItemSelectedListener() {
 
                 public boolean onNavigationItemSelected(MenuItem item) {
                     //setup the fragments here.
                     int id = item.getItemId();
                     if (id == R.id.action_first) {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, new OneFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(binding.container.getId(), new OneFragment()).commit();
                         item.setChecked(true);
                         return true;
                     } else if (id == R.id.action_second) {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, new TwoFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(binding.container.getId(), new TwoFragment()).commit();
                         item.setChecked(true);
                     } else if (id == R.id.action_third) {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, new threeFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(binding.container.getId(), new threeFragment()).commit();
                         item.setChecked(true);
                     }
 
@@ -49,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-        );*/
-
+        );
+         */
 
         // Passing each menu ID as a set of Ids because each menu should be considered as top level destinations.
         //Note for this to work with arch Navigation, these id must be the same id in menu.xml and the nav_graph.
@@ -63,11 +66,11 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = navHostFragment.getNavController();
 
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navView, navController);
+        NavigationUI.setupWithNavController(binding.navView, navController);
 
 
         //In order to have badges, you need to use the Theme.MaterialComponents.DayNight  (doesn't have to be daynight, but MaterialComponents).
-        BadgeDrawable badge = navView.getOrCreateBadge(R.id.action_second);
+        BadgeDrawable badge = binding.navView.getOrCreateBadge(R.id.action_second);
         badge.setNumber(12);  //should show a 12 in the "badge" for the second one.
         badge.setVisible(true);
 
