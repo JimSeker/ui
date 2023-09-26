@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import edu.cs4730.navdrawer_kt.databinding.ActivityMainBinding
 import java.util.*
 
 
@@ -25,8 +26,7 @@ import java.util.*
  * now converted to kotlin.
  */
 class MainActivity : AppCompatActivity() {
-    private lateinit var mDrawerLayout: DrawerLayout
-    private lateinit var mDrawerList: ListView
+    private lateinit var binding: ActivityMainBinding
     private lateinit var mDrawerToggle: ActionBarDrawerToggle
     private lateinit var mDrawerTitle: CharSequence
     private lateinit var mTitle: CharSequence
@@ -34,18 +34,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         mDrawerTitle = title
         mTitle = mDrawerTitle
         mPlanetTitles = resources.getStringArray(R.array.planets_array)
-        mDrawerLayout = findViewById(R.id.drawer_layout)
-        mDrawerList = findViewById(R.id.left_drawer)
 
         // set a custom shadow that overlays the main content when the drawer opens
-        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START)
+        binding.drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START)
         // set up the drawer's list view with items and click listener
-        mDrawerList.adapter = ArrayAdapter(this, R.layout.drawer_list_item, mPlanetTitles)
-        mDrawerList.onItemClickListener = DrawerItemClickListener()
+        binding.leftDrawer.adapter = ArrayAdapter(this, R.layout.drawer_list_item, mPlanetTitles)
+        binding.leftDrawer.onItemClickListener = DrawerItemClickListener()
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         // between the sliding drawer and the action bar app icon
         mDrawerToggle = object : ActionBarDrawerToggle(
             this,  /* host Activity */
-            mDrawerLayout,  /* DrawerLayout object */ // R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */  //no in the v7 constructor, so commented out.
+            binding.drawerLayout,  /* DrawerLayout object */
             R.string.drawer_open,  /* "open drawer" description for accessibility */
             R.string.drawer_close /* "close drawer" description for accessibility */
         ) {
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 invalidateOptionsMenu() // creates call to onPrepareOptionsMenu()
             }
         }
-        mDrawerLayout.addDrawerListener(mDrawerToggle)
+        binding.drawerLayout.addDrawerListener(mDrawerToggle)
         if (savedInstanceState == null) {
             selectItem(0)
         }
@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
     /* Called whenever we call invalidateOptionsMenu() */
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         // If the nav drawer is open, hide action items related to the content view
-        val drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList)
+        val drawerOpen = binding.drawerLayout.isDrawerOpen(binding.leftDrawer)
         menu.findItem(R.id.action_websearch).isVisible = !drawerOpen
         return super.onPrepareOptionsMenu(menu)
     }
@@ -122,9 +122,9 @@ class MainActivity : AppCompatActivity() {
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit()
 
         // update selected item and title, then close the drawer
-        mDrawerList.setItemChecked(position, true)
+        binding.leftDrawer.setItemChecked(position, true)
         title = mPlanetTitles[position]
-        mDrawerLayout.closeDrawer(mDrawerList)
+        binding.drawerLayout.closeDrawer(binding.leftDrawer)
     }
 
     override fun setTitle(title: CharSequence) {
@@ -153,15 +153,13 @@ class MainActivity : AppCompatActivity() {
      */
     class PlanetFragment : Fragment() {
         override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
         ): View? {
             val rootView = inflater.inflate(R.layout.fragment_planet, container, false)
             val i = requireArguments().getInt(ARG_PLANET_NUMBER)
             val planet = resources.getStringArray(R.array.planets_array)[i]
             val imageId = resources.getIdentifier(
-                planet.lowercase(Locale.getDefault()),
-                "drawable", requireActivity().packageName
+                planet.lowercase(Locale.getDefault()), "drawable", requireActivity().packageName
             )
             (rootView.findViewById<View>(R.id.image) as ImageView).setImageResource(imageId)
             requireActivity().title = planet
