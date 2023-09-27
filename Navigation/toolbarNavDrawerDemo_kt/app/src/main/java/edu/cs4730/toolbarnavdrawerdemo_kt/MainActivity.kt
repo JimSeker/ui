@@ -7,49 +7,38 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.drawerlayout.widget.DrawerLayout
+import edu.cs4730.toolbarnavdrawerdemo_kt.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var toolbar: Toolbar
+    private lateinit var binding: ActivityMainBinding
     private lateinit var mDrawerToggle: ActionBarDrawerToggle
-    private lateinit var mDrawerlayout: DrawerLayout
-    private lateinit var mDrawerList: ListView
-    private lateinit var mTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //use the androidx... .toolbar instead of the actionbar, which is disabled in the style.
-        toolbar = findViewById(R.id.app_bar)
-        setSupportActionBar(toolbar)
-
-        //now the rest of the code matches NavDrawerDemo.
-        mTextView = findViewById(R.id.textview01)
-        mDrawerlayout = findViewById(R.id.drawer_layout)
+        setSupportActionBar(binding.appBar)
 
         //lastly setup the listview with some simple categories via an array.
         val values = arrayOf("Item 1", "Item 2", "Item 3", "Item 4")
         val adapter = ArrayAdapter(
-            this,
-            R.layout.drawer_list_item, values
+            this, R.layout.drawer_list_item, values
         )
-        mDrawerList = findViewById(R.id.left_drawer)
-        mDrawerList.adapter = adapter
-        mDrawerList.onItemClickListener =
+
+        binding.leftDrawer.adapter = adapter
+        binding.leftDrawer.onItemClickListener =
             OnItemClickListener { arg0, view, position, index -> //yes, this should do something for more interesting.  but this is an example.
-                val item = mDrawerList.adapter.getItem(position).toString()
-                mTextView.text = item
+                val item = binding.leftDrawer.adapter.getItem(position).toString()
+                binding.textview01.text = item
                 // update selected item and title, then close the drawer
-                mDrawerList.setItemChecked(position, true)
+                binding.leftDrawer.setItemChecked(position, true)
                 //now close the drawer!
-                mDrawerlayout.closeDrawers()
+                binding.drawerLayout.closeDrawers()
             }
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
@@ -57,8 +46,8 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setHomeButtonEnabled(true)
         mDrawerToggle = object : ActionBarDrawerToggle(
             this,  // host activity
-            mDrawerlayout,  //drawerlayout object
-            toolbar,  //toolbar
+            binding.drawerLayout,  //drawerlayout object
+            binding.appBar,  //toolbar
             R.string.drawer_open,  //open drawer description  required!
             R.string.drawer_close
         ) {
@@ -79,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         }
         //To disable the icon for the drawer, change this to false
         //mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerlayout.addDrawerListener(mDrawerToggle)
+        binding.drawerLayout.addDrawerListener(mDrawerToggle)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
