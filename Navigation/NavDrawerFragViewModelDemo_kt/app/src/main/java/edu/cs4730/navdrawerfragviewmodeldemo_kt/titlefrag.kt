@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.fragment.app.ListFragment
-
+import edu.cs4730.navdrawerfragviewmodeldemo_kt.databinding.ListfragmentLayoutBinding
 
 /**
  * this ia listfragment.  All we need to do is setlistadapter in onCreateView
@@ -16,18 +16,16 @@ import androidx.fragment.app.ListFragment
  */
 class titlefrag : ListFragment() {
     lateinit var mViewModel: DataViewModel
-
+    lateinit var binding: ListfragmentLayoutBinding
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.listfragment_layout, container, false)
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        binding = ListfragmentLayoutBinding.inflate(inflater, container, false)
         mViewModel = ViewModelProvider(requireActivity()).get(DataViewModel::class.java)
         val adapter =
             ArrayAdapter(requireActivity(), android.R.layout.simple_list_item_1, Shakespeare.TITLES)
         listAdapter = adapter
-        return view
+        return binding.root
     }
 
     override fun onListItemClick(listView: ListView, view: View, position: Int, id: Long) {

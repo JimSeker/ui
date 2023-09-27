@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import edu.cs4730.navdrawerfragdemo.databinding.TextFragmentBinding;
+
 /**
  * This is a simple fragment used to display the data for whichever shakespeare that is clicked on
  * in the titlefrag fragment.  It also shows how to quickly save a small piece of information (position)
@@ -17,7 +19,7 @@ import android.widget.TextView;
 public class textFrag extends Fragment {
 
     int myPosition = 0;
-    TextView tv;
+    TextFragmentBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -29,17 +31,16 @@ public class textFrag extends Fragment {
         if (savedInstanceState != null) {
             myPosition = savedInstanceState.getInt("position");
         }
-        View view = inflater.inflate(R.layout.text_fragment, container, false);
-        tv = view.findViewById(R.id.text);
+        binding = TextFragmentBinding.inflate(inflater, container, false);
         setText(myPosition);
-        return view;
+        return binding.getRoot();
     }
 
     /**
      * simple method to set the text of the TextView from the layout, called from the TitleFrag.
      */
     public void setText(int item) {
-        tv.setText(Shakespeare.DIALOGUE[item]);
+        binding.text.setText(Shakespeare.DIALOGUE[item]);
     }
 
     @Override

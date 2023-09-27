@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import edu.cs4730.navdrawerfragdemo.databinding.ListfragmentLayoutBinding;
+
 /**
  * this ia listfragment.  All we need to do is setlistadapter in onCreateView (there is no layout)
  * and override onListItemClick.  Since we also have callbacks, also deal with those.
@@ -25,14 +27,15 @@ public class titlefrag extends ListFragment {
      * clicks.
      */
     private OnFragmentInteractionListener mListener;
+    private ListfragmentLayoutBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.listfragment_layout, container, false);
+        binding = ListfragmentLayoutBinding.inflate(inflater, container, false);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(requireActivity(), android.R.layout.simple_list_item_1, Shakespeare.TITLES);
         setListAdapter(adapter);
-        return view;
+        return binding.getRoot();
     }
 
     @Override
@@ -42,8 +45,7 @@ public class titlefrag extends ListFragment {
         try {
             mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                + " must implement OnFragmentInteractionListener");
+            throw new ClassCastException(activity.toString() + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -53,15 +55,13 @@ public class titlefrag extends ListFragment {
         mListener = null;
     }
 
-
     @Override
     public void onListItemClick(@NonNull ListView listView, @NonNull View view, int position, long id) {
         super.onListItemClick(listView, view, position, id);
 
         // Notify the active callbacks interface (the activity, if the
         // fragment is attached to one) that an item has been selected.
-        if (mListener != null)
-            mListener.onItemSelected(position);
+        if (mListener != null) mListener.onItemSelected(position);
     }
 
     /**

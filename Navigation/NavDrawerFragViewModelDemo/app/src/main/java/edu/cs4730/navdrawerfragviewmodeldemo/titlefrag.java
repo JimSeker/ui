@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.ListFragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import edu.cs4730.navdrawerfragviewmodeldemo.databinding.ListfragmentLayoutBinding;
+
 /**
  * this ia listfragment.  All we need to do is setlistadapter in onCreateView
  * and override onListItemClick.    using the viewmodel setup the data.
@@ -19,16 +21,16 @@ import androidx.lifecycle.ViewModelProvider;
 public class titlefrag extends ListFragment {
 
     DataViewModel mViewModel;
-
+    private ListfragmentLayoutBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.listfragment_layout, container, false);
+        binding = ListfragmentLayoutBinding.inflate(inflater, container, false);
         mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(requireActivity(), android.R.layout.simple_list_item_1, Shakespeare.TITLES);
         setListAdapter(adapter);
-        return view;
+        return binding.getRoot();
     }
 
     @Override

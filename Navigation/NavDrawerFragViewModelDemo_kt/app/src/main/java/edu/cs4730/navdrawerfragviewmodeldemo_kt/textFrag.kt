@@ -8,6 +8,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 
 import androidx.lifecycle.ViewModelProvider
+import edu.cs4730.navdrawerfragviewmodeldemo_kt.databinding.TextFragmentBinding
 
 
 /**
@@ -15,22 +16,17 @@ import androidx.lifecycle.ViewModelProvider
  * in the titlefrag fragment.  it uses a viewmodel, so everything is received from there.
  */
 class textFrag : Fragment() {
-    lateinit var tv: TextView
+    lateinit var binding: TextFragmentBinding
     lateinit var mViewModel: DataViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.text_fragment, container, false)
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        binding = TextFragmentBinding.inflate(inflater, container, false)
         mViewModel = ViewModelProvider(requireActivity()).get(DataViewModel::class.java)
-        tv = view.findViewById(R.id.text)
         mViewModel.data.observe(requireActivity()) { integer ->
-            tv.setText(
-                Shakespeare.DIALOGUE[integer!!]
-            )
+            binding.text.text = Shakespeare.DIALOGUE[integer!!]
         }
-        return view
+        return binding.root
     }
 }

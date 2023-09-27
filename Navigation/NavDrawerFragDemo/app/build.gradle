@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
+    compileSdk 33
     defaultConfig {
         applicationId "edu.cs4730.navdrawerfragdemo"
-        minSdkVersion 26
-        targetSdkVersion 33
+        minSdkVersion 28
+        targetSdk 33
         versionName "1.0"
     }
     buildTypes {
@@ -14,10 +14,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures {
+        viewBinding = true
+    }
+    namespace 'edu.cs4730.navdrawerfragdemo'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.5.0'
-    implementation 'androidx.drawerlayout:drawerlayout:1.1.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.drawerlayout:drawerlayout:1.2.0'
 }

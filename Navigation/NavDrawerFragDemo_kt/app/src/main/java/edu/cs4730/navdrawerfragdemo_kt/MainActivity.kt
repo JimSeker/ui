@@ -6,18 +6,19 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
+import edu.cs4730.navdrawerfragdemo_kt.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity(), titlefrag.OnFragmentInteractionListener {
-    private lateinit var mDrawerLayout: DrawerLayout
+    private lateinit var binding: ActivityMainBinding
     private lateinit var mDrawerToggle: ActionBarDrawerToggle
     lateinit var myTextFrag: textFrag
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        mDrawerLayout = findViewById(R.id.drawer_layout)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         // enable ActionBar app icon to behave as action to toggle nav drawer
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity(), titlefrag.OnFragmentInteractionListene
         // between the sliding drawer and the action bar app icon
         mDrawerToggle = object : ActionBarDrawerToggle(
             this,  /* host Activity */
-            mDrawerLayout,  /* DrawerLayout object */
+            binding.drawerLayout,  /* DrawerLayout object */
             R.string.drawer_open,  /* "open drawer" description for accessibility */
             R.string.drawer_close /* "close drawer" description for accessibility */
         ) {
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity(), titlefrag.OnFragmentInteractionListene
                 invalidateOptionsMenu() // creates call to onPrepareOptionsMenu()
             }
         }
-        mDrawerLayout.addDrawerListener(mDrawerToggle)
+        binding.drawerLayout.addDrawerListener(mDrawerToggle)
 
         //get the textFrag from the support manager;
         myTextFrag = supportFragmentManager.findFragmentById(R.id.frag_text) as textFrag
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity(), titlefrag.OnFragmentInteractionListene
     override fun onItemSelected(id: Int) {
         //use the setter in textFrag to change the text.
         myTextFrag.setText(id)
-        mDrawerLayout.closeDrawers()
+        binding.drawerLayout.closeDrawers()
     }
 
     /**

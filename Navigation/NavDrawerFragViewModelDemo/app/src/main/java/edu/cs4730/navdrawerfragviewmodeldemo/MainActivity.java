@@ -12,8 +12,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-public class MainActivity extends AppCompatActivity  {
-    private DrawerLayout mDrawerLayout;
+import edu.cs4730.navdrawerfragviewmodeldemo.databinding.ActivityMainBinding;
+
+public class MainActivity extends AppCompatActivity {
+    private ActivityMainBinding binding;
     private ActionBarDrawerToggle mDrawerToggle;
     textFrag myTextFrag;
     DataViewModel mViewModel;
@@ -21,23 +23,21 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         mViewModel = new ViewModelProvider(this).get(DataViewModel.class);
 
-        mDrawerLayout = findViewById(R.id.drawer_layout);
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
-        mDrawerToggle = new ActionBarDrawerToggle(
-                this, /* host Activity */
-                mDrawerLayout, /* DrawerLayout object */
+        mDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
+                binding.drawerLayout, /* DrawerLayout object */
                 R.string.drawer_open, /* "open drawer" description for accessibility */
-                R.string.drawer_close /* "close drawer" description for accessibility */
-        ) {
+                R.string.drawer_close /* "close drawer" description for accessibility */) {
             public void onDrawerClosed(View view) {
                 getSupportActionBar().setTitle(R.string.app_name);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
@@ -48,16 +48,16 @@ public class MainActivity extends AppCompatActivity  {
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
-        mDrawerLayout.addDrawerListener(mDrawerToggle);
+        binding.drawerLayout.addDrawerListener(mDrawerToggle);
 
         //get the textFrag from the support manager;
-        myTextFrag =  (textFrag) getSupportFragmentManager().findFragmentById(R.id.frag_text);
+        myTextFrag = (textFrag) getSupportFragmentManager().findFragmentById(R.id.frag_text);
 
         mViewModel.getData().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
                 //really only need to it close the drawer.
-                mDrawerLayout.closeDrawers();
+                binding.drawerLayout.closeDrawers();
             }
         });
 

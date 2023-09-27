@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import edu.cs4730.navdrawerfragviewmodeldemo.databinding.TextFragmentBinding;
+
 /**
  * This is a simple fragment used to display the data for whichever shakespeare that is clicked on
  * in the titlefrag fragment.  it uses a viewmodel, so everything is received from there.
@@ -18,21 +20,20 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class textFrag extends Fragment {
 
-    TextView tv;
+    TextFragmentBinding binding;
     DataViewModel mViewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.text_fragment, container, false);
+        binding = TextFragmentBinding.inflate(inflater, container, false);
         mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
-        tv = view.findViewById(R.id.text);
         mViewModel.getData().observe(requireActivity(), new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                tv.setText(Shakespeare.DIALOGUE[integer]);
+                binding.text.setText(Shakespeare.DIALOGUE[integer]);
             }
         });
-        return view;
+        return binding.getRoot();
     }
 }
