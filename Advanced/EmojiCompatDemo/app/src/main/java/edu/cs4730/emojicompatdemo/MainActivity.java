@@ -55,26 +55,18 @@ public class MainActivity extends AppCompatActivity {
             config = new BundledEmojiCompatConfig(getApplicationContext());
         } else {
             // Use a downloadable font for EmojiCompat
-            final FontRequest fontRequest = new FontRequest(
-                "com.google.android.gms.fonts",
-                "com.google.android.gms",
-                "Noto Color Emoji Compat",
-                R.array.com_google_android_gms_fonts_certs);
-            config = new FontRequestEmojiCompatConfig(getApplicationContext(), fontRequest)
-                .setReplaceAll(true)
-                .setEmojiSpanIndicatorEnabled(true)
-                .setEmojiSpanIndicatorColor(Color.GREEN)
-                .registerInitCallback(new EmojiCompat.InitCallback() {
-                    @Override
-                    public void onInitialized() {
-                        Log.i(TAG, "EmojiCompat initialized");
-                    }
+            final FontRequest fontRequest = new FontRequest("com.google.android.gms.fonts", "com.google.android.gms", "Noto Color Emoji Compat", R.array.com_google_android_gms_fonts_certs);
+            config = new FontRequestEmojiCompatConfig(getApplicationContext(), fontRequest).setReplaceAll(true).setEmojiSpanIndicatorEnabled(true).setEmojiSpanIndicatorColor(Color.GREEN).registerInitCallback(new EmojiCompat.InitCallback() {
+                @Override
+                public void onInitialized() {
+                    Log.i(TAG, "EmojiCompat initialized");
+                }
 
-                    @Override
-                    public void onFailed(@Nullable Throwable throwable) {
-                        Log.e(TAG, "EmojiCompat initialization failed", throwable);
-                    }
-                });
+                @Override
+                public void onFailed(@Nullable Throwable throwable) {
+                    Log.e(TAG, "EmojiCompat initialization failed", throwable);
+                }
+            });
         }
         EmojiCompat.init(config);
         //now we can use the fonts and
@@ -120,8 +112,7 @@ public class MainActivity extends AppCompatActivity {
             if (regularTextView != null) {
                 final EmojiCompat compat = EmojiCompat.get();
                 final Context context = regularTextView.getContext();
-                regularTextView.setText(
-                    compat.process(context.getString(R.string.regular_text_view, EMOJI)));
+                regularTextView.setText(compat.process(context.getString(R.string.regular_text_view, EMOJI)));
             }
         }
 
