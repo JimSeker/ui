@@ -27,10 +27,10 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    implementation "androidx.navigation:navigation-fragment:2.7.0"
-    implementation "androidx.navigation:navigation-ui:2.7.0"
+    implementation "androidx.navigation:navigation-fragment:2.7.7"
+    implementation "androidx.navigation:navigation-ui:2.7.7"
     // Feature module Support
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.7.0"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.7.7"
     //really dumb, needed to stop a duplicate dependency, even though not use kotlin at all, hopefully at some point won't need it.
     //but with android view model, doesn't seem to have the same problem.  really weird.  leaving the commented out line just in case.
     constraints {
