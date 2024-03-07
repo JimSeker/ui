@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         mViewModel.getItem2LD.observe(this,
             Observer<String?> { s -> myCustomFragment.displaylog("Item1: $s") })
         mViewModel.getYesNoLD.observe(this,
-            Observer<Boolean?> { b ->
+            Observer<Boolean> { b ->
                 if (b)
                     myCustomFragment.displaylog("Positive/Yes click!")
                 else

@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "edu.cs4730.customdialogdemo"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "edu.cs4730.customdialogdemo"
-        minSdk = 26
-        targetSdk = 33
+        minSdk = 28
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -37,7 +37,7 @@ android {
 dependencies {
 
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
 }
