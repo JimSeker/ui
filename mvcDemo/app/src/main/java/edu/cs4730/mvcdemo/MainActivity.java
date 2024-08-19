@@ -1,6 +1,5 @@
 package edu.cs4730.mvcdemo;
 
-
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * A simple activity to demo the MVC method.
- *
  * For info on the constraint-layout see  <a href="https://developer.android.com/training/constraint-layout/index.html">constraint-layout</a>
  */
 
