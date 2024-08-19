@@ -21,7 +21,7 @@ class myEditNameDialogFrag : DialogFragment() {
     private var mListener: EditNameDialogListener? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val inflater = LayoutInflater.from(requireActivity())
+        val inflater =  LayoutInflater.from(requireActivity())
         val binding: FragmentEditNameDialogBinding = FragmentEditNameDialogBinding.inflate(inflater)
         binding.txtYourName.requestFocus()
         val builder = AlertDialog.Builder(

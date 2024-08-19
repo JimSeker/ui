@@ -1,13 +1,15 @@
-//noinspection GradleCompatible
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
 
 android {
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "edu.cs4730.dialogdemo"
-        minSdkVersion 28
-        targetSdk 34
+        minSdkVersion 29
+        targetSdk 35
         versionCode 1
         versionName "1.0"
     }
@@ -26,7 +28,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.activity:activity:1.9.1'
 }
