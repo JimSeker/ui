@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdk 34
+    compileSdk 35
     defaultConfig {
         applicationId "edu.cs4730.fragcomnavvmodeldemo"
-        minSdkVersion 28
-        targetSdk 34
+        minSdkVersion 29
+        targetSdk 35
         versionCode 1
         versionName "1.0"
     }
@@ -23,14 +23,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment:2.7.7'
     implementation 'androidx.navigation:navigation-ui:2.7.7'
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.7.0"
-    //really dumb, needed to stop a duplicate dependency, even though not use kotlin at all, hopefully at some point won't need it.
-   // implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0'
-    implementation "androidx.lifecycle:lifecycle-livedata:2.7.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.8.4"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.8.4"
 
     // Feature module Support
     implementation "androidx.navigation:navigation-dynamic-features-fragment:2.7.7"
