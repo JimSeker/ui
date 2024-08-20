@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 super.onDrawerClosed(drawerView);
                 //getSupportActionBar().setTitle(R.string.app_name);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+                //shouldn't need this, but postcreate is being called correctly now.
+                mDrawerToggle.syncState();
             }
         };
         binding.drawerLayout.addDrawerListener(mDrawerToggle);

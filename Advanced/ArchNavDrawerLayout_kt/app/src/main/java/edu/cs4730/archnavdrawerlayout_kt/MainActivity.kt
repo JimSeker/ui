@@ -44,6 +44,8 @@ class MainActivity : AppCompatActivity() {
                 super.onDrawerClosed(drawerView)
                 //supportActionBar?.title = R.string.app_name.toString()
                 invalidateOptionsMenu() // creates call to onPrepareOptionsMenu()
+                //shouldn't need this, but postcreate is being called correctly now.
+                mDrawerToggle.syncState()
             }
         }
         binding.drawerLayout.addDrawerListener(mDrawerToggle)
@@ -67,7 +69,7 @@ class MainActivity : AppCompatActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         // Sync the toggle state after onRestoreInstanceState has occurred.
-        mDrawerToggle.syncState()
+       mDrawerToggle.syncState()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

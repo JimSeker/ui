@@ -1,5 +1,6 @@
 package edu.cs4730.botnavguidemo;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationD
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onFragmentPicker(int id) {
         switch (id) {
