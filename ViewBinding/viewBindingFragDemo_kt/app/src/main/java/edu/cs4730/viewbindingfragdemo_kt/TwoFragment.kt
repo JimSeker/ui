@@ -16,13 +16,13 @@ import edu.cs4730.viewbindingfragdemo_kt.databinding.FragmentTwoBinding
  * with most studio picking the wrong one.
  */
 class TwoFragment : Fragment() {
-    private var binding: FragmentTwoBinding? = null
+    private lateinit var binding: FragmentTwoBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentTwoBinding.inflate(inflater, container, false)
-        binding!!.button.setOnClickListener(View.OnClickListener {
+        binding.button.setOnClickListener(View.OnClickListener {
             Toast.makeText(
                 requireContext(),
                 "Hi there",
@@ -32,11 +32,11 @@ class TwoFragment : Fragment() {
 
 
         //needs a view so return one.
-        return binding!!.root
+        return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
+        //binding = null
     }
 }

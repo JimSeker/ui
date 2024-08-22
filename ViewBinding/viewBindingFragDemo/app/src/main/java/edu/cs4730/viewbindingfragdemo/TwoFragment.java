@@ -2,6 +2,7 @@ package edu.cs4730.viewbindingfragdemo;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import edu.cs4730.viewbindingfragdemo.databinding.FragmentOneBinding;
 import edu.cs4730.viewbindingfragdemo.databinding.FragmentTwoBinding;
@@ -23,7 +24,7 @@ public class TwoFragment extends Fragment {
     private FragmentTwoBinding binding;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentTwoBinding.inflate(inflater, container, false);
 

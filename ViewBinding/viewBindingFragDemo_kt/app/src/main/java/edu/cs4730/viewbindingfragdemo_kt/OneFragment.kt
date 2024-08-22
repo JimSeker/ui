@@ -16,30 +16,30 @@ import edu.cs4730.viewbindingfragdemo_kt.databinding.FragmentOneBinding
  * with most studio picking the wrong one.
  */
 class OneFragment : Fragment() {
-    private  var binding: FragmentOneBinding? = null
+    private lateinit var binding: FragmentOneBinding
     private var mListener: OnFragmentInteractionListener1? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentOneBinding.inflate(inflater, container, false)
-        binding!!.btnSubmit.setOnClickListener(View.OnClickListener {
+        binding.btnSubmit.setOnClickListener(View.OnClickListener {
             if (mListener != null) {
                 var value = "stuff"
-                if (binding!!.etName.text.toString().compareTo("") != 0 )
-                    value =   binding!!.etName.text.toString()
+                if (binding.etName.text.toString().compareTo("") != 0 )
+                    value =   binding.etName.text.toString()
                 mListener!!.onFragmentInteraction1(value)
             }
         })
 
         //needs to return a view.  so get it for the return
-        return binding!!.root
+        return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
+        //binding = null
     }
 
     override fun onAttach(context: Context) {

@@ -24,7 +24,7 @@ public class OneFragment extends Fragment {
     private OnFragmentInteractionListener1 mListener;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentOneBinding.inflate(inflater, container, false);
 
