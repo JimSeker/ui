@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // for checking permissions.
     ActivityResultLauncher<String> cameraRpl, phoneRpl, contactRpl;
+    //intent launchers are declared below the onCreate method.
     ActivityMainBinding binding;
     String TAG = "MainActivity";
 
