@@ -5,16 +5,13 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.1'
+        classpath 'com.android.tools.build:gradle:8.5.2'
     }
 }
 
 allprojects {
     repositories {
         mavenCentral()
-        maven {
-            url "https://maven.google.com"
-        }
         google()
     }
 }
