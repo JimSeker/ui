@@ -3,7 +3,6 @@ package edu.cs4730.darkthemedemo_kt
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import edu.cs4730.darkthemedemo_kt.databinding.ActivityMainBinding
 
@@ -26,6 +25,8 @@ import edu.cs4730.darkthemedemo_kt.databinding.ActivityMainBinding
  *  the app restarts the drawing.  the kotlin version still crashs a lot more then java version.
  *  likely it's trying to be helpful and which is stupid.
  *
+ *  material3 stuff, helpful https://m3.material.io/blog/migrating-material-3
+ *  note going from material3 to appCompat will likely crash the app, restart and it works fine.
  */
 class MainActivity : AppCompatActivity() {
     lateinit var preferences: SharedPreferences
@@ -74,6 +75,24 @@ class MainActivity : AppCompatActivity() {
         binding.button5.setOnClickListener {
             val editor = preferences.edit()
             editor.putInt("Theme", R.style.AppTheme5)
+            editor.commit()
+            recreate()
+        }
+        binding.button6.setOnClickListener {
+            val editor = preferences.edit()
+            editor.putInt("Theme", R.style.AppTheme6)
+            editor.commit()
+            recreate()
+        }
+        binding.button7.setOnClickListener {
+            val editor = preferences.edit()
+            editor.putInt("Theme", R.style.AppTheme7)
+            editor.commit()
+            recreate()
+        }
+        binding.button8.setOnClickListener {
+            val editor = preferences.edit()
+            editor.putInt("Theme", R.style.AppTheme8)
             editor.commit()
             recreate()
         }

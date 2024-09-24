@@ -25,6 +25,10 @@ import edu.cs4730.darkthemedemo.databinding.ActivityMainBinding;
  *
  *  don't change the commit() to apply() or the app will crash a lot.  need to finish the commit before
  *  the app restarts the drawing.
+ *
+ *  material3 stuff, helpful https://m3.material.io/blog/migrating-material-3
+ *
+ *  note going from material3 to appCompat will likely crash the app.  restart and it works fine.
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -98,6 +102,32 @@ public class MainActivity extends AppCompatActivity {
                 recreate();
             }
         });
-
+        binding.button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("Theme",R.style.AppTheme6);
+                editor.commit();
+                recreate();
+            }
+        });
+        binding.button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("Theme",R.style.AppTheme7);
+                editor.commit();
+                recreate();
+            }
+        });
+        binding.button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("Theme",R.style.AppTheme8);
+                editor.commit();
+                recreate();
+            }
+        });
     }
 }

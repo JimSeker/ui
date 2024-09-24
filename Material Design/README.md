@@ -5,11 +5,13 @@ Android material Design Examples
 
 `CirToolbarNavDrawerDemo_kt` (kotlin) uses toolbarnavDrawerDemo from the navigation directory and add a floating action button.  shows a toolbar, drawlayout with listview, textview for main content.
 
-`DarkThemeDemo` (java) is an example of how to dynamically change your themes, using a Light, Dark, or DayNight theme both appcompat and MaterialDesign.
+`DarkThemeDemo` (java) is an example of how to dynamically change your themes, using a Light, Dark, or DayNight theme both appcompat and MaterialDesign, plus material3 as well.
 
-`DarkThemeDemo_kt` (kotlin) is an example of how to dynamically change your themes, using a Light, Dark, or DayNight theme both appcompat and MaterialDesign.
+`DarkThemeDemo_kt` (kotlin) is an example of how to dynamically change your themes, using a Light, Dark, or DayNight theme both appcompat and MaterialDesign, plus material3 as well.
 
 `SimpleDemo` is basic example of using Material design.  There is no real java code here, it's all in the values/color and styles.xml files (values and values-v21).  There are also two screenshots device-4.4.png and device-5.0.png to show how style looks.
+
+`SimpleDemoM3` is basic example of using Material3 design.  There is no real code here, it's all in the values/color and theme.xml files light and dark theme.
 
 `snackbarDemo` (java) show the snackbar triggered from a fab.  It also show how the callbacks works, so you can determine how the
 user dealt with the snackbar (ie swiped it away, timed out, etc ).
