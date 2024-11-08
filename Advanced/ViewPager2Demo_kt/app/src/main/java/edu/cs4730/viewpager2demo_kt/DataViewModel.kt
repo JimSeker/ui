@@ -31,18 +31,12 @@ class DataViewModel(application: Application) : AndroidViewModel(application) {
 
     fun appendStrRight(item: String) {
         val prev = right.value
-        right.value = """
-               $prev
-               $item
-               """.trimIndent()
+        right.value = "$prev\n$item"
     }
 
     fun appendStrLeft(item: String) {
         val prev = left.value
-        left.value = """
-               $prev
-               $item
-               """.trimIndent()
+        left.value = "$prev\n$item"
     }
 
 }

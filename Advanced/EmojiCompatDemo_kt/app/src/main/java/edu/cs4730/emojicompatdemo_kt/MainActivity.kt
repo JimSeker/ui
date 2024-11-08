@@ -1,11 +1,14 @@
 package edu.cs4730.emojicompatdemo_kt
 
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.provider.FontRequest
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.emoji.bundled.BundledEmojiCompatConfig
 import androidx.emoji.text.EmojiCompat
 import androidx.emoji.text.FontRequestEmojiCompatConfig
@@ -73,7 +76,11 @@ class MainActivity : AppCompatActivity() {
         //now we can use the fonts and
         binding = ActivityMainBinding.inflate(layoutInflater);
         setContentView(binding.root);
-
+        ViewCompat.setOnApplyWindowInsetsListener(binding.scroll) { v: View, insets: WindowInsetsCompat ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
 
         // TextView variant provided by EmojiCompat library
         binding.emojiTextView.text = getString(R.string.emoji_text_view, EMOJI)

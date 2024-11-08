@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener, Te
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v: View, insets: WindowInsetsCompat ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+            WindowInsetsCompat.CONSUMED
         }
         //EditText view setup and listener
         binding.ETname.addTextChangedListener(this)

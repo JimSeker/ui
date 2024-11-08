@@ -1,8 +1,11 @@
 package edu.cs4730.viewpagerdemo_kt
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -27,6 +30,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v: View, insets: WindowInsetsCompat ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(
+                systemBars.left, systemBars.top, systemBars.right, systemBars.bottom
+            )
+            WindowInsetsCompat.CONSUMED
+        }
         mViewModel = ViewModelProvider(this)[DataViewModel::class.java]
 
         leftfrag = FragLeft()
@@ -39,11 +49,8 @@ class MainActivity : AppCompatActivity() {
             binding.pager!!.adapter = ThreeFragmentPagerAdapter(fragmentManager)
         } else {
             //in landscape mode  //so no viewpager.
-            fragmentManager.beginTransaction()
-                .add(R.id.frag_left, leftfrag)
-                .add(R.id.frag_mid, midfrag)
-                .add(R.id.frag_right, rightfrag)
-                .commit()
+            fragmentManager.beginTransaction().add(R.id.frag_left, leftfrag)
+                .add(R.id.frag_mid, midfrag).add(R.id.frag_right, rightfrag).commit()
         }
     }
 
@@ -53,8 +60,7 @@ class MainActivity : AppCompatActivity() {
      *   using a PageStripe.
      */
     class ThreeFragmentPagerAdapter  //required constructor that simply supers.
-        (fm: FragmentManager?) :
-        FragmentPagerAdapter(fm!!, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+        (fm: FragmentManager?) : FragmentPagerAdapter(fm!!, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         var PAGE_COUNT = 3
 
         // return the correct fragment based on where in pager we are.

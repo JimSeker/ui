@@ -42,7 +42,7 @@ public class FormExample extends AppCompatActivity implements RadioGroup.OnCheck
         ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+            return WindowInsetsCompat.CONSUMED;
         });
         //EditText view setup and listener
         binding.ETname.addTextChangedListener(this);

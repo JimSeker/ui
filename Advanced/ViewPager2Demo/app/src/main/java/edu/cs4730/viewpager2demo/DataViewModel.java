@@ -46,12 +46,18 @@ public class DataViewModel extends AndroidViewModel {
 
     public void appendStrRight(String item) {
         String prev = right.getValue();
-        right.setValue(prev + "\n" + item);
+        prev.concat("\n");
+        prev.concat(item);
+//            prev+=  "\n";
+//            prev +=  item;
+        right.setValue(prev);
     }
 
     public void appendStrLeft(String item) {
         String prev = left.getValue();
-        left.setValue(prev + "\n" + item);
+        prev.concat("\n");
+        prev.concat(item);
+        left.setValue(prev );
     }
 
 }
