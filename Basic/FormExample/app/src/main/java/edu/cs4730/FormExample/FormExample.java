@@ -1,6 +1,9 @@
 package edu.cs4730.FormExample;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -36,19 +39,18 @@ public class FormExample extends AppCompatActivity implements RadioGroup.OnCheck
         super.onCreate(savedInstanceState);
         binding = MainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
         //EditText view setup and listener
         binding.ETname.addTextChangedListener(this);
 
-        //the top label in the xml doc.
-        // label = findViewById(R.id.Label01);
-
         //setup the radio group with a listener.
-        // myRadioGroup = findViewById(R.id.SndGroup);
         binding.myRadioGroup.setOnCheckedChangeListener(this);
 
         //setup the button with a listener as well.
-        // btnalert = findViewById(R.id.btnalert);
         binding.btnalert.setOnClickListener(this);
     }
 

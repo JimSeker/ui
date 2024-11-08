@@ -5,42 +5,36 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import edu.cs4730.formexample_kt.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener, TextWatcher,
     View.OnClickListener {
 
-    //variables for the widgets
-//    lateinit var myRadioGroup: RadioGroup
-//    lateinit var et: EditText
-//    lateinit var btnalert: Button
-//    lateinit var label: TextView
-
     //variable for the log
     var TAG = "ForExample"
     private lateinit var binding: ActivityMainBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v: View, insets: WindowInsetsCompat ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         //EditText view setup and listener
-        //et = findViewById(R.id.ETname)
         binding.ETname.addTextChangedListener(this)
 
-        //the top label in the xml doc.
-        //label = findViewById(R.id.Label01)
-
         //setup the radio group with a listener.
-        //myRadioGroup = findViewById(R.id.myRadioGroup)
         binding.myRadioGroup.setOnCheckedChangeListener(this)
 
         //setup the button with a listener as well.
-        //btnalert = findViewById(R.id.btnalert)
         binding.btnalert.setOnClickListener(this)
     }
 
