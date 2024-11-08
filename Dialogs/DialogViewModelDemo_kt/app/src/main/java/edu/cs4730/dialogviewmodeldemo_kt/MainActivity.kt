@@ -1,7 +1,10 @@
 package edu.cs4730.dialogviewmodeldemo_kt
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,13 +16,20 @@ import com.google.android.material.navigation.NavigationBarView
  * but otherwise the main work is in SupportDialogFragment and CustomFragment.
  */
 class MainActivity : AppCompatActivity() {
-    lateinit var fragmentManager: FragmentManager
-    lateinit var myCustomFragment: CustomFragment
-    lateinit var bnv: BottomNavigationView
+    private lateinit var fragmentManager: FragmentManager
+    private lateinit var myCustomFragment: CustomFragment
+    private lateinit var bnv: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        ViewCompat.setOnApplyWindowInsetsListener(
+            findViewById(R.id.main)
+        ) { v: View, insets: WindowInsetsCompat ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
         val mViewModel = ViewModelProvider(this)[DataViewModel::class.java]
         fragmentManager = supportFragmentManager
         myCustomFragment = CustomFragment()
@@ -29,8 +39,8 @@ class MainActivity : AppCompatActivity() {
             //if we had a onOptionsItemSelect method for a menu, we could just use it.
             val id = item.itemId
             if (id == R.id.nav_support) {
-                fragmentManager.beginTransaction()
-                    .replace(R.id.container, SupportDialogFragment()).commit()
+                fragmentManager.beginTransaction().replace(R.id.container, SupportDialogFragment())
+                    .commit()
                 item.isChecked = true
                 return@OnItemSelectedListener true
             } else if (id == R.id.nav_custom) {
@@ -48,16 +58,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         //now in DialogDemo there was a lot of call backs that are just solved by a ViewModel, making it nice an simple.
-        mViewModel.getItem1LD.observe(this,
-            Observer<String?> { s -> myCustomFragment.displaylog("Item1: $s") })
-        mViewModel.getItem2LD.observe(this,
-            Observer<String?> { s -> myCustomFragment.displaylog("Item1: $s") })
-        mViewModel.getYesNoLD.observe(this,
-            Observer<Boolean> { b ->
-                if (b)
-                    myCustomFragment.displaylog("Positive/Yes click!")
-                else
-                    myCustomFragment.displaylog("Negative/No/Cancel click!")
-            })
+        mViewModel.getItem1LD.observe(
+            this
+        ) { s -> myCustomFragment.displaylog("Item1: $s") }
+        mViewModel.getItem2LD.observe(
+            this
+        ) { s -> myCustomFragment.displaylog("Item1: $s") }
+        mViewModel.getYesNoLD.observe(this) { b ->
+            if (b) myCustomFragment.displaylog("Positive/Yes click!")
+            else myCustomFragment.displaylog("Negative/No/Cancel click!")
+        }
     }
 }

@@ -1,7 +1,10 @@
 package edu.cs4730.dialogdemo_kt
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.navigation.NavigationBarView
 import edu.cs4730.dialogdemo_kt.databinding.ActivityMainBinding
@@ -25,7 +28,11 @@ class MainActivity : AppCompatActivity(), myEditNameDialogFrag.EditNameDialogLis
         //setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v: View, insets: WindowInsetsCompat ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
         fragmentManager = supportFragmentManager
         myCustomFragment = CustomFragment()
         //bnv = findViewById(R.id.bnv)
