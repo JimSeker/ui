@@ -1,6 +1,9 @@
 package edu.cs4730.mvcviewsdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -30,7 +33,11 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
         //setup the picture to draw the color with a bitmap and the canvas to draw on
         theColor = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
         theColorc = new Canvas(theColor);
