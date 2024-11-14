@@ -1,7 +1,10 @@
 package edu.cs4730.listfragmentdemo_kt
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import edu.cs4730.listfragmentdemo_kt.databinding.ActivityMainBinding
 
 /**
@@ -17,7 +20,11 @@ class MainActivity : AppCompatActivity(), titlefrag.OnFragmentInteractionListene
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v: View, insets: WindowInsetsCompat ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
         //get the textFrag from the support manager;
         myTextFrag = supportFragmentManager.findFragmentById(R.id.frag_text) as textFrag
     }
