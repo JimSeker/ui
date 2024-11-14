@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+            return  WindowInsetsCompat.CONSUMED;
         });
         //setup the picture to draw the color with a bitmap and the canvas to draw on
         theColor = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);

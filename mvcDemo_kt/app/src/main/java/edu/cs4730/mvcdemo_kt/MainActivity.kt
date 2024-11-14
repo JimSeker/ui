@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         ) { v: View, insets: WindowInsetsCompat ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+            WindowInsetsCompat.CONSUMED
         }
 
         //setup all the listeners and variables for the layout

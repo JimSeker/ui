@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+            return  WindowInsetsCompat.CONSUMED;
         });
         //setup all the listeners and variables for the layout
         colorName = findViewById(R.id.Name);
