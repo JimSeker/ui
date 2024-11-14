@@ -9,6 +9,9 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.palette.graphics.Palette;
 
 import edu.cs4730.supportdesigndemo3.databinding.ActivityMainBinding;
@@ -31,7 +34,11 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
-
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return WindowInsetsCompat.CONSUMED;
+        });
         binding.collapsingToolbar.setTitle(getResources().getString(R.string.app_name));
 
         binding.fab.setOnClickListener(new View.OnClickListener() {

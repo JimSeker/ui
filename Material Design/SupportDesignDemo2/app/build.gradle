@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdk 33
+    compileSdk 35
 
     defaultConfig {
         applicationId "edu.cs4730.supportdesigndemo2"
-        minSdkVersion 28
-        targetSdk 33
+        minSdkVersion 29
+        targetSdk 35
         versionName "1.0"
     }
     buildTypes {
@@ -23,20 +23,20 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.viewpager2:viewpager2:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.6.1"
-    implementation "androidx.lifecycle:lifecycle-livedata:2.6.1"
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.8.7"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.8.7"
     //really dumb, needed to stop a duplicate dependency, even though not use kotlin at all, hopefully at some point won't need it.
     //but with android view model, doesn't seem to have the same problem.  really weird.  leaving the commented out line just in case.
-    constraints {
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
-            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
-        }
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
-            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
-        }
-    }
+//    constraints {
+//        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
+//            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+//        }
+//        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
+//            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+//        }
+//    }
 }
