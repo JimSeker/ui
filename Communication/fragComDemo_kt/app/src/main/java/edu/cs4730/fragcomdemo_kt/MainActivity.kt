@@ -1,7 +1,10 @@
 package edu.cs4730.fragcomdemo_kt
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentManager
 import edu.cs4730.fragcomdemo_kt.databinding.ActivityMainBinding
 
@@ -23,6 +26,16 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.container) { v: View, insets: WindowInsetsCompat ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(
+                systemBars.left,
+                systemBars.top,
+                systemBars.right,
+                systemBars.bottom
+            )
+            WindowInsetsCompat.CONSUMED
+        }
         fragmentManager = supportFragmentManager
         //setup the mainFragment to show.
         fragmentManager.beginTransaction().add(binding.container.id, MainFragment()).commit()

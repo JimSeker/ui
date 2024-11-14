@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import edu.cs4730.intentdemo_kt.databinding.TwoActivityBinding
 
 /**
@@ -16,6 +18,11 @@ class ActivityTwo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = TwoActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main2) { v: View, insets: WindowInsetsCompat ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
         val extras = intent.extras ?: return
         val value1 = extras.getString("key1")
         val value2 = extras.getString("key2")

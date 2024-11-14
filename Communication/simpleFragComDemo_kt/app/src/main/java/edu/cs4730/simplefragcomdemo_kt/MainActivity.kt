@@ -3,6 +3,8 @@ package edu.cs4730.simplefragcomdemo_kt
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentManager
 import edu.cs4730.simplefragcomdemo_kt.databinding.ActivityMainBinding
 
@@ -28,6 +30,11 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v: View, insets: WindowInsetsCompat ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
         fragmentManager = supportFragmentManager
 
         //setup the correct layout, based on if container (portrait) exists.
@@ -41,9 +48,7 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
             //just a framelayout, so construct the fragments and then display main.
             main = MainFragment()
             info = InfoFragment()
-            fragmentManager.beginTransaction()
-                .add(binding.container!!.id, main)
-                .commit()
+            fragmentManager.beginTransaction().add(binding.container!!.id, main).commit()
         }
     }
 

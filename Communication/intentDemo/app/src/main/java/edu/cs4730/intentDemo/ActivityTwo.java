@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import edu.cs4730.intentDemo.databinding.TwoActivityBinding;
 
@@ -21,6 +24,11 @@ public class ActivityTwo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = TwoActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main2, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return WindowInsetsCompat.CONSUMED;
+        });
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
             return;
