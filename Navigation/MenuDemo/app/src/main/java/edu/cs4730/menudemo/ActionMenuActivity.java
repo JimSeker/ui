@@ -5,6 +5,9 @@ import android.os.Bundle;
 
 import androidx.core.app.NavUtils;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,7 +28,11 @@ public class ActionMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActionmenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        ViewCompat.setOnApplyWindowInsetsListener(binding.mainmenu, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return WindowInsetsCompat.CONSUMED;
+        });
         //turn on up button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

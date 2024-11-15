@@ -7,6 +7,9 @@ import android.view.MenuItem;
 
 import androidx.core.app.NavUtils;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import edu.cs4730.menudemo.databinding.ActivityFragmenuBinding;
 
@@ -26,7 +29,11 @@ public class FragMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityFragmenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        ViewCompat.setOnApplyWindowInsetsListener(binding.textContainer, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return WindowInsetsCompat.CONSUMED;
+        });
         //turn on up button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

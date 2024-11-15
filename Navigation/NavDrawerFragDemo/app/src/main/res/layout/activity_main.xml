@@ -1,32 +1,38 @@
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-    <!-- As the main content view, which is a single fragment-->
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+        <!-- As the main content view, which is a single fragment-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <fragment
+                android:id="@+id/frag_text"
+                class="edu.cs4730.navdrawerfragdemo.textFrag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                tools:layout="@layout/text_fragment" />
+        </RelativeLayout>
+        <!-- drawer view -->
 
         <fragment
-            android:id="@+id/frag_text"
-            class="edu.cs4730.navdrawerfragdemo.textFrag"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/frag_titles"
+            class="edu.cs4730.navdrawerfragdemo.titlefrag"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/windowBackgroundColor" />
 
-            tools:layout="@layout/text_fragment"/>
-    </RelativeLayout>
-    <!-- drawer view -->
-
-    <fragment
-        android:id="@+id/frag_titles"
-        class="edu.cs4730.navdrawerfragdemo.titlefrag"
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@color/windowBackgroundColor"/>
-
-</androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>
