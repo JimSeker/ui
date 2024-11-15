@@ -7,6 +7,9 @@ import android.graphics.drawable.Icon;
 import android.net.Uri;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -40,7 +43,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        ViewCompat.setOnApplyWindowInsetsListener(binding.activityMain, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return WindowInsetsCompat.CONSUMED;
+        });
         //get an instance of the shortcurManager
         mShortcutManager = getSystemService(ShortcutManager.class);  //ShortcutManager.class is android, not a class I created.
 
@@ -50,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.v(TAG, "Intent action is " + getIntent().getAction());
-        if (mShortcutManager.getDynamicShortcuts().size() == 0) {
+        if (mShortcutManager.getDynamicShortcuts().isEmpty()) {
             //there are no dynamic shortcuts, so lets add two of them.
             Log.v(TAG, "no shortcuts, adding 2");
             logthis("no shortcuts, adding 2");
