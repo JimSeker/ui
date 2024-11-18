@@ -3,24 +3,25 @@ package edu.cs4730.lotsoflists_kt
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.ContextThemeWrapper
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.ListView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.drawerlayout.widget.DrawerLayout
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import edu.cs4730.lotsoflists_kt.databinding.ActivityMainBinding
 import edu.cs4730.lotsoflists_kt.databinding.LayoutDialogBinding
 
@@ -36,15 +37,19 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var mDrawerToggle: ActionBarDrawerToggle
-    lateinit var mAdapter: myAdapter
-    var IsCatInput = false
+    private lateinit var mAdapter: myAdapter
+    private var IsCatInput = false
     lateinit var mViewModel: ListsViewModel
     lateinit var catAdapter: ArrayAdapter<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v: View, insets: WindowInsetsCompat ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
         //use the androidx toolbar instead of the default one.
         setSupportActionBar(binding.appBar)
         mViewModel = ViewModelProvider(this)[ListsViewModel::class.java]

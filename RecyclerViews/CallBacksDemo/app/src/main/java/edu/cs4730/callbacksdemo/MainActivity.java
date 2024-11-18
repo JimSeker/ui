@@ -10,6 +10,9 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import edu.cs4730.callbacksdemo.databinding.ActivityMainBinding;
 
@@ -32,6 +35,11 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Ontr
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return WindowInsetsCompat.CONSUMED;
+        });
         setSupportActionBar(binding.toolbar);
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
