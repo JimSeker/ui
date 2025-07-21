@@ -14,8 +14,8 @@ import edu.cs4730.fragcomnavvmodeldemo_kt.databinding.FragmentSecondBinding
  * Note it would even better with LiveData, but that is another example.
  */
 class SecondFragment : Fragment() {
-    lateinit var binding: FragmentSecondBinding
-    lateinit var mViewModel: DataViewModel
+    private lateinit var binding: FragmentSecondBinding
+    private lateinit var mViewModel: DataViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {

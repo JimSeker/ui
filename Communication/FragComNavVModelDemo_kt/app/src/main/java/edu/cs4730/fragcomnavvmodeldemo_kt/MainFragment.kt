@@ -14,11 +14,11 @@ import edu.cs4730.fragcomnavvmodeldemo_kt.databinding.FragmentMainBinding
  * Note it would even better with LiveData, but that is another example.
  */
 class MainFragment : Fragment() {
-    lateinit var binding: FragmentMainBinding
-    lateinit var mViewModel: DataViewModel
+    private lateinit var binding: FragmentMainBinding
+    private lateinit var mViewModel: DataViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentMainBinding.inflate(inflater, container, false)
         mViewModel = ViewModelProvider(requireActivity())[DataViewModel::class.java]

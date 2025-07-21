@@ -20,8 +20,8 @@ import edu.cs4730.fragcomnavvmodeldemo_kt.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var mViewModel: DataViewModel
-    lateinit var binding: ActivityMainBinding
+    private lateinit var mViewModel: DataViewModel
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)

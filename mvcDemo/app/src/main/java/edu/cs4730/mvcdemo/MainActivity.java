@@ -78,20 +78,18 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     /**
      * (non-Javadoc)
      * see android.view.View.OnClickListener#onClick(android.view.View)
-     *
+     * <p>
      * Deals with the two buttons, next and previous.  also disables buttons when not necessary.
      */
     @Override
     public void onClick(View v) {
         if (v == Next) {  //Next button
             myColors.next();
-            colorName.setText(myColors.getName());
-            createImage();
         } else { //has to be Prev
             myColors.prev();
-            colorName.setText(myColors.getName());
-            createImage();
         }
+        colorName.setText(myColors.getName());
+        createImage();
         //set the buttons correctly.
         Next.setEnabled(!myColors.isLast());  //turn off when this is the last entry.
         Prev.setEnabled(!myColors.isFirst());  //turn off when this is the first entry

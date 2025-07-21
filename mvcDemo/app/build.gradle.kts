@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "edu.cs4730.mvcdemo"
-        minSdk = 29
+        minSdk = 32
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
