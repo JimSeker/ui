@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "edu.cs4730.mvcviewsdemo"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "edu.cs4730.mvcviewsdemo"
-        minSdk = 29
-        targetSdk = 35
+        minSdk = 31
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -34,8 +34,8 @@ android {
 
 dependencies {
 
-    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
 
 }

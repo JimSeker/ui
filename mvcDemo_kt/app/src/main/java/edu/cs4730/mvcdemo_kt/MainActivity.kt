@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.graphics.createBitmap
 
 /**
  * A simple activity to demo the MVC method.
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //setup the picture stuff.
         myPic = findViewById(R.id.imageView1)
         //to draw the color with a bitmap and the canvas to draw on
-        theColor = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888)
+        theColor = createBitmap(100, 100)
         theColorc = Canvas(theColor)
 
         //buttons and listeners
