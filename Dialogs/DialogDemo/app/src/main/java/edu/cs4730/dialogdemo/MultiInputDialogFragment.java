@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ContextThemeWrapper;
@@ -61,10 +62,11 @@ public class MultiInputDialogFragment extends DialogFragment {
         }
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle SavedIntanceState) {
 
-        LayoutInflater inflater = LayoutInflater.from(requireActivity());
+        LayoutInflater inflater = getLayoutInflater();
         FragmentMultiInputDialogBinding binding = FragmentMultiInputDialogBinding.inflate(inflater);
 
         if (name != null) binding.etName.setText(name);
@@ -74,25 +76,25 @@ public class MultiInputDialogFragment extends DialogFragment {
         builder.setView(binding.getRoot()).setTitle("Multi Input Dialog");
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
 
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                String[] returnlist =
-                    new String[]{
-                        binding.etName.getText().toString(),
-                        binding.etAmount.getText().toString()
-                    };
-                //send the list back to the MainActivity to process.
-                mListener.onMultiInputInteraction(returnlist);
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    String[] returnlist =
+                        new String[]{
+                            binding.etName.getText().toString(),
+                            binding.etAmount.getText().toString()
+                        };
+                    //send the list back to the MainActivity to process.
+                    mListener.onMultiInputInteraction(returnlist);
 
-                dismiss();
+                    dismiss();
 
-            }
-        })
-        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
+                }
+            })
+            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
                     dialog.cancel();
                 }
-        });
+            });
 
         return builder.create();
 
@@ -104,7 +106,7 @@ public class MultiInputDialogFragment extends DialogFragment {
         if (context instanceof OnDialogFragmentInteractionListener) {
             mListener = (OnDialogFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
+            throw new RuntimeException(context
                 + " must implement OnFragmentInteractionListener");
         }
     }

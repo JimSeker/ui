@@ -10,10 +10,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
+import edu.cs4730.dialogviewmodeldemo.databinding.FragmentCustomBinding;
+import edu.cs4730.dialogviewmodeldemo.databinding.LayoutCustomDialogBinding;
 
 /**
  * This shows how to use the dialog that have been extended.  Note the listeners are implemented
@@ -26,7 +30,7 @@ public class CustomFragment extends Fragment {
 
     String TAG = "CustomFragment";
     DataViewModel mViewModel;
-    TextView logger;
+    FragmentCustomBinding binding;
 
     public CustomFragment() {
         // Required empty public constructor
@@ -34,17 +38,16 @@ public class CustomFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myView = inflater.inflate(R.layout.fragment_custom, container, false);
-        logger = myView.findViewById(R.id.logger_custom);
+        binding = FragmentCustomBinding.inflate(inflater, container, false);
 
         //note, I'm not setting up an observer here, but you could do here instead, but mainactivty "could" change the fragment
         //based on data, so for this example it's in main activity, but honesty doesn't need to be.
         mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
 
-        myView.findViewById(R.id.btn_alert1).setOnClickListener(new View.OnClickListener() {
+        binding.btnAlert1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myDialogFragment newDialog = myDialogFragment.newInstance(myDialogFragment.DIALOG_TYPE_ID);
@@ -52,7 +55,7 @@ public class CustomFragment extends Fragment {
             }
         });
 
-        myView.findViewById(R.id.btn_alert2).setOnClickListener(new View.OnClickListener() {
+        binding.btnAlert2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myDialogFragment newDialog = myDialogFragment.newInstance(myDialogFragment.DIALOG_GAMEOVER_ID);
@@ -60,7 +63,7 @@ public class CustomFragment extends Fragment {
             }
         });
 
-        myView.findViewById(R.id.btn_alert3).setOnClickListener(new View.OnClickListener() {
+        binding.btnAlert3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myAlertDialogFragment newDialog = myAlertDialogFragment.newInstance(R.string.alert_dialog_two_buttons_title);
@@ -68,7 +71,7 @@ public class CustomFragment extends Fragment {
             }
         });
 
-        myView.findViewById(R.id.btn_edit).setOnClickListener(new View.OnClickListener() {
+        binding.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myEditNameDialogFrag newDialog = new myEditNameDialogFrag();
@@ -76,14 +79,14 @@ public class CustomFragment extends Fragment {
             }
         });
 
-        myView.findViewById(R.id.inline_button).setOnClickListener(new View.OnClickListener() {
+        binding.inlineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showInputDialog("Inline Fragment");
             }
         });
 
-        myView.findViewById(R.id.mutli_input_btn).setOnClickListener(new View.OnClickListener() {
+        binding.mutliInputBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MultiInputDialogFragment newDialog = MultiInputDialogFragment.newInstance("Jim", null);
@@ -91,7 +94,7 @@ public class CustomFragment extends Fragment {
             }
         });
 
-        return myView;
+        return binding.getRoot();
     }
 
     /**
@@ -99,8 +102,11 @@ public class CustomFragment extends Fragment {
      */
     void displaylog(String item) {
         Log.v(TAG, item);
-        if (logger != null)  //this is called from the oncreate before logger exists, one time, so got to check..
-            logger.append(item + "\n");
+        if (binding == null) {
+            Log.e(TAG, "loggerCustom is null, cannot append item.");
+            return;
+        }
+        binding.loggerCustom.append(item + "\n");
     }
 
 
@@ -110,20 +116,17 @@ public class CustomFragment extends Fragment {
      */
     public void showInputDialog(String title) {
 
-        LayoutInflater inflater = LayoutInflater.from(getActivity());
-        final View textenter = inflater.inflate(R.layout.layout_custom_dialog, null);
-        final EditText userinput = (EditText) textenter.findViewById(R.id.item_added);
+        LayoutInflater inflater = getLayoutInflater();
+        LayoutCustomDialogBinding binding = LayoutCustomDialogBinding.inflate(inflater);
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
-        builder.setView(textenter).setTitle(title);
+        builder.setView(binding.getRoot()).setTitle(title);
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-
-                mViewModel.setItem1("data is " + userinput.getText().toString());
-                //Toast.makeText(getBaseContext(), userinput.getText().toString(), Toast.LENGTH_LONG).show();
-            }
-        })
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    mViewModel.setItem1("data is " + binding.itemAdded.getText().toString());
+                }
+            })
             .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     mViewModel.setYesNo(false);

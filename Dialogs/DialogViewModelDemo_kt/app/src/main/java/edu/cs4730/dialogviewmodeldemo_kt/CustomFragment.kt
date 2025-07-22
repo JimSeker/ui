@@ -5,12 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import edu.cs4730.dialogviewmodeldemo_kt.databinding.FragmentCustomBinding
+import edu.cs4730.dialogviewmodeldemo_kt.databinding.LayoutCustomDialogBinding
 
 /**
  * This shows how to use the dialog that have been extended.  Note the listeners are implemented
@@ -22,45 +22,45 @@ import androidx.lifecycle.ViewModelProvider
 class CustomFragment : Fragment() {
     var TAG = "CustomFragment"
     lateinit var mViewModel: DataViewModel
-    var logger: TextView? = null
+    lateinit var binding: FragmentCustomBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val myView = inflater.inflate(R.layout.fragment_custom, container, false)
-        logger = myView.findViewById(R.id.logger_custom)
+        binding = FragmentCustomBinding.inflate(inflater, container, false)
 
         //note, I'm not setting up an observer here, but you could do here instead, but mainactivty "could" change the fragment
         //based on data, so for this example it's in main activity, but honesty doesn't need to be.
         mViewModel = ViewModelProvider(requireActivity())[DataViewModel::class.java]
-        myView.findViewById<View>(R.id.btn_alert1).setOnClickListener {
+        binding.btnAlert1.setOnClickListener {
             val newDialog = myDialogFragment.newInstance(myDialogFragment.DIALOG_TYPE_ID)
             newDialog.show(requireActivity().supportFragmentManager, "myDialog")
         }
-        myView.findViewById<View>(R.id.btn_alert2).setOnClickListener {
+        binding.btnAlert2.setOnClickListener {
             val newDialog = myDialogFragment.newInstance(myDialogFragment.DIALOG_GAMEOVER_ID)
             newDialog.show(requireActivity().supportFragmentManager, "myDialog")
         }
-        myView.findViewById<View>(R.id.btn_alert3).setOnClickListener {
+        binding.btnAlert3.setOnClickListener {
             val newDialog =
                 myAlertDialogFragment.newInstance(R.string.alert_dialog_two_buttons_title)
             newDialog.show(requireActivity().supportFragmentManager, "myAlertDialog")
         }
-        myView.findViewById<View>(R.id.btn_edit).setOnClickListener {
+        binding.btnEdit.setOnClickListener {
             val newDialog = myEditNameDialogFrag()
             newDialog.show(requireActivity().supportFragmentManager, "myEditDialog")
         }
-        myView.findViewById<View>(R.id.inline_button).setOnClickListener {
+        binding.inlineButton.setOnClickListener {
             showInputDialog(
                 "Inline Fragment"
             )
         }
-        myView.findViewById<View>(R.id.mutli_input_btn).setOnClickListener {
+        binding.mutliInputBtn.setOnClickListener {
             val newDialog = MultiInputDialogFragment.newInstance("Jim", null)
             newDialog.show(requireActivity().supportFragmentManager, "myMultiInputDialog")
         }
-        return myView
+        return binding.root
     }
 
     /**
@@ -68,8 +68,12 @@ class CustomFragment : Fragment() {
      */
     fun displaylog(item: String) {
         Log.v(TAG, item)
-        if (logger != null) //this is called from the oncreate before logger exists, one time, so got to check..
-            logger!!.append(item + "\n")
+        //maybe called, before the fragment is created, so check if binding is initialized.
+        if (!::binding.isInitialized) {
+            Log.e(TAG, "binding is not initialized, cannot append log")
+            return
+        }
+        binding.loggerCustom.append(item + "\n")
     }
 
     /**
@@ -77,19 +81,19 @@ class CustomFragment : Fragment() {
      * setup a dialog fragment to ask the user for the new item data or category.
      */
     fun showInputDialog(title: String?) {
-        val inflater = LayoutInflater.from(activity)
-        val textenter = inflater.inflate(R.layout.layout_custom_dialog, null)
-        val userinput = textenter.findViewById<View>(R.id.item_added) as EditText
+        val inflater = layoutInflater
+        val binding = LayoutCustomDialogBinding.inflate(inflater)
+
         val builder = AlertDialog.Builder(
             ContextThemeWrapper(
-                activity, R.style.AppTheme_Dialog  //androidx.appcompat.R.style.ThemeOverlay_AppCompat_Dialog
+                activity, R.style.AppTheme_Dialog
             )
         )
-        builder.setView(textenter).setTitle(title)
+        builder.setView(binding.root).setTitle(title)
         builder.setPositiveButton(
             "Add"
         ) { dialog, id ->
-            mViewModel.setItem1("data is " + userinput.text.toString())
+            mViewModel.setItem1("data is " + binding.itemAdded.text.toString())
             //Toast.makeText(getBaseContext(), userinput.getText().toString(), Toast.LENGTH_LONG).show();
         }
             .setNegativeButton(

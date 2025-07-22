@@ -21,9 +21,9 @@ class myEditNameDialogFrag : DialogFragment() {
     private var mListener: EditNameDialogListener? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val inflater =  LayoutInflater.from(requireActivity())
+        val inflater =  layoutInflater
         val binding: FragmentEditNameDialogBinding = FragmentEditNameDialogBinding.inflate(inflater)
-        binding.txtYourName.requestFocus()
+
         val builder = AlertDialog.Builder(
             ContextThemeWrapper(
                 requireActivity(),
@@ -38,10 +38,8 @@ class myEditNameDialogFrag : DialogFragment() {
             dismiss()
         }
             .setCancelable(false) //don't let them cancel this dialog.  ie use the backbutton to get out of it.
-        val dialog: Dialog = builder.create()
-        //I want the keyboard to popup, with the dialog, since the edittext has focus.
-        dialog.window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
-        return dialog
+
+        return  builder.create()
     }
 
     //all the callback stuff.

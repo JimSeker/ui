@@ -2,7 +2,6 @@ package edu.cs4730.dialogviewmodeldemo_kt
 
 import android.app.Dialog
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -30,7 +29,7 @@ class MultiInputDialogFragment : DialogFragment() {
     lateinit var et_name: EditText
     lateinit var et_amount: EditText
     override fun onCreateDialog(SavedIntanceState: Bundle?): Dialog {
-        val inflater = LayoutInflater.from(requireActivity())
+        val inflater = layoutInflater
         val myView = inflater.inflate(R.layout.fragment_multi_input_dialog, null)
         et_name = myView.findViewById<View>(R.id.et_name) as EditText
         et_name.setText(name)

@@ -3,9 +3,6 @@ package edu.cs4730.dialogdemo_kt
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.fragment.app.DialogFragment
@@ -32,7 +29,7 @@ class MultiInputDialogFragment : DialogFragment() {
 
 
     override fun onCreateDialog(SavedIntanceState: Bundle?): Dialog {
-        val inflater = LayoutInflater.from(requireActivity())
+        val inflater = layoutInflater
         val binding: FragmentMultiInputDialogBinding =
             FragmentMultiInputDialogBinding.inflate(inflater)
 

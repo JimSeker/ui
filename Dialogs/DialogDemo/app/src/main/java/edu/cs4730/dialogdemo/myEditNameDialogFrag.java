@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.DialogFragment;
@@ -27,10 +29,11 @@ public class myEditNameDialogFrag extends DialogFragment {
         // Empty constructor required for DialogFragment
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        LayoutInflater inflater = LayoutInflater.from(requireActivity());
+        LayoutInflater inflater = getLayoutInflater();
         FragmentEditNameBinding binding = FragmentEditNameBinding.inflate(inflater);
 
         //the keyboard should come up and focus should be set to this input box.
@@ -47,11 +50,7 @@ public class myEditNameDialogFrag extends DialogFragment {
             }
         }).setCancelable(false);  //don't let them cancel this dialog.  ie use the backbutton to get out of it.
 
-        Dialog dialog = builder.create();
-        //I want the keyboard to popup, with the dialog, since the edittext has focus.
-        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
-        return dialog;
+        return builder.create();
     }
 
 
@@ -61,12 +60,12 @@ public class myEditNameDialogFrag extends DialogFragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
             mListener = (EditNameDialogListener) requireActivity();
         } catch (ClassCastException e) {
-            throw new ClassCastException(requireActivity().toString()
+            throw new ClassCastException(requireActivity()
                 + " must implement OnFragmentInteractionListener");
         }
     }

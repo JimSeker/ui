@@ -26,7 +26,6 @@ public class CustomFragment extends Fragment {
 
     String TAG = "CustomFragment";
 
-    // TextView logger;
     FragmentCustomBinding binding;
 
     public CustomFragment() {
@@ -37,7 +36,7 @@ public class CustomFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //View myView = inflater.inflate(R.layout.fragment_custom, container, false);
+
         binding = FragmentCustomBinding.inflate(inflater, container, false);
 
 
@@ -110,28 +109,24 @@ public class CustomFragment extends Fragment {
      */
     public void showInputDialog(String title) {
 
-        LayoutInflater inflater = LayoutInflater.from(requireActivity());
+        LayoutInflater inflater = getLayoutInflater();
         LayoutCustomDialogBinding binding = LayoutCustomDialogBinding.inflate(inflater);
-        //final View textenter = inflater.inflate(R.layout.layout_custom_dialog, null);
-        //final EditText userinput = (EditText) textenter.findViewById(R.id.item_added);
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
-        //builder.setView(textenter).setTitle(title);
         builder.setView(binding.getRoot()).setTitle(title);
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                //displaylog("data is " + userinput.getText().toString());
-                displaylog("data is " + binding.itemAdded.getText().toString());
-                //Toast.makeText(getBaseContext(), userinput.getText().toString(), Toast.LENGTH_LONG).show();
-            }
-        })
-        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                displaylog("dialog canceled");
-                dialog.cancel();
-            }
-        });
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    displaylog("data is " + binding.itemAdded.getText().toString());
+
+                }
+            })
+            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    displaylog("dialog canceled");
+                    dialog.cancel();
+                }
+            });
         //you can create the dialog or just use the now method in the builder.
         //AlertDialog dialog = builder.create();
         //dialog.show();

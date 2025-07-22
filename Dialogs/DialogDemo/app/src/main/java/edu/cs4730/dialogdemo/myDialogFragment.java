@@ -36,6 +36,7 @@ public class myDialogFragment extends DialogFragment {
      * (non-Javadoc)
      * @see android.support.v4.app.DialogFragment#onCreateDialog(android.os.Bundle)
      */
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         int id = getArguments().getInt("id");
@@ -93,7 +94,7 @@ public class myDialogFragment extends DialogFragment {
         try {
             mListener = (OnDialogFragmentListener) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
+            throw new ClassCastException(activity
                 + " must implement OnFragmentInteractionListener");
         }
     }

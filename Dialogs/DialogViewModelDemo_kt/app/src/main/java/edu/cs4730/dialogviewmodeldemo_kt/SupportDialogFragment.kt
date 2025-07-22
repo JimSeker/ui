@@ -5,40 +5,46 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.fragment.app.Fragment
+import edu.cs4730.dialogviewmodeldemo_kt.databinding.FragmentSupportDialogBinding
+import kotlin.text.append
 
 /**
  * Shows how to build and call a support alert dialog and set the listeners for it.
  * Also shows a list dialog and listeners as well.
  */
 class SupportDialogFragment : Fragment() {
-    lateinit var btn: Button
-    lateinit var logger: TextView
+
     var TAG = "SuppportDialogFragment"
+    lateinit var binding: FragmentSupportDialogBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val myView = inflater.inflate(R.layout.fragment_support_dialog, container, false)
-        btn = myView.findViewById(R.id.btn_support_AlertDialog)
-        btn.setOnClickListener(View.OnClickListener { showdialog("Demo Dialog") })
-        logger = myView.findViewById(R.id.logger_support)
-        myView.findViewById<View>(R.id.btn_support_ListDialog).setOnClickListener {
+        binding = FragmentSupportDialogBinding.inflate(inflater, container, false)
+
+        binding.btnSupportAlertDialog.setOnClickListener { showdialog("Demo Dialog") }
+
+        binding.btnSupportListDialog.setOnClickListener {
             showlistdialog(
                 "Demo List Dialog"
             )
         }
-        return myView
+        return binding.root
     }
 
     fun displaylog(item: String) {
         Log.v(TAG, item)
-        logger.append(item + "\n"   )
+        //maybe called before the fragment is initialized, so check first and we can't use logger yet.
+        if (!::binding.isInitialized) {
+            Log.e(TAG, "binding is not initialized, cannot append log")
+            return
+        }
+        binding.loggerSupport.append(item + "\n")
     }
 
     /*

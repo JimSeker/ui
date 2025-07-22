@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import edu.cs4730.dialogviewmodeldemo_kt.databinding.ActivityMainBinding
+
 
 /**
  * very little to see here.  The listeners for the custom dialogs are implemented here
@@ -18,11 +18,12 @@ import com.google.android.material.navigation.NavigationBarView
 class MainActivity : AppCompatActivity() {
     private lateinit var fragmentManager: FragmentManager
     private lateinit var myCustomFragment: CustomFragment
-    private lateinit var bnv: BottomNavigationView
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(
             findViewById(R.id.main)
         ) { v: View, insets: WindowInsetsCompat ->
@@ -34,8 +35,7 @@ class MainActivity : AppCompatActivity() {
         fragmentManager = supportFragmentManager
         myCustomFragment = CustomFragment()
 
-        bnv = findViewById(R.id.bnv)
-        bnv.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener { item -> //At this point, we are doing the same thing that is done for menu selections.
+        binding.bnv.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener { item -> //At this point, we are doing the same thing that is done for menu selections.
             //if we had a onOptionsItemSelect method for a menu, we could just use it.
             val id = item.itemId
             if (id == R.id.nav_support) {
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 fragmentManager.beginTransaction().replace(R.id.container, myCustomFragment)
                     .commit()
                 item.isChecked = true
-                return@OnItemSelectedListener true;
+                return@OnItemSelectedListener true
             }
             false
         })

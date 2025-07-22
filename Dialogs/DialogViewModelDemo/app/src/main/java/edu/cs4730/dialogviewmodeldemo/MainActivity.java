@@ -16,6 +16,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import edu.cs4730.dialogviewmodeldemo.databinding.ActivityMainBinding;
+
 
 /**
  * very little to see here.  The listeners for the custom dialogs are implemented here
@@ -24,14 +26,16 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity {
 
+    ActivityMainBinding binding;
     FragmentManager fragmentManager;
     CustomFragment myCustomFragment;
-    BottomNavigationView bnv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding=ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -42,19 +46,18 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
         myCustomFragment = new CustomFragment();
 
-        bnv = findViewById(R.id.bnv);
-        bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        binding.bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 //At this point, we are doing the same thing that is done for menu selections.
                 //if we had a onOptionsItemSelect method for a menu, we could just use it.
                 int id = item.getItemId();
                 if (id == R.id.nav_support) {
-                    fragmentManager.beginTransaction().replace(R.id.container,  new SupportDialogFragment()).commit();
+                    fragmentManager.beginTransaction().replace(binding.container.getId(),  new SupportDialogFragment()).commit();
                     item.setChecked(true);
                     return true;
                 } else if (id == R.id.nav_custom) {
-                    fragmentManager.beginTransaction().replace(R.id.container, myCustomFragment).commit();
+                    fragmentManager.beginTransaction().replace(binding.container.getId(), myCustomFragment).commit();
                     item.setChecked(true);
                     return true;
                 }
@@ -64,12 +67,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             //add the first one as the default fragment.
-            fragmentManager.beginTransaction().replace(R.id.container,  new SupportDialogFragment()).commit();
+            fragmentManager.beginTransaction().replace(binding.container.getId(),  new SupportDialogFragment()).commit();
         }
 
         //now in DialogDemo there was a lot of call backs that are just solved by a ViewModel, making it nice an simple.
-
-
         mViewModel.getItem1LD().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         });
         mViewModel.getYesNoLD().observe(this, new Observer<Boolean>() {
             @Override
-            public void onChanged(@Nullable Boolean b) {
+            public void onChanged(Boolean b) {
                 if (b)
                     myCustomFragment.displaylog("Positive/Yes click!");
                 else

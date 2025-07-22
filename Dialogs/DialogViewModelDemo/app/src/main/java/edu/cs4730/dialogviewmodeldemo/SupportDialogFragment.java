@@ -7,21 +7,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.Fragment;
+
+import edu.cs4730.dialogviewmodeldemo.databinding.FragmentSupportDialogBinding;
 
 /**
  * Shows how to build and call a support alert dialog and set the listeners for it.
  * Also shows a list dialog and listeners as well.
  */
 public class SupportDialogFragment extends Fragment {
-    Button btn;
-    TextView logger;
+
     String TAG = "SuppportDialogFragment";
+    FragmentSupportDialogBinding binding;
 
     public SupportDialogFragment() {
         // Required empty public constructor
@@ -29,30 +30,29 @@ public class SupportDialogFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myView = inflater.inflate(R.layout.fragment_support_dialog, container, false);
-        btn = myView.findViewById(R.id.btn_support_AlertDialog);
-        btn.setOnClickListener(new View.OnClickListener() {
+        binding = FragmentSupportDialogBinding.inflate(inflater, container, false);
+        binding.btnSupportAlertDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showdialog("Demo Dialog");
             }
         });
-        logger = myView.findViewById(R.id.logger_support);
-        myView.findViewById(R.id.btn_support_ListDialog).setOnClickListener(new View.OnClickListener() {
+
+        binding.btnSupportListDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showlistdialog("Demo List Dialog");
             }
         });
-        return myView;
+        return binding.getRoot();
     }
 
     void displaylog(String item) {
         Log.v(TAG, item);
-        logger.append(item + "\n");
+        binding.loggerSupport.append(item + "\n");
     }
 
 

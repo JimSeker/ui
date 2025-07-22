@@ -3,12 +3,7 @@ package edu.cs4730.dialogdemo_kt
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import java.lang.ClassCastException
@@ -43,6 +38,7 @@ class myDialogFragment : DialogFragment() {
                 }
                 dialog = builder.create()
             }
+
             DIALOG_GAMEOVER_ID -> {
                 builder = AlertDialog.Builder(requireActivity())
                 builder.setMessage("Are you sure you want to exit?")
@@ -71,8 +67,7 @@ class myDialogFragment : DialogFragment() {
         mListener = try {
             activity as OnDialogFragmentListener?
         } catch (e: ClassCastException) {
-            throw ClassCastException(
-                activity.toString()
+            throw ClassCastException(activity.toString()
                         + " must implement OnFragmentInteractionListener"
             )
         }

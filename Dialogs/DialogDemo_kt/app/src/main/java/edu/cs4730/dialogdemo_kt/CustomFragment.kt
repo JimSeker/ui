@@ -82,17 +82,15 @@ class CustomFragment : Fragment() {
      * setup a dialog fragment to ask the user for the new item data or category.
      */
     fun showInputDialog(title: String?) {
-        val inflater = LayoutInflater.from(activity)
+        val inflater = layoutInflater
         val binding = LayoutCustomDialogBinding.inflate(inflater)
 
-        //val textenter: View = inflater.inflate(R.layout.layout_custom_dialog, null)
-        //val userinput = textenter.findViewById<View>(R.id.item_added) as EditText
         val builder = AlertDialog.Builder(
             ContextThemeWrapper(
                 activity, R.style.AppTheme_Dialog
             )
         )
-        //builder.setView(textenter).setTitle(title)
+
         builder.setView(binding.root).setTitle(title)
         builder.setPositiveButton(
             "Add"

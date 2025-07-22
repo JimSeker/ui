@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity
     ActivityMainBinding binding;
     FragmentManager fragmentManager;
     CustomFragment myCustomFragment;
-    //BottomNavigationView bnv;
 
 
     @Override
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity
         });
         fragmentManager = getSupportFragmentManager();
         myCustomFragment = new CustomFragment();
-       // bnv = findViewById(R.id.bnv);
+
         binding.bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -51,11 +50,11 @@ public class MainActivity extends AppCompatActivity
                 //if we had a onOptionsItemSelect method for a menu, we could just use it.
                 int id = item.getItemId();
                 if (id == R.id.nav_support) {
-                    fragmentManager.beginTransaction().replace(R.id.container, new SupportDialogFragment()).commit();
+                    fragmentManager.beginTransaction().replace(binding.container.getId(), new SupportDialogFragment()).commit();
                     item.setChecked(true);
                     return true;
                 } else if (id == R.id.nav_custom) {
-                    fragmentManager.beginTransaction().replace(R.id.container, myCustomFragment).commit();
+                    fragmentManager.beginTransaction().replace(binding.container.getId(), myCustomFragment).commit();
                     item.setChecked(true);
                 }
                 return false;
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity
 
         if (savedInstanceState == null) {
             //add the first one as the default fragment.
-            fragmentManager.beginTransaction().replace(R.id.container, new SupportDialogFragment()).commit();
+            fragmentManager.beginTransaction().replace(binding.container.getId(), new SupportDialogFragment()).commit();
         }
 
 
@@ -87,7 +86,6 @@ public class MainActivity extends AppCompatActivity
     public void doNegativeClick() {
         // Do stuff here.
         myCustomFragment.displaylog("Negative/No/Cancel click!");
-
     }
 
     //for myDialogFragment
