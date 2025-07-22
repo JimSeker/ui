@@ -66,7 +66,7 @@ public class FragRight extends Fragment {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         Log.d(TAG, "OnSaveInstanceState");
         super.onSaveInstanceState(outState);
     }

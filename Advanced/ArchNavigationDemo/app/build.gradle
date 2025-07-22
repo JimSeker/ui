@@ -2,24 +2,24 @@ apply plugin: 'com.android.application'
 apply plugin: "androidx.navigation.safeargs"
 
 android {
-    compileSdk 36
+    compileSdk = 36
     defaultConfig {
-        applicationId "edu.cs4730.archnavigationdemo"
-        minSdkVersion 31
-        targetSdk 36
-        versionCode 1
-        versionName "1.0"
+        applicationId = "edu.cs4730.archnavigationdemo"
+        minSdk = 31
+        targetSdk = 36
+        versionCode = 1
+        versionName = "1.0"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled = false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     buildFeatures {
         viewBinding = true
     }
-    namespace 'edu.cs4730.archnavigationdemo'
+    namespace = 'edu.cs4730.archnavigationdemo'
 }
 
 dependencies {

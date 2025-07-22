@@ -19,7 +19,7 @@ import edu.cs4730.viewpager2demo.databinding.MiddleBinding;
  */
 
 public class FragMid extends Fragment implements Button.OnClickListener {
-    MiddleBinding binding ;
+    MiddleBinding binding;
     DataViewModel mViewModel;
 
     @Override

@@ -51,9 +51,9 @@ class MainActivity : AppCompatActivity() {
         } else {
             //in landscape mode  //so no viewpager.
             fragmentManager.beginTransaction()
-                .add(R.id.frag_left, leftfrag)
-                .add(R.id.frag_mid, midfrag)
-                .add(R.id.frag_right, rightfrag)
+                .add(binding.fragLeft!!.id, leftfrag)
+                .add(binding.fragMid!!.id, midfrag)
+                .add(binding.fragRight!!.id, rightfrag)
                 .commit()
         }
     }

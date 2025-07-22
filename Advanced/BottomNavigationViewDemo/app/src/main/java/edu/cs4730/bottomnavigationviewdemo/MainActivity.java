@@ -5,16 +5,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.google.android.material.badge.BadgeDrawable;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import edu.cs4730.bottomnavigationviewdemo.databinding.ActivityMainBinding;
 
