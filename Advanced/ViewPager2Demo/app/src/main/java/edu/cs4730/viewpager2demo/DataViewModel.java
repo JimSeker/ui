@@ -25,6 +25,7 @@ public class DataViewModel extends AndroidViewModel {
     public LiveData<String> getDataLeft() {
         return left;
     }
+
     public LiveData<String> getDataRight() {
         return right;
     }
@@ -32,6 +33,7 @@ public class DataViewModel extends AndroidViewModel {
     public String getStrLeft() {
         return left.getValue();
     }
+
     public String getStrRight() {
         return right.getValue();
     }
@@ -46,18 +48,18 @@ public class DataViewModel extends AndroidViewModel {
 
     public void appendStrRight(String item) {
         String prev = right.getValue();
-        prev.concat("\n");
-        prev.concat(item);
-//            prev+=  "\n";
-//            prev +=  item;
+//        prev.concat("\n");
+//        prev.concat(item);
+        prev += "\n";
+        prev += item;
         right.setValue(prev);
     }
 
     public void appendStrLeft(String item) {
         String prev = left.getValue();
-        prev.concat("\n");
-        prev.concat(item);
-        left.setValue(prev );
+        prev += "\n";
+        prev += item;
+        left.setValue(prev);
     }
 
 }
