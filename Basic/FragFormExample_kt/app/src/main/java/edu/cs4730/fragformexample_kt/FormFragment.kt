@@ -21,12 +21,6 @@ class FormFragment : Fragment(), RadioGroup.OnCheckedChangeListener,
     TextWatcher, View.OnClickListener {
     private lateinit var binding: FragmentFormBinding
 
-    //variables for the widgets
-    //lateinit var myRadioGroup: RadioGroup
-    //lateinit var et: EditText
-    //lateinit var btnalert: Button
-    //lateinit var label: TextView
-
     //variable for the log
     var TAG = "FormFragment"
 
@@ -39,18 +33,12 @@ class FormFragment : Fragment(), RadioGroup.OnCheckedChangeListener,
         binding = FragmentFormBinding.inflate(inflater, container, false)
 
         //EditText view setup and listner
-        //et = myView.findViewById(R.id.ETname)
         binding.ETname.addTextChangedListener(this)
 
-        //the top label in the xml doc.
-        //label = myView.findViewById(R.id.Label01)
-
         //setup the radio group with a listener.
-        //myRadioGroup = myView.findViewById(R.id.myRadioGroup)
         binding.myRadioGroup.setOnCheckedChangeListener(this)
 
         //setup the button with a listener as well.
-        // btnalert = myView.findViewById(R.id.btnalert)
         binding.btnalert.setOnClickListener(this)
         return binding.root
     }

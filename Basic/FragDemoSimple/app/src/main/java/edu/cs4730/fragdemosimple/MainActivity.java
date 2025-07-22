@@ -36,25 +36,24 @@ public class MainActivity extends AppCompatActivity {
         //if this a not new, then place add firstfragment to the framelayout
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, new oneFragment())
+                .add(binding.container.getId(), new oneFragment())
                 .commit();
         }
 
         //find the button and setup the listener.
-        Button btn1 = findViewById(R.id.button01);
-        btn1.setOnClickListener(new View.OnClickListener() {
+        binding.button01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (firstfragment) {
                     //first fragment is showing, so replace it with the second one.
                     getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, new twoFragment())
+                        .replace(binding.container.getId(), new twoFragment())
                         .commit();
                     firstfragment = false;
                 } else {
                     //second fragment is showing, so replace it with the second one.
                     getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, new oneFragment())
+                        .replace(binding.container.getId(), new oneFragment())
                         .commit();
                     firstfragment = true;
 

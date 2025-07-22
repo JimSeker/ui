@@ -2,7 +2,6 @@ package edu.cs4730.fragdemosimple_kt
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -21,8 +20,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater);
-        setContentView(binding.root);
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v: View, insets: WindowInsetsCompat ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -31,22 +30,21 @@ class MainActivity : AppCompatActivity() {
         //if this a not new, then place add firstfragment to the framelayout
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .add(R.id.container, oneFragment())
+                .add(binding.container.id, oneFragment())
                 .commit()
         }
         //find the button and setup the listener.
-        val btn1 = findViewById<Button>(R.id.button01)
-        btn1.setOnClickListener {
+        binding.button01.setOnClickListener {
             firstfragment = if (firstfragment) {
                 //first fragment is showing, so replace it with the second one.
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, twoFragment())
+                    .replace(binding.container.id, twoFragment())
                     .commit()
                 false
             } else {
                 //second fragment is showing, so replace it with the second one.
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, oneFragment())
+                    .replace(binding.container.id, oneFragment())
                     .commit()
                 true
             }

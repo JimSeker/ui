@@ -1,5 +1,7 @@
 package edu.cs4730.fragformexample;
 
+import androidx.annotation.NonNull;
+
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
@@ -7,9 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.text.TextWatcher;
 
@@ -21,17 +21,10 @@ import edu.cs4730.fragformexample.databinding.FragmentFormBinding;
  * The meat of the example is here, instead of the mainActivity.  OnCreateView has the setup
  * and then all the listeners.
  */
-public class FormFragment extends Fragment implements RadioGroup.OnCheckedChangeListener, TextWatcher,
-        Button.OnClickListener {
+public class FormFragment extends Fragment implements RadioGroup.OnCheckedChangeListener, TextWatcher, Button.OnClickListener {
 
     private FragmentFormBinding binding;
 
-    //variables for the widgets
-    //RadioGroup myRadioGroup;
-    //EditText et;
-    //Button btnalert;
-    //TextView label;
-    //variable for the log
     String TAG = "FormFragment";
 
     public FormFragment() {
@@ -40,24 +33,18 @@ public class FormFragment extends Fragment implements RadioGroup.OnCheckedChange
 
     //OnCreateView is where everything is inflated and any listeners are setup at.
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentFormBinding.inflate(inflater, container, false);
 
-        //EditText view setup and listner
-        //et = myView.findViewById(R.id.ETname);
+        //EditText view setup and listener
         binding.ETname.addTextChangedListener(this);
 
-        //the top label in the xml doc.
-        //label = myView.findViewById(R.id.Label01);
 
         //setup the radio group with a listener.
-        //myRadioGroup = myView.findViewById(R.id.myRadioGroup);
         binding.myRadioGroup.setOnCheckedChangeListener(this);
 
         //setup the button with a listener as well.
-        //btnalert = myView.findViewById(R.id.btnalert);
         binding.btnalert.setOnClickListener(this);
 
         return binding.getRoot();
@@ -65,7 +52,7 @@ public class FormFragment extends Fragment implements RadioGroup.OnCheckedChange
 
 
     /*  Radio group listener for OnCheckedChangeListener */
-    public void onCheckedChanged(RadioGroup group, int CheckedId) {
+    public void onCheckedChanged(@NonNull RadioGroup group, int CheckedId) {
         if (group == binding.myRadioGroup) { //if not myRadioGroup, we are in trouble!
             if (CheckedId == R.id.RB01) {
                 // information radio button clicked
