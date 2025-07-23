@@ -19,7 +19,6 @@ import edu.cs4730.recyclerviewdemo3_kt.databinding.Simple2RowlayoutBinding
  */
 class Simple2_myAdapter(
     private val myList: Array<String>?,
-    private val rowLayout: Int,
     private val mContext: Context
 ) : RecyclerView.Adapter<Simple2_myAdapter.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {

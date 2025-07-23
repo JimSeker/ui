@@ -1,6 +1,5 @@
 package edu.cs4730.recyclerviewdemo3_kt
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
@@ -26,7 +25,7 @@ class InterActive_Fragment : Fragment() {
         binding.list.layoutManager = LinearLayoutManager(requireContext())
         binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = InterActive_myAdapter(model, R.layout.interactive_rowlayout, requireContext())
+        mAdapter = InterActive_myAdapter(model, requireContext())
         //add the adapter to the recyclerview
         binding.list.adapter = mAdapter
         return binding.list

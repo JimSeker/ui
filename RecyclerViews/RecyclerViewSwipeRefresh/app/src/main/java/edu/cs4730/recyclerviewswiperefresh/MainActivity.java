@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     myAdapter mAdapter;
-    String[] values  = new String[]{
+    String[] values = new String[]{
         "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
         "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina",
         "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan",
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         binding.list.setLayoutManager(new LinearLayoutManager(this));
         binding.list.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = new myAdapter(values, R.layout.my_row, this);
+        mAdapter = new myAdapter(values, this);
         //add the adapter to the recyclerview
         binding.list.setAdapter(mAdapter);
 
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                 //use ItemtouchHelper.X to find the correct one.
                 if (direction == ItemTouchHelper.RIGHT) {
                     //Toast.makeText(getBaseContext(),"Right?", Toast.LENGTH_SHORT).show();
-                    int item = viewHolder. getAbsoluteAdapterPosition(); //think this is where in the array it is.
+                    int item = viewHolder.getAbsoluteAdapterPosition(); //think this is where in the array it is.
                     mAdapter.removeitem(item);
                 }
             }

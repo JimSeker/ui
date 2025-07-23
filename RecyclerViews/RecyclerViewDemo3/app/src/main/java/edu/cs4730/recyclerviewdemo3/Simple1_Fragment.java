@@ -36,7 +36,7 @@ public class Simple1_Fragment extends Fragment {
         binding.list.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.list.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = new Simple1_myAdapter(values, R.layout.simple1_rowlayout, requireContext());
+        mAdapter = new Simple1_myAdapter(values, requireContext());
         //add the adapter to the recyclerview
         binding.list.setAdapter(mAdapter);
         return binding.getRoot();

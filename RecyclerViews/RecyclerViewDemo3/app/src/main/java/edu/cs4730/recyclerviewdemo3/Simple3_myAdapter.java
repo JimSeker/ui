@@ -5,7 +5,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,17 +25,15 @@ import edu.cs4730.recyclerviewdemo3.databinding.Simple3RowlayoutBinding;
 public class Simple3_myAdapter extends RecyclerView.Adapter<Simple3_myAdapter.ViewHolder>{
 
     private List<String> myList;
-    private int rowLayout;
     private Context mContext;
 
-    public Simple3_myAdapter (List<String> myList, int rowLayout, Context context) {
+    public Simple3_myAdapter (List<String> myList,  Context context) {
         this.myList = myList;
-        this.rowLayout = rowLayout;
         this.mContext = context;
     }
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         Simple3RowlayoutBinding v = Simple3RowlayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
         return new ViewHolder(v);
     }

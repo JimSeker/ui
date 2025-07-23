@@ -4,11 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import edu.cs4730.recyclerviewdemo2.databinding.PhoneRowBinding;
@@ -23,12 +22,12 @@ import edu.cs4730.recyclerviewdemo2.databinding.PhoneRowBinding;
 
 public class phoneAdapter extends RecyclerView.Adapter<phoneAdapter.ViewHolder> {
     private List<Phonebook> myList;
-    private int rowLayout;
     private Context mContext;
 
     //viewbinding now provides the references.
     static class ViewHolder extends RecyclerView.ViewHolder {
         public PhoneRowBinding viewBinding;
+
         ViewHolder(PhoneRowBinding itemView) {
             super(itemView.getRoot());
             viewBinding = itemView;
@@ -36,22 +35,22 @@ public class phoneAdapter extends RecyclerView.Adapter<phoneAdapter.ViewHolder> 
     }
 
     //constructor
-    phoneAdapter(List<Phonebook> myList, int rowLayout, Context context) {
+    phoneAdapter(List<Phonebook> myList, Context context) {
         this.myList = myList;
-        this.rowLayout = rowLayout;
         this.mContext = context;
     }
 
     // Create new views (invoked by the layout manager)
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         PhoneRowBinding v = PhoneRowBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
         return new ViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Phonebook entry = myList.get(i);
         //here is here the data is set, no variables are declared here.
         viewHolder.viewBinding.tvContact.setText(entry.getName());

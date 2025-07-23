@@ -14,11 +14,12 @@
 
         <ImageView
             android:id="@+id/picture"
+            android:contentDescription="@string/background_image"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_centerInParent="true"
             android:scaleType="centerCrop"
-            android:tint="@color/photo_tint"/>
+            card_view:tint="@color/photo_tint" />
 
         <TextView
             android:id="@+id/Name"

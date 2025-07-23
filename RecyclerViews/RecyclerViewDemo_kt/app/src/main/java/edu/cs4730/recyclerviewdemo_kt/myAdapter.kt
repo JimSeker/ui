@@ -17,7 +17,7 @@ import edu.cs4730.recyclerviewdemo_kt.databinding.MyRowBinding
  * the adapter.
  */
 class myAdapter     //constructor
-    (private val myList: List<String>?, private val rowLayout: Int, private val mContext: Context) :
+    (private val myList: List<String>?, private val mContext: Context) :
     RecyclerView.Adapter<myAdapter.ViewHolder>() {
 
     // the viewbinding provides the references now.

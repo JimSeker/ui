@@ -34,7 +34,7 @@ public class InterActive_Fragment extends Fragment {
        binding.list.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.list.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = new InterActive_myAdapter(getModel(), R.layout.interactive_rowlayout, requireContext());
+        mAdapter = new InterActive_myAdapter(getModel(),  requireContext());
         //add the adapter to the recyclerview
         binding.list.setAdapter(mAdapter);
 

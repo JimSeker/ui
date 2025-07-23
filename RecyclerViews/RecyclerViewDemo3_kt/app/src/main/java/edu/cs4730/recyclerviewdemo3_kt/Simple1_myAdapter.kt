@@ -18,7 +18,6 @@ import edu.cs4730.recyclerviewdemo3_kt.databinding.Simple1RowlayoutBinding
  */
 class Simple1_myAdapter(
     private val myList: Array<String>?,
-    private val rowLayout: Int,
     private val mContext: Context
 ) : RecyclerView.Adapter<Simple1_myAdapter.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {

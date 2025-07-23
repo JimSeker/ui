@@ -8,7 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import edu.cs4730.recyclerviewdemo_kt.databinding.ActivityMainBinding
-import java.util.Arrays
+
 
 
 /**
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             WindowInsetsCompat.CONSUMED
         }
 
-        val values = Arrays.asList(
+        val values = mutableListOf(
             "Android", "iPhone", "WindowsMobile", "Blackberry", "WebOS", "Ubuntu", "Windows7",
             "Max OS X", "Linux", "OS/2"
         )
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         //and default animator
         binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = myAdapter(values, R.layout.my_row, this)
+        mAdapter = myAdapter(values,  this)
         //add the adapter to the recyclerview
         binding.list.adapter = mAdapter
     }

@@ -16,23 +16,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import edu.cs4730.recyclerviewdemo3.databinding.PhonebookRowlayoutBinding;
 
 /**
- *  needs a comment here.
+ * needs a comment here.
  */
 
 public class Phonebook_myAdapter extends RecyclerView.Adapter<Phonebook_myAdapter.ViewHolder> implements OnClickListener {
     private Context mContext;
-    private int rowLayout;
     private List<Phonebook_DataModel> listPhonebook;
 
-    public Phonebook_myAdapter(List<Phonebook_DataModel> listPhonebook, int rowLayout, Context context) {
+    public Phonebook_myAdapter(List<Phonebook_DataModel> listPhonebook, Context context) {
         this.mContext = context;
         this.listPhonebook = listPhonebook;
-        this.rowLayout = rowLayout;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         PhonebookRowlayoutBinding v = PhonebookRowlayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
         return new ViewHolder(v);
     }
@@ -69,6 +67,7 @@ public class Phonebook_myAdapter extends RecyclerView.Adapter<Phonebook_myAdapte
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         PhonebookRowlayoutBinding viewBinding;
+
         public ViewHolder(PhonebookRowlayoutBinding itemView) {
             super(itemView.getRoot());
             viewBinding = itemView;

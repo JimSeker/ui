@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import edu.cs4730.recyclerviewswiperefresh.databinding.MyRowBinding;
@@ -27,20 +28,19 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
     private String[] values;
     private List<String> myList;
-    private int rowLayout;
     private Context mContext;
     private Random mRandom = new Random();
 
-    public myAdapter(String[] values, int rowLayout, Context context) {
+    public myAdapter(String[] values, Context context) {
         this.values = values;
-        this.rowLayout = rowLayout;
         this.mContext = context;
         //now get actual list to display.
         randomlist();
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         MyRowBinding binding = MyRowBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
         return new ViewHolder(binding);
     }

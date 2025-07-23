@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -69,7 +70,7 @@ public class Simple2_Fragment extends Fragment {
     };
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = Simple2FragmentBinding.inflate(inflater, container, false);
@@ -78,7 +79,7 @@ public class Simple2_Fragment extends Fragment {
                 binding.list.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.list.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = new Simple2_myAdapter(values, R.layout.simple2_rowlayout, requireContext());
+        mAdapter = new Simple2_myAdapter(values, requireContext());
         //add the adapter to the recyclerview
         binding.list.setAdapter(mAdapter);
         return binding.getRoot();

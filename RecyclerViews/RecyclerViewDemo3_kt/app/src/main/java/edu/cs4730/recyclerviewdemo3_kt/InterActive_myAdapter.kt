@@ -5,16 +5,12 @@ import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.CheckBox
-import android.widget.TextView
 import edu.cs4730.recyclerviewdemo3_kt.databinding.InteractiveRowlayoutBinding
 
 /**
  *  A simple example of how to make the views interaction with a checkbox and data model.
  */   class InterActive_myAdapter(
     private val myList: List<InterActive_DataModel>?,
-    private val rowLayout: Int,
     private val mContext: Context
 ) : RecyclerView.Adapter<InterActive_myAdapter.ViewHolder>() {
     private var onBind = false

@@ -46,7 +46,7 @@ class Phonebook_Fragment : Fragment() {
         binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
         mAdapter =
-            Phonebook_myAdapter(listOfPhonebook, R.layout.phonebook_rowlayout, requireContext())
+            Phonebook_myAdapter(listOfPhonebook, requireContext())
         //add the adapter to the recyclerview
         binding.list.adapter = mAdapter
         return binding.root

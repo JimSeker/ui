@@ -5,15 +5,13 @@ package edu.cs4730.recyclerviewdemo3;
 
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,32 +22,31 @@ import edu.cs4730.recyclerviewdemo3.databinding.InteractiveRowlayoutBinding;
 public class InterActive_myAdapter extends RecyclerView.Adapter<InterActive_myAdapter.ViewHolder> {
 
     private List<InterActive_DataModel> myList;
-    private int rowLayout;
+
     private Context mContext;
     private boolean onBind;
 
-    public InterActive_myAdapter(List<InterActive_DataModel> myList, int rowLayout, Context context) {
+    public InterActive_myAdapter(List<InterActive_DataModel> myList, Context context) {
         this.myList = myList;
-        this.rowLayout = rowLayout;
         this.mContext = context;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         InteractiveRowlayoutBinding v = InteractiveRowlayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(ViewHolder viewHolder, @SuppressLint("RecyclerView") int i) {
         onBind = true;  //this will stop the checkbox listener from doing anything while we are setting up the data.
         viewHolder.viewBinding.label.setText(myList.get(i).getName());
         viewHolder.viewBinding.check.setChecked(myList.get(i).isSelected());
         viewHolder.viewBinding.check.setOnCheckedChangeListener(
             new OnCheckedChangeListener() {
                 @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                public void onCheckedChanged(@NonNull CompoundButton buttonView, boolean isChecked) {
                     if (!onBind) {  //if we are nto setting up the data, then do something.  Otherwise, this can cause a loop.
                         //get the "tag" out of the checkbox [tag exists base class view], so I know where it is in the myList.
                         String t = (String) buttonView.getTag();
@@ -84,6 +81,7 @@ public class InterActive_myAdapter extends RecyclerView.Adapter<InterActive_myAd
     //viewbinding setups the references for us.
     public static class ViewHolder extends RecyclerView.ViewHolder {
         InteractiveRowlayoutBinding viewBinding;
+
         public ViewHolder(InteractiveRowlayoutBinding itemView) {
             super(itemView.getRoot());
             viewBinding = itemView;

@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import edu.cs4730.recyclerviewdemo.databinding.MyRowBinding;
@@ -23,7 +24,6 @@ import edu.cs4730.recyclerviewdemo.databinding.MyRowBinding;
 public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
     private List<String> myList;
-    private int rowLayout;
     private Context mContext;
     //viewbinding provides the references now.
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -35,15 +35,15 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     }
 
     //constructor
-    public myAdapter(List<String> myList, int rowLayout, Context context) {
+    public myAdapter(List<String> myList, Context context) {
         this.myList = myList;
-        this.rowLayout = rowLayout;
         this.mContext = context;
     }
 
     // Create new views (invoked by the layout manager)
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         MyRowBinding v = MyRowBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
         return new ViewHolder(v);
     }

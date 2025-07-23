@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         //and default animator
         binding.list.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = new myAdapter(values, R.layout.my_row, this);
+        mAdapter = new myAdapter(values, this);
         //add the adapter to the recyclerview
         binding.list.setAdapter(mAdapter);
     }

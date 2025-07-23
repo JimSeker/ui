@@ -16,7 +16,6 @@ import edu.cs4730.recyclerviewdemo3_kt.databinding.PhonebookRowlayoutBinding
  */
 class Phonebook_myAdapter(
     private val listPhonebook: MutableList<Phonebook_DataModel>?,
-    private val rowLayout: Int,
     private val mContext: Context
 ) : RecyclerView.Adapter<Phonebook_myAdapter.ViewHolder>(), View.OnClickListener {
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {

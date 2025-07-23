@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         binding.list.layoutManager = LinearLayoutManager(this)
         binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = phoneAdapter(listOfPhonebook, R.layout.phone_row, this)
+        mAdapter = phoneAdapter(listOfPhonebook,  this)
         //add the adapter to the recyclerview
         binding.list.adapter = mAdapter
     }

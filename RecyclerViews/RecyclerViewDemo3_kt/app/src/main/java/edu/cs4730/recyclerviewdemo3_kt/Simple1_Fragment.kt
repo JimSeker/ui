@@ -35,7 +35,7 @@ class Simple1_Fragment : Fragment() {
         binding.list.layoutManager = LinearLayoutManager(requireContext())
         binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = Simple1_myAdapter(values, R.layout.simple1_rowlayout, requireContext())
+        mAdapter = Simple1_myAdapter(values, requireContext())
         //add the adapter to the recyclerview
         binding.list.adapter = mAdapter
         return binding.root

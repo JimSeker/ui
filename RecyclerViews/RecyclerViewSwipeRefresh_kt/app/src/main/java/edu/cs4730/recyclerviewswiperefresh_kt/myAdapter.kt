@@ -4,8 +4,6 @@ import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import edu.cs4730.recyclerviewswiperefresh_kt.databinding.MyRowBinding
@@ -18,7 +16,7 @@ import java.util.*
  * the adapter.
  */
 class myAdapter(
-    private val values: Array<String>, private val rowLayout: Int, private val mContext: Context
+    private val values: Array<String>,  private val mContext: Context
 ) : RecyclerView.Adapter<myAdapter.ViewHolder>() {
     private var myList: MutableList<String>? = null
     private val mRandom = Random()

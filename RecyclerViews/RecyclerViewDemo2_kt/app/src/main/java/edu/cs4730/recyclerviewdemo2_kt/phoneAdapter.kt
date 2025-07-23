@@ -20,7 +20,6 @@ import edu.cs4730.recyclerviewdemo2_kt.databinding.PhoneRowBinding
 class phoneAdapter  //constructor
 internal constructor(
     private val myList: MutableList<Phonebook>?,
-    private val rowLayout: Int,
     private val mContext: Context
 ) : RecyclerView.Adapter<phoneAdapter.ViewHolder>() {
     //the viewbinding now provides the references.

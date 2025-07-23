@@ -23,18 +23,16 @@ import edu.cs4730.recyclerviewdemo3.databinding.Simple2RowlayoutBinding;
 public class Simple2_myAdapter extends RecyclerView.Adapter<Simple2_myAdapter.ViewHolder> {
 
     private String[] myList;
-    private int rowLayout;
     private Context mContext;
 
-    public Simple2_myAdapter(String[] myList, int rowLayout, Context context) {
+    public Simple2_myAdapter(String[] myList, Context context) {
         this.myList = myList;
-        this.rowLayout = rowLayout;
         this.mContext = context;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         Simple2RowlayoutBinding v = Simple2RowlayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
         return new ViewHolder(v);
     }

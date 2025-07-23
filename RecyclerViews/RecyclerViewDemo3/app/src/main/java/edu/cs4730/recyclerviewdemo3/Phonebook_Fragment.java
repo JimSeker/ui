@@ -63,7 +63,7 @@ public class Phonebook_Fragment extends Fragment {
         binding.list.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.list.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = new Phonebook_myAdapter(listOfPhonebook, R.layout.phonebook_rowlayout, requireContext());
+        mAdapter = new Phonebook_myAdapter(listOfPhonebook,requireContext());
         //add the adapter to the recyclerview
         binding.list.setAdapter(mAdapter);
 

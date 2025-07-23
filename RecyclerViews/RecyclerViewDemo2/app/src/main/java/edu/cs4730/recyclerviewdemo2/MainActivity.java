@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         binding.list.setLayoutManager(new LinearLayoutManager(this));
         binding.list.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = new phoneAdapter(listOfPhonebook, R.layout.phone_row, this);
+        mAdapter = new phoneAdapter(listOfPhonebook, this);
         //add the adapter to the recyclerview
         binding.list.setAdapter(mAdapter);
     }

@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         binding.list.layoutManager = LinearLayoutManager(this)
         binding.list.itemAnimator = DefaultItemAnimator()
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = myAdapter(values, R.layout.my_row, this)
+        mAdapter = myAdapter(values,  this)
         //add the adapter to the recyclerview
         binding.list.adapter = mAdapter
 
