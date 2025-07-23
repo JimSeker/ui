@@ -3,20 +3,13 @@ package edu.cs4730.lotsoflists;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +18,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -76,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         binding.list.setLayoutManager(new LinearLayoutManager(this));
         binding.list.setItemAnimator(new DefaultItemAnimator());
         //setup the adapter, which is myAdapter, see the code.
-        mAdapter = new myAdapter(null, R.layout.my_row, this);  //observer will fix the null
+        mAdapter = new myAdapter(null, this);  //observer will fix the null
         //add the adapter to the recyclerview
         binding.list.setAdapter(mAdapter);
 
@@ -113,60 +104,6 @@ public class MainActivity extends AppCompatActivity {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(binding.list);
 
-        binding.list.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            //yes this code is kind of a mess.   And better I got some of from here:
-            //https://github.com/Suleiman19/Android-Material-Design-for-pre-Lollipop/tree/master/MaterialSample/app/src/main/java/com/suleiman/material/activities
-            //in the fabhideactivity.java
-
-            int scrollDist = 0;
-            private boolean isVisible = true;
-            private final float HIDE_THRESHOLD = 100;
-            private final float SHOW_THRESHOLD = 50;
-
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    //but I want the fab back after the scrolling is done.  Not scroll down a little... that is just stupid.
-                    if (!isVisible) {
-                        binding.fab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2F)).start();
-                        //scrollDist = 0;
-                        isVisible = true;
-                        Log.v("c", "state changed, show be showing....");
-                    }
-
-                }
-            }
-
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                //so animate to slide down and then and set invisible variables or something.
-                //  Check scrolled distance against the minimum
-                if (isVisible && scrollDist > HIDE_THRESHOLD) {
-                    //  Hide fab & reset scrollDist
-                    binding.fab.animate().translationY(binding.fab.getHeight() + getResources().getDimensionPixelSize(R.dimen.fab_margin)).setInterpolator(new AccelerateInterpolator(2F)).start();
-                    scrollDist = 0;
-                    isVisible = false;
-                    Log.v("onScrolled", "maded fab invisible");
-                }
-                //  -MINIMUM because scrolling up gives - dy values
-                else if (!isVisible && scrollDist < -SHOW_THRESHOLD) {
-                    //  Show fab & reset scrollDist
-                    binding.fab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2F)).start();
-
-                    scrollDist = 0;
-                    isVisible = true;
-                    Log.v("onScrolled", "maded fab visible");
-                }
-
-                //  Whether we scroll up or down, calculate scroll distance
-                if ((isVisible && dy > 0) || (!isVisible && dy < 0)) {
-                    scrollDist += dy;
-                }
-            }
-        });
-
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -181,10 +118,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         mDrawerToggle = new ActionBarDrawerToggle(this,  // host activity
-                binding.drawerLayout,  //drawerlayout object
-                binding.appBar,  //toolbar
-                R.string.drawer_open,  //open drawer description  required!
-                R.string.drawer_close) {  //closed drawer description
+            binding.drawerLayout,  //drawerlayout object
+            binding.appBar,  //toolbar
+            R.string.drawer_open,  //open drawer description  required!
+            R.string.drawer_close) {  //closed drawer description
 
             //called once the drawer has closed.
             @Override

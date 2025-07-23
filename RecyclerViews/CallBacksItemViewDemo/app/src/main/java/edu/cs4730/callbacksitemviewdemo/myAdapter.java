@@ -32,7 +32,6 @@ import edu.cs4730.callbacksitemviewdemo.databinding.RowLayoutBinding;
 public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
     public List<String> myList;
-    private int rowLayout;
     private Context mContext;  //for things like a toast or other things that need context.
     private final String TAG = "myAdapter";
 
@@ -60,16 +59,15 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     }
 
     //constructor
-    public myAdapter(List<String> myList, int rowLayout, Context context) {
+    public myAdapter(List<String> myList,  Context context) {
         this.myList = myList;
-        this.rowLayout = rowLayout;
         this.mContext = context;
     }
 
     // Create new views (invoked by the layout manager)
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         RowLayoutBinding v = RowLayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
         return new ViewHolder(v);
     }

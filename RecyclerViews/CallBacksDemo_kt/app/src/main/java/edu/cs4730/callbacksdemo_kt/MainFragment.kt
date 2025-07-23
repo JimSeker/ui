@@ -33,7 +33,7 @@ class MainFragment : Fragment() {
 
         binding.myRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
         binding.myRecyclerView.itemAnimator = DefaultItemAnimator()
-        mAdapter = myAdapter(mList, R.layout.row_layout, requireActivity())
+        mAdapter = myAdapter(mList, requireActivity())
         mAdapter.setOnItemClickListener(object : myAdapter.OnItemClickListener {
             override fun onItemClick(itemView: View, id: String) {
                 // String name = users.get(position).name;
@@ -75,7 +75,7 @@ class MainFragment : Fragment() {
     }
 
     init {
-        mList = Arrays.asList(
+        mList = listOf(
             "Android", "iPhone", "WindowsMobile",
             "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
             "Linux", "OS/2"

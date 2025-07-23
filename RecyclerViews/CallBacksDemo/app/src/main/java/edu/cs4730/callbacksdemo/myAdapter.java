@@ -5,11 +5,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import edu.cs4730.callbacksdemo.databinding.RowLayoutBinding;
@@ -27,7 +26,6 @@ import edu.cs4730.callbacksdemo.databinding.RowLayoutBinding;
 public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
     private List<String> myList;
-    private int rowLayout;
     private Context mContext;  //for things like a toast or other things that need context.
     private final String TAG = "myAdapter";
     // Define listener member variable
@@ -52,15 +50,15 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     }
 
     //constructor
-    public myAdapter(List<String> myList, int rowLayout, Context context) {
+    public myAdapter(List<String> myList, Context context) {
         this.myList = myList;
-        this.rowLayout = rowLayout;
         this.mContext = context;
     }
 
     // Create new views (invoked by the layout manager)
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         RowLayoutBinding v = RowLayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
         return new ViewHolder(v);
     }

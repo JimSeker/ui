@@ -1,37 +1,37 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdk 35
+    compileSdk = 36
 
     defaultConfig {
-        applicationId "edu.cs4730.lotsoflists"
-        minSdkVersion 29
-        targetSdk 35
-        versionCode 1
-        versionName "1.0"
+        applicationId = "edu.cs4730.lotsoflists"
+        minSdk = 31
+        targetSdk = 36
+        versionCode = 1
+        versionName = "1.0"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled = false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     buildFeatures {
         viewBinding = true
     }
-    namespace 'edu.cs4730.lotsoflists'
+    namespace = 'edu.cs4730.lotsoflists'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation 'com.google.android.material:material:1.12.0'
-    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.drawerlayout:drawerlayout:1.2.0'
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.8.7"
-    implementation "androidx.lifecycle:lifecycle-livedata:2.8.7"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.9.2"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.9.2"
     //really dumb, needed to stop a duplicate dependency, even though not use kotlin at all, hopefully at some point won't need it.
     //but with android view model, doesn't seem to have the same problem.  really weird.  leaving the commented out line just in case.
 //    constraints {

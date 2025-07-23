@@ -20,7 +20,6 @@ import edu.cs4730.callbacksitemviewdemo_kt.databinding.RowLayoutBinding
 class myAdapter     //constructor
     (
     var myList: List<String>?,
-    private val rowLayout: Int, //for things like a toast or other things that need context.
     private val mContext: Context
 ) : RecyclerView.Adapter<myAdapter.ViewHolder>() {
     private val TAG = "myAdapter"
@@ -44,7 +43,7 @@ class myAdapter     //constructor
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v = RowLayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
+        val v = RowLayoutBinding.inflate(LayoutInflater.from(mContext), viewGroup, false)
         return ViewHolder(v)
     }
 

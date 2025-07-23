@@ -21,7 +21,6 @@ import edu.cs4730.callbacksdemo_kt.databinding.RowLayoutBinding
 class myAdapter     //constructor
     (
     private val myList: List<String>?,
-    private val rowLayout: Int, //for things like a toast or other things that need context.
     private val mContext: Context
 ) : RecyclerView.Adapter<myAdapter.ViewHolder>() {
     private val TAG = "myAdapter"

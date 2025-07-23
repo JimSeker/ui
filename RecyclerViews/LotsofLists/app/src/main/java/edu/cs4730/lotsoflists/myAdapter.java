@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import edu.cs4730.lotsoflists.databinding.MyRowBinding;
@@ -24,12 +25,10 @@ import edu.cs4730.lotsoflists.databinding.MyRowBinding;
 public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
     private List<String> myList;
-    private int rowLayout;
     private Context mContext;
 
-    public myAdapter(List<String> myList, int rowLayout, Context context) {
+    public myAdapter(List<String> myList, Context context) {
         this.myList = myList;
-        this.rowLayout = rowLayout;
         this.mContext = context;
     }
 
@@ -39,8 +38,9 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         MyRowBinding v = MyRowBinding.inflate(LayoutInflater.from(mContext), viewGroup, false);
         return new ViewHolder(v);
     }
@@ -63,9 +63,11 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     public int getItemCount() {
         return myList == null ? 0 : myList.size();
     }
+
     //the viewbinding now provides the references.
     public static class ViewHolder extends RecyclerView.ViewHolder {
         MyRowBinding viewBinding;
+
         public ViewHolder(MyRowBinding viewBinding) {
             super(viewBinding.getRoot());
             this.viewBinding = viewBinding;

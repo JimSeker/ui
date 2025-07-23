@@ -16,7 +16,6 @@ import edu.cs4730.lotsoflists_kt.databinding.MyRowBinding
  */
 class myAdapter(
     private var myList: List<String>?,
-    private val rowLayout: Int,
     private val mContext: Context
 ) : RecyclerView.Adapter<myAdapter.ViewHolder>() {
     //a simple method to make sure the recyclerview knows I have changed the data in the list.

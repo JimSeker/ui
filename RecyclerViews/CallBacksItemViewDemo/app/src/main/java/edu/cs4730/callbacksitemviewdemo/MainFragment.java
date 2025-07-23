@@ -32,9 +32,8 @@ public class MainFragment extends Fragment {
 
     public MainFragment() {
         mList = Arrays.asList("Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2");
-
+            "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+            "Linux", "OS/2");
     }
 
     @Override
@@ -44,7 +43,7 @@ public class MainFragment extends Fragment {
         binding.myRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         binding.myRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        mAdapter = new myAdapter(mList, R.layout.row_layout, requireActivity());
+        mAdapter = new myAdapter(mList, requireActivity());
         mAdapter.setOnItemClickListener(new myAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, String id) {
@@ -70,8 +69,8 @@ public class MainFragment extends Fragment {
         try {
             mCallback = (OntransInteractionCallback) requireActivity();
         } catch (ClassCastException e) {
-            throw new ClassCastException(requireActivity().toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new ClassCastException(requireActivity()
+                + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -83,7 +82,7 @@ public class MainFragment extends Fragment {
 
     //The interface for the call back code that needs to be implemented.
     public interface OntransInteractionCallback {
-        public void ontransInteraction(String item);
+        void ontransInteraction(String item);
     }
 
 

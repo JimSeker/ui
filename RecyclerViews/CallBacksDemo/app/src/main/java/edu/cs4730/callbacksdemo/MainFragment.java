@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import edu.cs4730.callbacksdemo.databinding.FragmentMainBinding;
 
@@ -45,7 +44,7 @@ public class MainFragment extends Fragment {
         binding.myRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         binding.myRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        mAdapter = new myAdapter(mList, R.layout.row_layout, requireActivity());
+        mAdapter = new myAdapter(mList, requireContext());
         mAdapter.setOnItemClickListener(new myAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, String id) {
@@ -68,7 +67,7 @@ public class MainFragment extends Fragment {
         try {
             mCallback = (OntransInteractionCallback) getActivity();
         } catch (ClassCastException e) {
-            throw new ClassCastException(requireActivity().toString()
+            throw new ClassCastException(requireActivity()
                 + " must implement OnFragmentInteractionListener");
         }
     }
@@ -81,7 +80,7 @@ public class MainFragment extends Fragment {
 
     //The interface for the call back code that needs to be implemented.
     public interface OntransInteractionCallback {
-        public void ontransInteraction(String item);
+        void ontransInteraction(String item);
     }
 
 

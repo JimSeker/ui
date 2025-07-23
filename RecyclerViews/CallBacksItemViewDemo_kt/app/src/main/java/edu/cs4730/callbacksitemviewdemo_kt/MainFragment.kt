@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import edu.cs4730.callbacksitemviewdemo_kt.databinding.FragmentMainBinding
 import java.lang.ClassCastException
-import java.util.*
+
 
 /**
  * A simple fragment that displays a recyclerview and has a callback
@@ -32,15 +32,15 @@ class MainFragment : Fragment() {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         binding.myRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
         binding.myRecyclerView.itemAnimator = DefaultItemAnimator()
-        mAdapter = myAdapter(mList, R.layout.row_layout, requireActivity())
+        mAdapter = myAdapter(mList, requireActivity())
 
         mAdapter.setOnItemClickListener(object : myAdapter.OnItemClickListener {
             override fun onItemClick(itemView: View, id: String) {
-            // String name = users.get(position).name;
-            Log.v(TAG, "Listener at $TAG")
-            Toast.makeText(context, "MainFragment: $id was clicked!", Toast.LENGTH_SHORT).show()
-            //we could just send the id or in this case get the name as something more useful here.
-            val name = mAdapter.myList?.get(id.toInt())
+                // String name = users.get(position).name;
+                Log.v(TAG, "Listener at $TAG")
+                Toast.makeText(context, "MainFragment: $id was clicked!", Toast.LENGTH_SHORT).show()
+                //we could just send the id or in this case get the name as something more useful here.
+                val name = mAdapter.myList?.get(id.toInt())
                 if (name != null) {
                     mCallback!!.ontransInteraction(name)
                 } else {
@@ -51,7 +51,7 @@ class MainFragment : Fragment() {
         })
 
         //add the adapter to the recyclerview
-       binding.myRecyclerView.adapter = mAdapter
+        binding.myRecyclerView.adapter = mAdapter
         return binding.root
     }
 
@@ -79,7 +79,7 @@ class MainFragment : Fragment() {
     }
 
     init {
-        mList = Arrays.asList(
+        mList = listOf(
             "Android", "iPhone", "WindowsMobile",
             "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
             "Linux", "OS/2"
