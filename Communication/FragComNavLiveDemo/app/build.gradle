@@ -1,34 +1,34 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdk 35
+    compileSdk = 36
     defaultConfig {
-        applicationId "edu.cs4730.fragcomnavlivedemo"
-        minSdkVersion 29
-        targetSdk 35
+        applicationId = "edu.cs4730.fragcomnavlivedemo"
+        minSdk = 31
+        targetSdk = 36
         versionName "1.0"
 
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled = false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     buildFeatures {
         viewBinding = true
     }
-    namespace 'edu.cs4730.fragcomnavlivedemo'
+    namespace = 'edu.cs4730.fragcomnavlivedemo'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation("com.google.android.material:material:1.12.0")
-    implementation 'androidx.navigation:navigation-fragment:2.8.4'
-    implementation 'androidx.navigation:navigation-ui:2.8.4'
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.8.7"
-    implementation "androidx.lifecycle:lifecycle-livedata:2.8.7"
+    implementation 'androidx.navigation:navigation-fragment:2.9.2'
+    implementation 'androidx.navigation:navigation-ui:2.9.2'
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.9.2"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.9.2"
 
 }

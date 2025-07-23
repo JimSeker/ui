@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -63,7 +61,7 @@ public class SecondFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentSecondBinding.inflate(inflater, container, false);
@@ -91,8 +89,8 @@ public class SecondFragment extends Fragment {
         try {
             mListener = (OnFragmentInteractionListener2) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new ClassCastException(activity
+                + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -112,6 +110,6 @@ public class SecondFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener2 {
-        public void onFragmentInteraction2(String Data);
+        void onFragmentInteraction2(String Data);
     }
 }

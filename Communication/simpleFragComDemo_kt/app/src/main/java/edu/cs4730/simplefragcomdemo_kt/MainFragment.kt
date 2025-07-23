@@ -1,6 +1,5 @@
 package edu.cs4730.simplefragcomdemo_kt
 
-import edu.cs4730.simplefragcomdemo_kt.MainFragment.OnFragmentInteractionListener
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
@@ -40,7 +39,7 @@ class MainFragment : Fragment() {
             activity as OnFragmentInteractionListener
         } catch (e: ClassCastException) {
             throw ClassCastException(
-                activity.toString() + " must implement OnFragmentInteractionListener"
+                "$activity must implement OnFragmentInteractionListener"
             )
         }
     }

@@ -3,7 +3,6 @@ package edu.cs4730.intentdemo_kt
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.MediaStore
@@ -18,6 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import edu.cs4730.intentdemo_kt.databinding.ActivityMainBinding
+import androidx.core.net.toUri
 
 /**
  * Example of how to call varying system intents, such maps, phone, etc.
@@ -97,18 +97,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         val intent: Intent
         if (view === binding.callbrowser) {
-            intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.eecs.uwyo.edu"))
+            intent = Intent(Intent.ACTION_VIEW, "http://www.eecs.uwyo.edu".toUri())
             startActivity(intent)
         } else if (view === binding.callnumber) {
             makeCall() //needs permissions, so moved to a method.
         } else if (view === binding.dialnumber) {
-            intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:(307)555555"))
+            intent = Intent(Intent.ACTION_DIAL, "tel:(307)555555".toUri())
             startActivity(intent)
         } else if (view === binding.showmap) {
-            intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:41.312927,105.587251?z=19"))
+            intent = Intent(Intent.ACTION_VIEW, "geo:41.312927,105.587251?z=19".toUri())
             startActivity(intent)
         } else if (view === binding.searchmap) {
-            intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=query"))
+            intent = Intent(Intent.ACTION_VIEW, "geo:0,0?q=query".toUri())
             startActivity(intent)
         } else if (view === binding.takepic) {
             takePic()
@@ -189,7 +189,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             phoneRpl.launch(Manifest.permission.CALL_PHONE)
             return
         }
-        val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:3075555555"))
+        val intent = Intent(Intent.ACTION_CALL, "tel:3075555555".toUri())
         startActivity(intent)
     }
 
