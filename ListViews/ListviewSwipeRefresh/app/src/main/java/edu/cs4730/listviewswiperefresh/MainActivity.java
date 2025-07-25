@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import java.util.Random;
 
