@@ -8,31 +8,30 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import edu.cs4730.esplistviewdemo.databinding.Elvdemo1FragmentBinding;
 
 public class elvDemo1_Fragment extends Fragment {
 
     String TAG = "elvDemo1_Fragment";
 
     ExpandableListAdapter listAdapter;
-    ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
 
+    Elvdemo1FragmentBinding binding;
 
     public elvDemo1_Fragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myView = inflater.inflate(R.layout.elvdemo1_fragment, container, false);
-
-        // get the listview
-        expListView = myView.findViewById(R.id.lvExp);
+        binding = Elvdemo1FragmentBinding.inflate(inflater, container, false);
 
         // preparing list data
         prepareListData();
@@ -40,9 +39,9 @@ public class elvDemo1_Fragment extends Fragment {
         listAdapter = new ExpandableListAdapter(requireContext(), listDataHeader, listDataChild);
 
         // setting list adapter
-        expListView.setAdapter(listAdapter);
+        binding.lvExp.setAdapter(listAdapter);
 
-        return myView;
+        return binding.getRoot();
     }
 
 

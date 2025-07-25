@@ -11,7 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import edu.cs4730.esplistviewdemo.databinding.Elvdemo2FragmentBinding;
 
 
 /**
@@ -24,7 +27,7 @@ public class elvDemo2_Fragment extends Fragment {
     String TAG = "elvDemo2_Fragment";
 
     SimpleExpandableListAdapter listAdapter;
-    ExpandableListView expListView;
+   Elvdemo2FragmentBinding binding;
     ArrayList<Map<String, String>> listDataGroup;
 
     ArrayList<ArrayList<Map<String, String>>> listDataChild;
@@ -35,14 +38,14 @@ public class elvDemo2_Fragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myView = inflater.inflate(R.layout.elvdemo2_fragment, container, false);
+        binding = Elvdemo2FragmentBinding.inflate(inflater, container, false);
 
-        // get the listview
-        expListView = (ExpandableListView) myView.findViewById(R.id.lvExp2);
         prepareListData();
 
+        // get the ExpandableListView from the layout.
+        // for the layouts, we R.layout.  and R.id since we don't have the viewbinding setup for them.
         listAdapter = new SimpleExpandableListAdapter(
             requireContext(),                            //context
             listDataGroup,                  // group list in the form:  List<? extends Map<String, ?>>
@@ -54,9 +57,9 @@ public class elvDemo2_Fragment extends Fragment {
             new String[]{"Sub Item A", "Sub Item B"},      // Keys in childData maps to display.
             new int[]{R.id.grp_childA, R.id.grp_childB}     // Data under the keys above go into these TextViews.
         );
-        expListView.setAdapter(listAdapter);       // setting the adapter in the list.
+        binding.lvExp2.setAdapter(listAdapter);       // setting the adapter in the list.
 
-        return myView;
+        return binding.getRoot();
     }
 
     /**
