@@ -1,12 +1,13 @@
 package edu.cs4730.listviewfragmentdemo_kt
 
-import android.widget.TextView
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import edu.cs4730.listviewfragmentdemo_kt.databinding.TextFragmentBinding
+import kotlin.math.log
 
 /**
  * This is a simple fragment used to display the data for whichever shakspeare that is clicked on
@@ -35,7 +36,7 @@ class textFrag : Fragment() {
         }
         binding = TextFragmentBinding.inflate(inflater, container, false)
         setText(myPosition)
-        return binding.text
+        return binding.root
     }
 
     /*

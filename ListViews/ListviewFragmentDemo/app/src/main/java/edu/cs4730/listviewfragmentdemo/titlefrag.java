@@ -43,7 +43,7 @@ public class titlefrag extends ListFragment {
         try {
             mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString() + " must implement OnFragmentInteractionListener");
+            throw new ClassCastException(activity + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -71,7 +71,7 @@ public class titlefrag extends ListFragment {
         /**
          * Callback for when an item has been selected.
          */
-        public void onItemSelected(int id);
+        void onItemSelected(int id);
     }
 
 }

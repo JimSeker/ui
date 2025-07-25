@@ -1,6 +1,5 @@
 package edu.cs4730.listfragmentdemo_kt
 
-import android.widget.TextView
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

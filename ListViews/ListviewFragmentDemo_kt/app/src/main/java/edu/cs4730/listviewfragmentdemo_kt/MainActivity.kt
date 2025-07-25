@@ -1,6 +1,7 @@
 package edu.cs4730.listviewfragmentdemo_kt
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -39,7 +40,8 @@ class MainActivity : AppCompatActivity(), titlefrag.OnFragmentInteractionListene
             //portrait or small screen.  the container exists.
             TwoPane = false
             //add the title fragment.
-            supportFragmentManager.beginTransaction().add(R.id.container, titlefrag()).commit()
+            supportFragmentManager.beginTransaction().add(binding.container!!.id, titlefrag())
+                .commit()
         }
     }
 
@@ -51,10 +53,11 @@ class MainActivity : AppCompatActivity(), titlefrag.OnFragmentInteractionListene
         } else {
             //get an new instance of the fragment with the correct data.
             myTextFrag = textFrag.newInstance(id)
+
             val transaction = supportFragmentManager.beginTransaction()
             // Replace whatever is in the fragment_container view with this fragment,
             // and add the transaction to the back stack so the user can navigate back
-            transaction.replace(R.id.container, myTextFrag, "second")
+            transaction.replace(binding.container!!.id, myTextFrag, "second")
             transaction.addToBackStack(null)
             // Commit the transaction
             transaction.commit()

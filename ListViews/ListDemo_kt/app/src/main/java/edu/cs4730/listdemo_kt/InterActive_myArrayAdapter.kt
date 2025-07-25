@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.CheckBox
 import edu.cs4730.listdemo_kt.databinding.InteractiveRowlayoutBinding
 
 /*  the code taken from below, but has been heavy modified to the point of looking almost

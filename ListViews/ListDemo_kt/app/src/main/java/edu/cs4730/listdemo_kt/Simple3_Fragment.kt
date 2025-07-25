@@ -37,7 +37,7 @@ class Simple3_Fragment : Fragment() {
                 Toast.makeText(requireContext(), "$item selected", Toast.LENGTH_LONG).show()
             }
 
-        binding.up.setOnClickListener(View.OnClickListener { // up button, so move the list up
+        binding.up.setOnClickListener { // up button, so move the list up
             val i = binding.ListView01.selectedItemPosition
             //Toast.makeText(requireContext(), "up selected is " + i,Toast.LENGTH_LONG).show();
             if (i == ListView.INVALID_POSITION) { // nothing selected, so select first position.
@@ -46,13 +46,13 @@ class Simple3_Fragment : Fragment() {
             if (i > 0) {
                 binding.ListView01.setSelection(i - 1)
             }
-        })
+        }
 
-        binding.down.setOnClickListener(View.OnClickListener { // down button, so move the it down
+        binding.down.setOnClickListener { // down button, so move the it down
             //val i = list.selectedItemPosition
             //Toast.makeText(simple3.this, "down selected is " + i, Toast.LENGTH_LONG).show();
             binding.ListView01.setSelection(binding.ListView01.count)
-        })
+        }
         return binding.root
     }
 }
