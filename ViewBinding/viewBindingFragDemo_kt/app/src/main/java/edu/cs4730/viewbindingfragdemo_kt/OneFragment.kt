@@ -24,22 +24,17 @@ class OneFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentOneBinding.inflate(inflater, container, false)
-        binding.btnSubmit.setOnClickListener(View.OnClickListener {
+        binding.btnSubmit.setOnClickListener {
             if (mListener != null) {
                 var value = "stuff"
-                if (binding.etName.text.toString().compareTo("") != 0 )
-                    value =   binding.etName.text.toString()
+                if (binding.etName.text.toString().compareTo("") != 0)
+                    value = binding.etName.text.toString()
                 mListener!!.onFragmentInteraction1(value)
             }
-        })
+        }
 
         //needs to return a view.  so get it for the return
         return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        //binding = null
     }
 
     override fun onAttach(context: Context) {

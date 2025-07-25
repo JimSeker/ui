@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import edu.cs4730.viewbindingfragdemo.databinding.FragmentOneBinding;
 import edu.cs4730.viewbindingfragdemo.databinding.FragmentTwoBinding;
 
 import android.view.LayoutInflater;

@@ -22,21 +22,16 @@ class TwoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTwoBinding.inflate(inflater, container, false)
-        binding.button.setOnClickListener(View.OnClickListener {
+        binding.button.setOnClickListener {
             Toast.makeText(
                 requireContext(),
                 "Hi there",
                 Toast.LENGTH_SHORT
             ).show()
-        })
+        }
 
 
         //needs a view so return one.
         return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        //binding = null
     }
 }
