@@ -1,19 +1,21 @@
 package edu.cs4730.menudemo_kt
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NavUtils
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.android.material.tabs.TabLayoutMediator.TabConfigurationStrategy
 import edu.cs4730.menudemo_kt.databinding.ActivityViewpagerbuttonmenuBinding
+import edu.cs4730.menudemo_kt.databinding.FragmentPageBinding
 
 /**
  * This example shows how to use a viewpager2 with button menu items to change the pager.
@@ -31,6 +33,12 @@ class ViewPagerButtonMenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityViewpagerbuttonmenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v: View, insets: WindowInsetsCompat ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
 
         //turn on up button
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -71,13 +79,13 @@ class ViewPagerButtonMenuActivity : AppCompatActivity() {
             }
         })
 
-        binding.tabLayout.tabMode = TabLayout.MODE_SCROLLABLE //dont show all the tabs, which is MODE_FIXED.
-        TabLayoutMediator(binding.tabLayout,
-            binding.pager,
-            TabConfigurationStrategy { tab, position ->
-                tab.text = "This Page is " + (position + 1)
-            }
-        ).attach()
+        binding.tabLayout.tabMode =
+            TabLayout.MODE_SCROLLABLE //dont show all the tabs, which is MODE_FIXED.
+        TabLayoutMediator(
+            binding.tabLayout, binding.pager
+        ) { tab, position ->
+            tab.text = "This Page is " + (position + 1)
+        }.attach()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -89,7 +97,9 @@ class ViewPagerButtonMenuActivity : AppCompatActivity() {
         //see xml
         //MenuItemCompat.setShowAsAction(menu.findItem(R.id.action_previous),MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         val item = menu.add(
-            Menu.NONE, R.id.action_next, Menu.NONE,
+            Menu.NONE,
+            R.id.action_next,
+            Menu.NONE,
             if (binding.pager.currentItem == mPagerAdapter.itemCount - 1) R.string.action_finish else R.string.action_next
         )
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM or MenuItem.SHOW_AS_ACTION_WITH_TEXT)
@@ -153,14 +163,14 @@ class ViewPagerButtonMenuActivity : AppCompatActivity() {
             mPage = requireArguments().getInt(ARG_PAGE)
         }
 
+        @SuppressLint("SetTextI18n")
         override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            val view = inflater.inflate(R.layout.fragment_page, container, false)
-            val textView = view as TextView
-            textView.text = "Fragment #$mPage"
-            return view
+            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        ): View {
+            val fragBinding: FragmentPageBinding =
+                FragmentPageBinding.inflate(inflater, container, false)
+            fragBinding.text.text = "Fragment #$mPage"
+            return fragBinding.getRoot()
         }
 
         companion object {
