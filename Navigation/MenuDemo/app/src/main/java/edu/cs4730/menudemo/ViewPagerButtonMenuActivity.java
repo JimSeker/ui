@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -26,6 +29,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import edu.cs4730.menudemo.databinding.ActivityViewpagerbuttonmenuBinding;
+import edu.cs4730.menudemo.databinding.FragmentPageBinding;
 
 /**
  * This example shows how to use a viewpager2 with button menu items to change the pager.
@@ -41,6 +45,12 @@ public class ViewPagerButtonMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityViewpagerbuttonmenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return WindowInsetsCompat.CONSUMED;
+        });
 
         //turn on up button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -85,13 +95,13 @@ public class ViewPagerButtonMenuActivity extends AppCompatActivity {
         });
         binding.tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);  //dont show all the tabs, which is MODE_FIXED.
         new TabLayoutMediator(binding.tabLayout,
-                binding.pager,
-                new TabLayoutMediator.TabConfigurationStrategy() {
-                    @Override
-                    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                        tab.setText("This Page is " + (position + 1));
-                    }
+            binding.pager,
+            new TabLayoutMediator.TabConfigurationStrategy() {
+                @Override
+                public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                    tab.setText("This Page is " + (position + 1));
                 }
+            }
         ).attach();
     }
 
@@ -107,9 +117,9 @@ public class ViewPagerButtonMenuActivity extends AppCompatActivity {
         //MenuItemCompat.setShowAsAction(menu.findItem(R.id.action_previous),MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
         MenuItem item = menu.add(Menu.NONE, R.id.action_next, Menu.NONE,
-                (binding.pager.getCurrentItem() == mPagerAdapter.getItemCount() - 1)
-                        ? R.string.action_finish
-                        : R.string.action_next);
+            (binding.pager.getCurrentItem() == mPagerAdapter.getItemCount() - 1)
+                ? R.string.action_finish
+                : R.string.action_next);
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         return true;
     }
@@ -173,7 +183,7 @@ public class ViewPagerButtonMenuActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.putFragment(outState, "ONE", one);
@@ -204,12 +214,11 @@ public class ViewPagerButtonMenuActivity extends AppCompatActivity {
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+        public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.fragment_page, container, false);
-            TextView textView = (TextView) view;
-            textView.setText("Fragment #" + mPage);
-            return view;
+            FragmentPageBinding fragBinding = FragmentPageBinding.inflate(inflater, container, false);
+            fragBinding.text.setText("Fragment #" + mPage);
+            return fragBinding.getRoot();
         }
     }
 }
