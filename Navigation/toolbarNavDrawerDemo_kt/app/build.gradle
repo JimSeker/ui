@@ -4,16 +4,14 @@ plugins {
 }
 
 android {
-    compileSdk 35
+    compileSdk = 36
 
     defaultConfig {
-        applicationId "edu.cs4730.toolbarnavdrawerdemo_kt"
-        minSdk 29
-        targetSdk 35
+        applicationId = "edu.cs4730.toolbarnavdrawerdemo_kt"
+        minSdk = 31
+        targetSdk = 36
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -23,22 +21,22 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
     buildFeatures {
         viewBinding = true
     }
-    namespace 'edu.cs4730.toolbarnavdrawerdemo_kt'
+    namespace = 'edu.cs4730.toolbarnavdrawerdemo_kt'
 
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.15.0'
-    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.core:core-ktx:1.16.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'androidx.drawerlayout:drawerlayout:1.2.0'
 }

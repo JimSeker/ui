@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             //called once the drawer has closed.
             override fun onDrawerOpened(drawerView: View) {
                 super.onDrawerOpened(drawerView)
-                supportActionBar!!.setTitle("Categories")
+                supportActionBar!!.title = "Categories"
                 invalidateOptionsMenu() // creates call to onPrepareOptionsMenu()
             }
 

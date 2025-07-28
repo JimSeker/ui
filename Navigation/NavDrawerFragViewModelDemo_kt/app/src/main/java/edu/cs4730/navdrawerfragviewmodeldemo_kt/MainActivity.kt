@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onDrawerOpened(drawerView: View) {
-                supportActionBar!!.setTitle("Categories")
+                supportActionBar!!.title = "Categories"
                 invalidateOptionsMenu() // creates call to onPrepareOptionsMenu()
             }
         }

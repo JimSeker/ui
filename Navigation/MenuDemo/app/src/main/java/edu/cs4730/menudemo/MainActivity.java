@@ -11,7 +11,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import android.view.View;
-import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
