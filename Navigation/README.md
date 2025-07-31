@@ -23,6 +23,10 @@ Navigation Examples
 
 `NavDrawerFragViewModelDemo_kt` (kotlin) is NavDrawerFragDemo reworked to use a viewmodel, instead of all the callbacks.  The code is greatly simplified without callbacks/listeners.
 
+`NavigationRailDemo` (java) shows how to use the NavigationRailView (which is very similiar to a bottomNavigationView.
+
+`NavigationRailDemo_kt` (kotlin) shows how to use the NavigationRailView (which is very similiar to a bottomNavigationView.
+
 `toolbarnavDrawerDemo`  (java) uses a toolbar, instead of a actionbar.  The rest of the code is the same as the NavDrawerDemo. 
 
 `toolbarnavDrawerDemo_kt` (kotlin) uses a toolbar, instead of a actionbar.  The rest of the code is the same as the NavDrawerDemo.

@@ -59,8 +59,6 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.navView, navController)
 
         //In order to have badges, you need to use the Theme.MaterialComponents.DayNight  (doesn't have to be daynight, but MaterialComponents).
-
-        //In order to have badges, you need to use the Theme.MaterialComponents.DayNight  (doesn't have to be daynight, but MaterialComponents).
         val badge = binding.navView.getOrCreateBadge(R.id.action_second)
         badge.number = 12 //should show a 12 in the "badge" for the second one.
 
