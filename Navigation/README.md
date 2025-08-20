@@ -23,6 +23,11 @@ Navigation Examples
 
 `NavDrawerFragViewModelDemo_kt` (kotlin) is NavDrawerFragDemo reworked to use a viewmodel, instead of all the callbacks.  The code is greatly simplified without callbacks/listeners.
 
+`NavigationBottomOrRail` (java) shows how to setup to use the BottomNavigationView in portiat and use the NavigationRail when it in landscape (or just a bigger screen).  
+
+`NavigationBottomOrRail_kt` (kotlin) shows how to setup to use the BottomNavigationView in portiat and use the NavigationRail when it in landscape (or just a bigger screen).  
+
+
 `NavigationRailDemo` (java) shows how to use the NavigationRailView (which is very similiar to a bottomNavigationView.
 
 `NavigationRailDemo_kt` (kotlin) shows how to use the NavigationRailView (which is very similiar to a bottomNavigationView.
