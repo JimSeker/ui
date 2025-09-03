@@ -1,0 +1,71 @@
+package edu.cs4730.customdialogm3demo_kt
+
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import edu.cs4730.customdialogm3demo_kt.databinding.ActivityMainBinding
+import edu.cs4730.customdialogm3demo_kt.databinding.LayoutCustomDialogBinding
+
+/**
+ * simple dialog example to show how to create a custom dialog box with 2 EditText fields.
+ * use material 3 components.
+ */
+
+class MainActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityMainBinding
+    var TAG = "MainActivity"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v: View, insets: WindowInsetsCompat ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
+        binding.button.setOnClickListener { showInputDialog("Input") }
+    }
+
+
+    /**
+     * simple method to display data to the logger textview.
+     */
+    fun displaylog(item: String) {
+        Log.v(TAG, item)
+        binding.logger.append(item + "\n")
+    }
+
+    /**
+     * We are going to add data
+     * setup dialog to ask the user for the new item data or category.
+     */
+    fun showInputDialog(title: String?) {
+        val inflater = LayoutInflater.from(this)
+        val binding: LayoutCustomDialogBinding = LayoutCustomDialogBinding.inflate(inflater)
+        val builder = MaterialAlertDialogBuilder(this)
+        builder.setView(binding.root).setTitle(title)
+        builder.setPositiveButton("Add") { dailog, id ->
+            displaylog(
+                "data is " + binding.etFirst.text.toString() +
+                        " " + binding.etLast.text.toString()
+            )
+            //Toast.makeText(getBaseContext(), binding.etFirst.getText().toString(), Toast.LENGTH_LONG).show();
+        }
+            .setNegativeButton("Cancel") { dialog, id ->
+                displaylog("dialog canceled")
+                dialog.cancel()
+            }
+        //you can create the dialog or just use the now method in the builder.
+        //AlertDialog dialog = builder.create();
+        //dialog.show();
+        builder.show()
+    }
+
+}

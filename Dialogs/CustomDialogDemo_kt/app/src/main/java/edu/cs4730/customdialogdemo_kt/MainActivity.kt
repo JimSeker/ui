@@ -49,12 +49,8 @@ class MainActivity : AppCompatActivity() {
     fun showInputDialog(title: String?) {
         val inflater = LayoutInflater.from(this)
         val binding: LayoutCustomDialogBinding = LayoutCustomDialogBinding.inflate(inflater)
-        val builder = AlertDialog.Builder(
-            ContextThemeWrapper(
-                this,
-                androidx.appcompat.R.style.ThemeOverlay_AppCompat_Dialog
-            )
-        )
+        val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AlertDialogCustom))
+       // val builder = AlertDialog.Builder(this)
         builder.setView(binding.root).setTitle(title)
         builder.setPositiveButton("Add") { dailog, id ->
             displaylog(

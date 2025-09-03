@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!--  see https://developer.android.com/training/material/theme.html  -->
         <item name="colorPrimary">@color/primaryColorLight</item>
         <item name="colorPrimaryDark">@color/primaryColorDark</item>
@@ -24,5 +24,13 @@
         <item name="colorSurface">@color/primaryColorDark</item>
 
     </style>
+
+    <style name="AlertDialogCustom" parent="@android:style/Theme.Dialog">
+        <item name="android:textColor">@color/primaryColorLight</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@color/black</item>
+    </style>
+
+
 
 </resources>

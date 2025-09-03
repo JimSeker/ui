@@ -17,7 +17,7 @@ import edu.cs4730.customdialogdemo.databinding.ActivityMainBinding;
 import edu.cs4730.customdialogdemo.databinding.LayoutCustomDialogBinding;
 
 /**
- * simple dialog example to show how to create a custom dialog box with 2 EditText boxes.
+ * simple dialog example to show how to create a custom dialog box with 2 EditText fields.
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         LayoutCustomDialogBinding binding = LayoutCustomDialogBinding.inflate(inflater);
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, androidx.appcompat.R.style.ThemeOverlay_AppCompat_Dialog));
+        //final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
         builder.setView(binding.getRoot()).setTitle(title);
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
