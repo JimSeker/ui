@@ -1,0 +1,42 @@
+plugins {
+    id 'com.android.application'
+    }
+
+android {
+    compileSdk  =37
+
+    defaultConfig {
+        applicationId = "edu.cs4730.emojicompatdemo_kt"
+        minSdk = 32
+        targetSdk = 37
+        versionCode =1
+        versionName ="1.0"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled = false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+    namespace 'edu.cs4730.emojicompatdemo_kt'
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.19.0'
+    implementation 'androidx.appcompat:appcompat:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
+    implementation "androidx.emoji:emoji-appcompat:1.2.0"
+    implementation "androidx.emoji:emoji-bundled:1.2.0"
+    implementation "androidx.emoji:emoji:1.2.0"
+}

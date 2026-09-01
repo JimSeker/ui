@@ -1,6 +1,8 @@
 Advanced Android GUI/UI Examples
 ===========
 
+`legacy/` are old examples that are no longer updated.  
+
 `ArchNavigationDemo` (java) is an example of using the Arch Navigation for fragments.  how to change fragments and pass data via arch.
 
 `ArchNavigationDemo_kt` (kotlin) is an example of using the Arch Navigation for fragments.  how to change fragments and pass data via arch.
@@ -16,10 +18,6 @@ Advanced Android GUI/UI Examples
 `BottomNavigationViewDemo` (java) use the material design BottomNavigationView with the Arch Navigation to switch between three fragments really simply.  Also shows how to set badges in the BottomNavigationView object as well.
 
 `BottomNavigationViewDemo_kt` (kotlin) use the material design BottomNavigationView with the Arch Navigation to switch between three fragments really simply. Also shows how to set badges in the BottomNavigationView object as well.
-
-`EmojiCompatDemo` (java) is an example using the emoji compat library.  Note: appcompat v1.4.0+ has emoji2 library built in directory now.  so this is not really needed anymore.
-
-`EmojiCompatDemo_kt` (kotlin) is an example using the emoji compat library.  Note: appcompat v1.4.0+ has emoji2 library built in directory now.  so this is not really needed anymore.
 
 `GuiDemo` (java)has many different UI examples in fragments, widgets: buttons, imageview, varying layouts, radio buttons, spinners, edit and textview, and viewswitchers.  The example uses a navigation bar to switch between examples.
 
