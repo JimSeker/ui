@@ -69,13 +69,11 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     public void onClick(View v) {
         if (v == binding.Next) {  //Next button
             myColors.next();
-            binding.colorName.setText(myColors.getName());
-            createImage();
         } else { //has to be Prev
             myColors.prev();
-            binding.colorName.setText(myColors.getName());
-            createImage();
         }
+        binding.colorName.setText(myColors.getName());
+        createImage();
         //set the buttons correctly.
         binding.Next.setEnabled(!myColors.isLast());  //turn off when this is the last entry.
         binding.Prev.setEnabled(!myColors.isFirst());  //turn off when this is the first entry
