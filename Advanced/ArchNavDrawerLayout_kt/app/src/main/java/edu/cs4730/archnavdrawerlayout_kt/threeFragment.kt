@@ -10,7 +10,7 @@ import edu.cs4730.archnavdrawerlayout_kt.databinding.FragmentThreeBinding
 /**
  * A simple [Fragment] subclass.
  */
-class threeFragment : Fragment() {
+class ThreeFragment : Fragment() {
     lateinit var binding: FragmentThreeBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

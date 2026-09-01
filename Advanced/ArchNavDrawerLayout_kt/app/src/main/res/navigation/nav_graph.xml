@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_two" />
     <fragment
         android:id="@+id/action_third"
-        android:name="edu.cs4730.archnavdrawerlayout_kt.threeFragment"
+        android:name="edu.cs4730.archnavdrawerlayout_kt.ThreeFragment"
         android:label="fragment_three"
         tools:layout="@layout/fragment_three" />
 </navigation>
