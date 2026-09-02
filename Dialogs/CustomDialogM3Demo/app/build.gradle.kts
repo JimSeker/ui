@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "edu.cs4730.customdialogm3demo"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "edu.cs4730.customdialogm3demo"
-        minSdk = 31
-        targetSdk = 36
+        minSdk = 32
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 

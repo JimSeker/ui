@@ -1,16 +1,15 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
 }
 
 android {
     namespace = "edu.cs4730.customdialogdemo_kt"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "edu.cs4730.customdialogdemo_kt"
-        minSdk = 31
-        targetSdk = 36
+        minSdk = 32
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 
@@ -27,11 +26,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         viewBinding = true
@@ -40,8 +36,8 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.16.0")
-    implementation("androidx.appcompat:appcompat:1.7.1")
-    implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
+    implementation("androidx.core:core-ktx:1.19.0")
+    implementation("androidx.appcompat:appcompat:1.8.0")
+    implementation("com.google.android.material:material:1.14.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.2")
 }
