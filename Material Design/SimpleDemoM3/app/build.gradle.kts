@@ -1,16 +1,15 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
 }
 
 android {
     namespace = "edu.cs4730.simpledemom3"
-    compileSdk = 35
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "edu.cs4730.simpledemom3"
-        minSdk = 29
-        targetSdk = 35
+        minSdk = 32
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 
@@ -26,11 +25,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 

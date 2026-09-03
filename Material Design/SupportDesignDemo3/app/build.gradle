@@ -1,31 +1,31 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdk 35
+    compileSdk = 37
 
     defaultConfig {
-        applicationId "edu.cs4730.supportdesigndemo3"
-        minSdkVersion 29
-        targetSdk 35
-        versionCode 1
-        versionName "1.0"
+        applicationId ="edu.cs4730.supportdesigndemo3"
+        minSdk = 32
+        targetSdk =37
+        versionCode =1
+        versionName ="1.0"
     }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled =false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     buildFeatures {
         viewBinding = true
     }
-    namespace 'edu.cs4730.supportdesigndemo3'
+    namespace ='edu.cs4730.supportdesigndemo3'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.8.0'
+    implementation 'com.google.android.material:material:1.14.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.palette:palette:1.0.0'
 }
