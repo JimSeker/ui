@@ -49,7 +49,7 @@ public class ActionMenuActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             // Navigate "up" the demo structure to the launchpad activity.
             // See http://developer.android.com/design/patterns/navigation.html for more.
-            NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
+            this.navigateUpTo(new Intent(this, MainActivity.class));
             return true;
         }
         //Normally you would deal with all the menu items here, which I'm ignoring for the purpose of the example.

@@ -110,7 +110,7 @@ class ViewPagerButtonMenuActivity : AppCompatActivity() {
         if (item.itemId == android.R.id.home) {
             // Navigate "up" the demo structure to the launchpad activity.
             // See http://developer.android.com/design/patterns/navigation.html for more.
-            NavUtils.navigateUpTo(this, Intent(this, MainActivity::class.java))
+            this.navigateUpTo(Intent(this, MainActivity::class.java))
             return true
         } else if (item.itemId == R.id.action_previous) {
             // Go to the previous step in the wizard. If there is no previous step,

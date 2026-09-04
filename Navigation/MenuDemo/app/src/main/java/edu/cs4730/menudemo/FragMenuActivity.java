@@ -72,7 +72,7 @@ public class FragMenuActivity extends AppCompatActivity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            NavUtils.navigateUpTo(this, upIntent);
+            this.navigateUpTo( upIntent);
             return true;
         } else if (id == R.id.frag1) {
             if (!isfrag1) {
