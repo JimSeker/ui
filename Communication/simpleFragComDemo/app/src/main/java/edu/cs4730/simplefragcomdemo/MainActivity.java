@@ -3,6 +3,9 @@ package edu.cs4730.simplefragcomdemo;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -10,12 +13,12 @@ import edu.cs4730.simplefragcomdemo.databinding.ActivityMainBinding;
 
 /**
  * simple example of callbacks and two fragments.
- *
+ * <p>
  * When the device is in portrait, it displays the main fragment with a button.  When clicked it
  * then displays and updates the info fragment.
- *
+ * <p>
  * When the device is in landscape, it simply updates the info fragment, since it is already showing.
- *
+ * <p>
  * Note, when the device changes between landscape and portrait, the num of clicks is reset.
  * No attempt at storing the data was made.  see save data repo, for how this might be done.
  */
@@ -32,6 +35,11 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return WindowInsetsCompat.CONSUMED;
+        });
         fragmentManager = getSupportFragmentManager();
 
         //setup the correct layout, based on if container (portrait) exists.
