@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
 
 }
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 android {
     compileSdk = 37
