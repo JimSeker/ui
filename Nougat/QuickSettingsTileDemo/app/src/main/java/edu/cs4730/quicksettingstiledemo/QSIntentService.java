@@ -14,8 +14,11 @@
 
 package edu.cs4730.quicksettingstiledemo;
 
+import android.annotation.SuppressLint;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Build;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
@@ -23,6 +26,7 @@ import android.service.quicksettings.TileService;
 public class QSIntentService
     extends TileService {
 
+    @SuppressLint("StartActivityAndCollapseDeprecated")
     @Override
     public void onClick() {
 
@@ -47,7 +51,19 @@ public class QSIntentService
             intent.putExtra(ResultActivity.RESULT_ACTIVITY_INFO_KEY,
                 tileState);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivityAndCollapse(intent);
+            PendingIntent pendingIntent = PendingIntent.getActivity(
+                this,
+                0,
+                intent,
+                PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT
+            );
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                startActivityAndCollapse(pendingIntent);
+            } else {
+                //yes, it's deprecated hence the if, but the linter, is dumb and even with suprressLint, it still complains.
+                // So, just ignore it.
+                startActivityAndCollapse(intent);
+            }
         }
     }
 
