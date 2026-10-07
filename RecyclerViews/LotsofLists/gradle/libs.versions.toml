@@ -1,0 +1,23 @@
+[versions]
+agp = "9.4.1"
+appcompat = "1.8.0"
+constraintlayout = "2.2.2"
+material = "1.14.0"
+recyclerview = "1.4.0"
+cardview = "1.0.0"
+drawerlayout = "1.2.0"
+lifecycle-viewmodel = "2.11.0"
+lifecycle-livedata = "2.11.0"
+
+[libraries]
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
+androidx-drawerlayout = { group = "androidx.drawerlayout", name = "drawerlayout", version.ref = "drawerlayout" }
+androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "lifecycle-viewmodel" }
+androidx-lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata", version.ref = "lifecycle-livedata" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
