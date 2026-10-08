@@ -3,6 +3,8 @@ package edu.cs4730.botnavguidemo_kt
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
+import android.os.Message
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -28,9 +30,9 @@ class Spinner_Fragment : Fragment(), AdapterView.OnItemSelectedListener {
     var myList = arrayOf("0", "1", "2", "3", "4", "5")
 
     //this is used when you are in a thread, and need to change a view/widget.
-    private val handler: Handler = Handler { msg ->
-        if (msg.what == 0) {  //message zero, which is enable the button again.
-            binding.prgbtn.isEnabled = true
+    private val handler: Handler = Handler(Looper.getMainLooper()) { msg ->
+        if (msg.what == 0) {  //message zero, which enables the button again.
+            binding.prgbtn.setEnabled(true)
         }
         true
     }

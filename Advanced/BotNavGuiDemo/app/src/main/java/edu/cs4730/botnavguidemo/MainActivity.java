@@ -92,40 +92,28 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationD
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressLint("NonConstantResourceId")
     @Override
     public void onFragmentPicker(int id) {
-        switch (id) {
-            case R.id.m_text:
-                fragmentManager.beginTransaction().replace(R.id.container, new Text_Fragment()).commit();
-                break;
-            case R.id.m_tex_input:
-                fragmentManager.beginTransaction().replace(R.id.container, new Input_Fragment()).commit();
-                break;
-            case R.id.m_itemimages:
-                fragmentManager.beginTransaction().replace(R.id.container, new Image_Fragment()).commit();
-                break;
-            case R.id.m_buttons:
-                fragmentManager.beginTransaction().replace(R.id.container, new Button_Fragment()).commit();
-                break;
-            case R.id.m_itembuttons:
-                fragmentManager.beginTransaction().replace(R.id.container, new ButtonCL_Fragment()).commit();
-                break;
-            case R.id.m_relative:
-                fragmentManager.beginTransaction().replace(R.id.container, new Relativelayout_Fragment()).commit();
-                break;
-            case R.id.m_radio:
-                fragmentManager.beginTransaction().replace(R.id.container, new RadioCheck_Fragment()).commit();
-                break;
-            case R.id.m_spinners:
-                fragmentManager.beginTransaction().replace(R.id.container, new Spinner_Fragment()).commit();
-                break;
-            case R.id.m_itemviewswitcher:
-                fragmentManager.beginTransaction().replace(R.id.container, new ViewSwitch_Fragment()).commit();
-                break;
-            case R.id.m_dialogpickers:
-                fragmentManager.beginTransaction().replace(R.id.container, new Picker_Fragment()).commit();
-                break;
+        if (id == R.id.m_text) {
+            fragmentManager.beginTransaction().replace(binding.container.getId(), new Text_Fragment()).commit();
+        } else if (id == R.id.m_tex_input) {
+            fragmentManager.beginTransaction().replace(binding.container.getId(), new Input_Fragment()).commit();
+        } else if (id == R.id.m_itemimages) {
+            fragmentManager.beginTransaction().replace(binding.container.getId(), new Image_Fragment()).commit();
+        } else if (id == R.id.m_buttons) {
+            fragmentManager.beginTransaction().replace(binding.container.getId(), new Button_Fragment()).commit();
+        } else if (id == R.id.m_itembuttons) {
+            fragmentManager.beginTransaction().replace(binding.container.getId(), new ButtonCL_Fragment()).commit();
+        } else if (id == R.id.m_relative) {
+            fragmentManager.beginTransaction().replace(binding.container.getId(), new Relativelayout_Fragment()).commit();
+        } else if (id == R.id.m_radio) {
+            fragmentManager.beginTransaction().replace(binding.container.getId(), new RadioCheck_Fragment()).commit();
+        } else if (id == R.id.m_spinners) {
+            fragmentManager.beginTransaction().replace(binding.container.getId(), new Spinner_Fragment()).commit();
+        } else if (id == R.id.m_itemviewswitcher) {
+            fragmentManager.beginTransaction().replace(binding.container.getId(), new ViewSwitch_Fragment()).commit();
+        } else if (id == R.id.m_dialogpickers) {
+            fragmentManager.beginTransaction().replace(binding.container.getId(), new Picker_Fragment()).commit();
         }
     }
 }

@@ -3,6 +3,7 @@ package edu.cs4730.botnavguidemo;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,10 +34,10 @@ public class Spinner_Fragment extends Fragment implements AdapterView.OnItemSele
     String[] myList = {"0", "1", "2", "3", "4", "5"};
 
     //this is used when you are in a thread, and need to change a view/widget.
-    private final Handler handler = new Handler(new Handler.Callback() {
+    private final Handler handler = new Handler(Looper.getMainLooper(), new Handler.Callback() {
         @Override
         public boolean handleMessage(@NonNull Message msg) {
-            if (msg.what == 0) {  //message zero, which is enable the button again.
+            if (msg.what == 0) {  //message zero, which enables the button again.
                 binding.prgbtn.setEnabled(true);
             }
             return true;

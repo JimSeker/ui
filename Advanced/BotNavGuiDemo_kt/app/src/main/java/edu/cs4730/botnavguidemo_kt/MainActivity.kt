@@ -69,34 +69,34 @@ class MainActivity : AppCompatActivity(),
     override fun onFragmentPicker(id: Int) {
         when (id) {
             R.id.m_text -> fragmentManager.beginTransaction()
-                .replace(R.id.container, Text_Fragment()).commit()
+                .replace(binding.main.id, Text_Fragment()).commit()
 
             R.id.m_tex_input -> fragmentManager.beginTransaction()
-                .replace(R.id.container, Input_Fragment()).commit()
+                .replace(binding.main.id, Input_Fragment()).commit()
 
             R.id.m_itemimages -> fragmentManager.beginTransaction()
-                .replace(R.id.container, Image_Fragment()).commit()
+                .replace(binding.main.id, Image_Fragment()).commit()
 
             R.id.m_buttons -> fragmentManager.beginTransaction()
-                .replace(R.id.container, Button_Fragment()).commit()
+                .replace(binding.main.id, Button_Fragment()).commit()
 
             R.id.m_itembuttons -> fragmentManager.beginTransaction()
-                .replace(R.id.container, ButtonCL_Fragment()).commit()
+                .replace(binding.main.id, ButtonCL_Fragment()).commit()
 
             R.id.m_relative -> fragmentManager.beginTransaction()
-                .replace(R.id.container, Relativelayout_Fragment()).commit()
+                .replace(binding.main.id, Relativelayout_Fragment()).commit()
 
             R.id.m_radio -> fragmentManager.beginTransaction()
-                .replace(R.id.container, RadioCheck_Fragment()).commit()
+                .replace(binding.main.id, RadioCheck_Fragment()).commit()
 
             R.id.m_spinners -> fragmentManager.beginTransaction()
-                .replace(R.id.container, Spinner_Fragment()).commit()
+                .replace(binding.main.id, Spinner_Fragment()).commit()
 
             R.id.m_itemviewswitcher -> fragmentManager.beginTransaction()
-                .replace(R.id.container, ViewSwitch_Fragment()).commit()
+                .replace(binding.main.id, ViewSwitch_Fragment()).commit()
 
             R.id.m_dialogpickers -> fragmentManager.beginTransaction()
-                .replace(R.id.container, Picker_Fragment()).commit()
+                .replace(binding.main.id, Picker_Fragment()).commit()
         }
     }
 }
