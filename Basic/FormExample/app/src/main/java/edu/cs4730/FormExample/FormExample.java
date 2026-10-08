@@ -1,5 +1,6 @@
 package edu.cs4730.FormExample;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -11,9 +12,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import edu.cs4730.FormExample.databinding.MainBinding;
@@ -24,11 +23,6 @@ import edu.cs4730.FormExample.databinding.MainBinding;
 
 public class FormExample extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, TextWatcher,
         Button.OnClickListener {
-    //variables for the widgets
-    //RadioGroup myRadioGroup;
-    // EditText et;
-    // Button btnalert;
-    // TextView label;
 
     String TAG = "ForExample";
     private MainBinding binding;
@@ -55,7 +49,7 @@ public class FormExample extends AppCompatActivity implements RadioGroup.OnCheck
     }
 
     /*  Radio group listener for OnCheckedChangeListener */
-    public void onCheckedChanged(RadioGroup group, int CheckedId) {
+    public void onCheckedChanged(@NonNull RadioGroup group, int CheckedId) {
         if (group == binding.myRadioGroup) { //if not myRadioGroup, we are in trouble!
             if (CheckedId == R.id.RB01) {
                 // information radio button clicked
