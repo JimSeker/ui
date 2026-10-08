@@ -1,0 +1,15 @@
+[versions]
+agp = "9.4.1"
+appcompat = "1.8.0"
+constraintlayout = "2.2.2"
+material = "1.14.0"
+drawerlayout = "1.2.0"
+
+[libraries]
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-drawerlayout = { group = "androidx.drawerlayout", name = "drawerlayout", version.ref = "drawerlayout" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
