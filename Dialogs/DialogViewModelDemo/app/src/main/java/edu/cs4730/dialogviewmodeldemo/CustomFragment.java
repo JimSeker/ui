@@ -119,7 +119,7 @@ public class CustomFragment extends Fragment {
         LayoutInflater inflater = getLayoutInflater();
         LayoutCustomDialogBinding binding = LayoutCustomDialogBinding.inflate(inflater);
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), androidx.appcompat.R.style.ThemeOverlay_AppCompat_Dialog));
         builder.setView(binding.getRoot()).setTitle(title);
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
                 @Override

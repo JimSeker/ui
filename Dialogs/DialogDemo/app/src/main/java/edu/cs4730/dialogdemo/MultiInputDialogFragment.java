@@ -72,7 +72,7 @@ public class MultiInputDialogFragment extends DialogFragment {
         if (name != null) binding.etName.setText(name);
         if (amount != null) binding.etAmount.setText(amount);
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), androidx.appcompat.R.style.ThemeOverlay_AppCompat_Dialog));
         builder.setView(binding.getRoot()).setTitle("Multi Input Dialog");
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
 

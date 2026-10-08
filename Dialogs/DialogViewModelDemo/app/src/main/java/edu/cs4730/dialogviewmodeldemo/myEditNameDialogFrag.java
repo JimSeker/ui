@@ -34,7 +34,7 @@ public class myEditNameDialogFrag extends DialogFragment {
         //the keyboard should come up and focus should be set to this input box.
         binding.txtYourName.requestFocus();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), R.style.ThemeOverlay_AppCompat_Dialog));
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), androidx.appcompat.R.style.ThemeOverlay_AppCompat_Dialog));
         builder.setView(binding.getRoot()).setTitle("Hello");
         DataViewModel mViewModel = new ViewModelProvider(requireActivity()).get(DataViewModel.class);
 

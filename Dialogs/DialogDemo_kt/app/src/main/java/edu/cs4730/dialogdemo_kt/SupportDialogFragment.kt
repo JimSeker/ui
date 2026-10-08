@@ -51,7 +51,7 @@ class SupportDialogFragment : Fragment() {
         val builder = AlertDialog.Builder(
             ContextThemeWrapper(
                 requireActivity(),
-                R.style.ThemeOverlay_AppCompat_Dialog
+                androidx.appcompat.R.style.ThemeOverlay_AppCompat_Dialog
             )
         )
         builder.setTitle(title)
