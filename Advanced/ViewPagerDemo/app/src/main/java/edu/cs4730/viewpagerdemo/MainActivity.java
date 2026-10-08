@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.viewpager.widget.ViewPager;
+
 
 import edu.cs4730.viewpagerdemo.databinding.ActivityMainBinding;
 
@@ -20,6 +20,9 @@ import edu.cs4730.viewpagerdemo.databinding.ActivityMainBinding;
  * In a viewpager, if a fragment is two away from the one displaying, it is sent onDestroyView()
  * so viewmodel has been added to start the data in the fragment, so it will survive an ondestroyview call.
  * the OnsaveInstanceState was not very reliable, but the viewmodel is.
+ * <p>
+ * The ViewPager and FragmentPagerAdapter are deprecated, but still work.
+ * The new way is to use ViewPager2 and FragmentStateAdapter, which is the ViewPager2Demo
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -54,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             //in landscape mode  //so no viewpager.
             fragmentManager.beginTransaction()
-                    .add(R.id.frag_left, leftfrag)
-                    .add(R.id.frag_mid, midfrag)
-                    .add(R.id.frag_right, rightfrag)
-                    .commit();
+                .add(R.id.frag_left, leftfrag)
+                .add(R.id.frag_mid, midfrag)
+                .add(R.id.frag_right, rightfrag)
+                .commit();
         }
     }
 

@@ -1,6 +1,6 @@
 package edu.cs4730.viewpagerdemo_kt
 
-import android.annotation.SuppressLint
+
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +12,16 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.ViewModelProvider
 import edu.cs4730.viewpagerdemo_kt.databinding.ActivityMainBinding
 
-@SuppressLint("StaticFieldLeak")
+/**
+ * this is an example using 3 fragments and a viewpager.
+ * In a viewpager, if a fragment is two away from the one displaying, it is sent onDestroyView()
+ * so viewmodel has been added to start the data in the fragment, so it will survive an ondestroyview call.
+ * the OnsaveInstanceState was not very reliable, but the viewmodel is.
+ * <p>
+ * The ViewPager and FragmentPagerAdapter are deprecated, but still work.
+ * The new way is to use ViewPager2 and FragmentStateAdapter, which is the ViewPager2Demo_kt
+ */
+
 class MainActivity : AppCompatActivity() {
 
     var TAG = "MainActivity"
