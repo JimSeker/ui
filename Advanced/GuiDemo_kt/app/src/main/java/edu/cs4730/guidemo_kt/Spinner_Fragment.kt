@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.os.Bundle
 import android.content.Context
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -23,8 +24,8 @@ class Spinner_Fragment : Fragment(), AdapterView.OnItemSelectedListener {
     var myList = arrayOf("0", "1", "2", "3", "4", "5")
 
     //this is used when you are in a thread, and need to change a view/widget.
-    private val handler: Handler = Handler { msg ->
-        if (msg.what == 0) {  //message zero, which is enable the button again.
+    private val handler: Handler = Handler(Looper.getMainLooper()) { msg ->
+        if (msg.what == 0) {  //message zero, which will enable the button again.
             binding.prgbtn.isEnabled = true
         }
         true
