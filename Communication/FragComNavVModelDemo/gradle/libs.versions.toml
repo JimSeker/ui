@@ -1,0 +1,23 @@
+[versions]
+agp = "9.4.1"
+appcompat = "1.8.0"
+constraintlayout = "2.2.2"
+material = "1.14.0"
+navigation-fragment = "2.10.2"
+navigation-ui = "2.10.2"
+lifecycle-viewmodel = "2.11.0"
+lifecycle-livedata = "2.11.0"
+navigation-dynamic-features-fragment = "2.10.2"
+
+[libraries]
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigation-fragment" }
+androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigation-ui" }
+androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "lifecycle-viewmodel" }
+androidx-lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata", version.ref = "lifecycle-livedata" }
+androidx-navigation-dynamic-features-fragment = { group = "androidx.navigation", name = "navigation-dynamic-features-fragment", version.ref = "navigation-dynamic-features-fragment" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
