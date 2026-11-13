@@ -11,6 +11,8 @@ Advanced Android GUI/UI Examples
 
 `ArchNavDrawerLayout_kt` (kotlin) is an example using the Arch Navigation with a drawerlayout using a NavView.  The Arch Navigation pieces (via the NavView) are doing all the work of changing fragments and controlling the drawerlayout.
 
+`AutoFillDemo` (java) shows how to setup the androidx autofill, so the keyboard will be triggered for auto fill.  There is no kotlin version, since most if is in the layout, with a couple of lines in main.
+
 `BotNavGuiDemo` (java) is the Gui demo, but uses the BottomNavigation and bottomSheetDialog instead of DrawerLayout.
 
 `BotNavGuiDemo_kt` (kotlin) is the Gui demo, but uses the BottomNavigation and bottomSheetDialog instead of DrawerLayout.

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Header / Educational Information -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_autofill_demo"
+            android:textAppearance="?attr/textAppearanceHeadlineMedium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/description_autofill_demo"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?android:attr/textColorSecondary" />
+
+        <!-- 1. USERNAME FIELD -->
+        <!-- Note: Standalone "username" without a password field causes Password Managers -->
+        <!-- to think it is part of a login/signup flow and prompt password generation. -->
+        <!-- Pairing it with a password field or using "emailAddress" / "newUsername" resolves this. -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilUsername"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/label_username">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="username"
+                android:importantForAutofill="yes"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 2. PASSWORD FIELD (Complements Username for Password Managers) -->
+        <!-- Autofill Hint: "password" (HintConstants.AUTOFILL_HINT_PASSWORD) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPassword"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/label_password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="password"
+                android:importantForAutofill="yes"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 3. EMAIL ADDRESS FIELD -->
+        <!-- Autofill Hint: "emailAddress" (HintConstants.AUTOFILL_HINT_EMAIL_ADDRESS) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilEmail"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/label_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="emailAddress"
+                android:importantForAutofill="yes"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 4. PERSON NAME FIELD -->
+        <!-- Autofill Hint: "personName" (HintConstants.AUTOFILL_HINT_PERSON_NAME) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPersonName"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/label_person_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="personName"
+                android:importantForAutofill="yes"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 5. PHONE NUMBER FIELD -->
+        <!-- Autofill Hint: "phoneNumber" (HintConstants.AUTOFILL_HINT_PHONE_NUMBER) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPhoneNumber"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/label_phone_number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="phoneNumber"
+                android:importantForAutofill="yes"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 6. POSTAL ADDRESS FIELD -->
+        <!-- Autofill Hint: "postalAddress" (HintConstants.AUTOFILL_HINT_POSTAL_ADDRESS) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPostalAddress"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="@string/label_postal_address">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPostalAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="postalAddress"
+                android:importantForAutofill="yes"
+                android:inputType="textPostalAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 7. POSTAL ADDRESS FIELD -->
+        <!--  No auto hint, so the keyboard should not provide anything.-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPostalAddress2"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="@string/no_auto_hint_post_address_field">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPostalAddress2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPostalAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">AutoFill Demo</string>
+    <string name="title_autofill_demo">AndroidX Autofill Demo</string>
+    <string name="description_autofill_demo">This form demonstrates how to configure AndroidX Autofill hints for Username, Email, Password, Person Name, Phone Number, and Postal Address.</string>
+
+    <!-- Field Labels and Hints -->
+    <string name="label_username">Username</string>
+    <string name="hint_username">Enter your username</string>
+
+    <string name="label_email">Email Address</string>
+    <string name="hint_email">Enter your email address</string>
+
+    <string name="label_password">Password</string>
+    <string name="hint_password">Enter your password</string>
+
+    <string name="label_person_name">Full Name</string>
+    <string name="hint_person_name">Enter your full name</string>
+
+    <string name="label_phone_number">Phone Number</string>
+    <string name="hint_phone_number">Enter your phone number</string>
+
+    <string name="label_postal_address">Postal Address</string>
+    <string name="hint_postal_address">Enter your street address</string>
+
+    <!-- Actions -->
+    <string name="btn_submit">Submit Form (Commit Autofill)</string>
+    <string name="btn_request_autofill">Request Autofill on Full Name</string>
+    <string name="no_auto_hint_post_address_field">No Auto hint Post address field</string>
+</resources>
